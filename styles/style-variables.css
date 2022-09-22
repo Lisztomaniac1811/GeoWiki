@@ -1,0 +1,11 @@
+:root {
+    --navigation-background: #7bc0d5;
+    --navigation-font: #000;
+    --navigation-dropdown-menu: #262626;
+    --navigation-dropdown-menu-border: #3a3a3a;
+    --main-font: #e6e6e6;
+    --link: #72bcd4;
+    --main-background: #000;
+    --footer: #1a1a1a;
+    --bg-url: url('../images/Wiki-background.jpg');
+}

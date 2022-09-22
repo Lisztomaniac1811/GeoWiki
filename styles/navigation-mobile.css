@@ -1,0 +1,126 @@
+#dropdown-navigation {
+    display: none;
+}
+
+#wiki-header-nav {
+    display: none;
+}
+
+#mobile-banner {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    margin: 0 6px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    padding: 0;
+    margin: 0;
+    background-color: #113e57;
+    font-size: 15px;
+}
+
+#header-nav-mobile {
+    position: absolute !important;
+    z-index: 999999999999;
+    top: 100%;
+    right: 16px;
+    left: 16px;
+    display: none;
+    overflow: auto;
+    max-height: 300px;
+    padding: 7px 0;
+    border: 1px solid var(--navigation-dropdown-menu-border);
+    background-color: var(--navigation-dropdown-menu);
+    border-radius: 4px;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 30%);
+}
+
+.header-mobile-content {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    margin: 0 6px;
+}
+
+.header-mobile-button {
+    background: transparent;
+    transform: scale(1,1);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wiki-navigation {
+    -webkit-box-align: center;
+    -webkit-box-flex: 1;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 24px;
+}
+
+.tiny-icons, .dropdown-icons, .sublist-icons {
+    display: none;
+}
+
+.wiki-navigation-tabs {
+    list-style: none;
+}
+
+.wiki-navigation-first-dropdown {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    padding: 11px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--main-font);
+}
+
+.wiki-navigation-first-dropdown>a>span {
+    color: #D3D3D3;
+    margin-left: 0 !important;
+    font-weight: bolder;
+}
+
+.wiki-navigation-lists {
+    list-style: none;
+
+}
+
+.wiki-navigation-lists>li {
+    padding: 11px 0;
+}
+
+.wiki-navigation-lists>li>a>span {
+    color: var(--main-font);
+    text-decoration: none;
+}
+
+.navigation-sublists>a>span {
+font-weight: bold;
+}
+
+.wiki-sublist-contents {
+    padding-left: 10px;
+}

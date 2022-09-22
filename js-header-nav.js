@@ -1,0 +1,15 @@
+document.write("<div id=\"wiki-header-nav\">");
+document.write("    <div class=\"wordmark\">");
+document.write("<a href=\"/\"><img src=\"", WordmarkURL, "\"></img></a>");
+document.write("    </div>");
+document.write("    <div class=\"header-top-container\">");
+document.write("<div class=\"header-sitename\">");
+document.write("<a href=\"/\"><span>", WikiTitle, "</span></a>");
+document.write("</div>");
+document.write("    <div class=\"header-page-counter\">");
+document.write("        <span class=\"counter-value\">", PageCount, "</span>");
+document.write("        <span class=\"counter-title\">გვერდი</span>");
+document.write("    </div>");
+document.write("    </div>");
+document.write("<script src=\"js-nav.js\"></script>");
+document.write("</div>");

@@ -1,0 +1,7 @@
+body {
+    background-image: var(--bg-url);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -2;
+    background-size: cover;
+}
