@@ -8,4 +8,6 @@ main {
     height: auto;
     color: var(--main-font);
     min-height: 200vh;
+    padding-left: 10px;
+    padding-right: 10px;
 }

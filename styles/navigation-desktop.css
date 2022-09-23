@@ -199,7 +199,10 @@
     background-size: auto;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    margin-left: -20px;
+    margin-right: -20px;
 }
+
 
 .wordmark {
     width: auto;
