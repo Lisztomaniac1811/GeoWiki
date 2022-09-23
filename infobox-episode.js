@@ -1,6 +1,3 @@
-
-
-
 // var Infobox_Episode_Title = "";
 // var Infobox_Episode_Image_URL = "";
 // var Infobox_Episode_Seasonno = "";
@@ -127,8 +124,17 @@ document.write("                    </tr>");
 document.write("                </thead>");
 document.write("                <tbody>");
 document.write("                    <tr>");
-document.write("                        <td>„<a href=\"", Infobox_Episode_Previous_URL, "\" title=\"", Infobox_Episode_Previous, "\">", Infobox_Episode_Previous, "</a>“</td>");
-document.write("                        <td>„<a href=\"", Infobox_Episode_Next_URL, "\" title=\"", Infobox_Episode_Next, "\">", Infobox_Episode_Next, "</a>“</td>");
+if (Infobox_Episode_Previous == "--") {
+    document.write("<td><i>არ არის</i></td>"); 
+    } else {
+        document.write("<td>„<a href=\"", Infobox_Episode_Previous_URL, "\" title=\"", Infobox_Episode_Previous, "\">", Infobox_Episode_Previous, "</a>“</td>"); 
+    }
+if (Infobox_Episode_Next == "--") {
+    document.write("<td><i>არ არის</i></td>");
+    } else {
+document.write("<td>„<a href=\"", Infobox_Episode_Next_URL, "\" title=\"", Infobox_Episode_Next, "\">", Infobox_Episode_Next, "</a>“</td>"); 
+    }
+
 document.write("                    </tr>");
 document.write("                </tbody>");
 document.write("            </table>");

@@ -17,3 +17,4 @@
 @import url("general-mobile.css") screen and (max-width: 1250px);
 @import url("bg.css") screen and (min-width: 1250px);
 @import url("infobox-desktop.css") screen and (min-width: 1250px);
+@import url("infobox-mobile.css") screen and (max-width: 1250px);

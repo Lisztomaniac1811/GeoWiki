@@ -132,3 +132,7 @@ color: var(--navigation-font)
     overflow-wrap: break-word;
     font-size: 12px;
 }
+
+.infobox-value a {
+    color: var(--link);
+}

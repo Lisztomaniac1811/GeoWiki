@@ -12,3 +12,11 @@ main {
     padding-right: 10px;
     overflow: auto;
 }
+
+.wiki-page-title-header {
+    text-align: center;
+}
+
+.page-separator {
+    background-color: var(--main-background) !important;
+}

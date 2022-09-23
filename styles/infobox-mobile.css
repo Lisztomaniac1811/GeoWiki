@@ -1,0 +1,96 @@
+.infobox-episode {
+    background-color: #171717;
+    -webkit-box-shadow: 0 6px 10px 0 rgb(30 12 27 / 10%);
+    box-shadow: 0 6px 10px 0 rgb(30 12 27 / 10%);
+    height: auto;
+    margin: -2px 0 0;
+    padding-bottom: 6px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.infobox-episode a {
+    color: var(--link);
+}
+
+.infobox-title {
+    display: none;
+}
+
+.infobox-episode img {
+    width: 100%;
+}
+
+.infobox-episode section {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 1.125rem;
+    margin: 0 12px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+.infobox-episode>section>h2>a {
+    color: var(--main-font)
+}
+
+.infobox-subtitle {
+    text-align: center;
+    padding: 12px 0.75rem;
+    border-bottom: 1px solid var(--navigation-background);
+}
+
+.infobox-episode>section>.infobox-subtitle:not(:first-child) {
+    border-top: 1px solid var(--navigation-background);
+}
+
+.infobox-episode table {
+    border-spacing: 0;
+    margin-bottom: 12px;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.infobox-episode>section>table>thead>tr>th {
+    padding: 12px 0.75rem;
+    font-size: 14px;
+}
+
+.infobox-episode>section>table>thead>tr>th:not(:last-child) {
+    border-right: 1px solid var(--navigation-background);
+}
+
+.infobox-episode>section>table>tbody>tr>td {
+    padding-left: 0.75rem;
+    padding: 12px 0.75rem;
+}
+
+.infobox-episode>section>table>tbody>tr>td:not(:last-child) {
+    border-right: 1px solid var(--navigation-background);
+}
+
+.infobox-item {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+    padding: 12px 0.75rem;
+}
+
+.infobox-item h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    min-width: 36vw;
+}
+
+.infobox-value {
+    flex-basis: 60%;
+    padding-left: 12px;
+}
