@@ -42,12 +42,15 @@
     color: var(--navigation-font);
 }
 
+.infobox-subtitle>a {
+color: var(--navigation-font)
+}
+
 .infobox-episode>section {
     margin-bottom: 0;
     font-size: inherit;
     font-weight: 400;
     line-height: 1.75;
-    margin: 0 0 24px;
     overflow-wrap: break-word;
 }
 
@@ -58,20 +61,74 @@
     width: 100%;
 }
 
+.infobox-episode>section>table>thead>tr>th {
+    font-size: 12px;
+    line-height: 1.5;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-color: var(--navigation-background);
+    padding: 9px 9px 0px;
+    flex-basis: 90px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.infobox-episode>section>table>thead>tr>th:not(:first-child) {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-color: var(--navigation-background);
+}
+
 .infobox-episode>section>table>tbody>tr>td {
     padding: 0.5em;
     font-size: 12px;
-    border-bottom: 1px solid;
     border-color: var(--navigation-background);
 }
 
 .infobox-episode>section>table>tbody>tr>td:not(:first-child) {
     border-left-style: solid;
     border-left-width: 1px;
-    border-bottom: 1px solid;
     border-color: var(--navigation-background);
 }
 
 .infobox-episode>section>table>tbody>tr>td>a {
     color: var(--link)
+}
+
+.infobox-item {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    grid-column-gap: 9px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-bottom: 9px;
+    padding-top: 9px;
+    border-color: var(--navigation-background)
+}
+
+.infobox-item>h3 {
+    font-size: 12px;
+    line-height: 1.5;
+    border-bottom: 0px;
+    font-family: inherit;
+    font-weight: 700;
+    margin: 0px;
+    flex-basis: 90px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.infobox-value {
+    flex-basis: 180px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    font-size: 12px;
 }
