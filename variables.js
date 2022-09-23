@@ -180,7 +180,7 @@ var NavItem39 = "დილანის ფერმა";
 var NavItem310URL = "Pineview_Institute.html";
 var NavItem310 = "პაინვიუს კლინიკა";
 
-var NavItem4URL = "";
+var NavItem4URL = "#";
 var NavItem4 = "სხვადასხვა";
 var NavItem41URL = "Juno.html";
 var NavItem41 = "ჯუნო";
