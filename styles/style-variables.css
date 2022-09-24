@@ -5,8 +5,11 @@
     --navigation-dropdown-menu-border: #3a3a3a;
     --main-font: #e6e6e6;
     --link: #72bcd4;
+    --link--rgb: 114,188,212;
     --main-background: #000;
     --footer: #1a1a1a;
     --bg-url: url('../images/Wiki-background.jpg');
     --main-theme: #113e57;
+    --background: #000;
+    --theme-border-color: #3a3a3a;
 }

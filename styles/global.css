@@ -39,3 +39,135 @@
     margin: 0;
     color: var(--main-font);
 }
+
+#toc {
+    background-color: transparent;
+    border-radius: 3px;
+    font-size: 100%;
+    margin: 24px auto 24px 0;
+    padding: 0;
+    display: table;
+    padding: 7px;
+    border: 1px solid var(--theme-border-color);
+    padding: 5px;
+    font-size: 95%;
+    border-collapse: collapse;
+}
+
+.toctogglecheckbox {
+    display: inline !important;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.toctitle {
+    -webkit-box-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    line-height: 1;
+    padding: 12px;
+    direction: ltr;
+    min-width: 235px;
+}
+
+.toctitle>h2 {
+    border: 0;
+    color: var(--main-font);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0;
+    padding: 0;
+    -webkit-box-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: flex;
+}
+
+#toc svg {
+    fill: var(--main-font);
+    margin-right: 6px;
+    height: 12px;
+    min-width: 12px;
+    width: 12px;
+}
+
+.toctogglespan {
+    margin-left: 6px;
+    font-size: 94%;
+}
+
+.toctogglelabel {
+    font-size: 12px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: var(--link);
+}
+
+.toctogglespan:before {
+    content: ' [';
+}
+
+.toctogglecheckbox:not(:checked) + .toctitle .toctogglelabel:after {
+    content: 'ჩაკეცვა';
+}
+
+.toctogglespan:after {
+    content: ']';
+}
+
+.toctogglecheckbox:checked + .toctitle .toctogglelabel:after {
+    content: 'გაშლა';
+}
+
+#toc ul {  
+    margin: 0;
+    list-style: none;
+}
+
+#toc li {
+    list-style: none;
+}
+
+#toc>ul {
+    border-top: 1px solid var(--theme-border-color);
+    max-width: 400px;
+    padding: 9px 12px 9px 0;
+}
+ 
+#toc li { 
+    word-wrap: break-word;
+    margin-left: 12px;
+    overflow-wrap: break-word;
+}
+
+.tocnumber { 
+    color: rgba(230,230,230, .6);
+}
+
+#toc a {
+    border-radius: 3px;
+    color: var(--main-font);
+    display: block;
+    line-height: 2;
+    padding: 2px 6px;
+    text-decoration: none;
+    -webkit-transition-property: background-color,color;
+    transition-property: background-color,color;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+#toc a:hover {
+    color: var(--link);
+    background-color: rgba(var(--link--rgb),.15);
+}
+
+#toc>ul>li:not(:first-child) {
+    padding-top: 0;
+}

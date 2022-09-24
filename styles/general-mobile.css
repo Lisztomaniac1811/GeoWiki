@@ -8,8 +8,8 @@ main {
     height: auto;
     color: var(--main-font);
     min-height: 200vh;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
     overflow: auto;
 }
 

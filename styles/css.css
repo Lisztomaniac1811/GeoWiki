@@ -11,10 +11,10 @@
 
 @import url("style-variables.css");
 @import url("global.css");
+@import url("bg.css") screen and (min-width: 1250px);
 @import url("navigation-desktop.css") screen and (min-width: 1250px);
 @import url("navigation-mobile.css") screen and (max-width: 1250px);  
 @import url("general-desktop.css") screen and (min-width: 1250px);
 @import url("general-mobile.css") screen and (max-width: 1250px);
-@import url("bg.css") screen and (min-width: 1250px);
-@import url("infobox-desktop.css") screen and (min-width: 1250px);
-@import url("infobox-mobile.css") screen and (max-width: 1250px);
+@import url("infobox-desktop.css") screen and (min-width: 750px);
+@import url("infobox-mobile.css") screen and (max-width: 750px);
