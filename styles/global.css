@@ -179,12 +179,22 @@ main>p {
     margin: 0 0 24px;
     overflow-wrap: break-word;
 }
+
+main>h2::before {
+    display: block; 
+    content: " "; 
+    margin-top: -52px; 
+    height: 52px; 
+    visibility: hidden; 
+    pointer-events: none;
+}
+
 main>h2 {
     border-bottom: 1px solid var(--theme-border-color);
     font-size: 24px;
     font-weight: 500;
-    overflow: hidden;
-    padding: 6px 0;
+    /* overflow: hidden; */
+    padding-bottom: 6px;
     font-family: var(--page-headings-font),rubik,helvetica,arial,sans-serif;
     line-height: 1.25;
     margin: 18px 0 9px;
