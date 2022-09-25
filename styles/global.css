@@ -172,7 +172,7 @@
     padding-top: 0;
 }
 
-main>p {
+main p {
     font-size: inherit;
     font-weight: 400;
     line-height: 1.75;
@@ -180,7 +180,7 @@ main>p {
     overflow-wrap: break-word;
 }
 
-main>h2::before {
+main h2::before {
     display: block; 
     content: " "; 
     margin-top: -52px; 
@@ -189,7 +189,7 @@ main>h2::before {
     pointer-events: none;
 }
 
-main>h2 {
+main h2 {
     border-bottom: 1px solid var(--theme-border-color);
     font-size: 24px;
     font-weight: 500;
@@ -199,4 +199,16 @@ main>h2 {
     line-height: 1.25;
     margin: 18px 0 9px;
     overflow-wrap: break-word;
+}
+
+main pre {
+    word-wrap: normal;
+    background-color: var(--navigation-dropdown-menu);
+    border: 1px solid var(--navigation-dropdown-menu-border);
+    color: var(--main-font);
+    line-height: 1.75;
+    overflow: auto;
+    padding: 12px;
+    white-space: pre-wrap;
+    width: 60%;
 }
