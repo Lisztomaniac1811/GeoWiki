@@ -17,6 +17,138 @@
     <script src="js-header-nav.js"></script>
     <script src="page-title.js"></script>
 
+<div class="GalleryRow">
+        <div class="GalleryColumn">
+          <img src="images/Wiki-background.jpg" style="width:100%" onclick="openModal();currentSlide(1);scrollthebar()" class="hover-shadow cursor">
+        </div>
+        <div class="GalleryColumn">
+          <img src="images/Wiki-background.jpg" style="width:100%" onclick="openModal();currentSlide(2);scrollthebar()" class="hover-shadow cursor">
+        </div>
+        <div class="GalleryColumn">
+          <img src="images/Wiki-background.jpg" style="width:100%" onclick="openModal();currentSlide(3);scrollthebar()" class="hover-shadow cursor">
+        </div>
+        <div class="GalleryColumn">
+          <img src="images/Wiki-background.jpg" style="width:100%" onclick="openModal();currentSlide(4);scrollthebar()" class="hover-shadow cursor">
+        </div>
+        <div class="GalleryColumn">
+          <img src="images/Wiki-background.jpg" style="width:100%" onclick="openModal();currentSlide(5);scrollthebar()" class="hover-shadow cursor">
+        </div>
+      </div>
+
+<div id="Gallery1Modal" class="modal">
+        <span class="GalleryClose cursor" onclick="closeModal()" acceskey="esc">&times;</span>
+        <div class="modal-content">
+          <div class="GallerySlides">
+            <div class="Gallerynumbertext">1 / 37</div>
+            <div class="Galleryviewfullimage">
+              <a href="images/Wiki-background.jpg" target="_blank"> ფოტოს ნახვა</a> | <a href="images/Wiki-background.jpg" download>გადმოწერა</a>
+            </div>
+            <img src="images/resized/800px/Wiki-background.jpg">
+          </div>
+          <div class="GallerySlides">
+            <div class="Gallerynumbertext">2 / 37</div>
+            <div class="Galleryviewfullimage">
+              <a href="images/Wiki-background.jpg" target="_blank"> ფოტოს ნახვა</a> | <a href="images/Wiki-background.jpg" download>გადმოწერა</a>
+            </div>
+            <img src="images/resized/800px/Wiki-background.jpg">
+          </div>
+          <div class="GallerySlides">
+            <div class="Gallerynumbertext">3 / 37</div>
+            <div class="Galleryviewfullimage">
+              <a href="images/Wiki-background.jpg" target="_blank"> ფოტოს ნახვა</a> | <a href="images/Wiki-background.jpg" download>გადმოწერა</a>
+            </div>
+            <img src="images/resized/800px/Wiki-background.jpg">
+          </div>
+          <div class="GallerySlides">
+            <div class="Gallerynumbertext">4 / 37</div>
+            <div class="Galleryviewfullimage">
+              <a href="images/Wiki-background.jpg" target="_blank"> ფოტოს ნახვა</a> | <a href="images/Wiki-background.jpg" download>გადმოწერა</a>
+            </div>
+            <img src="images/resized/800px/Wiki-background.jpg">
+          </div>
+          <div class="GallerySlides">
+            <div class="Gallerynumbertext">5 / 37</div>
+            <div class="Galleryviewfullimage">
+              <a href="images/Wiki-background.jpg" target="_blank"> ფოტოს ნახვა</a> | <a href="images/Wiki-background.jpg" download>გადმოწერა</a>
+            </div>
+            <img src="images/resized/800px/Wiki-background.jpg">
+          </div>
+          <a class="prev" onclick="plusSlides(-1);scrollthebar()">&#10094;</a>
+          <a class="next" onclick="plusSlides(1);scrollthebar()">&#10095;</a>
+          <div class="gallery-caption">
+            <p id="Gallery1Caption"></p>
+          </div>
+
+          <div class="scrollablegallerylist">
+            <div class="GalleryColumn1" id="gallery-item-1">
+              <img class="Gallery1Demo cursor" src="images/resized/800px/Wiki-background.jpg" style="width:auto" onclick="currentSlide(1)" alt="წარწერა">
+            </div>
+            <div class="GalleryColumn1" id="gallery-item-2">
+              <img class="Gallery1Demo cursor" src="images/resized/800px/Wiki-background.jpg" style="width:auto" onclick="currentSlide(2)" alt="წარწერა">
+            </div>
+            <div class="GalleryColumn1" id="gallery-item-3">
+              <img class="Gallery1Demo cursor" src="images/resized/800px/Wiki-background.jpg" style="width:auto" onclick="currentSlide(3)" alt="წარწერა">
+            </div>
+            <div class="GalleryColumn1" id="gallery-item-4">
+              <img class="Gallery1Demo cursor" src="images/resized/800px/Wiki-background.jpg" style="width:auto" onclick="currentSlide(4)" alt="წარწერა">
+            </div>
+            <div class="GalleryColumn1" id="gallery-item-5">
+              <img class="Gallery1Demo cursor" src="images/resized/800px/Wiki-background.jpg" style="width:auto" onclick="currentSlide(5)" alt="წარწერა">
+            </div>
+          </div>
+        </div>
+</div>
+
+<script>
+    function openModal() {
+    document.getElementById("Gallery1Modal").style.display = "block";
+    var k = document.getElementsByTagName("BODY")[0];
+    k.style.overflow = "hidden";
+  }
+  function closeModal() {
+    document.getElementById("Gallery1Modal").style.display = "none";
+    var k = document.getElementsByTagName("BODY")[0];
+    k.style.overflow = "visible";
+  }
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function scrollthebar() {
+    window.location.href = "#gallery-item-" + slideIndex;
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("GallerySlides");
+    var dots = document.getElementsByClassName("Gallery1Demo");
+    var Gallery1CaptionText = document.getElementById("Gallery1Caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    Gallery1CaptionText.innerHTML = dots[slideIndex-1].alt;
+  }
+    document.addEventListener('keydown', function(event){
+	if(event.key === "Escape"){
+		closeModal()
+	}
+});
+</script>
 </main>
 <script src="footer.js"></script>
 </body>

@@ -1,0 +1,199 @@
+/* Gallery Styles */
+* {
+    box-sizing: border-box;
+  }
+  .GalleryRow {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .GalleryRow > .GalleryColumn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .GalleryRow:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .GalleryColumn {
+    display:inline;
+    height: 20vh;
+    border:3px solid #2a2a2a;
+    padding: 1px;
+    width: 30vh;
+  }
+  .GalleryColumn img {
+      height:100%;
+      object-fit: contain;
+      vertical-align: middle;
+  }
+  .GalleryColumn1 {
+    height: 10vh;
+    border:3px solid #1a1a1a;
+    padding: 1px;
+    display: inline-block;
+  }
+  .GalleryColumn1 img {
+      height:100%;
+      object-fit: contain;
+      vertical-align: middle;
+  }
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 18vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0);
+    touch-action: manipulation;
+}
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    touch-action: manipulation;
+  }
+  
+  /* The Close Button */
+  .GalleryClose {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    touch-action: manipulation;
+  }
+  
+  .GalleryClose:hover,
+  .GalleryClose:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .GallerySlides {
+    display: none;
+    max-height: 550px;
+    background-color: black;
+    touch-action: manipulation;
+  }
+  .GallerySlides img {
+      max-height: 50vh;
+      max-width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      touch-action: manipulation;
+  }
+  
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: fixed;
+    bottom: 150px;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    touch-action: manipulation;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.222);
+  }
+  
+  /* Number text (1/3 etc) */
+  .Gallerynumbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: fixed;
+    bottom: 13vh;
+    background-color:rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    touch-action: manipulation;
+  }
+  .Galleryviewfullimage {
+    color: #f2f2f2;
+    background-color:rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 10px;
+    padding: 8px 12px;
+    position: fixed;
+    bottom: 13vh;
+    right: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    touch-action: manipulation;
+  }
+  
+  .gallery-caption {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+    font-size: 14px;
+    display: none;
+    touch-action: manipulation;
+  }
+  
+  .Gallery1Demo {
+    opacity: 0.6;
+    touch-action: manipulation;
+  }
+  
+  .active,
+  .Gallery1Demo:hover {
+    opacity: 1;
+  }
+  
+  img.hover-shadow {
+    transition: 0.3s;
+  }
+  
+  .hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .scrollablegallerylist {
+    overflow: auto;
+    white-space: nowrap;
+    background-color: #1a1a1a;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    margin: auto;
+    display: inline-block;
+    touch-action: manipulation;
+}
