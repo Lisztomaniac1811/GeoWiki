@@ -87,7 +87,7 @@
     background-color: black;
   }
   .GallerySlides img {
-      max-height: 70vh;
+      height: 70vh;
       max-width: 100%;
       display: block;
       margin-left: auto;
@@ -156,6 +156,8 @@
     background-color: black;
     padding: 2px 16px;
     color: white;
+    height: 60px;
+    overflow: auto;
   }
   
   .Gallery1Demo {
