@@ -161,10 +161,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 14px;
+    margin-right: 18px
 }
 
 .sublist-icons {
-    margin-left: 18px;
+    margin-left: auto;
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
     height: 12px;
