@@ -19,11 +19,11 @@
   }
   
   .GalleryColumn {
-    display:inline;
-    height: 20vh;
-    border:3px solid #2a2a2a;
+    border: 3px solid #2a2a2a;
     padding: 1px;
-    width: 30vh;
+    width: 98%;
+    margin: 4px;
+    height: auto;
   }
   .GalleryColumn img {
       height:100%;
