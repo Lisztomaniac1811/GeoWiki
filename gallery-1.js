@@ -1,206 +1,3 @@
-// var g1_img_amount = "100"; //necessary
-// var g1_img1_url = "Wiki-background.jpg"; //necessary
-// var g1_img1_cap = "პირველი ფოტო";
-// var g1_img2_url = "Wiki-wordmark.png";
-// var g1_img2_cap = "მეორე ფოტო";
-// var g1_img3_url = "Wiki-background.jpg";
-// var g1_img3_cap = "მესამე ფოტო";
-// var g1_img4_url = "Wiki-background.jpg";
-// var g1_img4_cap = "მეოთხე ფოტო";
-// var g1_img5_url = "Wiki-background.jpg";
-// var g1_img5_cap = "მეხუთე ფოტო";
-// var g1_img6_url = "Wiki-background.jpg";
-// var g1_img6_cap = "მეექვსე ფოტო";
-// var g1_img7_url = "Wiki-background.jpg";
-// var g1_img7_cap = "მეშვიდე ფოტო";
-// var g1_img8_url = "Wiki-background.jpg";
-// var g1_img8_cap = "მერვე ფოტო";
-// var g1_img9_url = "Wiki-background.jpg";
-// var g1_img9_cap = "მეცხრე ფოტო";
-// var g1_img10_url = "Wiki-background.jpg";
-// var g1_img10_cap = "მეათე ფოტო";
-// var g1_img11_url = "Wiki-background.jpg";
-// var g1_img11_cap = "მეთერთმეტე ფოტო";
-// var g1_img12_url = "Wiki-background.jpg";
-// var g1_img12_cap = "მეთორმეტე ფოტო";
-// var g1_img13_url = "Wiki-background.jpg";
-// var g1_img13_cap = "მეცამეტე ფოტო";
-// var g1_img14_url = "Wiki-background.jpg";
-// var g1_img14_cap = "მეთოთხმეტე ფოტო";
-// var g1_img15_url = "Wiki-background.jpg";
-// var g1_img15_cap = "მეთხუთმეტე ფოტო";
-// var g1_img16_url = "Wiki-background.jpg";
-// var g1_img16_cap = "მეთექვსმეტე ფოტო";
-// var g1_img17_url = "Wiki-background.jpg";
-// var g1_img17_cap = "მეჩვიდმეტე ფოტო";
-// var g1_img18_url = "Wiki-background.jpg";
-// var g1_img18_cap = "მეთვრამეტე ფოტო";
-// var g1_img19_url = "Wiki-background.jpg";
-// var g1_img19_cap = "მეცხრამეტე ფოტო";
-// var g1_img20_url = "Wiki-wordmark.png";
-// var g1_img20_cap = "მეოცე ფოტო";
-// var g1_img21_url = "Wiki-Wordmark.png"
-// var g1_img21_cap = "ოცდამეერთე ფოტო";
-// var g1_img22_url = "Wiki-wordmark.png";
-// var g1_img22_cap = "ოცდამეორე ფოტო";
-// var g1_img23_url = "Wiki-background.jpg";
-// var g1_img23_cap = "ოცდამესამე ფოტო";
-// var g1_img24_url = "Wiki-background.jpg";
-// var g1_img24_cap = "ოცდამეოთხე ფოტო";
-// var g1_img25_url = "Wiki-background.jpg";
-// var g1_img25_cap = "ოცდამეხუთე ფოტო";
-// var g1_img26_url = "Wiki-background.jpg";
-// var g1_img26_cap = "ოცდამეექვსე ფოტო";
-// var g1_img27_url = "Wiki-background.jpg";
-// var g1_img27_cap = "ოცდამეშვიდე ფოტო";
-// var g1_img28_url = "Wiki-background.jpg";
-// var g1_img28_cap = "ოცდამერვე ფოტო";
-// var g1_img29_url = "Wiki-background.jpg";
-// var g1_img29_cap = "ოცდამეცხრე ფოტო";
-// var g1_img30_url = "Wiki-background.jpg";
-// var g1_img30_cap = "ოცდამეათე ფოტო";
-// var g1_img31_url = "Wiki-Wordmark.png"
-// var g1_img31_cap = "ფოტო";
-// var g1_img32_url = "Wiki-wordmark.png";
-// var g1_img32_cap = "ფოტო";
-// var g1_img33_url = "Wiki-background.jpg";
-// var g1_img33_cap = "ფოტო";
-// var g1_img34_url = "Wiki-background.jpg";
-// var g1_img34_cap = "ფოტო";
-// var g1_img35_url = "Wiki-background.jpg";
-// var g1_img35_cap = "ფოტო";
-// var g1_img36_url = "Wiki-background.jpg";
-// var g1_img36_cap = "ფოტო";
-// var g1_img37_url = "Wiki-background.jpg";
-// var g1_img37_cap = "ფოტო";
-// var g1_img38_url = "Wiki-background.jpg";
-// var g1_img38_cap = "ფოტო";
-// var g1_img39_url = "Wiki-background.jpg";
-// var g1_img39_cap = "ფოტო";
-// var g1_img40_url = "Wiki-background.jpg"
-// var g1_img40_cap = "ფოტო";
-// var g1_img41_url = "Wiki-Wordmark.png"
-// var g1_img41_cap = "ფოტო";
-// var g1_img42_url = "Wiki-wordmark.png";
-// var g1_img42_cap = "ფოტო";
-// var g1_img43_url = "Wiki-background.jpg";
-// var g1_img43_cap = "ფოტო";
-// var g1_img44_url = "Wiki-background.jpg";
-// var g1_img44_cap = "ფოტო";
-// var g1_img45_url = "Wiki-background.jpg";
-// var g1_img45_cap = "ფოტო";
-// var g1_img46_url = "Wiki-background.jpg";
-// var g1_img46_cap = "ფოტო";
-// var g1_img47_url = "Wiki-background.jpg";
-// var g1_img47_cap = "ფოტო";
-// var g1_img48_url = "Wiki-background.jpg";
-// var g1_img48_cap = "ფოტო";
-// var g1_img49_url = "Wiki-background.jpg";
-// var g1_img49_cap = "ფოტო";
-// var g1_img50_url = "Wiki-background.jpg"
-// var g1_img50_cap = "ფოტო";
-// var g1_img51_url = "Wiki-Wordmark.png"
-// var g1_img51_cap = "ფოტო";
-// var g1_img52_url = "Wiki-wordmark.png";
-// var g1_img52_cap = "ფოტო";
-// var g1_img53_url = "Wiki-background.jpg";
-// var g1_img53_cap = "ფოტო";
-// var g1_img54_url = "Wiki-background.jpg";
-// var g1_img54_cap = "ფოტო";
-// var g1_img55_url = "Wiki-background.jpg";
-// var g1_img55_cap = "ფოტო";
-// var g1_img56_url = "Wiki-background.jpg";
-// var g1_img56_cap = "ფოტო";
-// var g1_img57_url = "Wiki-background.jpg";
-// var g1_img57_cap = "ფოტო";
-// var g1_img58_url = "Wiki-background.jpg";
-// var g1_img58_cap = "ფოტო";
-// var g1_img59_url = "Wiki-background.jpg";
-// var g1_img59_cap = "ფოტო";
-// var g1_img60_url = "Wiki-background.jpg"
-// var g1_img60_cap = "ფოტო";
-// var g1_img61_url = "Wiki-Wordmark.png"
-// var g1_img61_cap = "ფოტო";
-// var g1_img62_url = "Wiki-wordmark.png";
-// var g1_img62_cap = "ფოტო";
-// var g1_img63_url = "Wiki-background.jpg";
-// var g1_img63_cap = "ფოტო";
-// var g1_img64_url = "Wiki-background.jpg";
-// var g1_img64_cap = "ფოტო";
-// var g1_img65_url = "Wiki-background.jpg";
-// var g1_img65_cap = "ფოტო";
-// var g1_img66_url = "Wiki-background.jpg";
-// var g1_img66_cap = "ფოტო";
-// var g1_img67_url = "Wiki-background.jpg";
-// var g1_img67_cap = "ფოტო";
-// var g1_img68_url = "Wiki-background.jpg";
-// var g1_img68_cap = "ფოტო";
-// var g1_img69_url = "Wiki-background.jpg";
-// var g1_img69_cap = "ფოტო";
-// var g1_img70_url = "Wiki-background.jpg"
-// var g1_img70_cap = "ფოტო";
-// var g1_img71_url = "Wiki-Wordmark.png"
-// var g1_img71_cap = "ფოტო";
-// var g1_img72_url = "Wiki-wordmark.png";
-// var g1_img72_cap = "ფოტო";
-// var g1_img73_url = "Wiki-background.jpg";
-// var g1_img73_cap = "ფოტო";
-// var g1_img74_url = "Wiki-background.jpg";
-// var g1_img74_cap = "ფოტო";
-// var g1_img75_url = "Wiki-background.jpg";
-// var g1_img75_cap = "ფოტო";
-// var g1_img76_url = "Wiki-background.jpg";
-// var g1_img76_cap = "ფოტო";
-// var g1_img77_url = "Wiki-background.jpg";
-// var g1_img77_cap = "ფოტო";
-// var g1_img78_url = "Wiki-background.jpg";
-// var g1_img78_cap = "ფოტო";
-// var g1_img79_url = "Wiki-background.jpg";
-// var g1_img79_cap = "ფოტო";
-// var g1_img80_url = "Wiki-background.jpg"
-// var g1_img80_cap = "ფოტო";
-// var g1_img81_url = "Wiki-Wordmark.png"
-// var g1_img81_cap = "ფოტო";
-// var g1_img82_url = "Wiki-wordmark.png";
-// var g1_img82_cap = "ფოტო";
-// var g1_img83_url = "Wiki-background.jpg";
-// var g1_img83_cap = "ფოტო";
-// var g1_img84_url = "Wiki-background.jpg";
-// var g1_img84_cap = "ფოტო";
-// var g1_img85_url = "Wiki-background.jpg";
-// var g1_img85_cap = "ფოტო";
-// var g1_img86_url = "Wiki-background.jpg";
-// var g1_img86_cap = "ფოტო";
-// var g1_img87_url = "Wiki-background.jpg";
-// var g1_img87_cap = "ფოტო";
-// var g1_img88_url = "Wiki-background.jpg";
-// var g1_img88_cap = "ფოტო";
-// var g1_img89_url = "Wiki-background.jpg";
-// var g1_img89_cap = "ფოტო";
-// var g1_img90_url = "Wiki-background.jpg"
-// var g1_img90_cap = "ფოტო";
-// var g1_img91_url = "Wiki-Wordmark.png"
-// var g1_img91_cap = "ფოტო";
-// var g1_img92_url = "Wiki-wordmark.png";
-// var g1_img92_cap = "ფოტო";
-// var g1_img93_url = "Wiki-background.jpg";
-// var g1_img93_cap = "ფოტო";
-// var g1_img94_url = "Wiki-background.jpg";
-// var g1_img94_cap = "ფოტო";
-// var g1_img95_url = "Wiki-background.jpg";
-// var g1_img95_cap = "ფოტო";
-// var g1_img96_url = "Wiki-background.jpg";
-// var g1_img96_cap = "ფოტო";
-// var g1_img97_url = "Wiki-background.jpg";
-// var g1_img97_cap = "ფოტო";
-// var g1_img98_url = "Wiki-background.jpg";
-// var g1_img98_cap = "ფოტო";
-// var g1_img99_url = "Wiki-background.jpg";
-// var g1_img99_cap = "ფოტო";
-// var g1_img100_url = "Wiki-background.jpg"
-// var g1_img100_cap = "ფოტო";
-
-
 if (typeof g1_img1_url !== 'undefined') {
   document.write("<div class=\"GalleryRow\">");
   document.write("  <div class=\"GalleryColumn\">");
@@ -710,1474 +507,1524 @@ if (typeof g1_img1_url !== 'undefined') {
     document.write("    <img src=\"images/resized/800px/", g1_img100_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(100);scrollthebar()\" class=\"hover-shadow cursor\">");
     document.write("  </div>");
   }
+  if (typeof g1_img101_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img101_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(101);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img102_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img102_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(102);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img103_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img103_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(103);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img104_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img104_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(104);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img105_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img105_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(105);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img106_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img106_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(106);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img107_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img107_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(107);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img108_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img108_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(108);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img109_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img109_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(109);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img110_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img110_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(110);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img111_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img111_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(111);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img112_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img112_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(112);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img113_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img113_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(113);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img114_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img114_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(114);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img115_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img115_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(115);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img116_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img116_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(116);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img117_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img117_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(117);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img118_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img118_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(118);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img119_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img119_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(119);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img120_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img120_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(120);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img121_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img121_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(121);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img122_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img122_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(122);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img123_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img123_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(123);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img124_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img124_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(124);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img125_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img125_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(125);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img126_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img126_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(126);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img127_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img127_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(127);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img128_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img128_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(128);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img129_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img129_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(129);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img130_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img130_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(130);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img131_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img131_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(131);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img132_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img132_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(132);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img133_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img133_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(133);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img134_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img134_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(134);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img135_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img135_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(135);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img136_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img136_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(136);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img137_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img137_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(137);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img138_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img138_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(138);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img139_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img139_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(139);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img140_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img140_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(140);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img141_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img141_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(141);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img142_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img142_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(142);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img143_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img143_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(143);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img144_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img144_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(144);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img145_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img145_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(145);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img146_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img146_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(146);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img147_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img147_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(147);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img148_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img148_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(148);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img149_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img149_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(149);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img150_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img150_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(150);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img151_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img151_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(151);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img152_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img152_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(152);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img153_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img153_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(153);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img154_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img154_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(154);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img155_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img155_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(155);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img156_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img156_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(156);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img157_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img157_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(157);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img158_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img158_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(158);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img159_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img159_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(159);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img160_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img160_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(160);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img161_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img161_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(161);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img162_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img162_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(162);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img163_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img163_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(163);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img164_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img164_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(164);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img165_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img165_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(165);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img166_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img166_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(166);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img167_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img167_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(167);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img168_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img168_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(168);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img169_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img169_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(169);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img170_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img170_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(170);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img171_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img171_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(171);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img172_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img172_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(172);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img173_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img173_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(173);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img174_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img174_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(174);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img175_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img175_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(175);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img176_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img176_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(176);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img177_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img177_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(177);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img178_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img178_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(178);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img179_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img179_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(179);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img180_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img180_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(180);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img181_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img181_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(181);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img182_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img182_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(182);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img183_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img183_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(183);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img184_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img184_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(184);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img185_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img185_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(185);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img186_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img186_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(186);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img187_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img187_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(187);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img188_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img188_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(188);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img189_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img189_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(189);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img190_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img190_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(190);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img191_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img191_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(191);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img192_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img192_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(192);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img193_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img193_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(193);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img194_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img194_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(194);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img195_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img195_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(195);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img196_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img196_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(196);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img197_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img197_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(197);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img198_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img198_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(198);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img199_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img199_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(199);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img200_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img200_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(200);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img201_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img201_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(201);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img202_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img202_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(202);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img203_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img203_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(203);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img204_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img204_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(204);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img205_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img205_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(205);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img206_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img206_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(206);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img207_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img207_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(207);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img208_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img208_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(208);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img209_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img209_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(209);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img210_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img210_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(210);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img211_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img211_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(211);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img212_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img212_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(212);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img213_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img213_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(213);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img214_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img214_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(214);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img215_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img215_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(215);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img216_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img216_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(216);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img217_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img217_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(217);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img218_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img218_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(218);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img219_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img219_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(219);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img220_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img220_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(220);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img221_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img221_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(221);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img222_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img222_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(222);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img223_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img223_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(223);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img224_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img224_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(224);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img225_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img225_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(225);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img226_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img226_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(226);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img227_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img227_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(227);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img228_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img228_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(228);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img229_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img229_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(229);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img230_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img230_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(230);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img231_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img231_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(231);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img232_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img232_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(232);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img233_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img233_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(233);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img234_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img234_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(234);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img235_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img235_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(235);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img236_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img236_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(236);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img237_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img237_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(237);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img238_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img238_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(238);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img239_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img239_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(239);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img240_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img240_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(240);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img241_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img241_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(241);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img242_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img242_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(242);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img243_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img243_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(243);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img244_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img244_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(244);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img245_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img245_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(245);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img246_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img246_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(246);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img247_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img247_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(247);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img248_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img248_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(248);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img249_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img249_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(249);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img250_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img250_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(250);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img251_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img251_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(251);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img252_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img252_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(252);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img253_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img253_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(253);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img254_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img254_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(254);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img255_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img255_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(255);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img256_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img256_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(256);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img257_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img257_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(257);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img258_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img258_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(258);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img259_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img259_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(259);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img260_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img260_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(260);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img261_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img261_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(261);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img262_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img262_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(262);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img263_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img263_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(263);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img264_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img264_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(264);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img265_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img265_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(265);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img266_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img266_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(266);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img267_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img267_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(267);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img268_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img268_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(268);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img269_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img269_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(269);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img270_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img270_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(270);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img271_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img271_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(271);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img272_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img272_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(272);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img273_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img273_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(273);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img274_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img274_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(274);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img275_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img275_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(275);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img276_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img276_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(276);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img277_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img277_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(277);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img278_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img278_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(278);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img279_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img279_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(279);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img280_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img280_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(280);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img281_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img281_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(281);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img282_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img282_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(282);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img283_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img283_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(283);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img284_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img284_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(284);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img285_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img285_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(285);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img286_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img286_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(286);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img287_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img287_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(287);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img288_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img288_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(288);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img289_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img289_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(289);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img290_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img290_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(290);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img291_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img291_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(291);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img292_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img292_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(292);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img293_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img293_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(293);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img294_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img294_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(294);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img295_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img295_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(295);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img296_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img296_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(296);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img297_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img297_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(297);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img298_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img298_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(298);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img299_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img299_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(299);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img300_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img300_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(300);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img301_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img301_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(301);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img302_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img302_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(302);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img303_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img303_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(303);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img304_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img304_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(304);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img305_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img305_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(305);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img306_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img306_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(306);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img307_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img307_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(307);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img308_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img308_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(308);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img309_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img309_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(309);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img310_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img310_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(310);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img311_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img311_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(311);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img312_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img312_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(312);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img313_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img313_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(313);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img314_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img314_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(314);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img315_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img315_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(315);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img316_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img316_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(316);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img317_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img317_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(317);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img318_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img318_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(318);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img319_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img319_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(319);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img320_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img320_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(320);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img321_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img321_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(321);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img322_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img322_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(322);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img323_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img323_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(323);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img324_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img324_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(324);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img325_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img325_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(325);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img326_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img326_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(326);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img327_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img327_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(327);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img328_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img328_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(328);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img329_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img329_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(329);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img330_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img330_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(330);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img331_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img331_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(331);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img332_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img332_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(332);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img333_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img333_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(333);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img334_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img334_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(334);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img335_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img335_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(335);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img336_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img336_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(336);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img337_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img337_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(337);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img338_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img338_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(338);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img339_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img339_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(339);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img340_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img340_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(340);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img341_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img341_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(341);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img342_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img342_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(342);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img343_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img343_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(343);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img344_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img344_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(344);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img345_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img345_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(345);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img346_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img346_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(346);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img347_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img347_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(347);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img348_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img348_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(348);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img349_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img349_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(349);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img350_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img350_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(350);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img351_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img351_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(351);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img352_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img352_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(352);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img353_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img353_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(353);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img354_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img354_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(354);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img355_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img355_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(355);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img356_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img356_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(356);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img357_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img357_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(357);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img358_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img358_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(358);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img359_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img359_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(359);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img360_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img360_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(360);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img361_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img361_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(361);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img362_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img362_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(362);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img363_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img363_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(363);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img364_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img364_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(364);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img365_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img365_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(365);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img366_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img366_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(366);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img367_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img367_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(367);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img368_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img368_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(368);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img369_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img369_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(369);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img370_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img370_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(370);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img371_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img371_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(371);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img372_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img372_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(372);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img373_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img373_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(373);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img374_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img374_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(374);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img375_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img375_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(375);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img376_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img376_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(376);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img377_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img377_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(377);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img378_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img378_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(378);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img379_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img379_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(379);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img380_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img380_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(380);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img381_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img381_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(381);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img382_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img382_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(382);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img383_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img383_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(383);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img384_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img384_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(384);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img385_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img385_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(385);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img386_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img386_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(386);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img387_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img387_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(387);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img388_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img388_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(388);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+
+  if (typeof g1_img389_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img389_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(389);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img390_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img390_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(390);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img391_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img391_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(391);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img392_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img392_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(392);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img393_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img393_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(393);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img394_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img394_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(394);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img395_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img395_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(395);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img396_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img396_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(396);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img397_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img397_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(397);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img398_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img398_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(398);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
+  if (typeof g1_img399_url !== 'undefined') {
+    document.write("  <div class=\"GalleryColumn\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img399_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(399);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("  </div>");
+  }
   document.write("</div>");
 }
-
-if (typeof g1_img1_url !== 'undefined') {
-  document.write("<div id=\"Gallery1Modal\" class=\"modal\">");
-  document.write("  <span class=\"GalleryClose cursor\" onclick=\"closeModal()\" acceskey=\"esc\">&times;</span>");
-  document.write("  <div class=\"modal-content\">");
-  document.write("    <div class=\"GallerySlides\">");
-  document.write("      <div class=\"Gallerynumbertext\">1 / ", g1_img_amount, "</div>");
-  document.write("      <div class=\"Galleryviewfullimage\">");
-  document.write("        <a href=\"images/", g1_img1_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img1_url, "\" download>გადმოწერა</a>");
-  document.write("      </div>");
-  document.write("      <img src=\"images/resized/800px/", g1_img1_url, "\">");
-  document.write("    </div>");
-  if (typeof g1_img2_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">2 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img2_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img2_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img2_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img3_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">3 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img3_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img3_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img3_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img4_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">4 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img4_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img4_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img4_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img5_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">5 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img5_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img5_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img5_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img6_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">6 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img6_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img6_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img6_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img7_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">7 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img7_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img7_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img7_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img8_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">8 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img8_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img8_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img8_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img9_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">9 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img9_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img9_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img9_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img10_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">10 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img10_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img10_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img10_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img11_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">11 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img11_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img11_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img11_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img12_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">12 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img12_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img12_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img12_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img13_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">13 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img13_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img13_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img13_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img14_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">14 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img14_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img14_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img14_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img15_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">15 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img15_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img15_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img15_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img16_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">16 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img16_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img16_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img16_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img17_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">17 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img17_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img17_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img17_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img18_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">18 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img18_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img18_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img18_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img19_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">19 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img19_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img19_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img19_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img20_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">20 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img20_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img20_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img20_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img21_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">21 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img21_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img21_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img21_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img22_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">22 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img22_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img22_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img22_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img23_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">23 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img23_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img23_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img23_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img24_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">24 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img24_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img24_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img24_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img25_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">25 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img25_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img25_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img25_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img26_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">26 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img26_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img26_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img26_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img27_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">27 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img27_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img27_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img27_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img28_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">28 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img28_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img28_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img28_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img29_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">29 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img29_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img29_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img29_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img30_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">30 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img30_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img30_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img30_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img31_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">31 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img31_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img31_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img31_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img32_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">32 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img32_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img32_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img32_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img33_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">33 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img33_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img33_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img33_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img34_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">34 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img34_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img34_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img34_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img35_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">35 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img35_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img35_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img35_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img36_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">36 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img36_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img36_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img36_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img37_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">37 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img37_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img37_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img37_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img38_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">38 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img38_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img38_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img38_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img39_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">39 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img39_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img39_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img39_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img40_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">40 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img40_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img40_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img40_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img41_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">41 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img41_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img41_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img41_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img42_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">42 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img42_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img42_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img42_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img43_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">43 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img43_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img43_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img43_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img44_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">44 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img44_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img44_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img44_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img45_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">45 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img45_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img45_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img45_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img46_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">46 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img46_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img46_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img46_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img47_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">47 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img47_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img47_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img47_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img48_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">48 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img48_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img48_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img48_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img49_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">49 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img49_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img49_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img49_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img50_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">50 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img50_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img50_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img50_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img51_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">51 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img51_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img51_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img51_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img52_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">52 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img52_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img52_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img52_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img53_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">53 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img53_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img53_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img53_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img54_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">54 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img54_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img54_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img54_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img55_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">55 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img55_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img55_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img55_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img56_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">56 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img56_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img56_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img56_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img57_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">57 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img57_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img57_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img57_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img58_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">58 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img58_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img58_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img58_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img59_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">59 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img59_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img59_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img59_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img60_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">60 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img60_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img60_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img60_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img61_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">61 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img61_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img61_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img61_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img62_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">62 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img62_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img62_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img62_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img63_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">63 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img63_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img63_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img63_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img64_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">64 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img64_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img64_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img64_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img65_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">65 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img65_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img65_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img65_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img66_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">66 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img66_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img66_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img66_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img67_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">67 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img67_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img67_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img67_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img68_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">68 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img68_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img68_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img68_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img69_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">69 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img69_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img69_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img69_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img70_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">70 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img70_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img70_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img70_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img71_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">71 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img71_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img71_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img71_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img72_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">72 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img72_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img72_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img72_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img73_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">73 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img73_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img73_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img73_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img74_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">74 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img74_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img74_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img74_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img75_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">75 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img75_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img75_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img75_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img76_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">76 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img76_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img76_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img76_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img77_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">77 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img77_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img77_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img77_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img78_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">78 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img78_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img78_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img78_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img79_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">79 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img79_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img79_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img79_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img80_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">80 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img80_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img80_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img80_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img81_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">81 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img81_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img81_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img81_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img82_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">82 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img82_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img82_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img82_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img83_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">83 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img83_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img83_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img83_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img84_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">84 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img84_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img84_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img84_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img85_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">85 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img85_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img85_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img85_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img86_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">86 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img86_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img86_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img86_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img87_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">87 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img87_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img87_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img87_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img88_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">88 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img88_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img88_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img88_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img89_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">89 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img89_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img89_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img89_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img90_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">90 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img90_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img90_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img90_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img91_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">91 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img91_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img91_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img91_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img92_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">92 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img92_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img92_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img92_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img93_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">93 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img93_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img93_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img93_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img94_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">94 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img94_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img94_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img94_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img95_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">95 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img95_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img95_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img95_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img96_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">96 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img96_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img96_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img96_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img97_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">97 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img97_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img97_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img97_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img98_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">98 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img98_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img98_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img98_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img99_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">99 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img99_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img99_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img99_url, "\">");
-    document.write("    </div>");
-  }
-  if (typeof g1_img100_url !== 'undefined') {
-    document.write("    <div class=\"GallerySlides\">");
-    document.write("      <div class=\"Gallerynumbertext\">100 / ", g1_img_amount, "</div>");
-    document.write("      <div class=\"Galleryviewfullimage\">");
-    document.write("        <a href=\"images/", g1_img100_url, "\" target=\"_blank\"> ფოტოს ნახვა</a> | <a href=\"images/", g1_img100_url, "\" download>გადმოწერა</a>");
-    document.write("      </div>");
-    document.write("      <img src=\"images/resized/800px/", g1_img100_url, "\">");
-    document.write("    </div>");
-  }
-  document.write("    <a class=\"prev\" onclick=\"plusSlides(-1);scrollthebar()\">&#10094;</a>");
-  document.write("    <a class=\"next\" onclick=\"plusSlides(1);scrollthebar()\">&#10095;</a>");
-  document.write("    <div class=\"gallery-caption\">");
-  document.write("      <p id=\"Gallery1Caption\"></p>");
-  document.write("    </div>");
-
-}
-
-if (typeof g1_img1_url !== 'undefined') {
-  document.write("    <div class=\"scrollablegallerylist\">");
-  document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-1\">");
-  document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img1_url, "\" style=\"width:auto\" onclick=\"currentSlide(1)\" alt=\"", g1_img1_cap, "\">");
-  document.write("      </div>");
-  if (typeof g1_img2_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-2\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img2_url, "\" style=\"width:auto\" onclick=\"currentSlide(2)\" alt=\"", g1_img2_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img3_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-3\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img3_url, "\" style=\"width:auto\" onclick=\"currentSlide(3)\" alt=\"", g1_img3_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img4_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-4\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img4_url, "\" style=\"width:auto\" onclick=\"currentSlide(4)\" alt=\"", g1_img4_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img5_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-5\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img5_url, "\" style=\"width:auto\" onclick=\"currentSlide(5)\" alt=\"", g1_img5_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img6_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-6\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img6_url, "\" style=\"width:auto\" onclick=\"currentSlide(6)\" alt=\"", g1_img6_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img7_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-7\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img7_url, "\" style=\"width:auto\" onclick=\"currentSlide(7)\" alt=\"", g1_img7_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img8_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-8\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img8_url, "\" style=\"width:auto\" onclick=\"currentSlide(8)\" alt=\"", g1_img8_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img9_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-9\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img9_url, "\" style=\"width:auto\" onclick=\"currentSlide(9)\" alt=\"", g1_img9_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img10_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-10\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img10_url, "\" style=\"width:auto\" onclick=\"currentSlide(10)\" alt=\"", g1_img10_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img11_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-11\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img11_url, "\" style=\"width:auto\" onclick=\"currentSlide(11)\" alt=\"", g1_img11_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img12_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-12\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img12_url, "\" style=\"width:auto\" onclick=\"currentSlide(12)\" alt=\"", g1_img12_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img13_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-13\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img13_url, "\" style=\"width:auto\" onclick=\"currentSlide(13)\" alt=\"", g1_img13_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img14_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-14\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img14_url, "\" style=\"width:auto\" onclick=\"currentSlide(14)\" alt=\"", g1_img14_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img15_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-15\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img15_url, "\" style=\"width:auto\" onclick=\"currentSlide(15)\" alt=\"", g1_img15_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img16_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-16\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img16_url, "\" style=\"width:auto\" onclick=\"currentSlide(16)\" alt=\"", g1_img16_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img17_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-17\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img17_url, "\" style=\"width:auto\" onclick=\"currentSlide(17)\" alt=\"", g1_img17_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img18_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-18\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img18_url, "\" style=\"width:auto\" onclick=\"currentSlide(18)\" alt=\"", g1_img18_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img19_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-19\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img19_url, "\" style=\"width:auto\" onclick=\"currentSlide(19)\" alt=\"", g1_img19_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img20_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-20\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img20_url, "\" style=\"width:auto\" onclick=\"currentSlide(20)\" alt=\"", g1_img20_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img21_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-21\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img21_url, "\" style=\"width:auto\" onclick=\"currentSlide(21)\" alt=\"", g1_img21_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img22_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-22\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img22_url, "\" style=\"width:auto\" onclick=\"currentSlide(22)\" alt=\"", g1_img22_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img23_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-23\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img23_url, "\" style=\"width:auto\" onclick=\"currentSlide(23)\" alt=\"", g1_img23_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img24_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-24\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img24_url, "\" style=\"width:auto\" onclick=\"currentSlide(24)\" alt=\"", g1_img24_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img25_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-25\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img25_url, "\" style=\"width:auto\" onclick=\"currentSlide(25)\" alt=\"", g1_img25_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img26_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-26\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img26_url, "\" style=\"width:auto\" onclick=\"currentSlide(26)\" alt=\"", g1_img26_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img27_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-27\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img27_url, "\" style=\"width:auto\" onclick=\"currentSlide(27)\" alt=\"", g1_img27_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img28_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-28\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img28_url, "\" style=\"width:auto\" onclick=\"currentSlide(28)\" alt=\"", g1_img28_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img29_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-29\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img29_url, "\" style=\"width:auto\" onclick=\"currentSlide(29)\" alt=\"", g1_img29_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img30_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-30\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img30_url, "\" style=\"width:auto\" onclick=\"currentSlide(30)\" alt=\"", g1_img30_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img31_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-31\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img31_url, "\" style=\"width:auto\" onclick=\"currentSlide(31)\" alt=\"", g1_img31_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img32_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-32\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img32_url, "\" style=\"width:auto\" onclick=\"currentSlide(32)\" alt=\"", g1_img32_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img33_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-33\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img33_url, "\" style=\"width:auto\" onclick=\"currentSlide(33)\" alt=\"", g1_img33_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img34_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-34\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img34_url, "\" style=\"width:auto\" onclick=\"currentSlide(34)\" alt=\"", g1_img34_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img35_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-35\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img35_url, "\" style=\"width:auto\" onclick=\"currentSlide(35)\" alt=\"", g1_img35_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img36_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-36\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img36_url, "\" style=\"width:auto\" onclick=\"currentSlide(36)\" alt=\"", g1_img36_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img37_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-37\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img37_url, "\" style=\"width:auto\" onclick=\"currentSlide(37)\" alt=\"", g1_img37_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img38_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-38\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img38_url, "\" style=\"width:auto\" onclick=\"currentSlide(38)\" alt=\"", g1_img38_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img39_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-39\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img39_url, "\" style=\"width:auto\" onclick=\"currentSlide(39)\" alt=\"", g1_img39_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img40_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-40\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img40_url, "\" style=\"width:auto\" onclick=\"currentSlide(40)\" alt=\"", g1_img40_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img41_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-41\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img41_url, "\" style=\"width:auto\" onclick=\"currentSlide(41)\" alt=\"", g1_img41_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img42_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-42\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img42_url, "\" style=\"width:auto\" onclick=\"currentSlide(42)\" alt=\"", g1_img42_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img43_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-43\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img43_url, "\" style=\"width:auto\" onclick=\"currentSlide(43)\" alt=\"", g1_img43_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img44_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-44\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img44_url, "\" style=\"width:auto\" onclick=\"currentSlide(44)\" alt=\"", g1_img44_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img45_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-45\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img45_url, "\" style=\"width:auto\" onclick=\"currentSlide(45)\" alt=\"", g1_img45_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img46_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-46\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img46_url, "\" style=\"width:auto\" onclick=\"currentSlide(46)\" alt=\"", g1_img46_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img47_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-47\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img47_url, "\" style=\"width:auto\" onclick=\"currentSlide(47)\" alt=\"", g1_img47_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img48_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-48\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img48_url, "\" style=\"width:auto\" onclick=\"currentSlide(48)\" alt=\"", g1_img48_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img49_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-49\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img49_url, "\" style=\"width:auto\" onclick=\"currentSlide(49)\" alt=\"", g1_img49_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img50_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-50\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img50_url, "\" style=\"width:auto\" onclick=\"currentSlide(50)\" alt=\"", g1_img50_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img51_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-51\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img51_url, "\" style=\"width:auto\" onclick=\"currentSlide(51)\" alt=\"", g1_img51_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img52_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-52\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img52_url, "\" style=\"width:auto\" onclick=\"currentSlide(52)\" alt=\"", g1_img52_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img53_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-53\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img53_url, "\" style=\"width:auto\" onclick=\"currentSlide(53)\" alt=\"", g1_img53_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img54_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-54\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img54_url, "\" style=\"width:auto\" onclick=\"currentSlide(54)\" alt=\"", g1_img54_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img55_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-55\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img55_url, "\" style=\"width:auto\" onclick=\"currentSlide(55)\" alt=\"", g1_img55_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img56_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-56\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img56_url, "\" style=\"width:auto\" onclick=\"currentSlide(56)\" alt=\"", g1_img56_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img57_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-57\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img57_url, "\" style=\"width:auto\" onclick=\"currentSlide(57)\" alt=\"", g1_img57_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img58_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-58\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img58_url, "\" style=\"width:auto\" onclick=\"currentSlide(58)\" alt=\"", g1_img58_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img59_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-59\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img59_url, "\" style=\"width:auto\" onclick=\"currentSlide(59)\" alt=\"", g1_img59_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img60_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-60\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img60_url, "\" style=\"width:auto\" onclick=\"currentSlide(60)\" alt=\"", g1_img60_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img61_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-61\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img61_url, "\" style=\"width:auto\" onclick=\"currentSlide(61)\" alt=\"", g1_img61_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img62_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-62\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img62_url, "\" style=\"width:auto\" onclick=\"currentSlide(62)\" alt=\"", g1_img62_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img63_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-63\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img63_url, "\" style=\"width:auto\" onclick=\"currentSlide(63)\" alt=\"", g1_img63_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img64_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-64\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img64_url, "\" style=\"width:auto\" onclick=\"currentSlide(64)\" alt=\"", g1_img64_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img65_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-65\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img65_url, "\" style=\"width:auto\" onclick=\"currentSlide(65)\" alt=\"", g1_img65_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img66_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-66\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img66_url, "\" style=\"width:auto\" onclick=\"currentSlide(66)\" alt=\"", g1_img66_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img68_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-67\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img67_url, "\" style=\"width:auto\" onclick=\"currentSlide(67)\" alt=\"", g1_img67_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img69_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-68\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img68_url, "\" style=\"width:auto\" onclick=\"currentSlide(68)\" alt=\"", g1_img68_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img69_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-69\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img69_url, "\" style=\"width:auto\" onclick=\"currentSlide(69)\" alt=\"", g1_img69_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img70_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-70\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img70_url, "\" style=\"width:auto\" onclick=\"currentSlide(70)\" alt=\"", g1_img70_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img71_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-71\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img71_url, "\" style=\"width:auto\" onclick=\"currentSlide(71)\" alt=\"", g1_img71_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img72_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-72\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img72_url, "\" style=\"width:auto\" onclick=\"currentSlide(72)\" alt=\"", g1_img72_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img73_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-73\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img73_url, "\" style=\"width:auto\" onclick=\"currentSlide(73)\" alt=\"", g1_img73_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img74_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-74\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img74_url, "\" style=\"width:auto\" onclick=\"currentSlide(74)\" alt=\"", g1_img74_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img75_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-75\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img75_url, "\" style=\"width:auto\" onclick=\"currentSlide(75)\" alt=\"", g1_img75_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img76_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-76\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img76_url, "\" style=\"width:auto\" onclick=\"currentSlide(76)\" alt=\"", g1_img76_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img77_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-77\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img77_url, "\" style=\"width:auto\" onclick=\"currentSlide(77)\" alt=\"", g1_img77_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img78_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-78\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img78_url, "\" style=\"width:auto\" onclick=\"currentSlide(78)\" alt=\"", g1_img78_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img79_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-79\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img79_url, "\" style=\"width:auto\" onclick=\"currentSlide(79)\" alt=\"", g1_img79_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img80_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-80\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img80_url, "\" style=\"width:auto\" onclick=\"currentSlide(80)\" alt=\"", g1_img80_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img81_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-81\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img81_url, "\" style=\"width:auto\" onclick=\"currentSlide(81)\" alt=\"", g1_img81_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img82_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-82\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img82_url, "\" style=\"width:auto\" onclick=\"currentSlide(82)\" alt=\"", g1_img82_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img83_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-83\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img83_url, "\" style=\"width:auto\" onclick=\"currentSlide(83)\" alt=\"", g1_img83_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img84_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-84\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img84_url, "\" style=\"width:auto\" onclick=\"currentSlide(84)\" alt=\"", g1_img84_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img85_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-85\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img85_url, "\" style=\"width:auto\" onclick=\"currentSlide(85)\" alt=\"", g1_img85_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img86_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-86\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img86_url, "\" style=\"width:auto\" onclick=\"currentSlide(86)\" alt=\"", g1_img86_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img87_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-87\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img87_url, "\" style=\"width:auto\" onclick=\"currentSlide(87)\" alt=\"", g1_img87_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img88_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-88\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img88_url, "\" style=\"width:auto\" onclick=\"currentSlide(88)\" alt=\"", g1_img88_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img89_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-89\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img89_url, "\" style=\"width:auto\" onclick=\"currentSlide(89)\" alt=\"", g1_img89_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img90_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-90\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img90_url, "\" style=\"width:auto\" onclick=\"currentSlide(90)\" alt=\"", g1_img90_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img91_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-91\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img91_url, "\" style=\"width:auto\" onclick=\"currentSlide(91)\" alt=\"", g1_img91_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img92_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-92\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img92_url, "\" style=\"width:auto\" onclick=\"currentSlide(92)\" alt=\"", g1_img92_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img93_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-93\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img93_url, "\" style=\"width:auto\" onclick=\"currentSlide(93)\" alt=\"", g1_img93_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img94_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-94\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img94_url, "\" style=\"width:auto\" onclick=\"currentSlide(94)\" alt=\"", g1_img94_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img95_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-95\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img95_url, "\" style=\"width:auto\" onclick=\"currentSlide(95)\" alt=\"", g1_img95_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img96_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-96\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img96_url, "\" style=\"width:auto\" onclick=\"currentSlide(96)\" alt=\"", g1_img96_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img97_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-97\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img97_url, "\" style=\"width:auto\" onclick=\"currentSlide(97)\" alt=\"", g1_img97_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img98_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-98\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img98_url, "\" style=\"width:auto\" onclick=\"currentSlide(98)\" alt=\"", g1_img98_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img99_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-99\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img99_url, "\" style=\"width:auto\" onclick=\"currentSlide(99)\" alt=\"", g1_img99_cap, "\">");
-    document.write("      </div>");
-  }
-  if (typeof g1_img100_url !== 'undefined') {
-    document.write("      <div class=\"GalleryColumn1\" id=\"gallery1-item-100\">");
-    document.write("        <img class=\"Gallery1Demo cursor\" src=\"images/resized/800px/", g1_img100_url, "\" style=\"width:auto\" onclick=\"currentSlide(100)\" alt=\"", g1_img100_cap, "\">");
-    document.write("      </div>");
-  }
-  document.write("    </div>");
-  document.write("  </div>");
-  document.write("</div>");
-}
-
-function openModal() {
-  document.getElementById("Gallery1Modal").style.display = "block";
-  var k = document.getElementsByTagName("BODY")[0];
-  k.style.overflow = "hidden";
-}
-
-function closeModal() {
-  document.getElementById("Gallery1Modal").style.display = "none";
-  var k = document.getElementsByTagName("BODY")[0];
-  k.style.overflow = "visible";
-}
-
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function scrollthebar() {
-  window.location.href = "#gallery1-item-" + slideIndex;
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("GallerySlides");
-  var dots = document.getElementsByClassName("Gallery1Demo");
-  var Gallery1CaptionText = document.getElementById("Gallery1Caption");
-  if (n > slides.length) {
-    slideIndex = 1
-  }
-  if (n < 1) {
-    slideIndex = slides.length
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-  Gallery1CaptionText.innerHTML = dots[slideIndex - 1].alt;
-}
-document.addEventListener('keydown', function(event) {
-  if (event.key === "Escape") {
-    closeModal()
-  }
-});

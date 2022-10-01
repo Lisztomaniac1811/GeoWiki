@@ -6,8 +6,8 @@
  }
 
  ::selection {
-    color: white;
-    background: red;
+    color: #c8f2ff;
+    background: #113e57;
 }
 
 ::-webkit-scrollbar {
