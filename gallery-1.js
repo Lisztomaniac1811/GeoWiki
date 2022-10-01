@@ -299,7 +299,7 @@ if (typeof g1_img1_url !== 'undefined') {
   }
   if (typeof g1_img20_url !== 'undefined') {
     document.write("  <div class=\"GalleryColumn\">");
-    document.write("    <img src=\"images/resized/800px/", g1_img20_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide20);scrollthebar()\" class=\"hover-shadow cursor\">");
+    document.write("    <img src=\"images/resized/800px/", g1_img20_url, "\" style=\"width:100%\" onclick=\"openModal();currentSlide(20);scrollthebar()\" class=\"hover-shadow cursor\">");
     document.write("  </div>");
   }
   if (typeof g1_img21_url !== 'undefined') {

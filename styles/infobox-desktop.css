@@ -10,10 +10,11 @@
     width: 270px;
 }
 
-.infobox-episode>a>img {
+.infobox-episode img {
     width: 100%;
     height: auto;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .infobox-title {

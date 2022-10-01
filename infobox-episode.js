@@ -81,7 +81,7 @@
 
 document.write("<aside class=\"infobox-episode\">");
 document.write("        <h2 class=\"infobox-title\">", Infobox_Episode_Title, "</h2>");
-document.write("        <a href=\"", Infobox_Episode_Image_URL, "\" target=\"_blank\"><img src=\"", Infobox_Episode_Image_URL, "\"></a>");
+document.write("        <img src=\"", Infobox_Episode_Image_URL, "\" onclick=\"openModal();currentSlide(", Infobox_Episode_img_no, ");scrollthebar()\">");
 document.write("        <h2 class=\"infobox-subtitle\">ეპიზოდის ინფორმაცია</h2>");
 document.write("        ");
 document.write("        <section>");
