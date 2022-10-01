@@ -81,7 +81,11 @@
 
 document.write("<aside class=\"infobox-episode\">");
 document.write("        <h2 class=\"infobox-title\">", Infobox_Episode_Title, "</h2>");
-document.write("        <img src=\"", Infobox_Episode_Image_URL, "\" onclick=\"openModal();currentSlide(", Infobox_Episode_img_no, ");scrollthebar()\">");
+if (typeof Infobox_Episode_img_no !== 'undefined') {
+document.write("        <img src=\"", Infobox_Episode_Image_URL, "\" onclick=\"openModal();currentSlide(", Infobox_Episode_img_no, ");scrollthebar()\">")
+} else {
+    document.write("        <img src=\"", Infobox_Episode_Image_URL, "\">")
+}
 document.write("        <h2 class=\"infobox-subtitle\">ეპიზოდის ინფორმაცია</h2>");
 document.write("        ");
 document.write("        <section>");
@@ -139,5 +143,4 @@ document.write("                    </tr>");
 document.write("                </tbody>");
 document.write("            </table>");
 document.write("        </section>");
-document.write("");
 document.write("    </aside>");
