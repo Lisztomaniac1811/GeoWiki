@@ -236,7 +236,7 @@ main h3::before {
     pointer-events: none;
 }
 
-main h3 {
+main>h3 {
     padding-bottom: 6px;
     font-family: var(--page-subheadings-font),rubik,helvetica,arial,sans-serif;
     line-height: 1.25;
