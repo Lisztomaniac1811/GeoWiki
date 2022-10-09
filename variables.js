@@ -1,6 +1,6 @@
 // General Wiki Variables
 var WikiTitle = "ბეიტსის მოტელის ვიკი";
-var PageCount = "5";
+var PageCount = "6";
 var WordmarkURL = "images/Wiki-wordmark.png";
 var Author = "Lisztomaniac";
 var CreationYear = "2022";
