@@ -218,3 +218,30 @@ user-select: none;
     -o-user-select: none;
     user-select: none;
 }
+
+main>figure {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px 16px 0;
+  width: 220px;
+}
+
+main>figure img {
+  width: 100%;
+}
+
+main>figure>figcaption {
+  font-size: 14px;
+    line-height: 16px;
+    padding-top: 4px;
+    padding-left: 3px;
+    font-family: Sylfaen;
+    color: var(--secondary-font)
+}
+.figleft {
+  float: left;
+}
+
+.figright {
+  float: right;
+}
