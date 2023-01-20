@@ -66,6 +66,7 @@
 
 .wiki-navigation-first-dropdown  span {
     font-weight: 700;
+    font-family: var(--dropdownfontfamily)
 }
 
 .wiki-navigation-first-dropdown a {

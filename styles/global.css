@@ -2,8 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: rubik,helvetica,arial,sans-serif;
  }
+ main p {
+    font-family: var(--mainparagraphfontfamily),rubik,helvetica,arial,sans-serif;
+ }
+main>ul>li {
+    font-family: var(--mainparagraphfontfamily),rubik,helvetica,arial,sans-serif;
+}
+ main h2 {
+    font-family: var(--header2fontfamily) !important;
+ }
+
 
  ::selection {
     color: #c8f2ff;
@@ -31,7 +40,6 @@
     background: #113e57; 
   }
   
-
  a {
     text-decoration: none;
     color: var(--link);
@@ -40,6 +48,11 @@
  .wiki-page-title-header {
     padding-top: 14px;
 }
+
+ .wiki-page-title-header h1 {
+    font-family: var(--headerfontfamily);
+ }
+
 
 .page-separator {
     background-color: #4a4a4a;
