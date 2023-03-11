@@ -2,17 +2,17 @@
 * {
     box-sizing: border-box;
   }
-  .GalleryRow {
+  #GalleryRow {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  .GalleryRow > .GalleryColumn {
+  #GalleryRow > .GalleryColumn {
     margin-left: auto;
     margin-right: auto;
   }
   
-  .GalleryRow:after {
+  #GalleryRow:after {
     content: "";
     display: table;
     clear: both;
@@ -47,7 +47,7 @@
       vertical-align: middle;
   }
 /* The Modal (background) */
-.modal {
+#GalleryModal {
     display: none;
     position: fixed;
     z-index: 2000;

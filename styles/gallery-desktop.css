@@ -3,16 +3,16 @@
 * {
     box-sizing: border-box;
   }
-  .GalleryRow {
+  #GalleryRow {
       display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  .GalleryRow > .GalleryColumn {
+  #GalleryRow > .GalleryColumn {
     margin: 2px;
   }
   
-  .GalleryRow:after {
+  #GalleryRow:after {
     content: "";
     display: table;
     clear: both;
@@ -55,7 +55,7 @@ user-select: none;
 -ms-user-select: none;
   }
 /* The Modal (background) */
-.modal {
+#GalleryModal {
     display: none;
     position: fixed;
     z-index: 100;
@@ -67,6 +67,7 @@ user-select: none;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.9);
 }
+
   /* Modal Content */
   .modal-content {
     position: relative;
