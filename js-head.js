@@ -33,3 +33,13 @@ function scrollFunction() {
     document.getElementById("dropdown-navigation").style.top = "-64px";
   }
 }
+
+window.addEventListener('scroll', function() {
+  var searchResults = document.getElementById('search-results');
+  if (searchResults) {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (scrollTop < 164) {
+      searchResults.style.display = 'none';
+    }
+  }
+});

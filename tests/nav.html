@@ -573,3 +573,16 @@
       </li>
     </ul>
   </nav>
+
+  <script>
+    // When the user scrolls down 100px from the top of the document, slide down the navbar
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        document.getElementById("dropdown-navigation").style.top = "0";
+      } else {
+        document.getElementById("dropdown-navigation").style.top = "-64px";
+      }
+    }
+    </script>

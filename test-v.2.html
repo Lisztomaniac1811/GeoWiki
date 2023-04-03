@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+
+  <script>
+    var MetaTitle = "სატესტო გვერდი";
+    var MetaDescription = "საექსპერიმენტო დანიშნულების გვერდი";
+    var MetaURL = "";
+    var MetaImage = "";
+  </script>
+  <script src="js-pack.js"></script>
+  <title></title>
+</head>
+<body>
+  <main>
+    <!-- <script src="js-dropdown-nav.js"></script>
+    <script src="js-header-nav.js"></script> -->
+    <nav id="navigation"></nav>
+    <script>
+    var dummy_title = "";
+    var dummy_value = "";
+    const navigation = document.getElementById("navigation");
+    navigation.innerHTML = `
+    <div id="wiki-header-nav">
+    <div class="wordmark">
+        <a href="/"><img src="${WordmarkURL}"><\/img><\/a>
+    <\/div>
+    <div class="header-top-container">
+        <div class="header-sitename">
+            <a href="/"><span>${WikiTitle}<\/span><\/a>
+        <\/div>
+        <div class="header-page-counter">
+            <span class="counter-value">${PageCount}<\/span>
+            <span class="counter-title">Pages<\/span>
+        <\/div>
+    <\/div>
+    <script src="js-nav.js"><\/script>`; 
+    </script>
+    <script src="page-title.js"></script>
+  </main>
+  <script src="footer.js"></script>
+</body>
+</html>

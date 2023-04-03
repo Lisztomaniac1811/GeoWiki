@@ -139,3 +139,70 @@ function openModal() {
       closeModal()
     }
   });
+
+
+  var startX;
+	var startY;
+
+		// Add touchstart event listener to element
+		document.getElementById("GalleryModal").addEventListener("touchstart", function(event) {
+			// Get starting coordinates
+			startX = event.touches[0].clientX;
+			startY = event.touches[0].clientY;
+		});
+
+		// Add touchend event listener to element
+		document.getElementById("GalleryModal").addEventListener("touchend", function(event) {
+			// Get ending coordinates
+			var endX = event.changedTouches[0].clientX;
+			var endY = event.changedTouches[0].clientY;
+
+			// Calculate distance and direction
+			var distanceX = endX - startX;
+			var distanceY = endY - startY;
+			var direction;
+
+			if (Math.abs(distanceX) > Math.abs(distanceY)) {
+				direction = (distanceX > 0) ? "right" : "left";
+			} else {
+				direction = (distanceY > 0) ? "down" : "up";
+			}
+
+			// Run appropriate function based on direction of swipe
+			if (direction === "right") {
+				// Run function for right swipe
+				plusSlides(-1);
+        scrollthebar();
+			} else if (direction === "left") {
+				// Run function for left swipe
+				plusSlides(1);
+        scrollthebar();
+			}
+		});
+
+
+    
+    // Add keydown event listener to document
+		document.addEventListener("keydown", function(event) {
+			// Check if pressed key is left or right arrow
+			if (event.keyCode === 37) {
+				// Run function for left arrow press
+				leftArrowFunction();
+			} else if (event.keyCode === 39) {
+				// Run function for right arrow press
+				rightArrowFunction();
+			}
+		});
+
+		// Define functions to run on left and right arrow press
+		function leftArrowFunction() {
+			plusSlides(-1);
+        scrollthebar();
+			// Add your code for left arrow press here
+		}
+
+		function rightArrowFunction() {
+			plusSlides(1);
+        scrollthebar();
+			// Add your code for right arrow press here
+		}
