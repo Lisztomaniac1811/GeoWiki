@@ -115,6 +115,24 @@ searchresults.innerHTML = "";
 });
 
 
+const links = document.getElementsByTagName('a');
+for (let i = 0; i < links.length; i++) {
+  const link = links[i];
+  const href = link.getAttribute('href');
+  if (href && href !== '#' && !link.hasAttribute('target')) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('HEAD', href);
+    xhr.onload = function () {
+      if (xhr.status === 404) {
+        link.classList.add('red-link'); // add a CSS class to the link
+      }
+    };
+    xhr.send();
+  }
+}
+
+
+
 // searchbar.addEventListener("input", () => {
 //   const term = searchbar.value.toLowerCase().trim();
 //   if (term.length === 0) {

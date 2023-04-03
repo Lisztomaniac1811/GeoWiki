@@ -355,3 +355,11 @@ background-color: #f8f8f8;
     font-size: 14px;
     color: #dbe5e6;
   }
+
+  a:link {
+    color: var(--link); /* set the color of all links to blue */
+  }
+  
+  a.red-link:link {
+    color: #bf0017 !important; /* set the color of nonexistent links to red */
+  }

@@ -11,7 +11,7 @@
 
 @import url("style-variables.css");
 @import url("global.css");
-@import url("redlinks.css");
+/* @import url("redlinks.css"); */
 @import url("fonts.css");
 @import url("bg.css") screen and (min-width: 1250px);
 @import url("navigation-desktop.css") screen and (min-width: 1250px);
