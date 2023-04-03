@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sorted List Example</title>
+	<script>
+		function generateSortedList(items) {
+			// Create an empty object to hold the sorted items
+			var sortedItems = {};
+
+			// Loop through each item and add it to the sorted object
+			for (var i = 0; i < items.length; i++) {
+				var item = items[i];
+				var firstLetter = item.charAt(0).toUpperCase();
+				if (!sortedItems[firstLetter]) {
+					sortedItems[firstLetter] = [item];
+				} else {
+					sortedItems[firstLetter].push(item);
+				}
+			}
+
+			// Sort the object keys alphabetically
+			var sortedKeys = Object.keys(sortedItems).sort();
+
+			// Create a list element and add the sorted items to it
+			var list = document.createElement('ul');
+			for (var j = 0; j < sortedKeys.length; j++) {
+				var key = sortedKeys[j];
+				var items = sortedItems[key];
+				var sublist = document.createElement('ul');
+				for (var k = 0; k < items.length; k++) {
+					var item = document.createElement('li');
+					item.textContent = items[k];
+					sublist.appendChild(item);
+				}
+				var letter = document.createElement('li');
+				letter.textContent = key;
+				list.appendChild(letter);
+				list.appendChild(sublist);
+			}
+
+			return list;
+		}
+
+		window.onload = function() {
+			// Example array of items
+			var items = ['ვაშლი', 'ბანანი', 'ალუბალი', 'ყურძენი', 'მოცვი', 'ლეღვი'];
+
+			// Get the container element
+			var container = document.getElementById('sorted-list-container');
+
+			// Generate the sorted list and add it to the container
+			var sortedList = generateSortedList(items);
+			container.appendChild(sortedList);
+		}
+	</script>
+</head>
+<body>
+	<div id="sorted-list-container"></div>
+</body>
+</html>
