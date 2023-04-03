@@ -57,9 +57,11 @@ const items = [
   {name: NavItem158, preview: "50x50.png", description: "მეხუთე სეზონის მერვე ეპიზოდი.", link: NavItem158URL},
   {name: NavItem159, preview: "50x50.png", description: "მეხუთე სეზონის მეცხრე ეპიზოდი.", link: NavItem159URL},
   {name: NavItem1510, preview: "50x50.png", description: "მეხუთე სეზონის მეათე ეპიზოდი.", link: NavItem1510URL},
-  {name: "Item 3", preview: "50x50.png", description: "This is the third item.", link: ""},
-  
-
+  {name: "ნორმან ბეიტსი", preview: "Norman.jpg", description: "ბეიტსის მოტელის მფლობელი. ნორმა ბეიტსის ვაჟი და დილან მასეტის ძმა.", link: "Norman_Bates.html"},
+  {name: "ნორმა ბეიტსი", preview: "Norma.jpg", description: "ბეიტსის მოტელის მფლობელი. ნორმან ბეიტსისა და დილან მასეტის დედა.", link: "Norma_Bates.html"},
+  {name: "დილან მასეტი", preview: "Dylan.jpg", description: "ნორმა ბეიტსის ვაჟი და ნორმან ბეიტსის ძმა.", link: "Dylan_Massett.html"},
+  {name: "ემა დეკოდი", preview: "Emma.jpg", description: "ნორმან ბეიტსის თანაკლასელი და საუკეთესო მეგობარი.", link: "Emma_Decody.html"},
+  {name: "ალექს რომერო", preview: "Romero.jpg", description: "ქალაქ თეთრი ფიჭვების ყურის შერიფი.", link: "Alex_Romero.html"},
 ];
 
 function searchfunction() {
