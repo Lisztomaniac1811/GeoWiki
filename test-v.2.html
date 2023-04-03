@@ -1,43 +1,35 @@
-<!DOCTYPE html>
-<html lang="ka">
+<html>
 <head>
+<style>
+a:link {
+  color: blue; /* set the color of all links to blue */
+}
 
-  <script>
-    var MetaTitle = "სატესტო გვერდი";
-    var MetaDescription = "საექსპერიმენტო დანიშნულების გვერდი";
-    var MetaURL = "";
-    var MetaImage = "";
-  </script>
-  <script src="js-pack.js"></script>
-  <title></title>
+a.red-link:link {
+  color: red; /* set the color of nonexistent links to red */
+}
+
+</style>
 </head>
 <body>
-  <main>
-    <!-- <script src="js-dropdown-nav.js"></script>
-    <script src="js-header-nav.js"></script> -->
-    <nav id="navigation"></nav>
-    <script>
-    var dummy_title = "";
-    var dummy_value = "";
-    const navigation = document.getElementById("navigation");
-    navigation.innerHTML = `
-    <div id="wiki-header-nav">
-    <div class="wordmark">
-        <a href="/"><img src="${WordmarkURL}"><\/img><\/a>
-    <\/div>
-    <div class="header-top-container">
-        <div class="header-sitename">
-            <a href="/"><span>${WikiTitle}<\/span><\/a>
-        <\/div>
-        <div class="header-page-counter">
-            <span class="counter-value">${PageCount}<\/span>
-            <span class="counter-title">Pages<\/span>
-        <\/div>
-    <\/div>
-    <script src="js-nav.js"><\/script>`; 
-    </script>
-    <script src="page-title.js"></script>
-  </main>
-  <script src="footer.js"></script>
+<a href="existing_file.html">Link to existing file</a>
+<a href="nonexistent_file.html">Link to nonexistent file</a>
+<script>
+const links = document.getElementsByTagName('a');
+for (let i = 0; i < links.length; i++) {
+  const link = links[i];
+  const href = link.getAttribute('href');
+  if (href && href !== '#' && !link.hasAttribute('target')) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('HEAD', href);
+    xhr.onload = function () {
+      if (xhr.status === 404) {
+        link.classList.add('red-link'); // add a CSS class to the link
+      }
+    };
+    xhr.send();
+  }
+}
+</script>
 </body>
 </html>
