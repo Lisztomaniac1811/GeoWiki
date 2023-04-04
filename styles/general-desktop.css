@@ -12,3 +12,7 @@
     padding-right: 20px;
     overflow: auto;
 }
+
+.dropdown-navigation a {
+color: var(--navigation-font)
+}
