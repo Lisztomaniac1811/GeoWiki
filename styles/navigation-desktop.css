@@ -30,7 +30,7 @@
     min-width: min-content;
     overflow: hidden;
     text-decoration: none;
-    color: var(--navigation-font);
+    color: var(--navigation-font) !important;
 }
 
 .wiki-navigation {
