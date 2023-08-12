@@ -9,15 +9,15 @@ const searchresults = document.getElementById("search-results");
 const items = [
   {name: NavItem111, keywords: ["First You Dream, Then You Die"], preview: "101 Promo (35).jpg", description: "პირველი სეზონის პირველი ეპიზოდი.", link: NavItem111URL},
   {name: NavItem112, keywords: ["Nice Town You Picked, Norma"], preview: "102 Promo (34).jpg", description: "პირველი სეზონის მეორე ეპიზოდი.", link: NavItem112URL},
-  {name: NavItem113, keywords: [""], preview: "103 Promo (13).jpg", description: "პირველი სეზონის მესამე ეპიზოდი.", link: NavItem113URL},
-  {name: NavItem114, keywords: [""], preview: "104 Promo (7).jpg", description: "პირველი სეზონის მეოთხე ეპიზოდი.", link: NavItem114URL},
-  {name: NavItem115, keywords: [""], preview: "105 Promo (13).jpg", description: "პირველი სეზონის მეხუთე ეპიზოდი.", link: NavItem115URL},
-  {name: NavItem116, keywords: [""], preview: "106 Promo (8).jpg", description: "პირველი სეზონის მეექვსე ეპიზოდი.", link: NavItem116URL},
-  {name: NavItem117, keywords: [""], preview: "107 Promo (22).jpg", description: "პირველი სეზონის მეშვიდე ეპიზოდი.", link: NavItem117URL},
-  {name: NavItem118, keywords: [""], preview: "108 Promo (21).jpg", description: "პირველი სეზონის მერვე ეპიზოდი.", link: NavItem118URL},
-  {name: NavItem119, keywords: [""], preview: "109 Promo (1).jpg", description: "პირველი სეზონის მეცხრე ეპიზოდი.", link: NavItem119URL},
-  {name: NavItem1110, keywords: [""], preview: "110 Promo (16).jpg", description: "პირველი სეზონის მეათე ეპიზოდი.", link: NavItem1110URL},
-  {name: NavItem121, keywords: [""], preview: "201 Promo (1).jpg", description: "მეორე სეზონის პირველი ეპიზოდი.", link: NavItem121URL},
+  {name: NavItem113, keywords: ["What's Wrong With Norman"], preview: "103 Promo (13).jpg", description: "პირველი სეზონის მესამე ეპიზოდი.", link: NavItem113URL},
+  {name: NavItem114, keywords: ["Trust Me"], preview: "104 Promo (7).jpg", description: "პირველი სეზონის მეოთხე ეპიზოდი.", link: NavItem114URL},
+  {name: NavItem115, keywords: ["Ocean View"], preview: "105 Promo (13).jpg", description: "პირველი სეზონის მეხუთე ეპიზოდი.", link: NavItem115URL},
+  {name: NavItem116, keywords: ["The Truth"], preview: "106 Promo (8).jpg", description: "პირველი სეზონის მეექვსე ეპიზოდი.", link: NavItem116URL},
+  {name: NavItem117, keywords: ["The Man in Number 9"], preview: "107 Promo (22).jpg", description: "პირველი სეზონის მეშვიდე ეპიზოდი.", link: NavItem117URL},
+  {name: NavItem118, keywords: ["A Boy and His Dog"], preview: "108 Promo (21).jpg", description: "პირველი სეზონის მერვე ეპიზოდი.", link: NavItem118URL},
+  {name: NavItem119, keywords: ["Underwater"], preview: "109 Promo (1).jpg", description: "პირველი სეზონის მეცხრე ეპიზოდი.", link: NavItem119URL},
+  {name: NavItem1110, keywords: ["Midnight"], preview: "110 Promo (16).jpg", description: "პირველი სეზონის მეათე ეპიზოდი.", link: NavItem1110URL},
+  {name: NavItem121, keywords: ["Gone But Not Forgotten"], preview: "201 Promo (1).jpg", description: "მეორე სეზონის პირველი ეპიზოდი.", link: NavItem121URL},
   {name: NavItem122, keywords: [""], preview: "202 Promo (19).jpg", description: "მეორე სეზონის მეორე ეპიზოდი.", link: NavItem122URL},
   {name: NavItem123, keywords: [""], preview: "203 Promo (4).jpg", description: "მეორე სეზონის მესამე ეპიზოდი.", link: NavItem123URL},
   {name: NavItem124, keywords: [""], preview: "204 Promo (10).jpg", description: "მეორე სეზონის მეოთხე ეპიზოდი.", link: NavItem124URL},
@@ -62,6 +62,7 @@ const items = [
   {name: "დილან მასეტი", keywords: ["Dylan Massett"], preview: "Dylan.jpg", description: "ნორმა ბეიტსის ვაჟი და ნორმან ბეიტსის ძმა.", link: "Dylan_Massett.html"},
   {name: "ემა დეკოდი", keywords: ["Emma Decody"], preview: "Emma.jpg", description: "ნორმან ბეიტსის თანაკლასელი და საუკეთესო მეგობარი.", link: "Emma_Decody.html"},
   {name: "ალექს რომერო", keywords: ["Alex Romero"], preview: "Romero.jpg", description: "ქალაქ თეთრი ფიჭვების ყურის შერიფი.", link: "Alex_Romero.html"},
+  {name: "ბრედლი მარტინი", keywords: ["Bradley Martin"], preview: "Bradley_Martin.jpg", description: "ნორმან ბეიტსის თანაკლასელი.", link: "Bradley_Martin.html"},
 ];
 
 function searchfunction() {
