@@ -119,6 +119,7 @@
         var replacedContent = boldAndItalic(replacedContent);
         var replacedContent = InfoboxEpisode(replacedContent);
         var replacedContent1 = generateGalleryModal(replacedContent);
+        var replacedContent = convertFigures(replacedContent);
         var replacedContent = templateGallery(replacedContent);
         const pageName = document.getElementById('pageName').value;
         const generatedHTML = `<!DOCTYPE html>
@@ -305,8 +306,8 @@
         
         
         function boldAndItalic(inputText) {
-        let output = inputText.replace(/\{b\}\s*(.*?)\s*\{bb\}/g, '<b>$1</b>');
-        output = output.replace(/\{i\}\s*(.*?)\s*\{ii\}/g, '<i>$1</i>');
+        let output = inputText.replace(/\{b\}\s*(.*?)\s*\{\/b\}/g, '<b>$1</b>');
+        output = output.replace(/\{i\}\s*(.*?)\s*\{\/i\}/g, '<i>$1</i>');
         return output;
         }
         
@@ -648,21 +649,41 @@ while ((match = galleryPattern.exec(text)) !== null) {
 function generateGalleryModal(text) {
 const imageURL = [];
 const imageALT = [];
-  
-  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
-  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
-  
-  let match;
-  while ((match = galleryPattern.exec(text)) !== null) {
-    const galleryContent = match[1];
-    let itemMatch;
-    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
-      const url = itemMatch[1].trim();
-      const alt = itemMatch[2] ? itemMatch[2].trim() : "";
+
+const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+
+let match;
+while ((match = galleryPattern.exec(text)) !== null) {
+  const galleryContent = match[1];
+  let itemMatch;
+  while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+    const url = itemMatch[1].trim();
+    const alt = itemMatch[2] ? itemMatch[2].trim() : "";
+
+    // Check if the URL is already in the list
+    if (!imageURL.includes(url)) {
       imageURL.push(url);
       imageALT.push(alt);
     }
   }
+}
+
+const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g;
+
+while ((match = figurePattern.exec(text)) !== null) {
+  const figureNumber = match[1];
+  const figureContent = match[2];
+  let lines = figureContent.trim().split('\n');
+  let imageUrl = lines[0].trim();
+  let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== null) ? lines[3].trim() : " ";
+
+  // Check if the URL is already in the list
+  if (!imageURL.includes(imageUrl)) {
+    imageURL.push(imageUrl);
+    imageALT.push(caption);
+  }
+}
 
 //   return { imageURL, imageALT };
 
@@ -868,6 +889,70 @@ function countSlidesBeforeGallery(text, galleryNumber) {
 
     return count;
 }          
+
+
+function convertFigures(input) {
+    const imageURL = [];
+const imageALT = [];
+
+const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+
+let match;
+while ((match = galleryPattern.exec(input)) !== null) {
+  const galleryContent = match[1];
+  let itemMatch;
+  while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+    const url = itemMatch[1].trim();
+    const alt = itemMatch[2] ? itemMatch[2].trim() : "";
+
+    // Check if the URL is already in the list
+    if (!imageURL.includes(url)) {
+      imageURL.push(url);
+      imageALT.push(alt);
+    }
+  }
+}
+
+const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g;
+
+while ((match = figurePattern.exec(input)) !== null) {
+  const figureNumber = match[1];
+  const figureContent = match[2];
+  let lines = figureContent.trim().split('\n');
+  let imageUrl = lines[0].trim();
+  let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== null) ? lines[3].trim() : " ";
+
+  // Check if the URL is already in the list
+  if (!imageURL.includes(imageUrl)) {
+    imageURL.push(imageUrl);
+    imageALT.push(caption);
+  }
+}
+
+  return input.replace(/\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g, (match, number, figureContent) => {
+    let lines = figureContent.trim().split('\n');
+    let imgUrl = lines[0].trim();
+    let float = (lines[1] && lines[1].trim() === 'right') ? 'right' : 'left';
+    let width = (lines[2] && lines[2].trim() !== '-') ? lines[2].trim() : '185px';
+    let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== '') ? lines[3].trim() : '';
+    const figureSlider = imageURL.indexOf(imgUrl) + 1;
+    let figureOutput = `
+<figure style="float:${float};">
+  <img src="images/resized/800px/${imgUrl}" alt="${caption}" style="width:${width};" onclick="openModal();currentSlide(${figureSlider});scrollthebar()">
+`;
+
+    if (caption !== '') {
+      figureOutput += `  <figcaption>${caption}.</figcaption>`;
+    }
+
+    figureOutput += `
+</figure>
+`;
+
+    return figureOutput;
+  });
+}
       </script>
     </main>
     <script src="footer.js"></script>
