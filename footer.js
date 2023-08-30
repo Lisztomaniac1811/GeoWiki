@@ -1,6 +1,8 @@
 document.write("<div class=\"footer\">\n");
 document.write("  <p>©", " ", CreationYear, " ", Author,"</p>\n");
+document.write("<div id=\"templateModal\">\n");
 document.write("</div>");
+
 
 
 const searchbar = document.getElementById("search-bar");
@@ -141,6 +143,29 @@ searchresults.innerHTML = "";
 });
 
 
+// When the user scrolls down 100px from the top of the document, slide down the navbar
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 170 || document.documentElement.scrollTop > 170) {
+    document.getElementById("dropdown-navigation").style.top = "0";
+  } else {
+    document.getElementById("dropdown-navigation").style.top = "-64px";
+  }
+}
+
+window.addEventListener('scroll', function() {
+  var searchResults = document.getElementById('search-results');
+  if (searchResults) {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (scrollTop < 164) {
+      searchResults.style.display = 'none';
+    }
+  }
+});
+
+
+
 // const links = document.getElementsByTagName('a');
 // for (let i = 0; i < links.length; i++) {
 //   const link = links[i];
@@ -209,3 +234,6 @@ searchresults.innerHTML = "";
 // searchbar.addEventListener('blur', function() {
 //     searchresults.style.display = 'none';
 // });
+
+
+

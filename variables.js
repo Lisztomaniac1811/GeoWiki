@@ -4,6 +4,7 @@ var PageCount = "20";
 var WordmarkURL = "images/Wiki-wordmark.png";
 var Author = "Lisztomaniac";
 var CreationYear = "2022";
+var WikiLanguage = "ka";
 
 // Navbar Variables
 
