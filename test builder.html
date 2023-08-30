@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <script>
+    var MetaTitle = "მშენებელი";
+    var MetaDescription = "ბეიტსის მოტელის ვიკის გვერდის მშენებელი";
+    var MetaURL = "";
+    var MetaImage = "";
+    </script>
+    <script src="js-pack.js"></script>
+    <style>
+        .container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+    </style>
+</head>
+
+<body>
+    <script src="js-dropdown-nav.js"></script>
+
+<main>
+    <script src="js-header-nav.js"></script>
+    <script src="page-title.js"></script>
+<input type="file" id="fileInput">
+    <button id="loadButton">Load Variables</button>
+    <input type="text" id="input1" placeholder="Page Title" value="">
+    <input type="text" id="input2" placeholder="Page Description" value="">
+    <input type="text" id="input3" placeholder="Page URL" value="">
+    <input type="text" id="input4" placeholder="Page Image" value="">
+    <button id="generateButton">Generate Text</button>
+    <textarea id="textArea" rows="10" placeholder="Generated Text"></textarea>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const fileInput = document.getElementById("fileInput");
+        const loadButton = document.getElementById("loadButton");
+        const input1 = document.getElementById("input1");
+        const input2 = document.getElementById("input2");
+        const input3 = document.getElementById("input3");
+        const input4 = document.getElementById("input4");
+        const generateButton = document.getElementById("generateButton");
+        const textArea = document.getElementById("textArea");
+  
+        let scriptContent = "";
+  
+        // Function to extract variables from script content
+        function extractVariables(content) {
+          const variablePattern = /var\s+(\w+)\s*=\s*['"](.+?)['"];/g;
+          const variables = {};
+          let match;
+  
+          while ((match = variablePattern.exec(content)) !== null) {
+            const variableName = match[1];
+            const variableValue = match[2];
+            variables[variableName] = variableValue;
+          }
+  
+          return variables;
+        }
+  
+        loadButton.addEventListener("click", function() {
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+  
+          reader.onload = function(event) {
+            scriptContent = event.target.result.match(/<script\b[^>]*>([\s\S]*?)<\/script>/)[1];
+  
+            const extractedVariables = extractVariables(scriptContent);
+  
+            input1.value = extractedVariables.PageTitle || "";
+            input2.value = extractedVariables.PageDescription || "";
+            input3.value = extractedVariables.PageURL || "";
+            input4.value = extractedVariables.PageImage || "";
+          };
+  
+          reader.readAsText(file);
+        });
+  
+        generateButton.addEventListener("click", function() {
+          const pageTitle = input1.value || "";
+          const pageDescription = input2.value || "";
+          const pageURL = input3.value || "";
+          const pageImage = input4.value || "";
+  
+          // Generate the output HTML
+          var generatedText = `
+<html lang="${WikiLanguage}">
+ <head>
+  <script>
+   var PageTitle = " ${PageTitle}";
+   var PageDescription = " ${PageDescription}";
+   var PageURL = "${PageURL}";
+   var PageImage = "${PageImage}";
+  </script>
+  <script src="variables.js"></script>
+  <!--Meta tags start here-->
+  <!--General-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="title" content="${PageTitle}">
+  <meta name="description" content="${PageTitle}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ${PageTitle} | ${WikiTitle}</title>
+  <!--Facebook-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${PageURL}">
+  <meta property="og:title" content="${PageTitle}">
+  <meta property="og:description" content="${PageDescription}">
+  <meta property="og:image" content="${PageImage}">
+  <!--Twitter-->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="${PageURL}">
+  <meta property="twitter:title" content="${PageTitle}">
+  <meta property="twitter:description" content="${PageDescription}">
+  <meta property="twitter:image" content="${PageImage}">
+  <!--Meta tags end here-->
+  <!--Link tags start here-->
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles/css.css">
+  <!--Link tags end here-->
+ </head>
+ <body>
+  <script src="js-dropdown-nav.js"></script>
+  <main>
+    <div class="wiki-page-title-header">    
+        <h1>${PageTitle}</h1>    <hr class="page-separator">    </div>
+  </main>
+ <script src="footer.js"></script>
+ </body>
+</html>
+`;
+
+// Set the generated text as the value of the textarea
+textArea.value = generatedText;
+});
+});
+        </script> -->
+</main>
+<script src="footer.js"></script>
+</body>
+
+</html>
