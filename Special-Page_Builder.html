@@ -121,6 +121,7 @@
         var replacedContent1 = generateGalleryModal(replacedContent);
         var replacedContent = convertFigures(replacedContent);
         var replacedContent = templateGallery(replacedContent);
+        var replacedContent = tableOfContents(replacedContent);
         const pageName = document.getElementById('pageName').value;
         const generatedHTML = `<!DOCTYPE html>
         <html lang="${WikiLanguage}">
@@ -961,6 +962,38 @@ while ((match = figurePattern.exec(input)) !== null) {
 
     return figureOutput;
   });
+}
+
+function tableOfContents(input) {
+  var pattern = /\{script\}([\s\S]*?)\{\/script\}\s*\{scriptsrc\}([\s\S]*?)\{\/scriptsrc\}/;
+  var match = input.match(pattern);
+  
+  if (match) {
+    var scriptContent = match[1].trim();
+    var scriptSrcContent = match[2].trim();
+    
+    // Transform variables into the desired format
+    var transformedScriptContent = scriptContent.replace(/([^=\r\n]+)\s*=\s*(.*?)(?=\r?\n|$)/g, "var $1 = '$2';");
+    
+    var replacementCode = `
+<script>
+${transformedScriptContent}
+<\/script>
+<script src="${scriptSrcContent}"><\/script>
+`;
+    
+    var output = input.replace(pattern, replacementCode);
+    
+    // Replace the remaining tags with corresponding HTML tags
+    output = output.replace(/\{script\}/g, '<script>');
+    output = output.replace(/\{\/script\}/g, '<' + '/script>');
+    output = output.replace(/\{scriptsrc\}/g, '<script src="');
+    output = output.replace(/\{\/scriptsrc\}/g, '"><' + '/script>');
+    
+    return output;
+  } else {
+    return input;
+  }
 }
       </script>
     </main>
