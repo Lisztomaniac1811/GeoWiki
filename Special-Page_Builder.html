@@ -256,7 +256,7 @@
               output += '<ul>\n';
               currentListDepth = 0;
               isInList = true;
-          } else if (trimmedLine === '{**}') {
+          } else if (trimmedLine === '{\/*}') {
               if (isInList) {
                   output += '</ul>\n';
                   isInList = false;
@@ -269,17 +269,17 @@
               output += '<ol>\n';
               currentListDepth = 0;
               isInList = true;
-          } else if (trimmedLine === '{##}') {
+          } else if (trimmedLine === '{\/#}') {
               if (isInList) {
                   output += '</ol>\n';
                   isInList = false;
               }
           } else {
               if (isInList) {
-                  if (trimmedLine.startsWith('{##}')) {
+                  if (trimmedLine.startsWith('{\/#}')) {
                       const listItem = trimmedLine.substring(4).trim();
                       output += `<li>${listItem}</li>\n`;
-                  } else if (trimmedLine.startsWith('{**}')) {
+                  } else if (trimmedLine.startsWith('{\/*}')) {
                       output += '<ul>\n';
                       isInList = true;
                   } else {
@@ -647,43 +647,53 @@ while ((match = galleryPattern.exec(text)) !== null) {
 
 
 function generateGalleryModal(text) {
-const imageURL = [];
-const imageALT = [];
+  const imageURL = [];
+  const imageALT = [];
 
-const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
-const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
 
-let match;
-while ((match = galleryPattern.exec(text)) !== null) {
-  const galleryContent = match[1];
-  let itemMatch;
-  while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
-    const url = itemMatch[1].trim();
-    const alt = itemMatch[2] ? itemMatch[2].trim() : "";
+  let match;
+  while ((match = galleryPattern.exec(text)) !== null) {
+    const galleryContent = match[1];
+    let itemMatch;
+    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+      const url = itemMatch[1].trim();
+      const alt = itemMatch[2] ? itemMatch[2].trim() : "";
 
-    // Check if the URL is already in the list
-    if (!imageURL.includes(url)) {
-      imageURL.push(url);
-      imageALT.push(alt);
+      // Check if the URL is already in the list
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
     }
   }
-}
 
-const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g;
 
-while ((match = figurePattern.exec(text)) !== null) {
-  const figureNumber = match[1];
-  const figureContent = match[2];
-  let lines = figureContent.trim().split('\n');
-  let imageUrl = lines[0].trim();
-  let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== null) ? lines[3].trim() : " ";
+  while ((match = figurePattern.exec(text)) !== null) {
+    const figureNumber = match[1];
+    const figureContent = match[2];
+    let lines = figureContent.trim().split('\n');
+    let imageUrl = lines[0].trim();
+    let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== null) ? lines[3].trim() : " ";
 
-  // Check if the URL is already in the list
-  if (!imageURL.includes(imageUrl)) {
-    imageURL.push(imageUrl);
-    imageALT.push(caption);
+    // Check if the URL is already in the list
+    if (!imageURL.includes(imageUrl)) {
+      imageURL.push(imageUrl);
+      imageALT.push(caption);
+    } else {
+      // Find the index of the existing image URL in the array
+      const index = imageURL.indexOf(imageUrl);
+
+      // Update the caption if it's not already defined
+      if (caption.trim() !== "" && (!imageALT[index] || imageALT[index].trim() === " ")) {
+        imageALT[index] = caption;
+      }
+    }
   }
-}
+  console.log("imageURL:", imageURL);
+  console.log("imageALT:", imageALT);
 
 //   return { imageURL, imageALT };
 
@@ -710,18 +720,17 @@ while ((match = figurePattern.exec(text)) !== null) {
     <a class="prev" onclick="plusSlides(-1);scrollthebar()">❮</a>
     <a class="next" onclick="plusSlides(1);scrollthebar()">❯</a>
     <div class="gallery-caption">
-  `;
-
-  for (let altText of imageALT) {
-    galleryHTML += `
-      <p id="Gallery1Caption">${altText}</p>
-    `;
-  }
-
-  galleryHTML += `
+      <p id="Gallery1Caption"></p>
     </div>
     <div class="scrollablegallerylist">
   `;
+
+//   for (let j = 0; j < imageURL.length; j++) {
+//   galleryHTML += `
+//     <p id="Gallery1Caption">${imageALT[j]}</p>
+//   `;
+// }
+
 
   for (let i = 0; i < imageURL.length; i++) {
     galleryHTML += `
@@ -938,7 +947,7 @@ while ((match = figurePattern.exec(input)) !== null) {
     let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== '') ? lines[3].trim() : '';
     const figureSlider = imageURL.indexOf(imgUrl) + 1;
     let figureOutput = `
-<figure style="float:${float};">
+    <figure style="float:${float}; width:calc(${width} + 20px);">
   <img src="images/resized/800px/${imgUrl}" alt="${caption}" style="width:${width};" onclick="openModal();currentSlide(${figureSlider});scrollthebar()">
 `;
 

@@ -223,12 +223,15 @@ user-select: none;
 main>figure {
   display: inline-block;
   vertical-align: top;
-  margin: 0 20px 16px 0;
-  width: 220px;
+  margin: 8px 20px 16px 0;
+  /* width: 220px; */
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 main>figure img {
   width: 100%;
+  cursor: pointer;
 }
 
 main>figure>figcaption {

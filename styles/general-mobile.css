@@ -23,3 +23,25 @@ main {
 .page-separator {
     background-color: var(--main-background) !important;
 }
+ figure>img {
+    width: 98% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+ }
+
+ main>figure {
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+    padding-bottom: 10px;
+    width: 100% !important
+  }
+
+ main>figure>figcaption {
+    font-size: 14px;
+      line-height: 16px;
+      padding-top: 4px;
+      padding-left: 3px;
+      font-family: Sylfaen;
+      color: var(--secondary-font)
+  }

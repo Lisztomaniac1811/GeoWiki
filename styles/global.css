@@ -366,3 +366,9 @@ background-color: #f8f8f8;
   a.red-link:link {
     color: #bf0017 !important; /* set the color of nonexistent links to red */
   }
+
+  main>figure {
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+  }
