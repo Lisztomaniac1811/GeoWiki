@@ -65,6 +65,8 @@ const items = [
   {name: "ემა დეკოდი", keywords: ["Emma Decody"], preview: "Emma.jpg", description: "ნორმან ბეიტსის თანაკლასელი და საუკეთესო მეგობარი.", link: "Emma_Decody.html"},
   {name: "ალექს რომერო", keywords: ["Alex Romero"], preview: "Romero.jpg", description: "ქალაქ თეთრი ფიჭვების ყურის შერიფი.", link: "Alex_Romero.html"},
   {name: "ბრედლი მარტინი", keywords: ["Bradley Martin"], preview: "Bradley_Martin.jpg", description: "ნორმან ბეიტსის თანაკლასელი.", link: "Bradley_Martin.html"},
+  {name: "კით სამერსი", keywords: ["Keith Summers"], preview: "Keith_Summers.jpg", description: "ბეიტსის მოტელის ყოფილი მფლობელი.", link: "Keith_Summers.html"},
+
 ];
 
 function searchfunction() {
