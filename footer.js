@@ -1,6 +1,6 @@
 const CurrentYear = new Date().getFullYear();
 document.write("<div class=\"footer\">\n");
-document.write("  <p>©", " ", CreationYear, "-", CurrentYear, " ", Author,"</p>\n");
+document.write("  <p>©", " ", CreationYear, "-", CurrentYear, " MediaScript by ", Author,"</p>\n");
 document.write("<div id=\"templateModal\">\n");
 document.write("</div>");
 
