@@ -339,8 +339,8 @@ while ((match = galleryPattern.exec(text)) !== null) {
         ] = episodeLines.map(value => (value === "-" ? "" : value.trim()));
         const infoboxEpisodeSlider = imageURL.indexOf(imgSrc) + 1;
         if (!episodeTitle) episodeTitle = pageTitle;
-        if (!previousEp) previousEp = "არ არის";
-        if (!nextEp) nextEp = "არ არის";
+        if (!previousEp) previousEp = "<i>არ არის<\/i>";
+        if (!nextEp) nextEp = "<i>არ არის<\/i>";
 
         return `
             <aside class="infobox-episode">
@@ -401,7 +401,7 @@ while ((match = galleryPattern.exec(text)) !== null) {
                         <tbody>
                             <tr>
                                 <td>
-                                    <i>„${previousEp}“</i>
+                                    „${previousEp}“
                                 </td>
                                 <td>„${nextEp}“</td>
                             </tr>
