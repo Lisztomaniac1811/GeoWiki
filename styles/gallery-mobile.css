@@ -2,7 +2,7 @@
 * {
     box-sizing: border-box;
   }
-  #GalleryRow {
+#GalleryRow {
     display: block;
     margin-left: auto;
     margin-right: auto;

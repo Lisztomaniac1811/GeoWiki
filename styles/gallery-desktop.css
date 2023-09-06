@@ -10,6 +10,7 @@
   }
   #GalleryRow > .GalleryColumn {
     margin: 2px;
+    position: relative;
   }
   
   #GalleryRow:after {
@@ -248,4 +249,66 @@ main>figure>figcaption {
 
 .figright {
   float: right;
+}
+
+.wikia-gallery-item {
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 2px;
+  /* padding: 1em; */
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  width: calc(25% - 10px);
+}
+
+.wikia-gallery-item .thumb {
+  margin: 0;
+  overflow: visible;
+  position: relative;
+  text-align: center;
+  height: auto;
+}
+
+.wikia-gallery-border-small .thumb .gallery-image-wrapper {
+  border-width: 1px;
+}
+
+.wikia-gallery-item .thumb .gallery-image-wrapper {
+  border-style: solid;
+  overflow: hidden;
+}
+
+.wikia-gallery-item .thumb a.image, .wikia-gallery-item .thumb a.image-no-lightbox {
+  align-items: center;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  line-height: 1px;
+  text-decoration: none;
+  width: 100%;
+}
+.video-thumbnail .thumbnail-play-icon-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.wikia-gallery-item .thumb a.image img, .wikia-gallery-item .thumb a.image-no-lightbox img {
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100% ;
+}
+
+.wikia-gallery-item .title, .wikia-gallery-item>.lightbox-caption {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

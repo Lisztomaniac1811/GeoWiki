@@ -122,6 +122,7 @@
         var replacedContent = convertFigures(replacedContent);
         var replacedContent = templateGallery(replacedContent);
         var replacedContent = tableOfContents(replacedContent);
+        var replacedContent = templateYouTubeGallery(replacedContent);
         const pageName = document.getElementById('pageName').value;
         const generatedHTML = `<!DOCTYPE html>
         <html lang="${WikiLanguage}">
@@ -178,45 +179,48 @@
         
         
         function loadExternalHTML() {
-          const file = fileInput.files[0];
-        
-          if (file) {
-            const reader = new FileReader();
-        
-            reader.onload = function (event) {
-              const externalHTMLContent = event.target.result;
-              const scriptRegex = /<script>([\s\S]*?)<\/script>/;
-              const matches = scriptRegex.exec(externalHTMLContent);
-        
-        if (matches && matches.length > 1) {
-                const scriptContent = matches[1];
-                const tempScript = document.createElement('script');
-                tempScript.innerHTML = scriptContent;
-                document.body.appendChild(tempScript);
-        
-                document.getElementById('pageTitle').value = window.pageTitle || null;
-                document.getElementById('pageDescription').value = window.pageDescription || null;
-                document.getElementById('pageURL').value = window.pageURL || null;
-                document.getElementById('pageImage').value = window.pageImage || null;
-                document.getElementById('pageContent').value = window.pageContent || null;
-                document.getElementById('pageName').value = window.pageName || null;
-        
-        
-                document.body.removeChild(tempScript);
-              } else {
-                // If no script content found, set inputs to default values (null)
-                document.getElementById('pageTitle').value = null;
-                document.getElementById('pageDescription').value = null;
-                document.getElementById('pageURL').value = null;
-                document.getElementById('pageImage').value = null;
-                document.getElementById('pageName').value = null;
-                document.getElementById('pageContent').value = null;
-              }
-            };
-        
-            reader.readAsText(file);
-          }
-        }
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const externalHTMLContent = event.target.result;
+      const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+      const matches = scriptRegex.exec(externalHTMLContent);
+
+      const setInputValue = (id, value) => {
+        document.getElementById(id).value = value || null;
+      };
+
+      if (matches && matches.length > 1) {
+        const scriptContent = matches[1];
+        const tempScript = document.createElement('script');
+        tempScript.innerHTML = scriptContent;
+        document.body.appendChild(tempScript);
+
+        setInputValue('pageTitle', window.pageTitle);
+        setInputValue('pageDescription', window.pageDescription);
+        setInputValue('pageURL', window.pageURL);
+        setInputValue('pageImage', window.pageImage);
+        setInputValue('pageContent', window.pageContent);
+        setInputValue('pageName', window.pageName);
+
+        document.body.removeChild(tempScript);
+      } else {
+        // If no script content found, set inputs to default values (null)
+        setInputValue('pageTitle');
+        setInputValue('pageDescription');
+        setInputValue('pageURL');
+        setInputValue('pageImage');
+        setInputValue('pageContent');
+        setInputValue('pageName');
+      }
+    };
+
+    reader.readAsText(file);
+  }
+}
         
         function downloadGeneratedHTML() {
           const pageName = document.getElementById('pageName').value || 'defaultPage';
@@ -441,6 +445,99 @@ while ((match = galleryPattern.exec(text)) !== null) {
     });
 
     return processedText;
+}
+
+
+function templateYouTubeGallery(text) {
+    const galleryRegex = /\{ytgallery(\d+)\}([\s\S]*?)\{\/ytgallery\1\}/g;
+
+    const processedText = text.replace(galleryRegex, (match, galleryNumber, content) => {
+        const galleryLines = content.trim().split('\n');
+        let output = '<div id="GalleryRow">';
+        const startSlideNumber = (galleryNumber === '1') ? 0 : countSlidesBeforeGallery(text, galleryNumber);
+
+        for (let i = 0; i < galleryLines.length; i++) {
+            const [imgSrc, imgAlt] = galleryLines[i].split('|').map(value => value.trim());
+
+            if (imgSrc) {
+                // Check if it's a YouTube link
+                if (imgSrc.includes("youtube.com") || imgSrc.includes("youtu.be")) {
+                    // Get the YouTube video thumbnail URL
+                    const imgLink = getYouTubeThumbnail(imgSrc);
+                    
+                    if (imgLink) {
+                        // output += `
+                        //     <div class="GalleryColumn">
+                        //         <span class="thumbnail-play-icon-container">
+                        //             <svg class="thumbnail-play-icon" onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
+                        //                 <use xlink:href="#wds-player-icon-play"></use>
+                        //             </svg>
+                        //         </span>
+                        //         <img src="${imgLink}" style="width:100%" onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
+                        //         <div class="title">${imgAlt}</div>
+                        //         </div>`;
+
+                        output += `
+                        <div class="wikia-gallery-item">
+ <div class="thumb">
+  <div class="gallery-image-wrapper accent" id="${imgAlt}" style="position: relative;">
+   <a class="image lightbox video video-thumbnail xsmall" onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" title="${imgAlt}">
+    <span class="thumbnail-play-icon-container">
+     <svg class="thumbnail-play-icon">
+      <use xlink:href="#wds-player-icon-play"></use>
+     </svg>
+    </span>
+    <noscript>
+     <img style="" src="${imgLink}" title="${imgAlt}">
+    </noscript>
+    <img style="" src="${imgLink}" title="${imgAlt}" alt="${imgAlt}"  onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
+   </a>
+  </div>
+ </div>
+ <div class="title">${imgAlt}</div>
+</div>
+                        `
+                    }
+                } else {
+                    // Handle non-YouTube images (if needed)
+                }
+            }
+        }
+
+        output += '</div>';
+        return output;
+    });
+
+    return processedText;
+}
+
+function getYouTubeThumbnail(link) {
+  // Regular expression to match YouTube video IDs in various URL formats
+  var regExp = /^(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/|youtu\.be\/|\/)([a-zA-Z0-9_-]+)/;
+  
+  var match = link.match(regExp);
+  
+  if (match && match[1]) {
+    // Extract the video ID
+    var videoId = match[1];
+    
+    // Construct the thumbnail URL
+    var thumbnailUrl = "https://img.youtube.com/vi/" + videoId + "/hqdefault.jpg";
+    
+    return thumbnailUrl;
+  } else {
+    return null; // Invalid YouTube link
+  }
+}
+
+// Example usage:
+var youtubeLink = "https://www.youtube.com/watch?v=VIDEO_ID_HERE";
+var thumbnailUrl = getYouTubeThumbnail(youtubeLink);
+
+if (thumbnailUrl) {
+  console.log("Thumbnail URL:", thumbnailUrl);
+} else {
+  console.log("Invalid YouTube link.");
 }
 
 
