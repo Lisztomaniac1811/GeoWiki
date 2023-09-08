@@ -140,11 +140,11 @@ user-select: none;
 }
 
 .wikia-gallery-border-small .thumb .gallery-image-wrapper {
-  border-width: 1px;
+  border: 3px solid #2a2a2a;
 }
 
 .wikia-gallery-item .thumb .gallery-image-wrapper {
-  border-style: solid;
+  border: 3px solid #2a2a2a;
   overflow: hidden;
 }
 
