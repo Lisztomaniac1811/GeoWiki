@@ -166,8 +166,7 @@ window.addEventListener('scroll', function() {
     }
   }
 });
-document.write(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 0px; width: 0px; position: absolute; overflow: hidden;" aria-hidden="true">
-<symbol id="wds-player-icon-play" viewbox="0 0 180 180">`)
+
 
 
 
