@@ -16,11 +16,87 @@
 <main>
     <script src="js-header-nav.js"></script>
     <script src="page-title.js"></script>
-    <iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/aJUjwDxT#0bpj-kB7V6IE0SMnpNKcCOlhDQr1VR_whrTd698g1fI" allowfullscreen ></iframe>
+<pre id="result"></pre>
+    <script>
+// Example usage:
+const inputText = `
+{gallery1}
+101 Promo (1).jpg|17 წლის ნორმან ბეიტსი თავისი ოთახიდან კორიდორში ბორძიკით გამოდის. რაღაც რიგზე არაა. უეცრად რაღაც ახსენდება და დედამის ეძახის, რის შემდეგაც ოთახიდან-ოთახში სირბილს იწყებს.
+101 Promo (2).jpg|
+101 Promo (3).jpg|
+101 Promo (4).jpg|
+101 Promo (5).jpg|
+101 Promo (6).jpg|
+101 Promo (7).jpg|
+101 Promo (8).jpg|
+101 Promo (9).jpg|
+101 Promo (10).jpg|
+101 Promo (11).jpg|
+101 Promo (12).jpg|
+101 Promo (13).jpg|
+101 Promo (14).jpg|
+101 Promo (15).jpg|
+101 Promo (16).jpg|
+101 Promo (17).jpg|
+101 Promo (18).jpg|
+101 Promo (19).jpg|
+101 Promo (20).jpg|
+101 Promo (46).jpg|
+101 Promo (21).jpg|
+101 Promo (22).jpg|
+101 Promo (23).jpg|
+101 Promo (24).jpg|
+101 Promo (25).jpg|
+101 Promo (26).jpg|
+101 Promo (27).jpg|
+101 Promo (28).jpg|
+101 Promo (29).jpg|
+101 Promo (30).jpg|
+101 Promo (31).jpg|
+101 Promo (32).jpg|
+101 Promo (33).jpg|
+101 Promo (34).jpg|
+101 Promo (35).jpg|
+101 Promo (36).jpg|
+101 Promo (37).jpg|
+101 Promo (38).jpg|
+101 Promo (39).jpg|
+101 Promo (40).jpg|
+101 Promo (41).jpg|
+101 Promo (42).jpg|
+101 Promo (43).jpg|
+101 Promo (44).jpg|
+101 Promo (45).jpg|
+{/gallery1}
+`;
 
-<!-- <video width="640" height="360" controls>
-    <source src="blob:https://mega.nz/5c474c59-474e-49ea-9f41-8d1ae4705ec8" type=video/mp4>
-  </video>  -->
+function countGalleryImages(inputString) {
+    const galleryRegex = /\{gallery(\d+)\}([\s\S]*?)\{\/gallery\1\}/g;
+    const matches = [...inputString.matchAll(galleryRegex)];
+    const galleryCounts = {};
+    
+    matches.forEach((match) => {
+        const galleryNumber = match[1];
+    const galleryContent = match[2];
+    const imageLines = galleryContent.split('\n').filter(line => line.trim().length > 0);
+    const imageCount = imageLines.length;
+    galleryCounts[`gallery${galleryNumber}Count`] = imageCount;
+  });
+
+  const totalImages = Object.values(galleryCounts).reduce((acc, count) => acc + count, 0);
+  galleryCounts.totalGalleryImages = totalImages;
+
+  return galleryCounts;
+
+  const result = countGalleryImages(`...`); // Replace with your input text
+            const resultElement = document.getElementById("result");
+            resultElement.textContent = JSON.stringify(result, null, 2);
+}
+const result = countGalleryImages(inputText);
+console.log(result);
+document.write(result); 
+countGalleryImages(inputText);
+</script>
 
 
 </main>

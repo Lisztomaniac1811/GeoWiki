@@ -105,7 +105,7 @@ user-select: none;
     -o-user-select: none;
     user-select: none;
   }
-  .GallerySlides img {
+  .GallerySlides img, iframe {
       height: 70vh;
       max-width: 100%;
       display: block;
@@ -116,6 +116,11 @@ user-select: none;
 -webkit-user-drag: none;
 -webkit-user-select: none;
 -ms-user-select: none;
+  }
+
+  .GallerySlides iframe {
+    width: 70vw !important; 
+    /* height: 377px !important; */
   }
   
   .cursor {

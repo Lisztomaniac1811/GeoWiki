@@ -94,7 +94,6 @@
         generateBtn.addEventListener('click', generateHTML);
         loadBtn.addEventListener('click', loadExternalHTML);
         downloadBtn.addEventListener('click', downloadGeneratedHTML);
-        
         function generateHTML() {
         
         const pageTitle = document.getElementById('pageTitle').value;
@@ -118,7 +117,7 @@
         var replacedContent = bulletedList(replacedContent);
         var replacedContent = boldAndItalic(replacedContent);
         var replacedContent = InfoboxEpisode(replacedContent);
-        var replacedContent1 = generateGalleryModal(replacedContent);
+        var replacedContent1 = generateGalleryModal(pageContent);
         var replacedContent = convertFigures(replacedContent);
         var replacedContent = templateGallery(replacedContent);
         var replacedContent = tableOfContents(replacedContent);
@@ -137,6 +136,7 @@
         <\/script>
         <script src="js-pack.js"><\/script>
         <script src="variables.js"><\/script>
+          <script src="https://www.youtube.com/iframe_api"><\/script>
         <!--Meta tags start here-->
         <!--General-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -447,16 +447,101 @@ while ((match = galleryPattern.exec(text)) !== null) {
     return processedText;
 }
 
-
 function templateYouTubeGallery(text) {
+      function countMediaItems(input) {
+        const imageURL = [];
+  const imageALT = [];
+  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
+  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
+
+  let galleryLines = 0;
+  let ytgalleryLines = 0;
+  let figureCount = 0;
+  
+  input.replace(galleryPattern, (match, galleryContent) => {
+    const itemMatches = galleryContent.match(itemPattern);
+    if (itemMatches) {
+      galleryLines += itemMatches.length;
+    }
+    return match; // Return the full match to maintain the global match
+  });
+
+while (figurePattern.exec(input) !== null) {
+  figureCount++;
+}
+input.replace(ytgalleryPattern, (match, galleryContent) => {
+  const itemMatches = galleryContent.match(itemPattern);
+  if (itemMatches) {
+    ytgalleryLines += itemMatches.length;
+  }
+  return match; // Return the full match to maintain the global match
+});
+
+
+console.log("Amount of gallery items:", galleryLines);
+console.log("Amount of youtube gallery items:", ytgalleryLines);
+console.log("Amount of figures:", figureCount);
+  while ((match = galleryPattern.exec(input)) !== null) {
+    const galleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  while ((match = figurePattern.exec(input)) !== null) {
+    const figureContent = match[2].trim().split('\n').map(line => line.trim());
+    const imageUrl = figureContent[0];
+    const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
+
+    if (!imageURL.includes(imageUrl)) {
+      imageURL.push(imageUrl);
+      imageALT.push(caption);
+    } else if (caption.trim() !== "" && imageALT[imageURL.indexOf(imageUrl)].trim() === " ") {
+      imageALT[imageURL.indexOf(imageUrl)] = caption;
+    }
+  }
+  let galleryAndfigureLines = imageURL.length;
+  console.log("Amount of different images and figures:", galleryAndfigureLines);
+
+
+  while ((match = ytgalleryPattern.exec(input)) !== null) {
+    const ytgalleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+  return {
+  galleryAndfigureLines,
+  galleryLines,
+  ytgalleryLines,
+  figureCount
+}
+      }    
+      const result = countMediaItems(pageContent);
+
+      const galleryAndfigureLines = result.galleryAndfigureLines;
+      const galleryLines = result.galleryLines;
+      const ytgalleryLines = result.ytgalleryLines
+      const figureCount = result.figureCount
+
     const galleryRegex = /\{ytgallery(\d+)\}([\s\S]*?)\{\/ytgallery\1\}/g;
 
     const processedText = text.replace(galleryRegex, (match, galleryNumber, content) => {
         const galleryLines = content.trim().split('\n');
         let output = '<div id="GalleryRow">';
-        const startSlideNumber = (galleryNumber === '1') ? 0 : countSlidesBeforeGallery(text, galleryNumber);
+        const startSlideNumber = (galleryNumber === galleryAndfigureLines) ? 0 : countSlidesBeforeGallery(text, galleryNumber);
 
-        for (let i = 0; i < galleryLines.length; i++) {
+        for (let i = 0; i < ytgalleryLines; i++) {
             const [imgSrc, imgAlt] = galleryLines[i].split('|').map(value => value.trim());
 
             if (imgSrc) {
@@ -466,22 +551,13 @@ function templateYouTubeGallery(text) {
                     const imgLink = getYouTubeThumbnail(imgSrc);
                     
                     if (imgLink) {
-                        // output += `
-                        //     <div class="GalleryColumn">
-                        //         <span class="thumbnail-play-icon-container">
-                        //             <svg class="thumbnail-play-icon" onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
-                        //                 <use xlink:href="#wds-player-icon-play"></use>
-                        //             </svg>
-                        //         </span>
-                        //         <img src="${imgLink}" style="width:100%" onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
-                        //         <div class="title">${imgAlt}</div>
-                        //         </div>`;
+                  console.log("galleryAndfigureLines = ", galleryAndfigureLines)
 
                         output += `
                         <div class="wikia-gallery-item">
  <div class="thumb">
   <div class="gallery-image-wrapper accent" id="${imgAlt}" style="position: relative;">
-   <a class="image lightbox video video-thumbnail xsmall" onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" title="${imgAlt}">
+   <a class="image lightbox video video-thumbnail xsmall" onclick="openModal();currentSlide(${galleryAndfigureLines + i + 1});scrollthebar()" title="${imgAlt}">
     <span class="thumbnail-play-icon-container">
      <svg class="thumbnail-play-icon">
       <use xlink:href="#wds-player-icon-play"></use>
@@ -490,7 +566,7 @@ function templateYouTubeGallery(text) {
     <noscript>
      <img style="" src="${imgLink}" title="${imgAlt}">
     </noscript>
-    <img style="" src="${imgLink}" title="${imgAlt}" alt="${imgAlt}"  onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
+    <img style="" src="${imgLink}" title="${imgAlt}" alt="${imgAlt}"  onclick="openModal();currentSlide(${galleryAndfigureLines + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
    </a>
   </div>
  </div>
@@ -742,24 +818,45 @@ if (thumbnailUrl) {
 
 
 // GOOD CODE!!!
-
-
-function generateGalleryModal(text) {
+function countMediaItems(text) {
   const imageURL = [];
   const imageALT = [];
-
   const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
   const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
 
-  let match;
+  let galleryLines = 0;
+  let ytgalleryLines = 0;
+  let figureCount = 0;
+  
+  text.replace(galleryPattern, (match, galleryContent) => {
+    const itemMatches = galleryContent.match(itemPattern);
+    if (itemMatches) {
+      galleryLines += itemMatches.length;
+    }
+    return match; // Return the full match to maintain the global match
+  });
+
+while (figurePattern.exec(text) !== null) {
+  figureCount++;
+}
+text.replace(ytgalleryPattern, (match, galleryContent) => {
+  const itemMatches = galleryContent.match(itemPattern);
+  if (itemMatches) {
+    ytgalleryLines += itemMatches.length;
+  }
+  return match; // Return the full match to maintain the global match
+});
+
+
+console.log("Amount of gallery items:", galleryLines);
+console.log("Amount of youtube gallery items:", ytgalleryLines);
+console.log("Amount of figures:", figureCount);
   while ((match = galleryPattern.exec(text)) !== null) {
     const galleryContent = match[1];
-    let itemMatch;
     while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
-      const url = itemMatch[1].trim();
-      const alt = itemMatch[2] ? itemMatch[2].trim() : "";
-
-      // Check if the URL is already in the list
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
       if (!imageURL.includes(url)) {
         imageURL.push(url);
         imageALT.push(alt);
@@ -767,44 +864,127 @@ function generateGalleryModal(text) {
     }
   }
 
-  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g;
-
   while ((match = figurePattern.exec(text)) !== null) {
-    const figureNumber = match[1];
-    const figureContent = match[2];
-    let lines = figureContent.trim().split('\n');
-    let imageUrl = lines[0].trim();
-    let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== null) ? lines[3].trim() : " ";
+    const figureContent = match[2].trim().split('\n').map(line => line.trim());
+    const imageUrl = figureContent[0];
+    const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
 
-    // Check if the URL is already in the list
     if (!imageURL.includes(imageUrl)) {
       imageURL.push(imageUrl);
       imageALT.push(caption);
-    } else {
-      // Find the index of the existing image URL in the array
-      const index = imageURL.indexOf(imageUrl);
+    } else if (caption.trim() !== "" && imageALT[imageURL.indexOf(imageUrl)].trim() === " ") {
+      imageALT[imageURL.indexOf(imageUrl)] = caption;
+    }
+  }
+  let galleryAndfigureLines = imageURL.length;
+  console.log("Amount of different images and figures:", galleryAndfigureLines);
 
-      // Update the caption if it's not already defined
-      if (caption.trim() !== "" && (!imageALT[index] || imageALT[index].trim() === " ")) {
-        imageALT[index] = caption;
+
+  while ((match = ytgalleryPattern.exec(text)) !== null) {
+    const ytgalleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
       }
     }
   }
-  console.log("imageURL:", imageURL);
-  console.log("imageALT:", imageALT);
 
-//   return { imageURL, imageALT };
+  console.log("After running gallery, figure and ytgallery", imageURL);
+return {
+  galleryAndfigureLines,
+  galleryLines,
+  ytgalleryLines,
+  figureCount
+}
+}
+
+function generateGalleryModal(text) {
+  const imageURL = [];
+  const imageALT = [];
+  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
+  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
+
+  let galleryLines = 0;
+  let ytgalleryLines = 0;
+  let figureCount = 0;
+  
+  text.replace(galleryPattern, (match, galleryContent) => {
+    const itemMatches = galleryContent.match(itemPattern);
+    if (itemMatches) {
+      galleryLines += itemMatches.length;
+    }
+    return match; // Return the full match to maintain the global match
+  });
+
+while (figurePattern.exec(text) !== null) {
+  figureCount++;
+}
+text.replace(ytgalleryPattern, (match, galleryContent) => {
+  const itemMatches = galleryContent.match(itemPattern);
+  if (itemMatches) {
+    ytgalleryLines += itemMatches.length;
+  }
+  return match; // Return the full match to maintain the global match
+});
+
+
+console.log("Amount of gallery items:", galleryLines);
+console.log("Amount of youtube gallery items:", ytgalleryLines);
+console.log("Amount of figures:", figureCount);
+  while ((match = galleryPattern.exec(text)) !== null) {
+    const galleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  while ((match = figurePattern.exec(text)) !== null) {
+    const figureContent = match[2].trim().split('\n').map(line => line.trim());
+    const imageUrl = figureContent[0];
+    const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
+
+    if (!imageURL.includes(imageUrl)) {
+      imageURL.push(imageUrl);
+      imageALT.push(caption);
+    } else if (caption.trim() !== "" && imageALT[imageURL.indexOf(imageUrl)].trim() === " ") {
+      imageALT[imageURL.indexOf(imageUrl)] = caption;
+    }
+  }
+  let galleryAndfigureLines = imageURL.length;
+  console.log("Amount of different images and figures:", galleryAndfigureLines);
+
+
+  while ((match = ytgalleryPattern.exec(text)) !== null) {
+    const ytgalleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  console.log("After running gallery, figure and ytgallery", imageURL);
 
   let galleryHTML = `
     <div id="GalleryModal" style="display: none;">
-      <span class="GalleryClose cursor" onclick="closeModal()" acceskey="esc">✕</span>
+      <span class="GalleryClose cursor" onclick="closeModal();pauseYouTubeVideo();" accesskey="esc">✕</span>
       <div class="modal-content">
   `;
 
-  for (let i = 0; i < imageURL.length; i++) {
+  for (let i = 0; i < galleryAndfigureLines; i++) {
     galleryHTML += `
       <div class="GallerySlides" style="display: none;">
-        <div class="Gallerynumbertext">${i + 1}/${imageURL.length}</div>
+        <div class="Gallerynumbertext">${i + 1}/${galleryAndfigureLines + ytgalleryLines}</div>
         <div class="Galleryviewfullimage">
           <a href="images/${imageURL[i]}" target="_blank">ნახვა</a> |
           <a href="images/${imageURL[i]}" download="">გადმოწერა</a>
@@ -813,27 +993,53 @@ function generateGalleryModal(text) {
       </div>
     `;
   }
+  for (let i = galleryAndfigureLines; i < galleryAndfigureLines + ytgalleryLines; i++) {
+    console.log("numberings: ", i);
+    console.log("image urls: ", imageURL[i]);
+    const videoIdMatch = imageURL[i].match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+const videoId = videoIdMatch[1];
+
+  // Now, you can use videoId to construct the iframe source URL
+  const iframeSrc = `https://www.youtube.com/embed/${videoId}`;
+  
+  // Use the iframeSrc variable in your HTML
+  const iframeHTML = `
+    <iframe id="youtube_video" src="${iframeSrc}?enablejsapi=1" allowfullscreen="1" frameborder="0"></iframe>`
+
+    galleryHTML += `
+    <div class="GallerySlides" style="display: none;">
+        <div class="Gallerynumbertext">${i + 1}/${galleryAndfigureLines + ytgalleryLines}</div>
+        <div class="Galleryviewfullimage">
+          <a href="${imageURL[i]}" target="_blank">ნახვა</a> |
+          <a style="color:gray">გადმოწერა</a>
+        </div>
+        ${iframeHTML}
+      </div>
+    `;
+  }
 
   galleryHTML += `
-    <a class="prev" onclick="plusSlides(-1);scrollthebar()">❮</a>
-    <a class="next" onclick="plusSlides(1);scrollthebar()">❯</a>
+    <a class="prev" onclick="plusSlides(-1);scrollthebar();pauseYouTubeVideo()">❮</a>
+    <a class="next" onclick="plusSlides(1);scrollthebar();pauseYouTubeVideo()">❯</a>
     <div class="gallery-caption">
       <p id="Gallery1Caption"></p>
     </div>
     <div class="scrollablegallerylist">
   `;
 
-//   for (let j = 0; j < imageURL.length; j++) {
-//   galleryHTML += `
-//     <p id="Gallery1Caption">${imageALT[j]}</p>
-//   `;
-// }
-
-
-  for (let i = 0; i < imageURL.length; i++) {
+  for (let i = 0; i < galleryAndfigureLines; i++) {
     galleryHTML += `
       <div class="GalleryColumn1" id="galleryitem-${i + 1}">
-        <img class="Gallery1Demo cursor" src="images/resized/800px/${imageURL[i]}" style="width:auto" onclick="currentSlide(${i + 1})" alt="${imageALT[i]}">
+        <img class="Gallery1Demo cursor" src="images/resized/800px/${imageURL[i]}" style="width:auto" onclick="currentSlide(${i + 1});pauseYouTubeVideo()" alt="${imageALT[i]}">
+      </div>
+    `;
+  }
+  for (let i = galleryAndfigureLines; i < galleryAndfigureLines + ytgalleryLines; i++) {
+    const videoIdMatch = imageURL[i].match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+const videoId = videoIdMatch[1];
+    galleryHTML += `
+      <div class="GalleryColumn1" id="galleryitem-${i + 1}">
+        <img class="Gallery1Demo cursor" src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" style="width:auto" onclick="currentSlide(${i + 1});pauseYouTubeVideo()" alt="${imageALT[i]}">
       </div>
     `;
   }
@@ -861,6 +1067,7 @@ function generateGalleryModal(text) {
   
   function plusSlides(n) {
     showSlides(slideIndex += n);
+    pauseYouTubeVideo()
   }
   
   function scrollthebar() {
@@ -869,6 +1076,7 @@ function generateGalleryModal(text) {
   
   function currentSlide(n) {
     showSlides(slideIndex = n);
+    pauseYouTubeVideo();
   }
   
   function showSlides(n) {
@@ -894,7 +1102,8 @@ function generateGalleryModal(text) {
   }
   document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") {
-      closeModal()
+      closeModal();
+      pauseYouTubeVideo();
     }
   });
 
@@ -1046,7 +1255,7 @@ while ((match = figurePattern.exec(input)) !== null) {
     const figureSlider = imageURL.indexOf(imgUrl) + 1;
     let figureOutput = `
     <figure style="float:${float}; width:calc(${width} + 20px);">
-  <img src="images/resized/800px/${imgUrl}" alt="${caption}" style="width:${width};" onclick="openModal();currentSlide(${figureSlider});scrollthebar()">
+  <img src="images/resized/800px/${imgUrl}" alt="${caption}" style="width:${width};" onclick="openModal();currentSlide(${figureSlider});scrollthebar();pauseYouTubeVideo()">
 `;
 
     if (caption !== '') {
@@ -1092,6 +1301,9 @@ ${transformedScriptContent}
     return input;
   }
 }
+
+
+
       </script>
     </main>
     <script src="footer.js"></script>
