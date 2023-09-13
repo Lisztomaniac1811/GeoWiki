@@ -448,19 +448,19 @@ while ((match = galleryPattern.exec(text)) !== null) {
 }
 
 function templateYouTubeGallery(text) {
-      function countMediaItems(input) {
+      function countMediaItems(text) {
         const imageURL = [];
   const imageALT = [];
   const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
   const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
   const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
   const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
-
+  const text1 = text.toString()
   let galleryLines = 0;
   let ytgalleryLines = 0;
   let figureCount = 0;
   
-  input.replace(galleryPattern, (match, galleryContent) => {
+  text1.replace(galleryPattern, (match, galleryContent) => {
     const itemMatches = galleryContent.match(itemPattern);
     if (itemMatches) {
       galleryLines += itemMatches.length;
@@ -468,10 +468,10 @@ function templateYouTubeGallery(text) {
     return match; // Return the full match to maintain the global match
   });
 
-while (figurePattern.exec(input) !== null) {
+while (figurePattern.exec(text1) !== null) {
   figureCount++;
 }
-input.replace(ytgalleryPattern, (match, galleryContent) => {
+text1.replace(ytgalleryPattern, (match, galleryContent) => {
   const itemMatches = galleryContent.match(itemPattern);
   if (itemMatches) {
     ytgalleryLines += itemMatches.length;
@@ -483,7 +483,7 @@ input.replace(ytgalleryPattern, (match, galleryContent) => {
 console.log("Amount of gallery items:", galleryLines);
 console.log("Amount of youtube gallery items:", ytgalleryLines);
 console.log("Amount of figures:", figureCount);
-  while ((match = galleryPattern.exec(input)) !== null) {
+  while ((match = galleryPattern.exec(text1)) !== null) {
     const galleryContent = match[1];
     while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
       const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
@@ -494,7 +494,7 @@ console.log("Amount of figures:", figureCount);
     }
   }
 
-  while ((match = figurePattern.exec(input)) !== null) {
+  while ((match = figurePattern.exec(text1)) !== null) {
     const figureContent = match[2].trim().split('\n').map(line => line.trim());
     const imageUrl = figureContent[0];
     const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
@@ -510,7 +510,7 @@ console.log("Amount of figures:", figureCount);
   console.log("Amount of different images and figures:", galleryAndfigureLines);
 
 
-  while ((match = ytgalleryPattern.exec(input)) !== null) {
+  while ((match = ytgalleryPattern.exec(text1)) !== null) {
     const ytgalleryContent = match[1];
     while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
       const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <script>
+      var MetaTitle = "ლაბორატორია";
+      var MetaDescription = "ბეიტსის მოტელის ვიკის ლაბორატორია";
+      var MetaURL = "";
+      var MetaImage = "";
+      var WikiTitle = "ბეიტსის მოტელის ვიკი";
+      var WikiLanguage = "ka"
+    </script>
+    <script src="js-pack.js"></script>
+    <style>
+      label {
+      display: block;
+      margin-bottom: 5px;
+      }
+      input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      background: rgb(26, 21, 21);
+      color: rgb(68, 241, 62);
+      }
+      button {
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      }
+      textarea {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      height: 600px;
+      overflow: auto;
+      background-color: black;
+      color: #b9efff;
+      font-size: 18px;
+      }
+      input[type="file"] {
+      margin-bottom: 10px;
+      }
+      #preview {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      max-height: 600px;
+      overflow: auto;
+      }
+      #output {
+      color: orange !important;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js-dropdown-nav.js"></script>
+    <main>
+      <script src="js-header-nav.js"></script>
+      <script src="page-title.js"></script>
+      <label for="fileInput">Upload HTML File:</label>
+      <input type="file" id="fileInput">
+      <button id="loadBtn">Load Variables</button>
+      <label for="pageTitle">Page Name:</label>
+      <input type="text" id="pageName" placeholder="Enter Page Name (as in file)">
+      <label for="pageTitle">Page Title:</label>
+      <input type="text" id="pageTitle" placeholder="Enter Page Title">
+      <label for="pageDescription">Page Description:</label>
+      <input type="text" id="pageDescription" placeholder="Enter Page Description">
+      <label for="pageURL">Page URL:</label>
+      <input type="text" id="pageURL" placeholder="Enter Page URL">
+      <label for="pageImage">Page Image:</label>
+      <input type="text" id="pageImage" placeholder="Enter Page Image URL">
+      <label for="pageContent">Content:</label>
+      <textarea type="text" id="pageContent" placeholder="Enter Page Content"></textarea>
+      <br>
+      <button id="generateBtn">Generate</button>
+      <button id="downloadBtn">Download HTML</button>
+      <hr>
+      <h2>Generated HTML:</h2>
+      <textarea id="output" readonly></textarea>
+      <div id="preview"></div>
+      <script>
+        const generateBtn = document.getElementById('generateBtn');
+        const outputTextarea = document.getElementById('output');
+        const loadBtn = document.getElementById('loadBtn');
+        const fileInput = document.getElementById('fileInput');
+        const downloadBtn = document.getElementById('downloadBtn');
+        let replacedContent = "";
+        
+        
+        generateBtn.addEventListener('click', generateHTML);
+        loadBtn.addEventListener('click', loadExternalHTML);
+        downloadBtn.addEventListener('click', downloadGeneratedHTML);
+        
+        replacedContent = headers(pageContent);
+        
+        function generateHTML() {
+        const pageTitle = document.getElementById('pageTitle').value;
+        const pageDescription = document.getElementById('pageDescription').value;
+        const pageURL = document.getElementById('pageURL').value;
+        const pageImage = document.getElementById('pageImage').value;
+        const pageContent = document.getElementById('pageContent').value;
+        const pageName = document.getElementById('pageName').value;
+
+
+        const generatedHTML = `<!DOCTYPE html>
+        <html lang="${WikiLanguage}">
+        <head>
+        <script>
+        var pageTitle = "${pageTitle}";
+        var pageDescription = "${pageDescription}";
+        var pageURL = "${pageURL}";
+        var pageImage = "${pageImage}";
+        var pageName = "${pageName}";
+        var pageContent = \`${pageContent}\`;
+        <\/script>
+        <script src="js-pack.js"><\/script>
+        <script src="variables.js"><\/script>
+        <!--Meta tags start here-->
+        <!--General-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="title" content="${pageTitle}">
+        <meta name="description" content="${pageTitle}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> ${pageTitle} | ${WikiTitle}<\/title>
+        <!--Facebook-->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="${pageURL}">
+        <meta property="og:title" content="${pageTitle}">
+        <meta property="og:description" content="${pageDescription}">
+        <meta property="og:image" content="${pageImage}">
+        <!--Twitter-->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="${pageURL}">
+        <meta property="twitter:title" content="${pageTitle}">
+        <meta property="twitter:description" content="${pageDescription}">
+        <meta property="twitter:image" content="${pageImage}">
+        <!--Meta tags end here-->
+        <!--Link tags start here-->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="styles/css.css">
+        <!--Link tags end here-->
+        <\/head>
+        <body>
+        <script src="js-dropdown-nav.js"><\/script>
+        <main>
+        <script src="js-header-nav.js"><\/script>
+        <div class="wiki-page-title-header">    
+          <h1>${pageTitle}</h1>    <hr class="page-separator">    <\/div>
+          ${replacedContent}
+        
+        <\/main>
+        <script src="footer.js"><\/script>
+        <\/body>
+        <\/html>
+        `; 
+        outputTextarea.value = generatedHTML; } 
+        
+        
+        function loadExternalHTML() {
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const externalHTMLContent = event.target.result;
+      const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+      const matches = scriptRegex.exec(externalHTMLContent);
+
+      const setInputValue = (id, value) => {
+        document.getElementById(id).value = value || null;
+      };
+
+      if (matches && matches.length > 1) {
+        const scriptContent = matches[1];
+        const tempScript = document.createElement('script');
+        tempScript.innerHTML = scriptContent;
+        document.body.appendChild(tempScript);
+
+        setInputValue('pageTitle', window.pageTitle);
+        setInputValue('pageDescription', window.pageDescription);
+        setInputValue('pageURL', window.pageURL);
+        setInputValue('pageImage', window.pageImage);
+        setInputValue('pageContent', window.pageContent);
+        setInputValue('pageName', window.pageName);
+
+        document.body.removeChild(tempScript);
+      } else {
+        // If no script content found, set inputs to default values (null)
+        setInputValue('pageTitle');
+        setInputValue('pageDescription');
+        setInputValue('pageURL');
+        setInputValue('pageImage');
+        setInputValue('pageContent');
+        setInputValue('pageName');
+      }
+    };
+
+    reader.readAsText(file);
+  }
+}
+        
+        function downloadGeneratedHTML() {
+          const pageName = document.getElementById('pageName').value || 'defaultPage';
+          const generatedHTML = outputTextarea.value;
+          const blob = new Blob([generatedHTML], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${pageName}.html`;
+          a.setAttribute('force-download', ''); // This attribute ensures file replacement
+          a.click();
+        
+          // Clean up the URL object
+          URL.revokeObjectURL(url);
+        }
+        
+        document.getElementById("generateBtn").addEventListener("click", function() {
+              const htmlCode = document.getElementById("output").value;
+              const preview = document.getElementById("preview");
+              preview.innerHTML = htmlCode;
+          });
+        
+        
+         
+
+          function headers(text) {
+    function replaceHeader(match, level, headerText) {
+        const headerLevel = level.length;
+        const headerId = headerText.trim().replace(/ /g, "_");
+        const headerTag = `<h${headerLevel + 1} id="${headerId}">${headerText}</h${headerLevel + 1}>`;
+        return headerTag;
+    }
+
+    // Define the regular expression pattern to match headers
+    const pattern = /^=(=+)([^=]+?)\1$/gm;
+
+    // Use replace with a callback function to replace headers with the appropriate HTML tags
+    const result = text.replace(pattern, replaceHeader);
+
+    return result;
+}
+
+      </script>
+    </main>
+    <script src="footer.js"></script>
+  </body>
+</html>
