@@ -36,67 +36,141 @@
         <link rel="stylesheet" href="styles/css.css">
         <!--Link tags end here-->
         <style>
-           .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            .container {
+                padding-top: 10px;
+            }
+             @media (min-width: 1080px) {
+          .container {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    font-family: Arial, sans-serif;
+    background-color: inherit;
+}
+
+.gif-container {
+    flex: 1; /* Let the GIF container grow to occupy available space */
+    max-width: 50%; /* Limit the maximum width of the GIF */
+}
+
+.gif-container img {
+    max-width: 100%; /* Ensure the GIF scales properly */
+    height: auto;
+}
+
+.content {
+    flex: 1; /* Let the content container grow to occupy available space */
+}
+
+}
+
+ul.errorpage {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul.errorpage li {
+    padding-left: 10px; /* Add spacing before the bullet */
+    position: relative;
+}
+
+ul.errorpage li:not(:first-child)::before {
+    content: ""; /* Unicode character for bullet/center dot */
+    position: absolute;
+    left: 0;
+}
+@keyframes neon-blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
+.caption p {
+    font-family: Arial, sans-serif;
+            font-size: 26px;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #7bc0d5, 0 0 20px #7bc0d5, 0 0 30px #7bc0d5, 0 0 40px #7bc0d5;
+            animation: neon-blink 3s infinite;
+}
+
+.suggested-links {
+    font-size: 20px;
+    text-align: center;
+}
+
+.suggested-links p {
+    margin-bottom: 10px;
+}
+
+.suggested-links a {
+    text-decoration: none;
+    /* padding: 5px 10px; */
+    /* color: #007BFF; */
+}
+
+.suggested-links a:hover {
+    color: white; /* Change the text color to the Bates Motel theme color on hover */
+    background-color: #113e57; /* Change the background color on hover */
+    border-radius: 5px; /* Add rounded corners */
+    transition: background-color 0.1s ease-in-out; /* Add a transition effect */
+}
+
+ /* Media query for mobile devices */
+ @media (max-width: 1080px) {
         .gif-container {
-            margin-bottom: 20px;
+            margin-bottom: 10px; /* Reduce space between image and text for mobile */
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .gif-container img {
-          max-height: 30vh;
+            max-width: 80%; /* Adjust image size for smaller screens */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .caption {
-            font-size: 24px;
-            text-align: center;
-            text-shadow: 0 0 10px var(--navigation-background), 0 0 20px var(--navigation-background), 0 0 30px var(--navigation-background);
+            font-size: 18px; /* Reduce font size for mobile */
         }
 
         .suggested-links {
-            margin-top: 30px;
-            font-size: 18px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
+            font-size: 16px; /* Reduce font size for mobile */
         }
-
-        .suggested-links a {
-            text-decoration: none;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .suggested-links a:hover {
-            text-decoration: underline;
-        }
+    }
         </style>
         </head>
         <body>
         <script src="js-dropdown-nav.js"></script>
         <main>
         <script src="js-header-nav.js"></script>
-        
         <div class="container">
-          <div class="gif-container">
-              <img src="https://i.makeagif.com/media/11-05-2013/KGUYMi.gif" alt="404 GIF">
-          </div>
-          <div class="caption">
-              <p>ბოდიშს გიხდით, მაგრამ ეს გვერდი არ არსებობს.</p>
-          </div>
-          <div class="suggested-links">
-              <p>გადაამოწმეთ მისამართი ან გამოიყენეთ შემდეგი ბმულები:</p>
-          <br>
-                  <a href="Special-Search.html">ძებნის გვერდი</a> &#8226; 
-                  <a href="Special-All_Pages.html">ყველა გვერდი</a> &#8226; 
-                  <a href="/">მთავარი გვერდი</a>
-          
-          </div>
-      </div>
+            <div class="gif-container">
+                <img src="https://i.imgur.com/bspJE.gif" alt="404 GIF">
+            </div>
+            <div class="content">
+                <div class="caption">
+                    <p>ბოდიშს გიხდით, მაგრამ ეს გვერდი არ არსებობს.</p>
+                </div>
+                <div class="suggested-links">
+                    <p>გადაამოწმეთ მისამართი ან გამოიყენეთ შემდეგი ბმულები:</p>
+                    <ul class="errorpage">
+    <li><a href="Special-Search.html">ძებნის გვერდი</a></li>
+    <li><a href="Special-All_Pages.html">ყველა გვერდი</a></li>
+    <li><a href="/">მთავარი გვერდი</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         </main>
         <script src="footer.js"></script>
         </body>

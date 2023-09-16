@@ -10,7 +10,7 @@ main {
     margin-bottom: 0;
     height: auto;
     color: var(--main-font);
-    min-height: 200vh;
+    min-height: 100vh;
     padding-left: 14px;
     padding-right: 14px;
     overflow: auto;
