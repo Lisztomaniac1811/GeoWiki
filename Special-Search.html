@@ -216,6 +216,15 @@ window.addEventListener('load', () => {
             // Fill the searchInput field with the saved value
             document.getElementById('searchInput').value = savedSearchValue;
         }
+
+    // Check if a search value is present
+    if (savedSearchValue) {
+        // Fill the searchInput field with the saved value
+        document.getElementById('searchInput').value = savedSearchValue;
+
+        // Clear the saved search value from localStorage
+        localStorage.removeItem('searchValue');
+    }
       </script>
         </body>
         </html>
