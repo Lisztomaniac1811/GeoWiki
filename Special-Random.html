@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special:Random</title>
+</head>
+<body>
+    <script src="variables.js"></script>
+    <script>
+        // Function to redirect to a random URL
+        function redirectToRandomPage() {
+            const randomIndex = Math.floor(Math.random() * items.length);
+            const randomItem = items[randomIndex];
+            window.location.href = randomItem.link;
+        }
+
+        // Call the redirection function when the page loads
+        window.onload = redirectToRandomPage;
+    </script>
+</body>
+</html>

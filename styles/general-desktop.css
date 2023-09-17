@@ -16,3 +16,44 @@
 .dropdown-navigation a {
 color: var(--navigation-font)
 }
+
+.page-header {
+    align-items: flex-start;
+    display: flex;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    justify-content: flex-end;
+    padding: 16px 0 12px;
+    width: 100%;
+    z-index: 200;
+}
+
+.page-header__main {
+    align-self: flex-end;
+    flex-grow: 1;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.page-header__title {
+    align-items: flex-end;
+    display: inline-block;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    max-width: 100%;
+    word-wrap: break-word;
+    font-family: var(--headerfontfamily);
+}
+
+.page-header__contribution {
+    align-items: flex-end;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding-top: 14px;
+}
+

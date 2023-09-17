@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <script>
+      var MetaTitle = "გვერდის მშენებელი";
+      var MetaDescription = "ბეიტსის მოტელის ვიკის გვერდის მშენებელი";
+      var MetaURL = "";
+      var MetaImage = "";
+      var WikiTitle = "ბეიტსის მოტელის ვიკი";
+      var WikiLanguage = "ka"
+    </script>
+    <script src="js-pack.js"></script>
+    <style>
+      label {
+      display: block;
+      margin-bottom: 5px;
+      }
+      input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      background: rgb(26, 21, 21);
+      color: rgb(68, 241, 62);
+      }
+      button {
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      }
+      textarea {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      height: 600px;
+      overflow: auto;
+      background-color: black;
+      color: #b9efff;
+      font-size: 18px;
+      }
+      input[type="file"] {
+      margin-bottom: 10px;
+      }
+      #preview {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      max-height: 600px;
+      overflow: auto;
+      }
+      #output {
+      color: orange !important;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js-dropdown-nav.js"></script>
+    <main>
+      <script src="js-header-nav.js"></script>
+      <script src="page-title.js"></script>
+      <label for="fileInput">Upload HTML File:</label>
+      <input type="file" id="fileInput">
+      <button id="loadBtn">Load Variables</button>
+      <label for="pageTitle">Page Name:</label>
+      <input type="text" id="pageName" placeholder="Enter Page Name (as in file)">
+      <label for="pageTitle">Page Title:</label>
+      <input type="text" id="pageTitle" placeholder="Enter Page Title">
+      <label for="pageDescription">Page Description:</label>
+      <input type="text" id="pageDescription" placeholder="Enter Page Description">
+      <label for="pageURL">Page URL:</label>
+      <input type="text" id="pageURL" placeholder="Enter Page URL">
+      <label for="pageImage">Page Image:</label>
+      <label for="allowComments">Allow comments?</label>
+<select id="allowComments" name="allowComments">
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+      <input type="text" id="pageImage" placeholder="Enter Page Image URL">
+      <label for="pageContent">Content:</label>
+      <textarea type="text" id="pageContent" placeholder="Enter Page Content"></textarea>
+      <br>
+      <button id="generateBtn">Generate</button>
+      <button id="downloadBtn">Download HTML</button>
+      <hr>
+      <h2>Generated HTML:</h2>
+      <textarea id="output" readonly></textarea>
+      <div id="preview"></div>
+      <script>
+        const generateBtn = document.getElementById('generateBtn');
+        const outputTextarea = document.getElementById('output');
+        const loadBtn = document.getElementById('loadBtn');
+        const fileInput = document.getElementById('fileInput');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const allowComments = document.getElementById('allowComments')
+        var replacedContent = "";
+        
+        
+        generateBtn.addEventListener('click', generateHTML);
+        loadBtn.addEventListener('click', loadExternalHTML);
+        downloadBtn.addEventListener('click', downloadGeneratedHTML);
+        function generateHTML() {
+        
+        const pageTitle = document.getElementById('pageTitle').value;
+        const pageDescription = document.getElementById('pageDescription').value;
+        const pageURL = document.getElementById('pageURL').value;
+        const pageImage = document.getElementById('pageImage').value;
+        const pageContent = document.getElementById('pageContent').value;
+        if (allowComments === "Yes") {
+            const header = `
+    <header id="PageHeader" class="page-header">
+      <div class="page-header__main">
+        <h1 id="firstHeading" class="page-header__title wiki-page-title-header">${pageTitle}</h1>
+      </div>
+      <div class="page-header__contribution">
+        <div class="page-header__contribution-buttons">
+          <a class="wds-button wds-is-secondary" href="#articleComments" id="article-comments-button" style="color:white">
+            <span>კომენტარები</span>&nbsp;()
+          </a>
+        </div>
+      </div>
+    </header>
+  `;
+          } else {
+  const header = `
+    <header id="PageHeader" class="page-header">
+      <div class="page-header__main">
+        <h1 id="firstHeading" class="page-header__title wiki-page-title-header">${pageTitle}</h1>
+      </div>
+    </header>
+  `;
+}
+        var replacedContent = pageContent.replace(/__([^_]+)__/g, '<h4 id="$1">$1</h4>');
+        var replacedContent = replacedContent.replace(/--([^-]+)--/g, '<h3 id="$1">$1</h3>');
+        var replacedContent = replacedContent.replace(/==([^=]+)==/g, '<h2 id="$1">$1</h2>');
+        var replacedContent = replacedContent.replace(/\{p\}\s*([\s\S]*?)(?=\s*\{p\}|\n\s*|\s*$)/g, '<p>$1</p>\n');
+        var replacedContent = replacedContent.replace(/\[\[(.*?)\|(.*?)\|(.*?)\]\]/gs, function(match, p1, p2, p3) {
+        var modifiedP1 = p1.replace(/\s/g, '_');
+        
+        if (!p3 || /^\s*$/.test(p3) || p3 === "null") {
+          return '<a href="' + modifiedP1 + '.html" title="' + p2 + '">' + p2 + '</a>';
+        } else {
+          return '<a href="' + modifiedP1 + '.html" title="' + p2 + '">' + p3 + '</a>';
+        }
+        });
+        var replacedContent = bulletedList(replacedContent);
+        var replacedContent = boldAndItalic(replacedContent);
+        var replacedContent = InfoboxEpisode(replacedContent);
+        var replacedContent1 = generateGalleryModal(pageContent);
+        var replacedContent = convertFigures(replacedContent);
+        var replacedContent = templateGallery(replacedContent);
+        var replacedContent = tableOfContents(replacedContent);
+        var replacedContent = templateYouTubeGallery(replacedContent);
+        const pageName = document.getElementById('pageName').value;
+        const generatedHTML = `<!DOCTYPE html>
+        <html lang="${WikiLanguage}">
+        <head>
+        <script>
+        var pageTitle = "${pageTitle}";
+        var pageDescription = "${pageDescription}";
+        var pageURL = "${pageURL}";
+        var pageImage = "${pageImage}";
+        var pageName = "${pageName}";
+        var pageContent = \`${pageContent}\`;
+        <\/script>
+        <script src="js-pack.js"><\/script>
+        <script src="variables.js"><\/script>
+          <script src="https://www.youtube.com/iframe_api"><\/script>
+        <!--Meta tags start here-->
+        <!--General-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="title" content="${pageTitle}">
+        <meta name="description" content="${pageTitle}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> ${pageTitle} | ${WikiTitle}<\/title>
+        <!--Facebook-->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="${pageURL}">
+        <meta property="og:title" content="${pageTitle}">
+        <meta property="og:description" content="${pageDescription}">
+        <meta property="og:image" content="${pageImage}">
+        <!--Twitter-->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="${pageURL}">
+        <meta property="twitter:title" content="${pageTitle}">
+        <meta property="twitter:description" content="${pageDescription}">
+        <meta property="twitter:image" content="${pageImage}">
+        <!--Meta tags end here-->
+        <!--Link tags start here-->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="styles/css.css">
+        <!--Link tags end here-->
+        <\/head>
+        <body>
+        <script src="js-dropdown-nav.js"><\/script>
+        <main>
+        <script src="js-header-nav.js"><\/script>
+
+          ${header}
+          
+        <hr class="page-separator"> 
+          ${replacedContent}
+          ${replacedContent1}
+        <\/main>
+        <script src="footer.js"><\/script>
+        <\/body>
+        <\/html>
+        `; 
+        outputTextarea.value = generatedHTML; } 
+        
+        
+        function loadExternalHTML() {
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const externalHTMLContent = event.target.result;
+      const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+      const matches = scriptRegex.exec(externalHTMLContent);
+
+      const setInputValue = (id, value) => {
+        document.getElementById(id).value = value || null;
+      };
+
+      if (matches && matches.length > 1) {
+        const scriptContent = matches[1];
+        const tempScript = document.createElement('script');
+        tempScript.innerHTML = scriptContent;
+        document.body.appendChild(tempScript);
+
+        setInputValue('pageTitle', window.pageTitle);
+        setInputValue('pageDescription', window.pageDescription);
+        setInputValue('pageURL', window.pageURL);
+        setInputValue('pageImage', window.pageImage);
+        setInputValue('pageContent', window.pageContent);
+        setInputValue('pageName', window.pageName);
+
+        document.body.removeChild(tempScript);
+      } else {
+        // If no script content found, set inputs to default values (null)
+        setInputValue('pageTitle');
+        setInputValue('pageDescription');
+        setInputValue('pageURL');
+        setInputValue('pageImage');
+        setInputValue('pageContent');
+        setInputValue('pageName');
+      }
+    };
+
+    reader.readAsText(file);
+  }
+}
+        
+        function downloadGeneratedHTML() {
+          const pageName = document.getElementById('pageName').value || 'defaultPage';
+          const generatedHTML = outputTextarea.value;
+          const blob = new Blob([generatedHTML], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${pageName}.html`;
+          a.setAttribute('force-download', ''); // This attribute ensures file replacement
+          a.click();
+        
+          // Clean up the URL object
+          URL.revokeObjectURL(url);
+        }
+        
+        document.getElementById("generateBtn").addEventListener("click", function() {
+              const htmlCode = document.getElementById("output").value;
+              const preview = document.getElementById("preview");
+              preview.innerHTML = htmlCode;
+          });
+        
+        
+          function bulletedList(inputText) {
+            const lines = inputText.split('\n');
+        let output = '';
+        let currentListDepth = 0;
+        let isInList = false;
+        
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (trimmedLine === '{*}') {
+              if (isInList) {
+                  output += '</ul>\n';
+                  isInList = false;
+              }
+              output += '<ul>\n';
+              currentListDepth = 0;
+              isInList = true;
+          } else if (trimmedLine === '{\/*}') {
+              if (isInList) {
+                  output += '</ul>\n';
+                  isInList = false;
+              }
+          } else if (trimmedLine === '{#}') {
+              if (isInList) {
+                  output += '</ol>\n';
+                  isInList = false;
+              }
+              output += '<ol>\n';
+              currentListDepth = 0;
+              isInList = true;
+          } else if (trimmedLine === '{\/#}') {
+              if (isInList) {
+                  output += '</ol>\n';
+                  isInList = false;
+              }
+          } else {
+              if (isInList) {
+                  if (trimmedLine.startsWith('{\/#}')) {
+                      const listItem = trimmedLine.substring(4).trim();
+                      output += `<li>${listItem}</li>\n`;
+                  } else if (trimmedLine.startsWith('{\/*}')) {
+                      output += '<ul>\n';
+                      isInList = true;
+                  } else {
+                      const listItem = trimmedLine.substring(trimmedLine.search(/\S/)).trim();
+                      output += `<li>${listItem}</li>\n`;
+                  }
+              } else {
+                  output += `${trimmedLine}\n`;
+              }
+          }
+        }
+        
+        // Close any remaining open list
+        if (isInList) {
+          if (currentListDepth === 0) {
+              output += '</ul>\n';
+          } else {
+              output += '</ol>\n';
+          }
+        }
+        
+        return output;
+        }
+        
+        
+        function boldAndItalic(inputText) {
+        let output = inputText.replace(/\{b\}\s*(.*?)\s*\{\/b\}/g, '<b>$1</b>');
+        output = output.replace(/\{i\}\s*(.*?)\s*\{\/i\}/g, '<i>$1</i>');
+        return output;
+        }
+        
+        function InfoboxEpisode(text) {
+          const regex = /\{episode\}([\s\S]*?)\{\/episode\}/;
+          const imageURL = [];
+
+const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+
+let match;
+while ((match = galleryPattern.exec(text)) !== null) {
+  const galleryContent = match[1];
+  let itemMatch;
+  while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+    const url = itemMatch[1].trim();
+    const alt = itemMatch[2] ? itemMatch[2].trim() : "";
+    imageURL.push(url);
+  }
+}
+    
+    const generatedText = text.replace(regex, (match, content) => {
+        const episodeLines = content.trim().split('\n');
+        var [
+            episodeTitle, imgSrc, seasonNum, episodeNum,
+            nativeTitle, airDate, viewers, writer, director,
+            previousEp, nextEp
+        ] = episodeLines.map(value => (value === "-" ? "" : value.trim()));
+        const infoboxEpisodeSlider = imageURL.indexOf(imgSrc) + 1;
+        if (!episodeTitle) episodeTitle = pageTitle;
+        if (!previousEp) previousEp = "<i>არ არის<\/i>";
+        if (!nextEp) nextEp = "<i>არ არის<\/i>";
+
+        return `
+            <aside class="infobox-episode">
+                <h2 class="infobox-title">${episodeTitle}</h2>
+                ${imgSrc ? `<img src="images/resized/800px/${imgSrc}" onclick="openModal();currentSlide(${infoboxEpisodeSlider});scrollthebar()">` : ''}
+                <h2 class="infobox-subtitle">ეპიზოდის ინფორმაცია</h2>
+                <section>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="Season_${seasonNum}.html" title="სეზონი ${seasonNum}">სეზონი ${seasonNum}</a>
+                                </td>
+                                <td>ეპიზოდი ${episodeNum}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    ${nativeTitle ? `
+                    <div class="infobox-item">
+                        <h3>მშობლიური სახელი:</h3>
+                        <div class="infobox-value">"${nativeTitle}"</div>
+                    </div>
+                    ` : ''}
+                    ${airDate ? `
+                    <div class="infobox-item">
+                        <h3>გამოსვლის თარიღი:</h3>
+                        <div class="infobox-value">${airDate}</div>
+                    </div>
+                    ` : ''}
+                    ${viewers ? `
+                    <div class="infobox-item">
+                        <h3>მაყურებელი:</h3>
+                        <div class="infobox-value">${viewers} მლნ</div>
+                    </div>
+                    ` : ''}
+                    ${writer ? `
+                    <div class="infobox-item">
+                        <h3>სცენარი:</h3>
+                        <div class="infobox-value">${writer}</div>
+                    </div>
+                    ` : ''}
+                    ${director ? `
+                    <div class="infobox-item">
+                        <h3>რეჟისორი:</h3>
+                        <div class="infobox-value">${director}</div>
+                    </div>
+                    ` : ''}
+                    <h2 class="infobox-subtitle">
+                        <a href="Category-Episodes.html">ეპიზოდების ქრონოლოგია</a>
+                    </h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>← წინა</th>
+                                <th>შემდეგი →</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    „${previousEp}“
+                                </td>
+                                <td>„${nextEp}“</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </aside>
+        `;
+    });
+        
+        return generatedText;
+        }
+
+        function templateGallery(text) {
+    const galleryRegex = /\{gallery(\d+)\}([\s\S]*?)\{\/gallery\1\}/g;
+
+    const processedText = text.replace(galleryRegex, (match, galleryNumber, content) => {
+        const galleryLines = content.trim().split('\n');
+        let output = '<div id="GalleryRow">';
+        const startSlideNumber = (galleryNumber === '1') ? 0 : countSlidesBeforeGallery(text, galleryNumber);
+
+        for (let i = 0; i < galleryLines.length; i++) {
+            const [imgSrc, imgAlt] = galleryLines[i].split('|').map(value => value.trim());
+
+            if (imgSrc) {
+                output += `
+                    <div class="GalleryColumn">
+                        <img src="images/resized/800px/${imgSrc}" style="width:100%"
+                            onclick="openModal();currentSlide(${startSlideNumber + i + 1});scrollthebar()"
+                            class="hover-shadow cursor" alt="${imgAlt}">
+                    </div>`;
+            }
+        }
+
+        output += '</div>';
+        return output;
+    });
+
+    return processedText;
+}
+
+function templateYouTubeGallery(text) {
+      function countMediaItems(text) {
+        const imageURL = [];
+  const imageALT = [];
+  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
+  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
+  const text1 = text.toString()
+  let galleryLines = 0;
+  let ytgalleryLines = 0;
+  let figureCount = 0;
+  
+  text1.replace(galleryPattern, (match, galleryContent) => {
+    const itemMatches = galleryContent.match(itemPattern);
+    if (itemMatches) {
+      galleryLines += itemMatches.length;
+    }
+    return match; // Return the full match to maintain the global match
+  });
+
+while (figurePattern.exec(text1) !== null) {
+  figureCount++;
+}
+text1.replace(ytgalleryPattern, (match, galleryContent) => {
+  const itemMatches = galleryContent.match(itemPattern);
+  if (itemMatches) {
+    ytgalleryLines += itemMatches.length;
+  }
+  return match; // Return the full match to maintain the global match
+});
+
+
+console.log("Amount of gallery items:", galleryLines);
+console.log("Amount of youtube gallery items:", ytgalleryLines);
+console.log("Amount of figures:", figureCount);
+  while ((match = galleryPattern.exec(text1)) !== null) {
+    const galleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  while ((match = figurePattern.exec(text1)) !== null) {
+    const figureContent = match[2].trim().split('\n').map(line => line.trim());
+    const imageUrl = figureContent[0];
+    const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
+
+    if (!imageURL.includes(imageUrl)) {
+      imageURL.push(imageUrl);
+      imageALT.push(caption);
+    } else if (caption.trim() !== "" && imageALT[imageURL.indexOf(imageUrl)].trim() === " ") {
+      imageALT[imageURL.indexOf(imageUrl)] = caption;
+    }
+  }
+  let galleryAndfigureLines = imageURL.length;
+  console.log("Amount of different images and figures:", galleryAndfigureLines);
+
+
+  while ((match = ytgalleryPattern.exec(text1)) !== null) {
+    const ytgalleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+  return {
+  galleryAndfigureLines,
+  galleryLines,
+  ytgalleryLines,
+  figureCount
+}
+      }    
+      const result = countMediaItems(pageContent);
+
+      const galleryAndfigureLines = result.galleryAndfigureLines;
+      const galleryLines = result.galleryLines;
+      const ytgalleryLines = result.ytgalleryLines
+      const figureCount = result.figureCount
+
+    const galleryRegex = /\{ytgallery(\d+)\}([\s\S]*?)\{\/ytgallery\1\}/g;
+
+    const processedText = text.replace(galleryRegex, (match, galleryNumber, content) => {
+        const galleryLines = content.trim().split('\n');
+        let output = '<div id="GalleryRow">';
+        const startSlideNumber = (galleryNumber === galleryAndfigureLines) ? 0 : countSlidesBeforeGallery(text, galleryNumber);
+
+        for (let i = 0; i < ytgalleryLines; i++) {
+            const [imgSrc, imgAlt] = galleryLines[i].split('|').map(value => value.trim());
+
+            if (imgSrc) {
+                // Check if it's a YouTube link
+                if (imgSrc.includes("youtube.com") || imgSrc.includes("youtu.be")) {
+                    // Get the YouTube video thumbnail URL
+                    const imgLink = getYouTubeThumbnail(imgSrc);
+                    
+                    if (imgLink) {
+                  console.log("galleryAndfigureLines = ", galleryAndfigureLines)
+
+                        output += `
+                        <div class="wikia-gallery-item">
+ <div class="thumb">
+  <div class="gallery-image-wrapper accent" id="${imgAlt}" style="position: relative;">
+   <a class="image lightbox video video-thumbnail xsmall" onclick="openModal();currentSlide(${galleryAndfigureLines + i + 1});scrollthebar()" title="${imgAlt}">
+    <span class="thumbnail-play-icon-container">
+     <svg class="thumbnail-play-icon">
+      <use xlink:href="#wds-player-icon-play"></use>
+     </svg>
+    </span>
+    <noscript>
+     <img style="" src="${imgLink}" title="${imgAlt}">
+    </noscript>
+    <img style="" src="${imgLink}" title="${imgAlt}" alt="${imgAlt}"  onclick="openModal();currentSlide(${galleryAndfigureLines + i + 1});scrollthebar()" class="hover-shadow cursor" alt="${imgAlt}">
+   </a>
+  </div>
+ </div>
+ <div class="title">${imgAlt}</div>
+</div>
+                        `
+                    }
+                } else {
+                    // Handle non-YouTube images (if needed)
+                }
+            }
+        }
+
+        output += '</div>';
+        return output;
+    });
+
+    return processedText;
+}
+
+function getYouTubeThumbnail(link) {
+  // Regular expression to match YouTube video IDs in various URL formats
+  var regExp = /^(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/|youtu\.be\/|\/)([a-zA-Z0-9_-]+)/;
+  
+  var match = link.match(regExp);
+  
+  if (match && match[1]) {
+    // Extract the video ID
+    var videoId = match[1];
+    
+    // Construct the thumbnail URL
+    var thumbnailUrl = "https://img.youtube.com/vi/" + videoId + "/hqdefault.jpg";
+    
+    return thumbnailUrl;
+  } else {
+    return null; // Invalid YouTube link
+  }
+}
+
+// Example usage:
+var youtubeLink = "https://www.youtube.com/watch?v=VIDEO_ID_HERE";
+var thumbnailUrl = getYouTubeThumbnail(youtubeLink);
+
+if (thumbnailUrl) {
+  console.log("Thumbnail URL:", thumbnailUrl);
+} else {
+  console.log("Invalid YouTube link.");
+}
+
+
+// GOOD CODE!!!
+
+
+
+
+
+
+// function generateGalleryModal(text) {
+// const galleries = text.match(/{gallery\d+}([\s\S]*?){\/gallery\d+}/g);
+
+//   if (!galleries) {
+//     return null;
+//   }
+
+//   let convertedHTML = `<div id="GalleryModal" style="display: none;">
+//     <span class="GalleryClose cursor" onclick="closeModal()" acceskey="esc">✕</span>
+//     <div class="modal-content">`;
+
+//   let totalImageCount = 0;
+
+//   galleries.forEach((gallery, index) => {
+//     const imagesWithCaptions = gallery.match(/(.+?)\|([^\n]*)/g);
+
+//     if (!imagesWithCaptions) {
+//       return;
+//     }
+
+//     const galleryNumber = index + 1;
+//     const galleryID = `Gallery${galleryNumber}`;
+//     const gallerySlideHTML = imagesWithCaptions.map((imgCaption, imgIndex) => {
+//       totalImageCount++;
+//       const [imageName, caption] = imgCaption.split('|');
+//       return `<div class="GallerySlides" style="display: none;">
+//         <div class="Gallerynumbertext">${imgIndex + 1}/${imagesWithCaptions.length}</div>
+//         <div class="Galleryviewfullimage">
+//           <a href="images/${encodeURIComponent(imageName.trim())}" target="_blank">ნახვა</a> |
+//           <a href="images/${encodeURIComponent(imageName.trim())}" download="">გადმოწერა</a>
+//         </div>
+//         <img src="images/resized/800px/${encodeURIComponent(imageName.trim())}">
+//       </div>`;
+//     }).join('');
+
+//     convertedHTML += gallerySlideHTML;
+
+//     convertedHTML += `
+//       <div class="gallery-caption">
+//         ${imagesWithCaptions.map((imgCaption, imgIndex) => {
+//           const [, caption] = imgCaption.split('|');
+//           return caption.trim() ? `<p id="${galleryID}Caption"></p>` : '';
+//         }).join('')}
+//       </div>
+//       <div class="scrollablegallerylist">
+//         ${imagesWithCaptions.map((imgCaption, imgIndex) => {
+//           totalImageCount++;
+//           const [imageName, caption] = imgCaption.split('|');
+//           return `<div class="GalleryColumn1" id="galleryitem-${imgIndex + 1}">
+//             <img class="${galleryID}Demo cursor" src="images/resized/800px/${encodeURIComponent(imageName.trim())}" style="width:auto"
+//               onclick="currentSlide(${imgIndex + 1})" alt="${caption}">
+//           </div>`;
+//         }).join('')}
+//       </div>`;
+//   });
+
+//   convertedHTML += `
+//     <a class="prev" onclick="plusSlides(-1);scrollthebar()">❮</a>
+//     <a class="next" onclick="plusSlides(1);scrollthebar()">❯</a>
+//     </div>
+//   </div>`;
+
+//   convertedHTML += `<script>
+//             function openModal() {
+//     document.getElementById("GalleryModal").style.display = "block";
+//     var k = document.getElementsByTagName("BODY")[0];
+//     k.style.overflow = "hidden";
+//   }
+//   function closeModal() {
+//     document.getElementById("GalleryModal").style.display = "none";
+//     var k = document.getElementsByTagName("BODY")[0];
+//     k.style.overflow = "visible";
+//   }
+  
+//   var slideIndex = 1;
+//   showSlides(slideIndex);
+  
+//   function plusSlides(n) {
+//     showSlides(slideIndex += n);
+//   }
+  
+//   function scrollthebar() {
+//     window.location.href = "#galleryitem-" + slideIndex;
+//   }
+  
+//   function currentSlide(n) {
+//     showSlides(slideIndex = n);
+//   }
+  
+//   function showSlides(n) {
+//     var i;
+//     var slides = document.getElementsByClassName("GallerySlides");
+//     var dots = document.getElementsByClassName("Gallery1Demo");
+//     var Gallery1CaptionText = document.getElementById("Gallery1Caption");
+//     if (n > slides.length) {
+//       slideIndex = 1
+//     }
+//     if (n < 1) {
+//       slideIndex = slides.length
+//     }
+//     for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//     }
+//     for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//     }
+//     slides[slideIndex - 1].style.display = "block";
+//     dots[slideIndex - 1].className += " active";
+//     Gallery1CaptionText.innerHTML = dots[slideIndex - 1].alt;
+//   }
+//   document.addEventListener('keydown', function(event) {
+//     if (event.key === "Escape") {
+//       closeModal()
+//     }
+//   });
+
+
+//   var startX;
+// 	var startY;
+
+// 		// Add touchstart event listener to element
+// 		document.getElementById("GalleryModal").addEventListener("touchstart", function(event) {
+// 			// Get starting coordinates
+// 			startX = event.touches[0].clientX;
+// 			startY = event.touches[0].clientY;
+// 		});
+
+// 		// Add touchend event listener to element
+// 		document.getElementById("GalleryModal").addEventListener("touchend", function(event) {
+// 			// Get ending coordinates
+// 			var endX = event.changedTouches[0].clientX;
+// 			var endY = event.changedTouches[0].clientY;
+
+// 			// Calculate distance and direction
+// 			var distanceX = endX - startX;
+// 			var distanceY = endY - startY;
+// 			var direction;
+
+// 			if (Math.abs(distanceX) > Math.abs(distanceY)) {
+// 				direction = (distanceX > 0) ? "right" : "left";
+// 			} else {
+// 				direction = (distanceY > 0) ? "down" : "up";
+// 			}
+
+// 			// Run appropriate function based on direction of swipe
+// 			if (direction === "right") {
+// 				// Run function for right swipe
+// 				plusSlides(-1);
+//         scrollthebar();
+// 			} else if (direction === "left") {
+// 				// Run function for left swipe
+// 				plusSlides(1);
+//         scrollthebar();
+// 			}
+// 		});
+
+
+    
+//     // Add keydown event listener to document
+// 		document.addEventListener("keydown", function(event) {
+// 			// Check if pressed key is left or right arrow
+// 			if (event.keyCode === 37) {
+// 				// Run function for left arrow press
+// 				leftArrowFunction();
+// 			} else if (event.keyCode === 39) {
+// 				// Run function for right arrow press
+// 				rightArrowFunction();
+// 			}
+// 		});
+
+// 		// Define functions to run on left and right arrow press
+// 		function leftArrowFunction() {
+// 			plusSlides(-1);
+//         scrollthebar();
+// 			// Add your code for left arrow press here
+// 		}
+
+// 		function rightArrowFunction() {
+// 			plusSlides(1);
+//         scrollthebar();
+// 			// Add your code for right arrow press here
+// 		}
+//             <\/script>`;
+
+//   return convertedHTML;
+//   const generatedGalleryModal = generateGalleryModal(text);
+// document.getElementById("galleryModal").innerHTML = generatedGalleryModal;
+// }
+
+
+
+
+
+// GOOD CODE!!!
+function countMediaItems(text) {
+  const imageURL = [];
+  const imageALT = [];
+  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
+  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
+
+  let galleryLines = 0;
+  let ytgalleryLines = 0;
+  let figureCount = 0;
+  
+  text.replace(galleryPattern, (match, galleryContent) => {
+    const itemMatches = galleryContent.match(itemPattern);
+    if (itemMatches) {
+      galleryLines += itemMatches.length;
+    }
+    return match; // Return the full match to maintain the global match
+  });
+
+while (figurePattern.exec(text) !== null) {
+  figureCount++;
+}
+text.replace(ytgalleryPattern, (match, galleryContent) => {
+  const itemMatches = galleryContent.match(itemPattern);
+  if (itemMatches) {
+    ytgalleryLines += itemMatches.length;
+  }
+  return match; // Return the full match to maintain the global match
+});
+
+
+console.log("Amount of gallery items:", galleryLines);
+console.log("Amount of youtube gallery items:", ytgalleryLines);
+console.log("Amount of figures:", figureCount);
+  while ((match = galleryPattern.exec(text)) !== null) {
+    const galleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  while ((match = figurePattern.exec(text)) !== null) {
+    const figureContent = match[2].trim().split('\n').map(line => line.trim());
+    const imageUrl = figureContent[0];
+    const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
+
+    if (!imageURL.includes(imageUrl)) {
+      imageURL.push(imageUrl);
+      imageALT.push(caption);
+    } else if (caption.trim() !== "" && imageALT[imageURL.indexOf(imageUrl)].trim() === " ") {
+      imageALT[imageURL.indexOf(imageUrl)] = caption;
+    }
+  }
+  let galleryAndfigureLines = imageURL.length;
+  console.log("Amount of different images and figures:", galleryAndfigureLines);
+
+
+  while ((match = ytgalleryPattern.exec(text)) !== null) {
+    const ytgalleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  console.log("After running gallery, figure and ytgallery", imageURL);
+return {
+  galleryAndfigureLines,
+  galleryLines,
+  ytgalleryLines,
+  figureCount
+}
+}
+
+function generateGalleryModal(text) {
+  const imageURL = [];
+  const imageALT = [];
+  const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+  const ytgalleryPattern = /\{ytgallery\d+\}([\s\S]*?)\{\/ytgallery\d+\}/g;
+  const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+  const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\d+\}/g;
+
+  let galleryLines = 0;
+  let ytgalleryLines = 0;
+  let figureCount = 0;
+  
+  text.replace(galleryPattern, (match, galleryContent) => {
+    const itemMatches = galleryContent.match(itemPattern);
+    if (itemMatches) {
+      galleryLines += itemMatches.length;
+    }
+    return match; // Return the full match to maintain the global match
+  });
+
+while (figurePattern.exec(text) !== null) {
+  figureCount++;
+}
+text.replace(ytgalleryPattern, (match, galleryContent) => {
+  const itemMatches = galleryContent.match(itemPattern);
+  if (itemMatches) {
+    ytgalleryLines += itemMatches.length;
+  }
+  return match; // Return the full match to maintain the global match
+});
+
+
+console.log("Amount of gallery items:", galleryLines);
+console.log("Amount of youtube gallery items:", ytgalleryLines);
+console.log("Amount of figures:", figureCount);
+  while ((match = galleryPattern.exec(text)) !== null) {
+    const galleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  while ((match = figurePattern.exec(text)) !== null) {
+    const figureContent = match[2].trim().split('\n').map(line => line.trim());
+    const imageUrl = figureContent[0];
+    const caption = figureContent[3] && figureContent[3] !== '-' ? figureContent[3] : " ";
+
+    if (!imageURL.includes(imageUrl)) {
+      imageURL.push(imageUrl);
+      imageALT.push(caption);
+    } else if (caption.trim() !== "" && imageALT[imageURL.indexOf(imageUrl)].trim() === " ") {
+      imageALT[imageURL.indexOf(imageUrl)] = caption;
+    }
+  }
+  let galleryAndfigureLines = imageURL.length;
+  console.log("Amount of different images and figures:", galleryAndfigureLines);
+
+
+  while ((match = ytgalleryPattern.exec(text)) !== null) {
+    const ytgalleryContent = match[1];
+    while ((itemMatch = itemPattern.exec(ytgalleryContent)) !== null) {
+      const [url, alt = ""] = itemMatch.slice(1).map((str) => str.trim());
+      if (!imageURL.includes(url)) {
+        imageURL.push(url);
+        imageALT.push(alt);
+      }
+    }
+  }
+
+  console.log("After running gallery, figure and ytgallery", imageURL);
+
+  let galleryHTML = `
+    <div id="GalleryModal" style="display: none;">
+      <span class="GalleryClose cursor" onclick="closeModal();pauseYouTubeVideo();" accesskey="esc">✕</span>
+      <div class="modal-content">
+  `;
+
+  for (let i = 0; i < galleryAndfigureLines; i++) {
+    galleryHTML += `
+      <div class="GallerySlides" style="display: none;">
+        <div class="Gallerynumbertext">${i + 1}/${galleryAndfigureLines + ytgalleryLines}</div>
+        <div class="Galleryviewfullimage">
+          <a href="images/${imageURL[i]}" target="_blank">ნახვა</a> |
+          <a href="images/${imageURL[i]}" download="">გადმოწერა</a>
+        </div>
+        <img src="images/resized/800px/${imageURL[i]}">
+      </div>
+    `;
+  }
+  for (let i = galleryAndfigureLines; i < galleryAndfigureLines + ytgalleryLines; i++) {
+    console.log("numberings: ", i);
+    console.log("image urls: ", imageURL[i]);
+    const videoIdMatch = imageURL[i].match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+const videoId = videoIdMatch[1];
+
+  // Now, you can use videoId to construct the iframe source URL
+  const iframeSrc = `https://www.youtube.com/embed/${videoId}`;
+  
+  // Use the iframeSrc variable in your HTML
+  const iframeHTML = `
+    <iframe id="youtube_video" src="${iframeSrc}?enablejsapi=1" allowfullscreen="1" frameborder="0"></iframe>`
+
+    galleryHTML += `
+    <div class="GallerySlides" style="display: none;">
+        <div class="Gallerynumbertext">${i + 1}/${galleryAndfigureLines + ytgalleryLines}</div>
+        <div class="Galleryviewfullimage">
+          <a href="${imageURL[i]}" target="_blank">ნახვა</a> |
+          <a style="color:gray">გადმოწერა</a>
+        </div>
+        ${iframeHTML}
+      </div>
+    `;
+  }
+
+  galleryHTML += `
+    <a class="prev" onclick="plusSlides(-1);scrollthebar();pauseYouTubeVideo()">❮</a>
+    <a class="next" onclick="plusSlides(1);scrollthebar();pauseYouTubeVideo()">❯</a>
+    <div class="gallery-caption">
+      <p id="Gallery1Caption"></p>
+    </div>
+    <div class="scrollablegallerylist">
+  `;
+
+  for (let i = 0; i < galleryAndfigureLines; i++) {
+    galleryHTML += `
+      <div class="GalleryColumn1" id="galleryitem-${i + 1}">
+        <img class="Gallery1Demo cursor" src="images/resized/800px/${imageURL[i]}" style="width:auto" onclick="currentSlide(${i + 1});pauseYouTubeVideo()" alt="${imageALT[i]}">
+      </div>
+    `;
+  }
+  for (let i = galleryAndfigureLines; i < galleryAndfigureLines + ytgalleryLines; i++) {
+    const videoIdMatch = imageURL[i].match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+const videoId = videoIdMatch[1];
+    galleryHTML += `
+      <div class="GalleryColumn1" id="galleryitem-${i + 1}">
+        <img class="Gallery1Demo cursor" src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" style="width:auto" onclick="currentSlide(${i + 1});pauseYouTubeVideo()" alt="${imageALT[i]}">
+      </div>
+    `;
+  }
+
+  galleryHTML += `
+      </div>
+    </div>
+  </div>
+  `;
+
+  galleryHTML += `<script>
+            function openModal() {
+    document.getElementById("GalleryModal").style.display = "block";
+    var k = document.getElementsByTagName("BODY")[0];
+    k.style.overflow = "hidden";
+  }
+  function closeModal() {
+    document.getElementById("GalleryModal").style.display = "none";
+    var k = document.getElementsByTagName("BODY")[0];
+    k.style.overflow = "visible";
+  }
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+    pauseYouTubeVideo()
+  }
+  
+  function scrollthebar() {
+    window.location.href = "#galleryitem-" + slideIndex;
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+    pauseYouTubeVideo();
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("GallerySlides");
+    var dots = document.getElementsByClassName("Gallery1Demo");
+    var Gallery1CaptionText = document.getElementById("Gallery1Caption");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+      slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    Gallery1CaptionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+      pauseYouTubeVideo();
+    }
+  });
+
+
+  var startX;
+	var startY;
+
+		// Add touchstart event listener to element
+		document.getElementById("GalleryModal").addEventListener("touchstart", function(event) {
+			// Get starting coordinates
+			startX = event.touches[0].clientX;
+			startY = event.touches[0].clientY;
+		});
+
+		// Add touchend event listener to element
+		document.getElementById("GalleryModal").addEventListener("touchend", function(event) {
+			// Get ending coordinates
+			var endX = event.changedTouches[0].clientX;
+			var endY = event.changedTouches[0].clientY;
+
+			// Calculate distance and direction
+			var distanceX = endX - startX;
+			var distanceY = endY - startY;
+			var direction;
+
+			if (Math.abs(distanceX) > Math.abs(distanceY)) {
+				direction = (distanceX > 0) ? "right" : "left";
+			} else {
+				direction = (distanceY > 0) ? "down" : "up";
+			}
+
+			// Run appropriate function based on direction of swipe
+			if (direction === "right") {
+				// Run function for right swipe
+				plusSlides(-1);
+        scrollthebar();
+			} else if (direction === "left") {
+				// Run function for left swipe
+				plusSlides(1);
+        scrollthebar();
+			}
+		});
+
+
+    
+    // Add keydown event listener to document
+		document.addEventListener("keydown", function(event) {
+			// Check if pressed key is left or right arrow
+			if (event.keyCode === 37) {
+				// Run function for left arrow press
+				leftArrowFunction();
+			} else if (event.keyCode === 39) {
+				// Run function for right arrow press
+				rightArrowFunction();
+			}
+		});
+
+		// Define functions to run on left and right arrow press
+		function leftArrowFunction() {
+			plusSlides(-1);
+        scrollthebar();
+			// Add your code for left arrow press here
+		}
+
+		function rightArrowFunction() {
+			plusSlides(1);
+        scrollthebar();
+			// Add your code for right arrow press here
+		}
+            <\/script>`;
+
+  return galleryHTML;
+  const generatedGalleryModal = generateGalleryModal(text);
+document.getElementById("galleryModal").innerHTML = generatedGalleryModal;
+}
+
+
+
+
+
+
+
+function countSlidesBeforeGallery(text, galleryNumber) {
+    const regex = /\{gallery(\d+)\}([\s\S]*?)\{\/gallery\1\}/g;
+    const modalRegex = /\{modal\}([\s\S]*?)\{\/modal\}/g;
+    let count = 0;
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+        const currentGalleryNumber = match[1];
+        if (parseInt(currentGalleryNumber) < parseInt(galleryNumber)) {
+            const galleryContent = match[2];
+            const galleryLines = galleryContent.trim().split('\n');
+            count += galleryLines.filter(line => line.split('|')[0].trim() !== '').length;
+        } else {
+            break;
+        }
+    }
+
+    return count;
+}          
+
+
+function convertFigures(input) {
+    const imageURL = [];
+const imageALT = [];
+
+const galleryPattern = /\{gallery\d+\}([\s\S]*?)\{\/gallery\d+\}/g;
+const itemPattern = /([^|\r\n]+)(?:\|([^|\r\n]*))?/g;
+
+let match;
+while ((match = galleryPattern.exec(input)) !== null) {
+  const galleryContent = match[1];
+  let itemMatch;
+  while ((itemMatch = itemPattern.exec(galleryContent)) !== null) {
+    const url = itemMatch[1].trim();
+    const alt = itemMatch[2] ? itemMatch[2].trim() : "";
+
+    // Check if the URL is already in the list
+    if (!imageURL.includes(url)) {
+      imageURL.push(url);
+      imageALT.push(alt);
+    }
+  }
+}
+
+const figurePattern = /\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g;
+
+while ((match = figurePattern.exec(input)) !== null) {
+  const figureNumber = match[1];
+  const figureContent = match[2];
+  let lines = figureContent.trim().split('\n');
+  let imageUrl = lines[0].trim();
+  let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== null) ? lines[3].trim() : " ";
+
+  // Check if the URL is already in the list
+  if (!imageURL.includes(imageUrl)) {
+    imageURL.push(imageUrl);
+    imageALT.push(caption);
+  }
+}
+
+  return input.replace(/\{figure(\d+)\}([\s\S]*?)\{\/figure\1\}/g, (match, number, figureContent) => {
+    let lines = figureContent.trim().split('\n');
+    let imgUrl = lines[0].trim();
+    let float = (lines[1] && lines[1].trim() === 'right') ? 'right' : 'left';
+    let width = (lines[2] && lines[2].trim() !== '-') ? lines[2].trim() : '185px';
+    let caption = (lines[3] && lines[3].trim() !== '-' && lines[3].trim() !== '') ? lines[3].trim() : '';
+    const figureSlider = imageURL.indexOf(imgUrl) + 1;
+    let figureOutput = `
+    <figure style="float:${float}; width:calc(${width} + 20px);">
+  <img src="images/resized/800px/${imgUrl}" alt="${caption}" style="width:${width};" onclick="openModal();currentSlide(${figureSlider});scrollthebar();pauseYouTubeVideo()">
+`;
+
+    if (caption !== '') {
+      figureOutput += `  <figcaption>${caption}.</figcaption>`;
+    }
+
+    figureOutput += `
+</figure>
+`;
+
+    return figureOutput;
+  });
+}
+
+function tableOfContents(input) {
+  var pattern = /\{script\}([\s\S]*?)\{\/script\}\s*\{scriptsrc\}([\s\S]*?)\{\/scriptsrc\}/;
+  var match = input.match(pattern);
+  
+  if (match) {
+    var scriptContent = match[1].trim();
+    var scriptSrcContent = match[2].trim();
+    
+    // Transform variables into the desired format
+    var transformedScriptContent = scriptContent.replace(/([^=\r\n]+)\s*=\s*(.*?)(?=\r?\n|$)/g, "var $1 = '$2';");
+    
+    var replacementCode = `
+<script>
+${transformedScriptContent}
+<\/script>
+<script src="${scriptSrcContent}"><\/script>
+`;
+    
+    var output = input.replace(pattern, replacementCode);
+    
+    // Replace the remaining tags with corresponding HTML tags
+    output = output.replace(/\{script\}/g, '<script>');
+    output = output.replace(/\{\/script\}/g, '<' + '/script>');
+    output = output.replace(/\{scriptsrc\}/g, '<script src="');
+    output = output.replace(/\{\/scriptsrc\}/g, '"><' + '/script>');
+    
+    return output;
+  } else {
+    return input;
+  }
+}
+
+
+
+      </script>
+    </main>
+    <script src="footer.js"></script>
+  </body>
+</html>

@@ -366,6 +366,12 @@ background-color: #f8f8f8;
   a.red-link:link {
     color: #bf0017 !important; /* set the color of nonexistent links to red */
   }
+  /* a:link:hover {
+    color: #c0e1eb;
+  }
+  a:hover {
+    color: #c0e1eb;
+  } */
 
   main>figure {
     margin-left: auto;
