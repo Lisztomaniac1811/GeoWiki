@@ -401,3 +401,60 @@ background-color: #f8f8f8;
     display: block;
     margin-top: 10px;
 }
+
+@keyframes blink {
+    78% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    79%{
+       color: #333;
+    }
+    80% {
+      
+      text-shadow: none;
+    }
+    81% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    82% {
+      color: #333;
+      text-shadow: none;
+    }
+    83% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+    92% {
+      color: #333;
+      text-shadow: none;
+    }
+    92.5% {
+      color: inherit;
+      text-shadow: inherit;
+    }
+  }
+
+  .wiki-page-title-header {
+    text-shadow: 0 0 10px #7bc0d5, 0 0 20px #7bc0d5, 0 0 30px #7bc0d5, 0 0 40px #7bc0d5;
+            /* animation: neon-blink 6s infinite; */
+  }
+  .wiki-page-title-header span{
+    animation: blink linear infinite 2s;
+  }
+  .wiki-page-title-header span:nth-of-type(2){
+    animation: blink linear infinite 3s;
+  }
+
+  @keyframes neon-blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

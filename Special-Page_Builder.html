@@ -122,7 +122,10 @@
         var replacedContent = templateGallery(replacedContent);
         var replacedContent = tableOfContents(replacedContent);
         var replacedContent = templateYouTubeGallery(replacedContent);
+        var neonHeader1 = neonHeader(pageTitle)
         const pageName = document.getElementById('pageName').value;
+        
+        
         const generatedHTML = `<!DOCTYPE html>
         <html lang="${WikiLanguage}">
         <head>
@@ -167,7 +170,7 @@
         <main>
         <script src="js-header-nav.js"><\/script>
         <div class="wiki-page-title-header">    
-          <h1>${pageTitle}</h1>    <hr class="page-separator">    <\/div>
+          <h1>${neonHeader1}</h1>    <hr class="page-separator">    <\/div>
           ${replacedContent}
           ${replacedContent1}
         <\/main>
@@ -1300,6 +1303,37 @@ ${transformedScriptContent}
   } else {
     return input;
   }
+}
+
+
+function neonHeader(pageTitle) {
+ // Split the input text into words
+ const words = pageTitle.split(/\s+/);
+
+// Function to wrap a letter in a <span> tag
+function wrapInSpan(letter) {
+  return `<span>${letter}</span>`;
+}
+
+// Randomly choose a different letter in each word
+let usedIndices = [];
+const randomizedWords = words.map((word) => {
+  const letters = word.split('');
+  let randomIndex;
+
+  do {
+    randomIndex = Math.floor(Math.random() * letters.length);
+  } while (usedIndices.includes(randomIndex));
+
+  usedIndices.push(randomIndex);
+  letters[randomIndex] = wrapInSpan(letters[randomIndex]);
+  return letters.join('');
+});
+
+// Join the words back together with spaces
+const randomizedTitle = randomizedWords.join(' ');
+
+return randomizedTitle;
 }
 
 

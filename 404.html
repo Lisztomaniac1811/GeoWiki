@@ -92,7 +92,7 @@ ul.errorpage li:not(:first-child)::before {
             }
         }
 
-.caption p {
+.caption {
     font-family: Arial, sans-serif;
             font-size: 26px;
             color: white;
@@ -147,6 +147,54 @@ ul.errorpage li:not(:first-child)::before {
             font-size: 16px; /* Reduce font size for mobile */
         }
     }
+
+    @import url(//fonts.googleapis.com/css?family=Vibur);
+
+/* .caption b{
+  font: 400 19vh "Vibur";
+  color: #fee;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
+} */
+.caption b span{
+  animation: blink linear infinite 2s;
+}
+.caption b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: #333;
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
         </style>
         </head>
         <body>
@@ -159,9 +207,8 @@ ul.errorpage li:not(:first-child)::before {
             </div>
             <div class="content">
                 <div class="caption">
-                    <p>ბოდიშს გიხდით, მაგრამ ეს გვერდი არ არსებობს.</p>
-                </div>
-                <div class="suggested-links">
+                    <p><b>ბ<span>ოდ</span>იშს გი<span>ხ</span>დით, <span>მ</span>აგრა<span>მ</span> ეს გვე<span>რდ</span>ი არ არ<span>სე</span>ბობს.</b></p>
+                </div>                <div class="suggested-links">
                     <p>გადაამოწმეთ მისამართი ან გამოიყენეთ შემდეგი ბმულები:</p>
                     <ul class="errorpage">
     <li><a href="Special-Search.html">ძებნის გვერდი</a></li>

@@ -129,6 +129,7 @@
         </script>
         <script src="js-pack.js"></script>
         <script src="variables.js"></script>
+          <script src="https://www.youtube.com/iframe_api"></script>
         <!--Meta tags start here-->
         <!--General-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -159,7 +160,7 @@
         <main>
         <script src="js-header-nav.js"></script>
         <div class="wiki-page-title-header">    
-          <h1>ნორმან ბეიტსი</h1>    <hr class="page-separator">    </div>
+          <h1>ნ<span>ო</span>რმან ბეი<span>ტ</span>სი</h1>    <hr class="page-separator">    </div>
           <p><b>ნორმან ბეიტსი</b> (ინგლ. <b>Norman Bates</b>) — ჭკვიანი, მგრძნობიარე, ჩუმი, მხიარული, სიმპათიური და მორცხვი ბიჭი, რომელსაც მჭიდრო სიახლოვე აკავშირებდა დედამისთან, <a href="Norma_Bates.html" title="ნორმა ბეიტსი">ნორმასთან</a>.</p>
 
 
@@ -330,11 +331,11 @@
 
           
     <div id="GalleryModal" style="display: none;">
-      <span class="GalleryClose cursor" onclick="closeModal()" acceskey="esc">✕</span>
+      <span class="GalleryClose cursor" onclick="closeModal();pauseYouTubeVideo();" accesskey="esc">✕</span>
       <div class="modal-content">
   
-    <a class="prev" onclick="plusSlides(-1);scrollthebar()">❮</a>
-    <a class="next" onclick="plusSlides(1);scrollthebar()">❯</a>
+    <a class="prev" onclick="plusSlides(-1);scrollthebar();pauseYouTubeVideo()">❮</a>
+    <a class="next" onclick="plusSlides(1);scrollthebar();pauseYouTubeVideo()">❯</a>
     <div class="gallery-caption">
       <p id="Gallery1Caption"></p>
     </div>
@@ -360,6 +361,7 @@
   
   function plusSlides(n) {
     showSlides(slideIndex += n);
+    pauseYouTubeVideo()
   }
   
   function scrollthebar() {
@@ -368,6 +370,7 @@
   
   function currentSlide(n) {
     showSlides(slideIndex = n);
+    pauseYouTubeVideo();
   }
   
   function showSlides(n) {
@@ -393,7 +396,8 @@
   }
   document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") {
-      closeModal()
+      closeModal();
+      pauseYouTubeVideo();
     }
   });
 
