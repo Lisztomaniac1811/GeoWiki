@@ -184,6 +184,29 @@ window.addEventListener('scroll', function() {
 <\/symbol>
 <\/svg>
 `)
+
+function wrapRandomLetterWithSpan(word) {
+  const letters = word.split('');
+  const blinkingIndex = Math.floor(Math.random() * letters.length);
+  const wrappedLetters = letters.map((letter, index) => {
+    if (index === blinkingIndex) {
+      return `<span class="blinking">${letter}</span>`;
+    } else {
+      return letter;
+    }
+  });
+  return wrappedLetters.join('');
+}
+
+// Get all the <h1> elements inside .wiki-page-title-header
+const headerElements = document.querySelectorAll('.wiki-page-title-header h1');
+
+// Wrap one random letter per word with a span and apply blinking
+headerElements.forEach((element) => {
+  const words = element.textContent.split(' ');
+  const wrappedWords = words.map((word) => wrapRandomLetterWithSpan(word));
+  element.innerHTML = wrappedWords.join(' ');
+});
 // const links = document.getElementsByTagName('a');
 // for (let i = 0; i < links.length; i++) {
 //   const link = links[i];

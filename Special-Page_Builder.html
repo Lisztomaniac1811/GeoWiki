@@ -122,7 +122,6 @@
         var replacedContent = templateGallery(replacedContent);
         var replacedContent = tableOfContents(replacedContent);
         var replacedContent = templateYouTubeGallery(replacedContent);
-        var neonHeader1 = neonHeader(pageTitle)
         const pageName = document.getElementById('pageName').value;
         
         
@@ -170,7 +169,7 @@
         <main>
         <script src="js-header-nav.js"><\/script>
         <div class="wiki-page-title-header">    
-          <h1>${neonHeader1}</h1>    <hr class="page-separator">    <\/div>
+          <h1>${pageTitle}</h1>    <hr class="page-separator">    <\/div>
           ${replacedContent}
           ${replacedContent1}
         <\/main>
