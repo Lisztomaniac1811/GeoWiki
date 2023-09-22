@@ -1,80 +1,2142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blinking Letters Example</title>
-  <link rel="stylesheet" href="styles/css.css">
-  <style>
-    .wiki-page-title-header .blinking {
-      animation: neon-blink linear infinite 2s;
-    }
-
-    @keyframes neon-blink {
-      78% {
-      color: inherit;
-      text-shadow: inherit;
-    }
-    79%{
-       color: #333;
-    }
-    80% {
-      
-      text-shadow: none;
-    }
-    81% {
-      color: inherit;
-      text-shadow: inherit;
-    }
-    82% {
-      color: #333;
-      text-shadow: none;
-    }
-    83% {
-      color: inherit;
-      text-shadow: inherit;
-    }
-    92% {
-      color: #333;
-      text-shadow: none;
-    }
-    92.5% {
-      color: inherit;
-      text-shadow: inherit;
-    }
-    }
-  </style>
-</head>
-<body>
-  <div class="wiki-page-title-header">
-    <h1>ჯერ ოცნებობ, შემდეგ კვდები</h1>
-    <hr class="page-separator">
-  </div>
-
+<html lang="ka">
+ <head>
   <script>
+   var MetaTitle = "გვერდის სათაური";
+   var MetaDescription = "გვერდის აღწერა";
+   var MetaURL = "გვერდის ლინკი";
+   var MetaImage = "გვერდის სურათი";
+  </script>
+  <script src="js-pack.js"></script>
+  <script src="variables.js"></script>
+  <script src="js-head.js"></script>
+  <!--Meta tags start here-->
+  <!--General-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="title" content="გვერდის სათაური">
+  <meta name="description" content="გვერდის აღწერა">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>გვერდის სათაური | ბეიტსის მოტელის ვიკი</title>
+  <!--Facebook-->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="გვერდის ლინკი">
+  <meta property="og:title" content="გვერდის სათაური">
+  <meta property="og:description" content="გვერდის აღწერა">
+  <meta property="og:image" content="გვერდის სურათი">
+  <!--Twitter-->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="გვერდის ლინკი">
+  <meta property="twitter:title" content="გვერდის სათაური">
+  <meta property="twitter:description" content="გვერდის აღწერა">
+  <meta property="twitter:image" content="გვერდის სურათი">
+  <!--Meta tags end here-->
+  <!--Link tags start here-->
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles/css.css">
+  <!--Link tags end here-->
+  <style>
+    #search-bar {
+        /* width: 500px; */
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        /* border: 2px solid #ccc; */
+        /* border-radius: 4px; */
+        /* font-size: 16px; */
+        position : relative;
+        width: 500px;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        color: #333;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      #search-bar:focus {
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 5px #7bc0d5;
+  background-color: #f8f8f8;
+}
+     #search-results {
+        width: 500px;
+        max-height: 500px;
+        overflow-y: auto;
+        border: 1px solid gray;
+        padding: 5px;
+        /* overflow: visible; */
+        position: absolute;
+        top: 46px;
+        background-color: black;
+        color: white;
+     }
+      
+      .search-item {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+      }
+      #search-results a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        margin-bottom: 5px;
+      }
+      #search-results img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+      
+      .search-item img {
+        width: 50px;
+        height: 50px;
+        margin-right: 8px;
+        object-fit: cover;
+      }
+      
+      .search-item-name {
+        font-size: 16px;
+        font-weight: bold;
+        color:#0190b8;
+      }
+      
+      .search-item-description {
+        font-size: 14px;
+        color: #dbe5e6;
+      }
+  </style>
+ </head>
+ <body>
+  <div id="dropdown-navigation">
+   <a href="/" class="dropdown-logo">ბეიტსის მოტელის ვიკი</a>
+      <nav class="wiki-navigation">
+    <ul class="wiki-navigation-tabs">
+     <li class="wiki-navigation-dropdown">
+      <div class="wiki-navigation-first-dropdown">
+       <a style="pointer-events: none; cursor: default;">
+        <svg class="tiny-icons">
+         <path id="book-tiny" d="M3.5 3C2.673 3 2 3.673 2 4.5v2.338c.91-.434 2.09-.434 3 0V4.5c0-.397-.159-.785-.437-1.063A1.513 1.513 0 0 0 3.5 3m5 3.5c.537 0 1.045.121 1.5.338V4.5c0-.397-.159-.785-.437-1.063A1.502 1.502 0 0 0 7 4.5v2.338A3.473 3.473 0 0 1 8.5 6.5M11 11a1 1 0 0 1-1-1c0-.827-.673-1.5-1.5-1.5S7 9.173 7 10a1 1 0 1 1-2 0c0-.827-.673-1.5-1.5-1.5S2 9.173 2 10a1 1 0 1 1-2 0V4.5a3.504 3.504 0 0 1 5.977-2.477l.026.027A3.489 3.489 0 0 1 8.5 1c.937 0 1.817.363 2.477 1.023A3.524 3.524 0 0 1 12 4.5V10a1 1 0 0 1-1 1"></path>
+        </svg>
+        <span class="navigation-label" style="margin-left: 20px;">გამოკვლევა</span>
+       </a>
+       <svg class="dropdown-icons dropdown-toggle">
+        <path id="dropdown-tiny-a" d="M6.0001895,8.80004571 C5.79538755,8.80004571 5.5905856,8.72164496 5.43458411,8.56564348 L2.23455364,5.365613 C2.00575146,5.13681083 1.93695081,4.79280755 2.06095199,4.4936047 C2.18415316,4.19440185 2.47695595,4 2.80015903,4 L9.20021997,4 C9.52342305,4 9.81542583,4.19440185 9.93942701,4.4936047 C10.0634282,4.79280755 9.99462754,5.13681083 9.76582536,5.365613 L6.56579489,8.56564348 C6.4097934,8.72164496 6.20499145,8.80004571 6.0001895,8.80004571 Z"></path>
+       </svg>
+      </div>
+      <div class="dropdown-menu">
+       <ul class="wiki-navigation-lists">
+        <li>
+         <a href="/">
+          <svg class="dropdown-icons" style="margin-right: 6px;">
+           <path id="home-tiny" d="M9 10h1V6.414l-4-4-4 4V10h1V9c0-1.654 1.346-3 3-3s3 1.346 3 3v1zm2 2H8a1 1 0 0 1-1-1V9c0-.55-.449-1-1-1-.551 0-1 .45-1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V6c0-.265.105-.52.293-.707l5-5a.999.999 0 0 1 1.414 0l5 5A.997.997 0 0 1 12 6v5a1 1 0 0 1-1 1z" fill="#fff"></path>
+          </svg>
+          <span>მთავარი გვერდი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Category-All_Pages.html">
+          <span>ყველა გვერდი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Special-Random.html">
+          <span>შემთხვევითი გვერდი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Special-Special_Pages.html">
+          <span>სპეციალური გვერდები</span>
+         </a>
+        </li>
+        <li>
+         <a href="Category-Categories.html">
+          <span>კატეგორიები</span>
+         </a>
+        </li>
+        <li>
+         <a href="Special-Images.html">
+          <span>სურათები</span>
+         </a>
+        </li>
+        <li>
+         <a href="Special-Videos.html">
+          <span>ვიდეოები</span>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+     <li class="wiki-navigation-dropdown">
+      <div class="wiki-navigation-first-dropdown">
+       <a href="Category_Episodes.html">
+        <span>ეპიზოდები</span>
+       </a>
+       <svg class="dropdown-icons dropdown-toggle">
+        <use href="#dropdown-tiny-a"></use>
+       </svg>
+      </div>
+      <div class="dropdown-menu">
+       <ul class="wiki-navigation-lists">
+        <li class="navigation-sublists">
+         <a href="Season_1.html">
+          <span>სეზონი 1</span>
+          <svg class="sublist-icons">
+           <path id="sublist-arrow" d="M11.707 3.293a.999.999 0 0 0-1.414 0L6 7.586 1.707 3.293A.999.999 0 1 0 .293 4.707l5 5a.997.997 0 0 0 1.414 0l5-5a.999.999 0 0 0 0-1.414" fill="#737373"></path>
+          </svg>
+         </a>
+         <div class="wiki-sublist-contents">
+          <ul class="wiki-navigation-lists">
+           <li>
+            <a href="First_You_Dream,_Then_You_Die.html">
+             <span>ჯერ ოცნებობ, შემდეგ კვდები</span>
+            </a>
+           </li>
+           <li>
+            <a href="Nice_Town_You_Picked,_Norma....html">
+             <span>მშვენიერი ქალაქი აგირჩევია, ნორმა...</span>
+            </a>
+           </li>
+           <li>
+            <a href="What's_Wrong_With_Norman.html">
+             <span>რა სჭირს ნორმანს</span>
+            </a>
+           </li>
+           <li>
+            <a href="Trust_Me.html">
+             <span>მენდე</span>
+            </a>
+           </li>
+           <li>
+            <a href="Ocean_View.html">
+             <span>ოკეანის ხედი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Truth.html">
+             <span>სიმართლე</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Man_in_Number_9.html">
+             <span>კაცი მეცხრე ოთახში</span>
+            </a>
+           </li>
+           <li>
+            <a href="A_Boy_and_His_Dog.html">
+             <span>ბიჭი და მისი ძაღლი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Underwater.html">
+             <span>წყალქვეშ</span>
+            </a>
+           </li>
+           <li>
+            <a href="Midnight.html">
+             <span>შუაღამე</span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </li>
+        <li class="navigation-sublists">
+         <a href="Season_2.html">
+          <span>სეზონი 2</span>
+          <svg class="sublist-icons">
+           <use href="#sublist-arrow"></use>
+          </svg>
+         </a>
+         <div class="wiki-sublist-contents">
+          <ul class="wiki-navigation-lists">
+           <li>
+            <a href="Gone_But_Not_Forgotten.html">
+             <span>წასული, მაგრამ არა დავიწყებული</span>
+            </a>
+           </li>
+           <li>
+            <a href="Shadow_of_a_Doubt.html">
+             <span>ეჭვის ჩრდილი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Caleb.html">
+             <span>კელები</span>
+            </a>
+           </li>
+           <li>
+            <a href="Check-Out.html">
+             <span>გაწერა</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Escape_Artist.html">
+             <span>თავის დაძვრენის ოსტატი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Plunge.html">
+             <span>ჩაძირვა</span>
+            </a>
+           </li>
+           <li>
+            <a href="Presumed_Innocent.html">
+             <span>უდანაშაულო</span>
+            </a>
+           </li>
+           <li>
+            <a href="Meltdown.html">
+             <span>კრიზისი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Box.html">
+             <span>ყუთი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Immutable_Truth.html">
+             <span>გარდაუვალი სიმართლე</span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </li>
+        <li class="navigation-sublists">
+         <a href="Season_3.html">
+          <span>სეზონი 3</span>
+          <svg class="sublist-icons">
+           <use href="#sublist-arrow"></use>
+          </svg>
+         </a>
+         <div class="wiki-sublist-contents">
+          <ul class="wiki-navigation-lists">
+           <li>
+            <a href="A_Death_in_the_Family.html">
+             <span>სიკვდილი ოჯახში</span>
+            </a>
+           </li>
+           <li>
+            <a href="Shadow_of_a_Doubt.html">
+             <span>არკანუმის კლუბი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Persuasion.html">
+             <span>დარწმუნება</span>
+            </a>
+           </li>
+           <li>
+            <a href="Unbreak-Able.html">
+             <span>უტეხი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Deal.html">
+             <span>გარიგება</span>
+            </a>
+           </li>
+           <li>
+            <a href="Norma_Louise.html">
+             <span>ნორმა ლუისი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Last_Supper.html">
+             <span>უკანასკნელი ვახშამი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Pit.html">
+             <span>ორმო</span>
+            </a>
+           </li>
+           <li>
+            <a href="Crazy.html">
+             <span>შეშლილი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Unconscious.html">
+             <span>გონებადაკარგული</span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </li>
+        <li class="navigation-sublists">
+         <a href="Season_4.html">
+          <span>სეზონი 4</span>
+          <svg class="sublist-icons">
+           <use href="#sublist-arrow"></use>
+          </svg>
+         </a>
+         <div class="wiki-sublist-contents">
+          <ul class="wiki-navigation-lists">
+           <li>
+            <a href="A_Danger_to_Himself_and_Others.html">
+             <span>საფრთხე საკუთარი თავისა და სხვებისთვის</span>
+            </a>
+           </li>
+           <li>
+            <a href="Goodnight,_Mother.html">
+             <span>ძილი ნებისა, დედა</span>
+            </a>
+           </li>
+           <li>
+            <a href="'Til_Death_Do_You_Part.html">
+             <span>სანამ ვიდრე სიკვდილი არ დაგაშორებთ</span>
+            </a>
+           </li>
+           <li>
+            <a href="Lights_of_Winter.html">
+             <span>ზამთრის ნათება</span>
+            </a>
+           </li>
+           <li>
+            <a href="Refraction.html">
+             <span>გარდატეხა</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Vault.html">
+             <span>საცავი</span>
+            </a>
+           </li>
+           <li>
+            <a href="There's_No_Place_Like_Home.html">
+             <span>საკუთარ სახლს არაფერი სჯობს</span>
+            </a>
+           </li>
+           <li>
+            <a href="Unfaithful.html">
+             <span>ორგული</span>
+            </a>
+           </li>
+           <li>
+            <a href="Forever.html">
+             <span>მუდამ</span>
+            </a>
+           </li>
+           <li>
+            <a href="Norman.html">
+             <span>ნორმანი</span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </li>
+        <li class="navigation-sublists">
+         <a href="Season_5.html">
+          <span>სეზონი 5</span>
+          <svg class="sublist-icons">
+           <use href="#sublist-arrow"></use>
+          </svg>
+         </a>
+         <div class="wiki-sublist-contents">
+          <ul class="wiki-navigation-lists">
+           <li>
+            <a href="Dark_Paradise.html">
+             <span>ბნელი სამოთხე</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Convergence_of_the_Twain.html">
+             <span>ორთა შერწყმა</span>
+            </a>
+           </li>
+           <li>
+            <a href="Bad_Blood.html">
+             <span>ცუდი სისხლი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Hidden.html">
+             <span>დამალული</span>
+            </a>
+           </li>
+           <li>
+            <a href="Dreams_Die_First.html">
+             <span>ჯერ ოცნებები კვდება</span>
+            </a>
+           </li>
+           <li>
+            <a href="Marion.html">
+             <span>მარიონი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Inseparable.html">
+             <span>განუყოფელი</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Body.html">
+             <span>ცხედარი</span>
+            </a>
+           </li>
+           <li>
+            <a href="Visiting_Hours.html">
+             <span>სავიზიტო საათები</span>
+            </a>
+           </li>
+           <li>
+            <a href="The_Cord.html">
+             <span>სიმი</span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </li>
+        <li class="navigation-sublists">
+         <a href="">
+          <span>სპეციალური</span>
+          <svg class="sublist-icons">
+           <use href="#sublist-arrow"></use>
+          </svg>
+         </a>
+         <div class="wiki-sublist-contents" style="bottom: -10px; top: unset;">
+          <ul class="wiki-navigation-lists">
+           <li>
+            <a href="Bates_Motel_After_Hours.html">
+             <span>ბეიტსის მოტელი: საათების შემდეგ</span>
+            </a>
+           </li>
+           <li>
+            <a href="Bates_Motel_The_Check-Out.html">
+             <span>ბეიტსის მოტელი: საბოლოო გაწერა</span>
+            </a>
+           </li>
+           <li>
+            <a href="Deleted_Scenes.html">
+             <span>წაშლილი სცენები</span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </li>
+       </ul>
+      </div>
+     </li>
+     <li class="wiki-navigation-dropdown">
+      <div class="wiki-navigation-first-dropdown">
+       <a href="Category_Characters.html">
+        <span>პერსონაჟები</span>
+       </a>
+       <svg class="dropdown-icons dropdown-toggle">
+        <use href="#dropdown-tiny-a"></use>
+       </svg>
+      </div>
+      <div class="dropdown-menu">
+       <ul class="wiki-navigation-lists">
+        <li>
+         <a href="Norman_Bates.html">
+          <span>ნორმან ბეიტსი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Norma_Bates.html">
+          <span>ნორმა ბეიტსი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Dylan_Massett.html">
+          <span>დილან მასეტი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Alex_Romero.html">
+          <span>ალექს რომერო</span>
+         </a>
+        </li>
+        <li>
+         <a href="Emma_Decody.html">
+          <span>ემა დეკოდი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Bradley_Martin.html">
+          <span>ბრედლი მარტინი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Caleb_Calhoun.html">
+          <span>კელებ კალჰუნი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Blaire_Watson.html">
+          <span>ბლერ უოტსონი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Chick_Hogan.html">
+          <span>ჩიკ ჰოგანი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Marion_Crane.html">
+          <span>მარიონ კრეინი</span>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+     <li class="wiki-navigation-dropdown">
+      <div class="wiki-navigation-first-dropdown">
+       <a href="Category-Locations.html">
+        <span>ადგილები</span>
+       </a>
+       <svg class="dropdown-icons dropdown-toggle">
+        <use href="#dropdown-tiny-a"></use>
+       </svg>
+      </div>
+      <div class="dropdown-menu">
+       <ul class="wiki-navigation-lists">
+        <li>
+         <a href="White_Pine_Bay.html">
+          <span>თეთრი ფიჭვების ყურე</span>
+         </a>
+        </li>
+        <li>
+         <a href="Bates_Motel.html">
+          <span>ბეიტსის მოტელი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Bates_Family_House.html">
+          <span>ბეიტსების სახლი</span>
+         </a>
+        </li>
+        <li>
+         <a href="White_Pine_Bay_High_School.html">
+          <span>საშუალო სკოლა</span>
+         </a>
+        </li>
+        <li>
+         <a href="Artful_Artifacts.html">
+          <span>ხელნაკეთი არტიფაქტები</span>
+         </a>
+        </li>
+        <li>
+         <a href="White_Pine_Bay_Sheriff's_Department.html">
+          <span>შერიფის განყოფილება</span>
+         </a>
+        </li>
+        <li>
+         <a href="The_Docks.html">
+          <span>ნავსადგური</span>
+         </a>
+        </li>
+        <li>
+         <a href="Lee_Berman_Memorial_Bypass.html">
+          <span>ლი ბერმანის გზატკეცილი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Dylan's_Farm.html">
+          <span>დილანის ფერმა</span>
+         </a>
+        </li>
+        <li>
+         <a href="Pineview_Institute.html">
+          <span>პაინვიუს კლინიკა</span>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+     <li class="wiki-navigation-dropdown">
+      <div class="wiki-navigation-first-dropdown">
+       <a href="#">
+        <span>სხვადასხვა</span>
+       </a>
+       <svg class="dropdown-icons dropdown-toggle">
+        <use href="#dropdown-tiny-a"></use>
+       </svg>
+      </div>
+      <div class="dropdown-menu">
+       <ul class="wiki-navigation-lists">
+        <li>
+         <a href="Juno.html">
+          <span>ჯუნო</span>
+         </a>
+        </li>
+        <li>
+         <a href="Emma's_Blog.html">
+          <span>ემას ბლოგი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Norma's_Blog.html">
+          <span>ნორმას ბლოგი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Norman's_Blog.html">
+          <span>ნორმანის ბლოგი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Bates_Motel_Website.html">
+          <span>ბეიტსის მოტელის ვებგვერდი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Jiao's_Sketchbook.html">
+          <span>ჯიაოს წიგნაკი</span>
+         </a>
+        </li>
+        <li>
+         <a href="List_of_Deaths.html">
+          <span>გარდაცვალების სია</span>
+         </a>
+        </li>
+        <li>
+         <a href="Guest_Book.html">
+          <span>სტუმრების წიგნი</span>
+         </a>
+        </li>
+        <li>
+         <a href="Social_Media_QnAs.html">
+          <span>კითხვა-პასუხები</span>
+         </a>
+        </li>
+        <li>
+         <a href="Bates_Motel_(TV_series).html">
+          <span>ბეიტსის მოტელი</span>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+    </ul>
+   </nav>
+   <div style="display:flex; flex-direction: column; padding-right: 10px;">
+   <input type="text" id="search-bar" placeholder="ძებნა...">
+    <div id="search-results" style="display:none"></div>
+    </div>
+   <div style="float: left;">
+    <span style="color: var(--navigation-font)">
+     <a href="Special-Search.html">
+      <svg x="0px" y="0px" width="23px" height="50px" style="enable-background:new 0 0 600 500;" xml:space="preserve" viewBox="0 0 600 500">
+       <path id="magnifier-icon" d="M442.029,347.604c3.979-7.188,7.602-14.597,10.829-22.228c12.205-28.856,18.395-59.485,18.395-91.035s-6.188-62.178-18.395-91.035c-11.78-27.851-28.635-52.854-50.097-74.316s-46.466-38.317-74.316-50.097C299.589,6.689,268.96,0.5,237.411,0.5s-62.179,6.189-91.035,18.395c-27.851,11.78-52.854,28.635-74.316,50.097c-21.461,21.462-38.317,46.465-50.097,74.316C9.757,172.165,3.568,202.793,3.568,234.342s6.188,62.178,18.394,91.035c11.78,27.852,28.635,52.854,50.097,74.316c21.462,21.462,46.465,38.317,74.316,50.097c28.857,12.205,59.486,18.395,91.035,18.395s62.178-6.188,91.035-18.395c4.836-2.045,9.579-4.253,14.239-6.603l131.022,131.023c11.607,11.606,27.038,17.998,43.452,17.998s31.846-6.392,43.452-17.998l10.561-10.56c23.959-23.96,23.959-62.944,0.001-86.903L442.029,347.604z M349.255,389.175c-11.984,8.672-25.014,15.986-38.866,21.719c-22.486,9.306-47.13,14.451-72.979,14.451c-105.488,0-191.002-85.515-191.002-191.003S131.922,43.34,237.41,43.34s191.003,85.515,191.003,191.002c0,29.135-6.534,56.74-18.2,81.447c-6.313,13.373-14.131,25.895-23.239,37.346C376.108,366.795,363.413,378.93,349.255,389.175z M540.879,533.358l-10.561,10.56c-3.635,3.635-8.397,5.451-13.159,5.451c-4.763,0-9.525-1.817-13.16-5.451L379.873,419.792c8.011-6.169,15.655-12.865,22.889-20.099c5.162-5.162,10.051-10.534,14.674-16.097L540.879,507.04C548.146,514.308,548.146,526.09,540.879,533.358z"></path>
+      </svg>
+     </a>
+    </span>
+   </div>
+  </div>
+  <div id="mobile-banner">
+   <div class="header-mobile-content">
+    <div class="header-mobile-button" onclick="toggletabs()">☰</div>
+    <div id="header-nav-mobile" style="display:none;">
+             <nav class="wiki-navigation">
+      <ul class="wiki-navigation-tabs">
+       <li class="wiki-navigation-dropdown">
+        <div class="wiki-navigation-first-dropdown">
+         <a style="pointer-events: none; cursor: default;">
+          <svg class="tiny-icons">
+           <path id="book-tiny" d="M3.5 3C2.673 3 2 3.673 2 4.5v2.338c.91-.434 2.09-.434 3 0V4.5c0-.397-.159-.785-.437-1.063A1.513 1.513 0 0 0 3.5 3m5 3.5c.537 0 1.045.121 1.5.338V4.5c0-.397-.159-.785-.437-1.063A1.502 1.502 0 0 0 7 4.5v2.338A3.473 3.473 0 0 1 8.5 6.5M11 11a1 1 0 0 1-1-1c0-.827-.673-1.5-1.5-1.5S7 9.173 7 10a1 1 0 1 1-2 0c0-.827-.673-1.5-1.5-1.5S2 9.173 2 10a1 1 0 1 1-2 0V4.5a3.504 3.504 0 0 1 5.977-2.477l.026.027A3.489 3.489 0 0 1 8.5 1c.937 0 1.817.363 2.477 1.023A3.524 3.524 0 0 1 12 4.5V10a1 1 0 0 1-1 1"></path>
+          </svg>
+          <span class="navigation-label" style="margin-left: 20px;">გამოკვლევა</span>
+         </a>
+         <svg class="dropdown-icons dropdown-toggle">
+          <path id="dropdown-tiny-a" d="M6.0001895,8.80004571 C5.79538755,8.80004571 5.5905856,8.72164496 5.43458411,8.56564348 L2.23455364,5.365613 C2.00575146,5.13681083 1.93695081,4.79280755 2.06095199,4.4936047 C2.18415316,4.19440185 2.47695595,4 2.80015903,4 L9.20021997,4 C9.52342305,4 9.81542583,4.19440185 9.93942701,4.4936047 C10.0634282,4.79280755 9.99462754,5.13681083 9.76582536,5.365613 L6.56579489,8.56564348 C6.4097934,8.72164496 6.20499145,8.80004571 6.0001895,8.80004571 Z"></path>
+         </svg>
+        </div>
+        <div class="dropdown-menu">
+         <ul class="wiki-navigation-lists">
+          <li>
+           <a href="/">
+            <svg class="dropdown-icons" style="margin-right: 6px;">
+             <path id="home-tiny" d="M9 10h1V6.414l-4-4-4 4V10h1V9c0-1.654 1.346-3 3-3s3 1.346 3 3v1zm2 2H8a1 1 0 0 1-1-1V9c0-.55-.449-1-1-1-.551 0-1 .45-1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V6c0-.265.105-.52.293-.707l5-5a.999.999 0 0 1 1.414 0l5 5A.997.997 0 0 1 12 6v5a1 1 0 0 1-1 1z" fill="#fff"></path>
+            </svg>
+            <span>მთავარი გვერდი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Category-All_Pages.html">
+            <span>ყველა გვერდი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Special-Random.html">
+            <span>შემთხვევითი გვერდი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Special-Special_Pages.html">
+            <span>სპეციალური გვერდები</span>
+           </a>
+          </li>
+          <li>
+           <a href="Category-Categories.html">
+            <span>კატეგორიები</span>
+           </a>
+          </li>
+          <li>
+           <a href="Special-Images.html">
+            <span>სურათები</span>
+           </a>
+          </li>
+          <li>
+           <a href="Special-Videos.html">
+            <span>ვიდეოები</span>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </li>
+       <li class="wiki-navigation-dropdown">
+        <div class="wiki-navigation-first-dropdown">
+         <a href="Category_Episodes.html">
+          <span>ეპიზოდები</span>
+         </a>
+         <svg class="dropdown-icons dropdown-toggle">
+          <use href="#dropdown-tiny-a"></use>
+         </svg>
+        </div>
+        <div class="dropdown-menu">
+         <ul class="wiki-navigation-lists">
+          <li class="navigation-sublists">
+           <a href="Season_1.html">
+            <span>სეზონი 1</span>
+            <svg class="sublist-icons">
+             <path id="sublist-arrow" d="M11.707 3.293a.999.999 0 0 0-1.414 0L6 7.586 1.707 3.293A.999.999 0 1 0 .293 4.707l5 5a.997.997 0 0 0 1.414 0l5-5a.999.999 0 0 0 0-1.414" fill="#737373"></path>
+            </svg>
+           </a>
+           <div class="wiki-sublist-contents">
+            <ul class="wiki-navigation-lists">
+             <li>
+              <a href="First_You_Dream,_Then_You_Die.html">
+               <span>ჯერ ოცნებობ, შემდეგ კვდები</span>
+              </a>
+             </li>
+             <li>
+              <a href="Nice_Town_You_Picked,_Norma....html">
+               <span>მშვენიერი ქალაქი აგირჩევია, ნორმა...</span>
+              </a>
+             </li>
+             <li>
+              <a href="What's_Wrong_With_Norman.html">
+               <span>რა სჭირს ნორმანს</span>
+              </a>
+             </li>
+             <li>
+              <a href="Trust_Me.html">
+               <span>მენდე</span>
+              </a>
+             </li>
+             <li>
+              <a href="Ocean_View.html">
+               <span>ოკეანის ხედი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Truth.html">
+               <span>სიმართლე</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Man_in_Number_9.html">
+               <span>კაცი მეცხრე ოთახში</span>
+              </a>
+             </li>
+             <li>
+              <a href="A_Boy_and_His_Dog.html">
+               <span>ბიჭი და მისი ძაღლი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Underwater.html">
+               <span>წყალქვეშ</span>
+              </a>
+             </li>
+             <li>
+              <a href="Midnight.html">
+               <span>შუაღამე</span>
+              </a>
+             </li>
+            </ul>
+           </div>
+          </li>
+          <li class="navigation-sublists">
+           <a href="Season_2.html">
+            <span>სეზონი 2</span>
+            <svg class="sublist-icons">
+             <use href="#sublist-arrow"></use>
+            </svg>
+           </a>
+           <div class="wiki-sublist-contents">
+            <ul class="wiki-navigation-lists">
+             <li>
+              <a href="Gone_But_Not_Forgotten.html">
+               <span>წასული, მაგრამ არა დავიწყებული</span>
+              </a>
+             </li>
+             <li>
+              <a href="Shadow_of_a_Doubt.html">
+               <span>ეჭვის ჩრდილი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Caleb.html">
+               <span>კელები</span>
+              </a>
+             </li>
+             <li>
+              <a href="Check-Out.html">
+               <span>გაწერა</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Escape_Artist.html">
+               <span>თავის დაძვრენის ოსტატი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Plunge.html">
+               <span>ჩაძირვა</span>
+              </a>
+             </li>
+             <li>
+              <a href="Presumed_Innocent.html">
+               <span>უდანაშაულო</span>
+              </a>
+             </li>
+             <li>
+              <a href="Meltdown.html">
+               <span>კრიზისი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Box.html">
+               <span>ყუთი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Immutable_Truth.html">
+               <span>გარდაუვალი სიმართლე</span>
+              </a>
+             </li>
+            </ul>
+           </div>
+          </li>
+          <li class="navigation-sublists">
+           <a href="Season_3.html">
+            <span>სეზონი 3</span>
+            <svg class="sublist-icons">
+             <use href="#sublist-arrow"></use>
+            </svg>
+           </a>
+           <div class="wiki-sublist-contents">
+            <ul class="wiki-navigation-lists">
+             <li>
+              <a href="A_Death_in_the_Family.html">
+               <span>სიკვდილი ოჯახში</span>
+              </a>
+             </li>
+             <li>
+              <a href="Shadow_of_a_Doubt.html">
+               <span>არკანუმის კლუბი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Persuasion.html">
+               <span>დარწმუნება</span>
+              </a>
+             </li>
+             <li>
+              <a href="Unbreak-Able.html">
+               <span>უტეხი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Deal.html">
+               <span>გარიგება</span>
+              </a>
+             </li>
+             <li>
+              <a href="Norma_Louise.html">
+               <span>ნორმა ლუისი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Last_Supper.html">
+               <span>უკანასკნელი ვახშამი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Pit.html">
+               <span>ორმო</span>
+              </a>
+             </li>
+             <li>
+              <a href="Crazy.html">
+               <span>შეშლილი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Unconscious.html">
+               <span>გონებადაკარგული</span>
+              </a>
+             </li>
+            </ul>
+           </div>
+          </li>
+          <li class="navigation-sublists">
+           <a href="Season_4.html">
+            <span>სეზონი 4</span>
+            <svg class="sublist-icons">
+             <use href="#sublist-arrow"></use>
+            </svg>
+           </a>
+           <div class="wiki-sublist-contents">
+            <ul class="wiki-navigation-lists">
+             <li>
+              <a href="A_Danger_to_Himself_and_Others.html">
+               <span>საფრთხე საკუთარი თავისა და სხვებისთვის</span>
+              </a>
+             </li>
+             <li>
+              <a href="Goodnight,_Mother.html">
+               <span>ძილი ნებისა, დედა</span>
+              </a>
+             </li>
+             <li>
+              <a href="'Til_Death_Do_You_Part.html">
+               <span>სანამ ვიდრე სიკვდილი არ დაგაშორებთ</span>
+              </a>
+             </li>
+             <li>
+              <a href="Lights_of_Winter.html">
+               <span>ზამთრის ნათება</span>
+              </a>
+             </li>
+             <li>
+              <a href="Refraction.html">
+               <span>გარდატეხა</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Vault.html">
+               <span>საცავი</span>
+              </a>
+             </li>
+             <li>
+              <a href="There's_No_Place_Like_Home.html">
+               <span>საკუთარ სახლს არაფერი სჯობს</span>
+              </a>
+             </li>
+             <li>
+              <a href="Unfaithful.html">
+               <span>ორგული</span>
+              </a>
+             </li>
+             <li>
+              <a href="Forever.html">
+               <span>მუდამ</span>
+              </a>
+             </li>
+             <li>
+              <a href="Norman.html">
+               <span>ნორმანი</span>
+              </a>
+             </li>
+            </ul>
+           </div>
+          </li>
+          <li class="navigation-sublists">
+           <a href="Season_5.html">
+            <span>სეზონი 5</span>
+            <svg class="sublist-icons">
+             <use href="#sublist-arrow"></use>
+            </svg>
+           </a>
+           <div class="wiki-sublist-contents">
+            <ul class="wiki-navigation-lists">
+             <li>
+              <a href="Dark_Paradise.html">
+               <span>ბნელი სამოთხე</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Convergence_of_the_Twain.html">
+               <span>ორთა შერწყმა</span>
+              </a>
+             </li>
+             <li>
+              <a href="Bad_Blood.html">
+               <span>ცუდი სისხლი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Hidden.html">
+               <span>დამალული</span>
+              </a>
+             </li>
+             <li>
+              <a href="Dreams_Die_First.html">
+               <span>ჯერ ოცნებები კვდება</span>
+              </a>
+             </li>
+             <li>
+              <a href="Marion.html">
+               <span>მარიონი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Inseparable.html">
+               <span>განუყოფელი</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Body.html">
+               <span>ცხედარი</span>
+              </a>
+             </li>
+             <li>
+              <a href="Visiting_Hours.html">
+               <span>სავიზიტო საათები</span>
+              </a>
+             </li>
+             <li>
+              <a href="The_Cord.html">
+               <span>სიმი</span>
+              </a>
+             </li>
+            </ul>
+           </div>
+          </li>
+          <li class="navigation-sublists">
+           <a href="">
+            <span>სპეციალური</span>
+            <svg class="sublist-icons">
+             <use href="#sublist-arrow"></use>
+            </svg>
+           </a>
+           <div class="wiki-sublist-contents" style="bottom: -10px; top: unset;">
+            <ul class="wiki-navigation-lists">
+             <li>
+              <a href="Bates_Motel_After_Hours.html">
+               <span>ბეიტსის მოტელი: საათების შემდეგ</span>
+              </a>
+             </li>
+             <li>
+              <a href="Bates_Motel_The_Check-Out.html">
+               <span>ბეიტსის მოტელი: საბოლოო გაწერა</span>
+              </a>
+             </li>
+             <li>
+              <a href="Deleted_Scenes.html">
+               <span>წაშლილი სცენები</span>
+              </a>
+             </li>
+            </ul>
+           </div>
+          </li>
+         </ul>
+        </div>
+       </li>
+       <li class="wiki-navigation-dropdown">
+        <div class="wiki-navigation-first-dropdown">
+         <a href="Category_Characters.html">
+          <span>პერსონაჟები</span>
+         </a>
+         <svg class="dropdown-icons dropdown-toggle">
+          <use href="#dropdown-tiny-a"></use>
+         </svg>
+        </div>
+        <div class="dropdown-menu">
+         <ul class="wiki-navigation-lists">
+          <li>
+           <a href="Norman_Bates.html">
+            <span>ნორმან ბეიტსი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Norma_Bates.html">
+            <span>ნორმა ბეიტსი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Dylan_Massett.html">
+            <span>დილან მასეტი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Alex_Romero.html">
+            <span>ალექს რომერო</span>
+           </a>
+          </li>
+          <li>
+           <a href="Emma_Decody.html">
+            <span>ემა დეკოდი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Bradley_Martin.html">
+            <span>ბრედლი მარტინი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Caleb_Calhoun.html">
+            <span>კელებ კალჰუნი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Blaire_Watson.html">
+            <span>ბლერ უოტსონი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Chick_Hogan.html">
+            <span>ჩიკ ჰოგანი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Marion_Crane.html">
+            <span>მარიონ კრეინი</span>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </li>
+       <li class="wiki-navigation-dropdown">
+        <div class="wiki-navigation-first-dropdown">
+         <a href="Category-Locations.html">
+          <span>ადგილები</span>
+         </a>
+         <svg class="dropdown-icons dropdown-toggle">
+          <use href="#dropdown-tiny-a"></use>
+         </svg>
+        </div>
+        <div class="dropdown-menu">
+         <ul class="wiki-navigation-lists">
+          <li>
+           <a href="White_Pine_Bay.html">
+            <span>თეთრი ფიჭვების ყურე</span>
+           </a>
+          </li>
+          <li>
+           <a href="Bates_Motel.html">
+            <span>ბეიტსის მოტელი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Bates_Family_House.html">
+            <span>ბეიტსების სახლი</span>
+           </a>
+          </li>
+          <li>
+           <a href="White_Pine_Bay_High_School.html">
+            <span>საშუალო სკოლა</span>
+           </a>
+          </li>
+          <li>
+           <a href="Artful_Artifacts.html">
+            <span>ხელნაკეთი არტიფაქტები</span>
+           </a>
+          </li>
+          <li>
+           <a href="White_Pine_Bay_Sheriff's_Department.html">
+            <span>შერიფის განყოფილება</span>
+           </a>
+          </li>
+          <li>
+           <a href="The_Docks.html">
+            <span>ნავსადგური</span>
+           </a>
+          </li>
+          <li>
+           <a href="Lee_Berman_Memorial_Bypass.html">
+            <span>ლი ბერმანის გზატკეცილი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Dylan's_Farm.html">
+            <span>დილანის ფერმა</span>
+           </a>
+          </li>
+          <li>
+           <a href="Pineview_Institute.html">
+            <span>პაინვიუს კლინიკა</span>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </li>
+       <li class="wiki-navigation-dropdown">
+        <div class="wiki-navigation-first-dropdown">
+         <a href="#">
+          <span>სხვადასხვა</span>
+         </a>
+         <svg class="dropdown-icons dropdown-toggle">
+          <use href="#dropdown-tiny-a"></use>
+         </svg>
+        </div>
+        <div class="dropdown-menu">
+         <ul class="wiki-navigation-lists">
+          <li>
+           <a href="Juno.html">
+            <span>ჯუნო</span>
+           </a>
+          </li>
+          <li>
+           <a href="Emma's_Blog.html">
+            <span>ემას ბლოგი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Norma's_Blog.html">
+            <span>ნორმას ბლოგი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Norman's_Blog.html">
+            <span>ნორმანის ბლოგი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Bates_Motel_Website.html">
+            <span>ბეიტსის მოტელის ვებგვერდი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Jiao's_Sketchbook.html">
+            <span>ჯიაოს წიგნაკი</span>
+           </a>
+          </li>
+          <li>
+           <a href="List_of_Deaths.html">
+            <span>გარდაცვალების სია</span>
+           </a>
+          </li>
+          <li>
+           <a href="Guest_Book.html">
+            <span>სტუმრების წიგნი</span>
+           </a>
+          </li>
+          <li>
+           <a href="Social_Media_QnAs.html">
+            <span>კითხვა-პასუხები</span>
+           </a>
+          </li>
+          <li>
+           <a href="Bates_Motel_(TV_series).html">
+            <span>ბეიტსის მოტელი</span>
+           </a>
+          </li>
+         </ul>
+        </div>
+       </li>
+      </ul>
+     </nav>
+    </div>
+   </div>
+   <div class="header-mobile-button">
+    <a href="Special-Search.html">
+     <svg x="0px" y="0px" width="23px" height="50px" style="enable-background:new 0 0 600 500;" xml:space="preserve" viewBox="0 0 600 500">
+      <use href="#magnifier-icon"></use>
+     </svg>
+    </a>
+   </div>
+  </div>
+  <main>
+   <div id="wiki-header-nav">
+    <div class="wordmark">
+     <a href="/">
+      <img src="images/Wiki-wordmark.png">
+     </a>
+    </div>
+    <div class="header-top-container">
+     <div class="header-sitename">
+      <a href="/">
+       <span>ბეიტსის მოტელის ვიკი</span>
+      </a>
+     </div>
+     <div class="header-page-counter">
+      <span class="counter-value">20</span>
+      <span class="counter-title">გვერდი</span>
+     </div>
+    </div>
+    <nav class="wiki-navigation">
+     <ul class="wiki-navigation-tabs">
+      <li class="wiki-navigation-dropdown">
+       <div class="wiki-navigation-first-dropdown">
+        <a style="pointer-events: none; cursor: default;">
+         <svg class="tiny-icons">
+          <path id="book-tiny" d="M3.5 3C2.673 3 2 3.673 2 4.5v2.338c.91-.434 2.09-.434 3 0V4.5c0-.397-.159-.785-.437-1.063A1.513 1.513 0 0 0 3.5 3m5 3.5c.537 0 1.045.121 1.5.338V4.5c0-.397-.159-.785-.437-1.063A1.502 1.502 0 0 0 7 4.5v2.338A3.473 3.473 0 0 1 8.5 6.5M11 11a1 1 0 0 1-1-1c0-.827-.673-1.5-1.5-1.5S7 9.173 7 10a1 1 0 1 1-2 0c0-.827-.673-1.5-1.5-1.5S2 9.173 2 10a1 1 0 1 1-2 0V4.5a3.504 3.504 0 0 1 5.977-2.477l.026.027A3.489 3.489 0 0 1 8.5 1c.937 0 1.817.363 2.477 1.023A3.524 3.524 0 0 1 12 4.5V10a1 1 0 0 1-1 1"></path>
+         </svg>
+         <span class="navigation-label" style="margin-left: 20px;">გამოკვლევა</span>
+        </a>
+        <svg class="dropdown-icons dropdown-toggle">
+         <path id="dropdown-tiny-a" d="M6.0001895,8.80004571 C5.79538755,8.80004571 5.5905856,8.72164496 5.43458411,8.56564348 L2.23455364,5.365613 C2.00575146,5.13681083 1.93695081,4.79280755 2.06095199,4.4936047 C2.18415316,4.19440185 2.47695595,4 2.80015903,4 L9.20021997,4 C9.52342305,4 9.81542583,4.19440185 9.93942701,4.4936047 C10.0634282,4.79280755 9.99462754,5.13681083 9.76582536,5.365613 L6.56579489,8.56564348 C6.4097934,8.72164496 6.20499145,8.80004571 6.0001895,8.80004571 Z"></path>
+        </svg>
+       </div>
+       <div class="dropdown-menu">
+        <ul class="wiki-navigation-lists">
+         <li>
+          <a href="/">
+           <svg class="dropdown-icons" style="margin-right: 6px;">
+            <path id="home-tiny" d="M9 10h1V6.414l-4-4-4 4V10h1V9c0-1.654 1.346-3 3-3s3 1.346 3 3v1zm2 2H8a1 1 0 0 1-1-1V9c0-.55-.449-1-1-1-.551 0-1 .45-1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V6c0-.265.105-.52.293-.707l5-5a.999.999 0 0 1 1.414 0l5 5A.997.997 0 0 1 12 6v5a1 1 0 0 1-1 1z" fill="#fff"></path>
+           </svg>
+           <span>მთავარი გვერდი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Category-All_Pages.html">
+           <span>ყველა გვერდი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Special-Random.html">
+           <span>შემთხვევითი გვერდი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Special-Special_Pages.html">
+           <span>სპეციალური გვერდები</span>
+          </a>
+         </li>
+         <li>
+          <a href="Category-Categories.html">
+           <span>კატეგორიები</span>
+          </a>
+         </li>
+         <li>
+          <a href="Special-Images.html">
+           <span>სურათები</span>
+          </a>
+         </li>
+         <li>
+          <a href="Special-Videos.html">
+           <span>ვიდეოები</span>
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="wiki-navigation-dropdown">
+       <div class="wiki-navigation-first-dropdown">
+        <a href="Category_Episodes.html">
+         <span>ეპიზოდები</span>
+        </a>
+        <svg class="dropdown-icons dropdown-toggle">
+         <use href="#dropdown-tiny-a"></use>
+        </svg>
+       </div>
+       <div class="dropdown-menu">
+        <ul class="wiki-navigation-lists">
+         <li class="navigation-sublists">
+          <a href="Season_1.html">
+           <span>სეზონი 1</span>
+           <svg class="sublist-icons">
+            <path id="sublist-arrow" d="M11.707 3.293a.999.999 0 0 0-1.414 0L6 7.586 1.707 3.293A.999.999 0 1 0 .293 4.707l5 5a.997.997 0 0 0 1.414 0l5-5a.999.999 0 0 0 0-1.414" fill="#737373"></path>
+           </svg>
+          </a>
+          <div class="wiki-sublist-contents">
+           <ul class="wiki-navigation-lists">
+            <li>
+             <a href="First_You_Dream,_Then_You_Die.html">
+              <span>ჯერ ოცნებობ, შემდეგ კვდები</span>
+             </a>
+            </li>
+            <li>
+             <a href="Nice_Town_You_Picked,_Norma....html">
+              <span>მშვენიერი ქალაქი აგირჩევია, ნორმა...</span>
+             </a>
+            </li>
+            <li>
+             <a href="What's_Wrong_With_Norman.html">
+              <span>რა სჭირს ნორმანს</span>
+             </a>
+            </li>
+            <li>
+             <a href="Trust_Me.html">
+              <span>მენდე</span>
+             </a>
+            </li>
+            <li>
+             <a href="Ocean_View.html">
+              <span>ოკეანის ხედი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Truth.html">
+              <span>სიმართლე</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Man_in_Number_9.html">
+              <span>კაცი მეცხრე ოთახში</span>
+             </a>
+            </li>
+            <li>
+             <a href="A_Boy_and_His_Dog.html">
+              <span>ბიჭი და მისი ძაღლი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Underwater.html">
+              <span>წყალქვეშ</span>
+             </a>
+            </li>
+            <li>
+             <a href="Midnight.html">
+              <span>შუაღამე</span>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+         <li class="navigation-sublists">
+          <a href="Season_2.html">
+           <span>სეზონი 2</span>
+           <svg class="sublist-icons">
+            <use href="#sublist-arrow"></use>
+           </svg>
+          </a>
+          <div class="wiki-sublist-contents">
+           <ul class="wiki-navigation-lists">
+            <li>
+             <a href="Gone_But_Not_Forgotten.html">
+              <span>წასული, მაგრამ არა დავიწყებული</span>
+             </a>
+            </li>
+            <li>
+             <a href="Shadow_of_a_Doubt.html">
+              <span>ეჭვის ჩრდილი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Caleb.html">
+              <span>კელები</span>
+             </a>
+            </li>
+            <li>
+             <a href="Check-Out.html">
+              <span>გაწერა</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Escape_Artist.html">
+              <span>თავის დაძვრენის ოსტატი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Plunge.html">
+              <span>ჩაძირვა</span>
+             </a>
+            </li>
+            <li>
+             <a href="Presumed_Innocent.html">
+              <span>უდანაშაულო</span>
+             </a>
+            </li>
+            <li>
+             <a href="Meltdown.html">
+              <span>კრიზისი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Box.html">
+              <span>ყუთი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Immutable_Truth.html">
+              <span>გარდაუვალი სიმართლე</span>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+         <li class="navigation-sublists">
+          <a href="Season_3.html">
+           <span>სეზონი 3</span>
+           <svg class="sublist-icons">
+            <use href="#sublist-arrow"></use>
+           </svg>
+          </a>
+          <div class="wiki-sublist-contents">
+           <ul class="wiki-navigation-lists">
+            <li>
+             <a href="A_Death_in_the_Family.html">
+              <span>სიკვდილი ოჯახში</span>
+             </a>
+            </li>
+            <li>
+             <a href="Shadow_of_a_Doubt.html">
+              <span>არკანუმის კლუბი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Persuasion.html">
+              <span>დარწმუნება</span>
+             </a>
+            </li>
+            <li>
+             <a href="Unbreak-Able.html">
+              <span>უტეხი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Deal.html">
+              <span>გარიგება</span>
+             </a>
+            </li>
+            <li>
+             <a href="Norma_Louise.html">
+              <span>ნორმა ლუისი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Last_Supper.html">
+              <span>უკანასკნელი ვახშამი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Pit.html">
+              <span>ორმო</span>
+             </a>
+            </li>
+            <li>
+             <a href="Crazy.html">
+              <span>შეშლილი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Unconscious.html">
+              <span>გონებადაკარგული</span>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+         <li class="navigation-sublists">
+          <a href="Season_4.html">
+           <span>სეზონი 4</span>
+           <svg class="sublist-icons">
+            <use href="#sublist-arrow"></use>
+           </svg>
+          </a>
+          <div class="wiki-sublist-contents">
+           <ul class="wiki-navigation-lists">
+            <li>
+             <a href="A_Danger_to_Himself_and_Others.html">
+              <span>საფრთხე საკუთარი თავისა და სხვებისთვის</span>
+             </a>
+            </li>
+            <li>
+             <a href="Goodnight,_Mother.html">
+              <span>ძილი ნებისა, დედა</span>
+             </a>
+            </li>
+            <li>
+             <a href="'Til_Death_Do_You_Part.html">
+              <span>სანამ ვიდრე სიკვდილი არ დაგაშორებთ</span>
+             </a>
+            </li>
+            <li>
+             <a href="Lights_of_Winter.html">
+              <span>ზამთრის ნათება</span>
+             </a>
+            </li>
+            <li>
+             <a href="Refraction.html">
+              <span>გარდატეხა</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Vault.html">
+              <span>საცავი</span>
+             </a>
+            </li>
+            <li>
+             <a href="There's_No_Place_Like_Home.html">
+              <span>საკუთარ სახლს არაფერი სჯობს</span>
+             </a>
+            </li>
+            <li>
+             <a href="Unfaithful.html">
+              <span>ორგული</span>
+             </a>
+            </li>
+            <li>
+             <a href="Forever.html">
+              <span>მუდამ</span>
+             </a>
+            </li>
+            <li>
+             <a href="Norman.html">
+              <span>ნორმანი</span>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+         <li class="navigation-sublists">
+          <a href="Season_5.html">
+           <span>სეზონი 5</span>
+           <svg class="sublist-icons">
+            <use href="#sublist-arrow"></use>
+           </svg>
+          </a>
+          <div class="wiki-sublist-contents">
+           <ul class="wiki-navigation-lists">
+            <li>
+             <a href="Dark_Paradise.html">
+              <span>ბნელი სამოთხე</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Convergence_of_the_Twain.html">
+              <span>ორთა შერწყმა</span>
+             </a>
+            </li>
+            <li>
+             <a href="Bad_Blood.html">
+              <span>ცუდი სისხლი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Hidden.html">
+              <span>დამალული</span>
+             </a>
+            </li>
+            <li>
+             <a href="Dreams_Die_First.html">
+              <span>ჯერ ოცნებები კვდება</span>
+             </a>
+            </li>
+            <li>
+             <a href="Marion.html">
+              <span>მარიონი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Inseparable.html">
+              <span>განუყოფელი</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Body.html">
+              <span>ცხედარი</span>
+             </a>
+            </li>
+            <li>
+             <a href="Visiting_Hours.html">
+              <span>სავიზიტო საათები</span>
+             </a>
+            </li>
+            <li>
+             <a href="The_Cord.html">
+              <span>სიმი</span>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+         <li class="navigation-sublists">
+          <a href="">
+           <span>სპეციალური</span>
+           <svg class="sublist-icons">
+            <use href="#sublist-arrow"></use>
+           </svg>
+          </a>
+          <div class="wiki-sublist-contents" style="bottom: -10px; top: unset;">
+           <ul class="wiki-navigation-lists">
+            <li>
+             <a href="Bates_Motel_After_Hours.html">
+              <span>ბეიტსის მოტელი: საათების შემდეგ</span>
+             </a>
+            </li>
+            <li>
+             <a href="Bates_Motel_The_Check-Out.html">
+              <span>ბეიტსის მოტელი: საბოლოო გაწერა</span>
+             </a>
+            </li>
+            <li>
+             <a href="Deleted_Scenes.html">
+              <span>წაშლილი სცენები</span>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="wiki-navigation-dropdown">
+       <div class="wiki-navigation-first-dropdown">
+        <a href="Category_Characters.html">
+         <span>პერსონაჟები</span>
+        </a>
+        <svg class="dropdown-icons dropdown-toggle">
+         <use href="#dropdown-tiny-a"></use>
+        </svg>
+       </div>
+       <div class="dropdown-menu">
+        <ul class="wiki-navigation-lists">
+         <li>
+          <a href="Norman_Bates.html">
+           <span>ნორმან ბეიტსი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Norma_Bates.html">
+           <span>ნორმა ბეიტსი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Dylan_Massett.html">
+           <span>დილან მასეტი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Alex_Romero.html">
+           <span>ალექს რომერო</span>
+          </a>
+         </li>
+         <li>
+          <a href="Emma_Decody.html">
+           <span>ემა დეკოდი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Bradley_Martin.html">
+           <span>ბრედლი მარტინი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Caleb_Calhoun.html">
+           <span>კელებ კალჰუნი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Blaire_Watson.html">
+           <span>ბლერ უოტსონი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Chick_Hogan.html">
+           <span>ჩიკ ჰოგანი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Marion_Crane.html">
+           <span>მარიონ კრეინი</span>
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="wiki-navigation-dropdown">
+       <div class="wiki-navigation-first-dropdown">
+        <a href="Category-Locations.html">
+         <span>ადგილები</span>
+        </a>
+        <svg class="dropdown-icons dropdown-toggle">
+         <use href="#dropdown-tiny-a"></use>
+        </svg>
+       </div>
+       <div class="dropdown-menu">
+        <ul class="wiki-navigation-lists">
+         <li>
+          <a href="White_Pine_Bay.html">
+           <span>თეთრი ფიჭვების ყურე</span>
+          </a>
+         </li>
+         <li>
+          <a href="Bates_Motel.html">
+           <span>ბეიტსის მოტელი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Bates_Family_House.html">
+           <span>ბეიტსების სახლი</span>
+          </a>
+         </li>
+         <li>
+          <a href="White_Pine_Bay_High_School.html">
+           <span>საშუალო სკოლა</span>
+          </a>
+         </li>
+         <li>
+          <a href="Artful_Artifacts.html">
+           <span>ხელნაკეთი არტიფაქტები</span>
+          </a>
+         </li>
+         <li>
+          <a href="White_Pine_Bay_Sheriff's_Department.html">
+           <span>შერიფის განყოფილება</span>
+          </a>
+         </li>
+         <li>
+          <a href="The_Docks.html">
+           <span>ნავსადგური</span>
+          </a>
+         </li>
+         <li>
+          <a href="Lee_Berman_Memorial_Bypass.html">
+           <span>ლი ბერმანის გზატკეცილი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Dylan's_Farm.html">
+           <span>დილანის ფერმა</span>
+          </a>
+         </li>
+         <li>
+          <a href="Pineview_Institute.html">
+           <span>პაინვიუს კლინიკა</span>
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="wiki-navigation-dropdown">
+       <div class="wiki-navigation-first-dropdown">
+        <a href="#">
+         <span>სხვადასხვა</span>
+        </a>
+        <svg class="dropdown-icons dropdown-toggle">
+         <use href="#dropdown-tiny-a"></use>
+        </svg>
+       </div>
+       <div class="dropdown-menu">
+        <ul class="wiki-navigation-lists">
+         <li>
+          <a href="Juno.html">
+           <span>ჯუნო</span>
+          </a>
+         </li>
+         <li>
+          <a href="Emma's_Blog.html">
+           <span>ემას ბლოგი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Norma's_Blog.html">
+           <span>ნორმას ბლოგი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Norman's_Blog.html">
+           <span>ნორმანის ბლოგი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Bates_Motel_Website.html">
+           <span>ბეიტსის მოტელის ვებგვერდი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Jiao's_Sketchbook.html">
+           <span>ჯიაოს წიგნაკი</span>
+          </a>
+         </li>
+         <li>
+          <a href="List_of_Deaths.html">
+           <span>გარდაცვალების სია</span>
+          </a>
+         </li>
+         <li>
+          <a href="Guest_Book.html">
+           <span>სტუმრების წიგნი</span>
+          </a>
+         </li>
+         <li>
+          <a href="Social_Media_QnAs.html">
+           <span>კითხვა-პასუხები</span>
+          </a>
+         </li>
+         <li>
+          <a href="Bates_Motel_(TV_series).html">
+           <span>ბეიტსის მოტელი</span>
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+     </ul>
+    </nav>
+   </div>
+   <div class="wiki-page-title-header">
+    <h1>გვერდის სათაური</h1>
+    <hr class="page-separator">
+   </div>
+  </main>
+  <script src="footer.js"></script>
+  <div class="footer">
+   <p>© 2022 Lisztomaniac</p>
+  </div>
+  <script>
+    const searchbar = document.getElementById("search-bar");
+    const searchresults = document.getElementById("search-results");
 
-function wrapRandomLetterWithSpan(word) {
-      const letters = word.split('');
-      const blinkingIndex = Math.floor(Math.random() * letters.length);
-      const wrappedLetters = letters.map((letter, index) => {
-        if (index === blinkingIndex) {
-          return `<span class="blinking">${letter}</span>`;
+    const items = [
+      {name: NavItem111, preview: "101 Promo (35).jpg", description: "პირველი სეზონის პირველი ეპიზოდი.", link: NavItem111URL},
+      {name: NavItem112, preview: "102 Promo (34).jpg", description: "პირველი სეზონის მეორე ეპიზოდი.", link: NavItem112URL},
+      {name: NavItem113, preview: "103 Promo (13).jpg", description: "პირველი სეზონის მესამე ეპიზოდი.", link: NavItem113URL},
+      {name: NavItem114, preview: "104 Promo (7).jpg", description: "პირველი სეზონის მეოთხე ეპიზოდი.", link: NavItem114URL},
+      {name: NavItem115, preview: "105 Promo (13).jpg", description: "პირველი სეზონის მეხუთე ეპიზოდი.", link: NavItem115URL},
+      {name: NavItem116, preview: "106 Promo (8).jpg", description: "პირველი სეზონის მეექვსე ეპიზოდი.", link: NavItem116URL},
+      {name: NavItem117, preview: "107 Promo (22).jpg", description: "პირველი სეზონის მეშვიდე ეპიზოდი.", link: NavItem117URL},
+      {name: NavItem118, preview: "108 Promo (21).jpg", description: "პირველი სეზონის მერვე ეპიზოდი.", link: NavItem118URL},
+      {name: NavItem119, preview: "109 Promo (1).jpg", description: "პირველი სეზონის მეცხრე ეპიზოდი.", link: NavItem119URL},
+      {name: NavItem1110, preview: "110 Promo (16).jpg", description: "პირველი სეზონის მეათე ეპიზოდი.", link: NavItem1110URL},
+      {name: NavItem121, preview: "201 Promo (1).jpg", description: "მეორე სეზონის პირველი ეპიზოდი.", link: NavItem121URL},
+      {name: NavItem122, preview: "202 Promo (19).jpg", description: "მეორე სეზონის მეორე ეპიზოდი.", link: NavItem122URL},
+      {name: NavItem123, preview: "203 Promo (4).jpg", description: "მეორე სეზონის მესამე ეპიზოდი.", link: NavItem123URL},
+      {name: NavItem124, preview: "204 Promo (10).jpg", description: "მეორე სეზონის მეოთხე ეპიზოდი.", link: NavItem124URL},
+      {name: NavItem125, preview: "205 Promo (10).jpg", description: "მეორე სეზონის მეხუთე ეპიზოდი.", link: NavItem125URL},
+      {name: NavItem126, preview: "206 Promo (7).jpg", description: "მეორე სეზონის მეექვსე ეპიზოდი.", link: NavItem126URL},
+      {name: NavItem127, preview: "207 Promo (13).jpg", description: "მეორე სეზონის მეშვიდე ეპიზოდი.", link: NavItem127URL},
+      {name: NavItem128, preview: "208 Promo (8).jpg", description: "მეორე სეზონის მერვე ეპიზოდი.", link: NavItem128URL},
+      {name: NavItem129, preview: "209 Promo (8).jpg", description: "მეორე სეზონის მეცხრე ეპიზოდი.", link: NavItem129URL},
+      {name: NavItem1210, preview: "210 Promo (14).jpg", description: "მეორე სეზონის მეათე ეპიზოდი.", link: NavItem1210URL},
+      {name: NavItem131, preview: "50x50.png", description: "მესამე სეზონის პირველი ეპიზოდი.", link: NavItem131URL},
+      {name: NavItem132, preview: "50x50.png", description: "მესამე სეზონის მეორე ეპიზოდი.", link: NavItem132URL},
+      {name: NavItem133, preview: "50x50.png", description: "მესამე სეზონის მესამე ეპიზოდი.", link: NavItem133URL},
+      {name: NavItem134, preview: "50x50.png", description: "მესამე სეზონის მეოთხე ეპიზოდი.", link: NavItem134URL},
+      {name: NavItem135, preview: "50x50.png", description: "მესამე სეზონის მეხუთე ეპიზოდი.", link: NavItem135URL},
+      {name: NavItem136, preview: "50x50.png", description: "მესამე სეზონის მეექვსე ეპიზოდი.", link: NavItem136URL},
+      {name: NavItem137, preview: "50x50.png", description: "მესამე სეზონის მეშვიდე ეპიზოდი.", link: NavItem137URL},
+      {name: NavItem138, preview: "50x50.png", description: "მესამე სეზონის მერვე ეპიზოდი.", link: NavItem138URL},
+      {name: NavItem139, preview: "50x50.png", description: "მესამე სეზონის მეათე ეპიზოდი.", link: NavItem139URL},
+      {name: NavItem1310, preview: "50x50.png", description: "მესამე სეზონის  ეპიზოდი.", link: NavItem1310URL},
+      {name: NavItem141, preview: "50x50.png", description: "მეოთხე სეზონის პირველი ეპიზოდი.", link: NavItem141URL},
+      {name: NavItem142, preview: "50x50.png", description: "მეოთხე სეზონის მეორე ეპიზოდი.", link: NavItem142URL},
+      {name: NavItem143, preview: "50x50.png", description: "მეოთხე სეზონის მესამე ეპიზოდი.", link: NavItem143URL},
+      {name: NavItem144, preview: "50x50.png", description: "მეოთხე სეზონის მეოთხე ეპიზოდი.", link: NavItem144URL},
+      {name: NavItem145, preview: "50x50.png", description: "მეოთხე სეზონის მეხუთე ეპიზოდი.", link: NavItem145URL},
+      {name: NavItem146, preview: "50x50.png", description: "მეოთხე სეზონის მეექვსე ეპიზოდი.", link: NavItem146URL},
+      {name: NavItem147, preview: "50x50.png", description: "მეოთხე სეზონის მეშვიდე ეპიზოდი.", link: NavItem147URL},
+      {name: NavItem148, preview: "50x50.png", description: "მეოთხე სეზონის მერვე ეპიზოდი.", link: NavItem148URL},
+      {name: NavItem149, preview: "50x50.png", description: "მეოთხე სეზონის მეცხრე ეპიზოდი.", link: NavItem149URL},
+      {name: NavItem1410, preview: "50x50.png", description: "მეოთხე სეზონის მეათე ეპიზოდი.", link: NavItem1410URL},
+      {name: NavItem151, preview: "50x50.png", description: "მეხუთე სეზონის პირველი ეპიზოდი.", link: NavItem151URL},
+      {name: NavItem152, preview: "50x50.png", description: "მეხუთე სეზონის მეორე ეპიზოდი.", link: NavItem152URL},
+      {name: NavItem153, preview: "50x50.png", description: "მეხუთე სეზონის მესამე ეპიზოდი.", link: NavItem153URL},
+      {name: NavItem154, preview: "50x50.png", description: "მეხუთე სეზონის მეოთხე ეპიზოდი.", link: NavItem154URL},
+      {name: NavItem155, preview: "50x50.png", description: "მეხუთე სეზონის მეხუთე ეპიზოდი.", link: NavItem155URL},
+      {name: NavItem156, preview: "50x50.png", description: "მეხუთე სეზონის მეექვსე ეპიზოდი.", link: NavItem156URL},
+      {name: NavItem157, preview: "50x50.png", description: "მეხუთე სეზონის მეშვიდე ეპიზოდი.", link: NavItem157URL},
+      {name: NavItem158, preview: "50x50.png", description: "მეხუთე სეზონის მერვე ეპიზოდი.", link: NavItem158URL},
+      {name: NavItem159, preview: "50x50.png", description: "მეხუთე სეზონის მეცხრე ეპიზოდი.", link: NavItem159URL},
+      {name: NavItem1510, preview: "50x50.png", description: "მეხუთე სეზონის მეათე ეპიზოდი.", link: NavItem1510URL},
+      {name: "Item 3", preview: "50x50.png", description: "This is the third item.", link: ""},
+      
+
+    ];
+
+    function searchfunction() {
+      const term = searchbar.value.toLowerCase().trim();
+      if (term.length === 0) {
+        searchresults.style.display = "none";
+        searchresults.innerHTML = "";
+      } else {
+        const filteredItems = items.filter(item => item.name.toLowerCase().includes(term));
+        if (filteredItems.length === 0) {
+          searchresults.style.display = "none";
+          searchresults.innerHTML = "";
         } else {
-          return letter;
+          searchresults.style.display = "block";
+          searchresults.innerHTML = "";
+          for (const item of filteredItems) {
+            const searchItem = document.createElement("div");
+            searchItem.classList.add("search-item");
+            const link = document.createElement("a");
+            link.href = `${item.link}`;
+            link.innerHTML = `<img src="images/resized/50px/${item.preview}"><div><div class="search-item-name">${item.name}</div><div class="search-item-description">${item.description}</div></div>`;
+            searchItem.appendChild(link);
+            searchresults.appendChild(searchItem);
+          }
         }
-      });
-      return wrappedLetters.join('');
+      }
     }
 
-    // Get all the <h1> elements inside .wiki-page-title-header
-    const headerElements = document.querySelectorAll('.wiki-page-title-header h1');
+    searchbar.addEventListener('input', function() {
+  if (searchbar.value.trim() !== '') {
+    searchfunction();
+  }
+  else {
+    searchresults.style.display = "none";
+    searchresults.innerHTML = "";
+  }
+     });
 
-    // Wrap one random letter per word with a span and apply blinking
-    headerElements.forEach((element) => {
-      const words = element.textContent.split(' ');
-      const wrappedWords = words.map((word) => wrapRandomLetterWithSpan(word));
-      element.innerHTML = wrappedWords.join(' ');
+     searchbar.addEventListener('mousedown', function() {
+  if (searchbar.value.trim() !== '') {
+    searchfunction();
+  } else {
+    searchresults.style.display = "none";
+    searchresults.innerHTML = "";
+  }
+     });
+
+     searchbar.addEventListener("blur", () => {
+      setTimeout(() => {
+        searchresults.style.display = "none";
+        searchresults.innerHTML = "";
+      }, 200);
     });
+
+
+    // searchbar.addEventListener("input", () => {
+    //   const term = searchbar.value.toLowerCase().trim();
+    //   if (term.length === 0) {
+    //     searchresults.style.display = "none";
+    //     searchresults.innerHTML = "";
+    //   } else {
+    //     const filteredItems = items.filter(item => item.name.toLowerCase().includes(term));
+    //     if (filteredItems.length === 0) {
+    //       searchresults.style.display = "none";
+    //       searchresults.innerHTML = "";
+    //     } else {
+    //       searchresults.style.display = "block";
+    //       searchresults.innerHTML = "";
+    //       for (const item of filteredItems) {
+    //         const searchItem = document.createElement("div");
+    //         searchItem.classList.add("search-item");
+    //         const link = document.createElement("a");
+    //         link.href = "#";
+    //         link.innerHTML = `<img src="${item.preview}"><div><div class="search-item-name">${item.name}</div><div class="search-item-description">${item.description}</div></div>`;
+    //         searchItem.appendChild(link);
+    //         searchresults.appendChild(searchItem);
+    //       }
+    //     }
+    //   }
+    // });
+
+//     searchbar.addEventListener('input', function() {
+//   if (searchbar.value.trim() !== '') {
+//     searchbar.addEventListener('mousedown', function() {
+//     searchresults.style.display = 'block';
+// });
+//   }
+// });
+
+// searchbar.addEventListener('input', function() {
+//   if (searchbar.value.trim() === '') {
+//     searchbar.addEventListener('mousedown', function() {
+//     searchresults.style.display = 'none';
+// });
+//   }
+// });
+
+
+// searchbar.addEventListener('mousedown', function() {
+//     searchresults.style.display = 'block';
+// });
+
+// searchbar.addEventListener('blur', function() {
+//     searchresults.style.display = 'none';
+// });
+
   </script>
-</body>
+ </body>
 </html>
