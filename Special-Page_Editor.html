@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <script>
+      var MetaTitle = "გვერდის მშენებელი";
+      var MetaDescription = "ბეიტსის მოტელის ვიკის გვერდის მშენებელი";
+      var MetaURL = "";
+      var MetaImage = "";
+      var WikiTitle = "ბეიტსის მოტელის ვიკი";
+      var WikiLanguage = "ka"
+    </script>
+    <script src="js-pack.js"></script>
+    <style>
+      label {
+      display: block;
+      margin-bottom: 5px;
+      }
+      input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      background: rgb(26, 21, 21);
+      color: rgb(68, 241, 62);
+      }
+      button {
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      }
+      textarea {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      height: 600px;
+      overflow: auto;
+      background-color: black;
+      color: #b9efff;
+      font-size: 18px;
+      }
+      input[type="file"] {
+      margin-bottom: 10px;
+      }
+      #preview {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      max-height: 600px;
+      overflow: auto;
+      }
+      #output {
+      color: orange !important;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js-dropdown-nav.js"></script>
+    <main>
+      <script src="js-header-nav.js"></script>
+      <script src="page-title.js"></script>
+      <label for="fileInput">Upload HTML File:</label>
+      <input type="file" id="fileInput">
+      <button id="loadBtn">Load Variables</button>
+      <label for="pageTitle">Page Name:</label>
+      <input type="text" id="pageName" placeholder="Enter Page Name (as in file)">
+      <label for="pageTitle">Page Title:</label>
+      <input type="text" id="pageTitle" placeholder="Enter Page Title">
+      <label for="pageDescription">Page Description:</label>
+      <input type="text" id="pageDescription" placeholder="Enter Page Description">
+      <label for="pageURL">Page URL:</label>
+      <input type="text" id="pageURL" placeholder="Enter Page URL">
+      <label for="pageImage">Page Image:</label>
+      <input type="text" id="pageImage" placeholder="Enter Page Image URL">
+      <label for="pageContent">Content:</label>
+      <textarea type="text" id="pageContent" placeholder="Enter Page Content"></textarea>
+      <br>
+      <button id="generateBtn">Generate</button>
+      <button id="downloadBtn">Download HTML</button>
+      <hr>
+      <h2>Generated HTML:</h2>
+      <textarea id="output" readonly></textarea>
+      <div id="preview"></div>
+      <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var fileInput = document.getElementById('fileInput');
+    var loadBtn = document.getElementById('loadBtn');
+    var pageNameInput = document.getElementById('pageName');
+    var pageTitleInput = document.getElementById('pageTitle');
+    var pageDescriptionInput = document.getElementById('pageDescription');
+    var pageURLInput = document.getElementById('pageURL');
+    var pageImageInput = document.getElementById('pageImage');
+    var pageContentTextarea = document.getElementById('pageContent');
+    var generateBtn = document.getElementById('generateBtn');
+    var downloadBtn = document.getElementById('downloadBtn');
+    var outputTextarea = document.getElementById('output');
+    var previewDiv = document.getElementById('preview');
+
+    var loadedVariables = {};
+    
+    loadBtn.addEventListener('click', function () {
+  const file = fileInput.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const externalHTMLContent = event.target.result;
+      const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+      const matches = scriptRegex.exec(externalHTMLContent);
+
+      const setInputValue = (id, value) => {
+        document.getElementById(id).value = value || null;
+      };
+
+      if (matches && matches.length > 1) {
+        const scriptContent = matches[1];
+        const tempScript = document.createElement('script');
+        tempScript.innerHTML = scriptContent;
+        document.body.appendChild(tempScript);
+
+        setInputValue('pageTitle', window.pageTitle);
+        setInputValue('pageDescription', window.pageDescription);
+        setInputValue('pageURL', window.pageURL);
+        setInputValue('pageImage', window.pageImage);
+        setInputValue('pageContent', window.pageContent);
+        setInputValue('pageName', window.pageName);
+
+        document.body.removeChild(tempScript);
+      } else {
+        // If no script content found, set inputs to default values (null)
+        setInputValue('pageTitle');
+        setInputValue('pageDescription');
+        setInputValue('pageURL');
+        setInputValue('pageImage');
+        setInputValue('pageContent');
+        setInputValue('pageName');
+      }
+    };
+
+    reader.readAsText(file);
+  }
+}
+    )
+
+    generateBtn.addEventListener('click', function () {
+      updateVariables();
+      var generatedHTML = generateHTML();
+      outputTextarea.value = generatedHTML;
+      previewDiv.innerHTML = generatedHTML;
+    });
+
+    downloadBtn.addEventListener('click', function () {
+      updateVariables();
+      var generatedHTML = generateHTML();
+      var fileName = pageNameInput.value ? pageNameInput.value + '.html' : 'wikipage.html';
+      var blob = new Blob([generatedHTML], { type: 'text/html' });
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+    });
+
+    function updateInputFields() {
+      pageNameInput.value = loadedVariables.pageName || '';
+      pageTitleInput.value = loadedVariables.pageTitle || '';
+      pageDescriptionInput.value = loadedVariables.pageDescription || '';
+      pageURLInput.value = loadedVariables.pageURL || '';
+      pageImageInput.value = loadedVariables.pageImage || '';
+      pageContentTextarea.value = loadedVariables.pageContent || '';
+    }
+
+    function updateVariables() {
+      loadedVariables.pageName = pageNameInput.value || '';
+      loadedVariables.pageTitle = pageTitleInput.value || '';
+      loadedVariables.pageDescription = pageDescriptionInput.value || '';
+      loadedVariables.pageURL = pageURLInput.value || '';
+      loadedVariables.pageImage = pageImageInput.value || '';
+      loadedVariables.pageContent = pageContentTextarea.value || '';
+    }
+
+    function generateHTML() {
+      return `
+        <ul>
+          <li>Page Name: ${loadedVariables.pageName}</li>
+          <li>Page Title: ${loadedVariables.pageTitle}</li>
+          <li>Page Description: ${loadedVariables.pageDescription}</li>
+          <li>Page URL: ${loadedVariables.pageURL}</li>
+          <li>Page Image: ${loadedVariables.pageImage}</li>
+          <li>Page Content: ${loadedVariables.pageContent}</li>
+        </ul>
+      `;
+    }
+  });
+</script>
+
+    </main>
+    <script src="footer.js"></script>
+  </body>
+</html>
