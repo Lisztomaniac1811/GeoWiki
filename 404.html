@@ -201,6 +201,9 @@ ul.errorpage li:not(:first-child)::before {
         <script src="js-dropdown-nav.js"></script>
         <main>
         <script src="js-header-nav.js"></script>
+        <div class="wiki-page-title-header">    
+            <h1 id="result"></h1>
+    <hr class="page-separator">    </div>
         <div class="container">
             <div class="gif-container">
                 <img src="https://i.imgur.com/bspJE.gif" alt="404 GIF">
@@ -219,6 +222,32 @@ ul.errorpage li:not(:first-child)::before {
             </div>
         </div>
         </main>
+        <script>
+            // Get the current URL
+            const currentUrl = window.location.href;
+          
+            // Extract the last part of the path after the last slash
+            let fileName = decodeURIComponent(currentUrl.substring(currentUrl.lastIndexOf('/') + 1));
+          
+            // Check if the file name contains ".html" and remove it
+            if (fileName.endsWith('.html')) {
+              fileName = fileName.slice(0, -5);
+            }
+          
+            // Replace underscores with spaces
+            fileName = fileName.replace(/_/g, ' ');
+          
+            // If there is a hyphen, replace it with " - "
+            if (fileName.includes('-')) {
+              fileName = fileName.replace(/-/g, ' - ');
+            }
+          
+            // Replace %20 with a space
+            fileName = fileName.replace(/%20/g, ' ');
+          
+            // Display the result in the <h1> element
+            document.getElementById('result').textContent = fileName;
+          </script>
         <script src="footer.js"></script>
         </body>
         </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Processing</title>
+</head>
+<body>
+
+<h1 id="result"></h1>
+
+<script>
+  // Get the current URL
+  const currentUrl = window.location.href;
+
+  // Extract the last part of the path after the last slash
+  let fileName = decodeURIComponent(currentUrl.substring(currentUrl.lastIndexOf('/') + 1));
+
+  // Check if the file name contains ".html" and remove it
+  if (fileName.endsWith('.html')) {
+    fileName = fileName.slice(0, -5);
+  }
+
+  // Replace underscores with spaces
+  fileName = fileName.replace(/_/g, ' ');
+
+  // If there is a hyphen, replace it with " - "
+  if (fileName.includes('-')) {
+    fileName = fileName.replace(/-/g, ' - ');
+  }
+
+  // Replace %20 with a space
+  fileName = fileName.replace(/%20/g, ' ');
+
+  // Display the result in the <h1> element
+  document.getElementById('result').textContent = fileName;
+</script>
+
+</body>
+</html>
