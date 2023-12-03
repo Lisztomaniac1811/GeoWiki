@@ -230,6 +230,7 @@ line-height: 1;
 
 .header-sitename>a>span {
     color: var(--navigation-font);
+    font-family: 'Ertizomis2';
 }
 
 .header-page-counter {
