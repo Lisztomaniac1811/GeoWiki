@@ -153,6 +153,9 @@ margin-bottom: 10px;
     border: 6px solid #113e57;
     font-family: Ertizomis1;
 }
+.slider-text a {
+  color: #fff !important;
+}
 @media only screen and (max-width: 600px) {
     .slider-container {
         max-height: none !important; /* Remove max-height on smaller screens */
@@ -181,42 +184,42 @@ margin-bottom: 10px;
           <div class="slider-container">
             <div class="slide fade">
                 <img src="images/resized/800px/About-bates-motel-wiki.jpg" style="width:100%">
-                <div class="slider-text"><span>კეთილი იყოს თქვენი მობრძანება!</span></div>
+                <div class="slider-text"><span><a href='Special-Community.html'>კეთილი იყოს თქვენი მობრძანება!</a></span></div>
             </div>
         
             <div class="slide fade">
                 <img src="images/resized/800px/Bates-motel-wiki-seasons.jpg" style="width:100%">
-                <div class="slider-text"><span>შეიტყვეთ ყველაფერი ბეიტსის მოტელის შესახებ!</span></div>
+                <div class="slider-text"><span><a href='Bates_Motel_(TV_series).html'>შეიტყვეთ ყველაფერი ბეიტსის მოტელის შესახებ!</a></span></div>
             </div>
         
             <div class="slide fade">
                 <img src="images/resized/800px/Bates_motel_wiki_actors.jpg" style="width:100%">
-                <div class="slider-text"><span>გაიცანით გენიალური მსახიობები!</span></div>
+                <div class="slider-text"><span><a href="Category-Cast.html">გაიცანით გენიალური მსახიობები!</a></span></div>
             </div>
 
             <div class="slide fade">
               <img src="images/resized/800px/Bates-motel-wiki-bts.jpg" style="width:100%">
-              <div class="slider-text"><span>დაინახეთ ბეიტსის მოტელი რეჟისორის თვალიდან!</span></div>
+              <div class="slider-text"><span><a href="Behind_the_Scenes.html">დაინახეთ ბეიტსის მოტელი რეჟისორის თვალიდან!</a></span></div>
           </div>
         
             <div class="slide fade">
                 <img src="images/resized/800px/Bates_motel_wiki_characters.jpg" style="width:100%">
-                <div class="slider-text"><span>აღმოაჩინეთ საკუთარი თავი პერსონაჟთა შორის!</span></div>
+                <div class="slider-text"><span><a href="Special-Quiz.html">აღმოაჩინეთ საკუთარი თავი პერსონაჟთა შორის!</a></span></div>
             </div>
 
             <div class="slide fade">
               <img src="images/resized/800px/Bates-motel-wiki-items.jpg" style="width:100%">
-              <div class="slider-text"><span>დაათვალიერეთ რეკვიზიტები და უნიკალური ნივთები!</span></div>
+              <div class="slider-text"><span><a href="Category-Items.html">დაათვალიერეთ რეკვიზიტები და უნიკალური ნივთები!</a></span></div>
             </div>
             
             <div class="slide fade">
               <img src="images/resized/800px/Bates-motel-wiki-blogs.jpg" style="width:100%">
-              <div class="slider-text"><span>დაინახეთ სამყარო პერსონაჟთა თვალიდან!</span></div>
+              <div class="slider-text"><span><a href="Category-Blog.html">დაინახეთ სამყარო პერსონაჟთა თვალიდან!</a></span></div>
             </div>
             
             <div class="slide fade">
               <img src="images/resized/800px/Bates-motel-wiki-media.jpg" style="width:100%">
-              <div class="slider-text"><span>იხილეთ აქამდე არ ნახული მედია მასალები!</span></div>
+              <div class="slider-text"><span><a href="Category-Special_Media.html">იხილეთ აქამდე უიშვიათესი მედია მასალები!</a></span></div>
             </div>
 
         </div>
@@ -317,8 +320,8 @@ margin-bottom: 10px;
 </div>
         
 <script>
+  // JavaScript for automatic slide change
   let slideIndex = 0;
-  let lastChangeTimestamp = Date.now();
 
   function showSlides() {
       let i;
@@ -329,28 +332,11 @@ margin-bottom: 10px;
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1 }
       slides[slideIndex - 1].style.display = "block";
-      lastChangeTimestamp = Date.now();
       setTimeout(showSlides, 4000); // Change slide every 4 seconds
-  }
-
-  function resumeSlides() {
-      const elapsed = Date.now() - lastChangeTimestamp;
-      const remainingTime = Math.max(4000 - elapsed, 0);
-      setTimeout(() => {
-          showSlides();
-          resumeSlides();
-      }, remainingTime);
   }
 
   // Start the slideshow
   showSlides();
-
-  // Resume slideshow when tab becomes active
-  document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
-          resumeSlides();
-      }
-  });
 </script>
 
         </main>
