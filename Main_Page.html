@@ -77,6 +77,11 @@
             text-align: center;
             font-size: 1em; /* Adjust the font size as needed */
             font-family: Ertizomis2;
+            user-select: none; /* Make text unselectable */
+        }
+        img {
+            pointer-events: none;
+            user-select: none;
         }
 
         /* Apply animation to slides */
@@ -160,6 +165,7 @@ margin-bottom: 10px;
       width: 100% !important;
     }
 }
+
         </style>
         <!--Link tags end here-->
         </head>
@@ -185,14 +191,37 @@ margin-bottom: 10px;
         
             <div class="slide fade">
                 <img src="images/resized/800px/Bates_motel_wiki_actors.jpg" style="width:100%">
-                <div class="slider-text"><span>გაიცანით ეკრანის მიღმა მყოფი გენიალური მსახიობები!</span></div>
+                <div class="slider-text"><span>გაიცანით გენიალური მსახიობები!</span></div>
             </div>
+
+            <div class="slide fade">
+              <img src="images/resized/800px/Bates-motel-wiki-bts.jpg" style="width:100%">
+              <div class="slider-text"><span>დაინახეთ ბეიტსის მოტელი რეჟისორის თვალიდან!</span></div>
+          </div>
         
             <div class="slide fade">
                 <img src="images/resized/800px/Bates_motel_wiki_characters.jpg" style="width:100%">
                 <div class="slider-text"><span>აღმოაჩინეთ საკუთარი თავი პერსონაჟთა შორის!</span></div>
             </div>
+
+            <div class="slide fade">
+              <img src="images/resized/800px/Bates-motel-wiki-items.jpg" style="width:100%">
+              <div class="slider-text"><span>დაათვალიერეთ რეკვიზიტები და უნიკალური ნივთები!</span></div>
+            </div>
+            
+            <div class="slide fade">
+              <img src="images/resized/800px/Bates-motel-wiki-blogs.jpg" style="width:100%">
+              <div class="slider-text"><span>დაინახეთ სამყარო პერსონაჟთა თვალიდან!</span></div>
+            </div>
+            
+            <div class="slide fade">
+              <img src="images/resized/800px/Bates-motel-wiki-media.jpg" style="width:100%">
+              <div class="slider-text"><span>იხილეთ აქამდე არ ნახული მედია მასალები!</span></div>
+            </div>
+
         </div>
+
+
         <br>
                 <p>ეს არის ბეიტსის მოტელის ონლაინ ენციკლოპედია. <br> „ბეიტსის მოტელი“ ალფრედ ჰიჩკოკის 1960 წლის „ფსიქოს“ თანამედროვე პრიკველია, ხოლო „ფსიქო“ დაფუძნებულია რობერტ ბლოხის 1959 წლის ამავე სახელწოდების რომანზე.<br>
           <i>„ჩვენ გვაქვს 12 თავისუფალი ადგილი, 12 კაბინა“</i>. <i>„შემოიარეთ, დაისვენეთ, შხაპი მიიღეთ“</i>.<br><i>„ბეიტსის მოტელში მარიონ კრეინის მოსვლამდე უამრავი რამ მოხდა“</i>.<br>
@@ -287,25 +316,42 @@ margin-bottom: 10px;
   </div>
 </div>
         
-        <script>
-            // JavaScript for automatic slide change
-            let slideIndex = 0;
-        
-            function showSlides() {
-                let i;
-                const slides = document.getElementsByClassName("slide");
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) { slideIndex = 1 }
-                slides[slideIndex - 1].style.display = "block";
-                setTimeout(showSlides, 4000); // Change slide every 4 seconds
-            }
-        
-            // Start the slideshow
-            showSlides();
-        </script>
+<script>
+  let slideIndex = 0;
+  let lastChangeTimestamp = Date.now();
+
+  function showSlides() {
+      let i;
+      const slides = document.getElementsByClassName("slide");
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      lastChangeTimestamp = Date.now();
+      setTimeout(showSlides, 4000); // Change slide every 4 seconds
+  }
+
+  function resumeSlides() {
+      const elapsed = Date.now() - lastChangeTimestamp;
+      const remainingTime = Math.max(4000 - elapsed, 0);
+      setTimeout(() => {
+          showSlides();
+          resumeSlides();
+      }, remainingTime);
+  }
+
+  // Start the slideshow
+  showSlides();
+
+  // Resume slideshow when tab becomes active
+  document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+          resumeSlides();
+      }
+  });
+</script>
 
         </main>
         <script src="footer.js"></script>
