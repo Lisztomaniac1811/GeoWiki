@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+        <html lang="ka">
+        <head>
+        <script>
+        var pageTitle = "ქვიზი - რომელი პერსონაჟი ხარ?";
+        var pageDescription = "ბეიტსის მოტელის რომელი პერსონაჟი ხარ? გაიარე ეს ქვიზი და გაიგე!";
+        var pageURL = "https://batesmotel.ge/Special-Quiz.html";
+        var pageImage = "";
+        var pageName = "Special-Quiz";
+        var pageContent = ``;
+        </script>
+        <script src="js-pack.js"></script>
+        <script src="variables.js"></script>
+          <script src="https://www.youtube.com/iframe_api"></script>
+        <!--Meta tags start here-->
+        <!--General-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="title" content="ქვიზი - რომელი პერსონაჟი ხარ?">
+        <meta name="description" content="ქვიზი - რომელი პერსონაჟი ხარ?">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> ქვიზი - რომელი პერსონაჟი ხარ? | ბეიტსის მოტელის ვიკი</title>
+        <!--Facebook-->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://batesmotel.ge/Special-Quiz.html">
+        <meta property="og:title" content="ქვიზი - რომელი პერსონაჟი ხარ?">
+        <meta property="og:description" content="ბეიტსის მოტელის რომელი პერსონაჟი ხარ? გაიარე ეს ქვიზი და გაიგე!">
+        <meta property="og:image" content="">
+        <!--Twitter-->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://batesmotel.ge/Special-Quiz.html">
+        <meta property="twitter:title" content="ქვიზი - რომელი პერსონაჟი ხარ?">
+        <meta property="twitter:description" content="ბეიტსის მოტელის რომელი პერსონაჟი ხარ? გაიარე ეს ქვიზი და გაიგე!">
+        <meta property="twitter:image" content="">
+        <!--Meta tags end here-->
+        <!--Link tags start here-->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="styles/css.css">
+        <!--Link tags end here-->
+        <style>
+.quiz-container {
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            background-color: #113e57;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0%); }
+        }
+        </style>
+        </head>
+        <body>
+        <script src="js-dropdown-nav.js"></script>
+        <main>
+        <script src="js-header-nav.js"></script>
+        <div class="wiki-page-title-header">    
+          <h1>ქვიზი - რომელი პერსონაჟი ხარ?</h1>    <hr class="page-separator">    </div>
+          <div class="quiz-container" id="quizContainer">
+            <h2>Question 1</h2>
+            <div>
+                <p>Select an answer:</p>
+                <label><input type="radio" name="answer" value="0"> Answer 1</label>
+                <label><input type="radio" name="answer" value="1"> Answer 2</label>
+                <label><input type="radio" name="answer" value="2"> Answer 3</label>
+            </div>
+            <button onclick="nextQuestion()">Next</button>
+        </div>
+    
+        <script>
+            const questions = [
+                { question: 'What is the capital of France?', answers: [0, 1, 2] },
+                { question: 'What is the largest mammal?', answers: [0, 1, 2] },
+                { question: 'Who wrote "Romeo and Juliet"?', answers: [0, 1, 2] },
+                // Add more questions as needed
+            ];
+    
+            let currentQuestionIndex = 0;
+    
+            function nextQuestion() {
+                const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+                if (!selectedAnswer) {
+                    alert('Please select an answer.');
+                    return;
+                }
+    
+                const score = parseInt(selectedAnswer.value);
+                saveScore(score);
+    
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    transitionToNextQuestion();
+                } else {
+                    showResult();
+                }
+            }
+    
+            function saveScore(score) {
+                let totalScore = parseInt(localStorage.getItem('totalScore')) || 0;
+                totalScore += score;
+                localStorage.setItem('totalScore', totalScore.toString());
+            }
+    
+            function transitionToNextQuestion() {
+                const quizContainer = document.getElementById('quizContainer');
+                quizContainer.classList.remove('fade-in');
+                quizContainer.classList.add('slide-in');
+    
+                setTimeout(() => {
+                    quizContainer.classList.remove('slide-in');
+                    quizContainer.classList.add('fade-in');
+                    displayQuestion();
+                }, 500);
+            }
+    
+            function displayQuestion() {
+                const currentQuestion = questions[currentQuestionIndex];
+                const quizContainer = document.getElementById('quizContainer');
+    
+                quizContainer.innerHTML = `
+                    <h2>${currentQuestion.question}</h2>
+                    <div>
+                        <p>Select an answer:</p>
+                        <label><input type="radio" name="answer" value="${currentQuestion.answers[0]}"> Answer 1</label>
+                        <label><input type="radio" name="answer" value="${currentQuestion.answers[1]}"> Answer 2</label>
+                        <label><input type="radio" name="answer" value="${currentQuestion.answers[2]}"> Answer 3</label>
+                    </div>
+                    <button onclick="nextQuestion()">Next</button>
+                `;
+            }
+    
+            function showResult() {
+                const totalScore = parseInt(localStorage.getItem('totalScore')) || 0;
+                let result = '';
+    
+                if (totalScore == 1) {
+                    result = 'You are Alex Romero!';
+                } else if (totalScore == 2) {
+                    // Add more result conditions as needed
+                    result = 'You are Norman Bates.';
+                } else if (totalScore == 3) {
+                  result = 'You are Norma Bates.';
+                } else if (totalScore == 4) {
+                  result = 'You are Emma Decody.';
+                } else if (totalScore == 5) {
+                  result = 'You are Dyla Massett.';
+                } else if (totalScore == 6) {
+                  result = 'You are Gunner.';
+                } else {
+                  result = "You are someone else.";
+                }
+                const quizContainer = document.getElementById('quizContainer');
+                quizContainer.innerHTML = `
+                    <h2>Quiz Completed</h2>
+                    <p>Your result: ${result}</p>
+                `;
+                
+                // Reset the scores in local storage
+                localStorage.setItem('totalScore', '0');
+    
+                // Reset the quiz
+                currentQuestionIndex = 0;
+            }
+    
+            // Initial display
+            displayQuestion();
+        </script>
+
+          
+    <div id="GalleryModal" style="display: none;">
+      <span class="GalleryClose cursor" onclick="closeModal();pauseYouTubeVideo();" accesskey="esc">✕</span>
+      <div class="modal-content">
+  
+    <a class="prev" onclick="plusSlides(-1);scrollthebar();pauseYouTubeVideo()">❮</a>
+    <a class="next" onclick="plusSlides(1);scrollthebar();pauseYouTubeVideo()">❯</a>
+    <div class="gallery-caption">
+      <p id="Gallery1Caption"></p>
+    </div>
+    <div class="scrollablegallerylist">
+  
+      </div>
+    </div>
+  </div>
+  <script>
+            function openModal() {
+    document.getElementById("GalleryModal").style.display = "block";
+    var k = document.getElementsByTagName("BODY")[0];
+    k.style.overflow = "hidden";
+  }
+  function closeModal() {
+    document.getElementById("GalleryModal").style.display = "none";
+    var k = document.getElementsByTagName("BODY")[0];
+    k.style.overflow = "visible";
+  }
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+    pauseYouTubeVideo()
+  }
+  
+  function scrollthebar() {
+    window.location.href = "#galleryitem-" + slideIndex;
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+    pauseYouTubeVideo();
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("GallerySlides");
+    var dots = document.getElementsByClassName("Gallery1Demo");
+    var Gallery1CaptionText = document.getElementById("Gallery1Caption");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+      slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    Gallery1CaptionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+      pauseYouTubeVideo();
+    }
+  });
+
+
+  var startX;
+	var startY;
+
+		// Add touchstart event listener to element
+		document.getElementById("GalleryModal").addEventListener("touchstart", function(event) {
+			// Get starting coordinates
+			startX = event.touches[0].clientX;
+			startY = event.touches[0].clientY;
+		});
+
+		// Add touchend event listener to element
+		document.getElementById("GalleryModal").addEventListener("touchend", function(event) {
+			// Get ending coordinates
+			var endX = event.changedTouches[0].clientX;
+			var endY = event.changedTouches[0].clientY;
+
+			// Calculate distance and direction
+			var distanceX = endX - startX;
+			var distanceY = endY - startY;
+			var direction;
+
+			if (Math.abs(distanceX) > Math.abs(distanceY)) {
+				direction = (distanceX > 0) ? "right" : "left";
+			} else {
+				direction = (distanceY > 0) ? "down" : "up";
+			}
+
+			// Run appropriate function based on direction of swipe
+			if (direction === "right") {
+				// Run function for right swipe
+				plusSlides(-1);
+        scrollthebar();
+			} else if (direction === "left") {
+				// Run function for left swipe
+				plusSlides(1);
+        scrollthebar();
+			}
+		});
+
+
+    
+    // Add keydown event listener to document
+		document.addEventListener("keydown", function(event) {
+			// Check if pressed key is left or right arrow
+			if (event.keyCode === 37) {
+				// Run function for left arrow press
+				leftArrowFunction();
+			} else if (event.keyCode === 39) {
+				// Run function for right arrow press
+				rightArrowFunction();
+			}
+		});
+
+		// Define functions to run on left and right arrow press
+		function leftArrowFunction() {
+			plusSlides(-1);
+        scrollthebar();
+			// Add your code for left arrow press here
+		}
+
+		function rightArrowFunction() {
+			plusSlides(1);
+        scrollthebar();
+			// Add your code for right arrow press here
+		}
+            </script>
+        </main>
+        <script src="footer.js"></script>
+        </body>
+        </html>
+        
