@@ -1,5 +1,5 @@
 document.write("<div id=\"dropdown-navigation\">");
-document.write("    <a href=\"Main_Page.html\" class=\"dropdown-logo\">", WikiTitle, "</a>");
+document.write("    <a href=\"index.html\" class=\"dropdown-logo\">", WikiTitle, "</a>");
 document.write("    <script src=\"js-nav.js\"></script>");
 document.write(`
 <div style="display:flex; flex-direction: column; padding-right: 10px;">

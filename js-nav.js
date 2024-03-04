@@ -15,7 +15,7 @@ document.write("      </div>");
 document.write("      <div class=\"dropdown-menu\">");
 document.write("        <ul class=\"wiki-navigation-lists\">");
 document.write("          <li>");
-document.write("            <a href=\"Main_Page.html\">");
+document.write("            <a href=\"index.html\">");
 document.write("              <svg class=\"dropdown-icons\" style=\"margin-right: 6px;\">");
 document.write("                <path id=\"home-tiny\" d=\"M9 10h1V6.414l-4-4-4 4V10h1V9c0-1.654 1.346-3 3-3s3 1.346 3 3v1zm2 2H8a1 1 0 0 1-1-1V9c0-.55-.449-1-1-1-.551 0-1 .45-1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V6c0-.265.105-.52.293-.707l5-5a.999.999 0 0 1 1.414 0l5 5A.997.997 0 0 1 12 6v5a1 1 0 0 1-1 1z\" fill=\"#fff\" />");
 document.write("              </svg>");

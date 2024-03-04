@@ -1,10 +1,10 @@
 document.write("<div id=\"wiki-header-nav\">");
 document.write("    <div class=\"wordmark\">");
-document.write("<a href=\"Main_Page.html\"><img src=\"", WordmarkURL, "\"></img></a>");
+document.write("<a href=\"index.html\"><img src=\"", WordmarkURL, "\"></img></a>");
 document.write("    </div>");
 document.write("    <div class=\"header-top-container\">");
 document.write("<div class=\"header-sitename\">");
-document.write("<a href=\"Main_Page.html\"><span>", WikiTitle, "</span></a>");
+document.write("<a href=\"index.html\"><span>", WikiTitle, "</span></a>");
 document.write("</div>");
 document.write("    <div class=\"header-page-counter\">");
 document.write("        <span class=\"counter-value\">", PageCount, "</span>");
