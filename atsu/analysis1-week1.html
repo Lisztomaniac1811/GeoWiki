@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კვირა 1 - ანალიზი 1 | ელექტრული ინჟინერია | აწსუ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <style>
+    </style>
+</head>
+<body>
+    <main>
+      <h2>&#xA7; 1. ზღვართა თეორია <br> (მიმდევრობის ცნება და მისი ზღვარი)</h2>
+      
+      <p><u><i><b>განმარტება 1.</b></i></u> ნატურალურ რიცხვთა სიმრავლეზე \( (\mathbb{N}) \)  განსაზღვრულ ფუნქციას უწოდებენ მიმდევრობას. ყოველ ნატურალურ \( n \) რიცხვს შეესაბამება მიმდევრობის \( x_n \) რიცხვი.</p>
+      \[
+\forall n \in \mathbb{N} \Rightarrow x_n
+\]
+      <p><u><i><b> მაგალითი 1.</b></i></u>
+        <ol>
+            <li>
+                \[
+x_n = \frac{1}{n} \Rightarrow \left\{1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \ldots, \frac{1}{n}\right\}
+\]
+            </li>
+            <li>
+                \[
+x_n = \frac{(-1)^n}{n} \Rightarrow \left\{-1, \frac{1}{2}, -\frac{1}{3}, \frac{1}{4}, \ldots, \frac{(-1)^n}{n}\right\}
+\]
+
+            </li>
+            <li>
+                \[
+                x_n = \frac{n}{n+1} \Rightarrow \left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \ldots, \frac{n}{n+1}\right\}
+                \]
+            </li>
+            <li>
+                \[
+x_n = \frac{n+1}{n} \Rightarrow \left\{2, \frac{3}{2}, \frac{4}{3}, \frac{5}{4}, \ldots, \frac{n+1}{n}\right\}
+\]
+            </li>
+            <li>
+                \[
+x_n = n^2 \Rightarrow \left\{1, 4, 9, 16, 25, \ldots, n^2\right\}
+\]
+            </li>
+            <li>
+                \[
+x_n = (-1)^n \Rightarrow \left\{-1, 1, -1, 1, -1, \ldots, (-1)^n\right\}
+\]
+            </li>
+        </ol></p>
+<hr>
+        <p><u><i><b>განმარტება 2. </b></i></u> მიმდევრობას უწოდებენ ზრდადს (კლებადს), თუ ამ მიმდევრობის ყოველი წევრი მის წინა წევრზე მეტია (ნაკლებია).</p>
+        \[
+\forall n \in \mathbb{N}, \quad x_n \lt x_{n+1} \quad (x_n > x_{n+1})
+\]
+        <p><u><i><b> მაგალითი 2. </b></i></u> პირველ მაგალითში მოცემული მიმდევრობებიდან ზრდადია (3) და (5), რადგანაც მათი ნებისმიერი არაპირველი წევრი მეტია მის წინა წევრზე, ხოლო კლებადია (1) და (4), რადგანაც მათი ნებისმიერი არაპირველი წევრი ნაკლებია მის წინა წევრზე. რაც შეეხება (2)-სა და (6)-ს, ისინი არც ზრდადია, არც კლებადი, ვინაიდან წევრები ნიშანს გამუდმებით იცვლიან.</p>
+        <hr>
+        <p><u><i><b>განმარტება 3.</b></i></u> \( x_n \) მიმდევრობა შემოსაზღვრულია, თუ არსებობს რაღაც \( \mathcal{M} \) რიცხვი, რომელსაც არ აღემატება ამ მიმდევრობის არცერთი წევრის მოდული.</p>
+        \[
+\exists \mathcal{M} : |x_n| \leq \mathcal{M}
+\]
+        <p><u><i><b> მაგალითი 3.</b></i></u> პირველ მაგალითში მოცემული მიმდევრობებიდან შემოსაზღვრულია (1), (2), (3), (4) და (6). (1) შემოსაზღვრულია 1-ით, რადგან 1-ზე მეტ მნიშვნელობას მიმდევრობის არცერთი წევრი იღებს; ანალოგიურად, (2) შემოსაზღვრულია \( \frac{1}{2} \)-ით, (3) 1-ით, (4) 2-ით, (6) კი 1-ით. (5) არ არის შემოსაზღვრული, ვინაიდან მისი წევრები უსასრულოდ იზრდება, ანუ ნებისმიერი \( \mathcal{M} \)-ისთვის ყოველთვის მოიძებნება მასზე დიდი რიცხვი.</p>
+            <hr>
+
+            <p><u><i><b>განმარტება 4.</b></i></u> \( a \) რიცხვს უწოდებენ \( x_n \) მიმდევრობის ზღვარს, თუ ნებისმიერი სურვილისამებრ მცირე და დადებითი \( \epsilon \) რიცხვისთვის, მოიძებნება ნატურალური \( N \) რიცხვი, ისე, რომ როცა \( n \) გადააჭარბებს \( N \)-ს, სხვაობა \( x_n \)-სა და \( a \)-ს შორის იქნება \( \epsilon \)-ზე მცირე.</p> 
+<p>ეს პირობა ჩაიწერება შემდეგნაირად:</p>
+\[
+\forall \epsilon > 0 \, \exists N, n > N, \; |x_n - a| \lt \epsilon
+\]
+            სხვა სიტყვებით, \( n \) რიცხვის უსასრულოდ ზრდასთან ერთად,  \( x_n \) უფრო და უფრო უახლოვდება \( a \)-ს. იმ ფაქტს, რომ \( x_n \) მიმდევრობის ზღვარი არის \( a \), წერენ შემდეგი სახით:
+                \[
+                \lim\limits_{{n \to \infty}} x_n = a
+                \]
+            </p>
+            <p>მიმდევრობის ზღვრის ჩანაწერიდან გამომდინარეობს:</p>
+            \[
+| x_n - a | \lt \epsilon \Rightarrow \\
+- \epsilon \lt x_n - a \lt \epsilon \Rightarrow \\
+a - \epsilon \lt x_n \lt a + \epsilon
+\]
+            <figure><img src="limit-a-minus-plus-epsilon-x-axis.png"></figure>
+            <p>თუკი მიმდევრობას გააჩნია ზღვარი, იგი არის <u>კრებადი</u>, წინააღმდეგ შემთხვევაში — <u>განშლადი</u>.</p>    
+            <hr>
+
+            <p><u><i><b>თეორემა 1.</b></i></u> თუ \( x_n\) მიმდევრობის გააჩნია ზღვარი, მაშინ იგი შემოსაზღვრულია.</p>
+            <p><u><i><b>დამტკიცება 1.</b></i></u>
+                \[
+\forall \epsilon>0, \, \exists N, n > N, \, |x_n - a| \lt \epsilon \Rightarrow \\
+\Rightarrow \, a - \epsilon \lt x_n \lt a + \epsilon \\
+\mathcal{M} = \max(|x_1|, |x_2|, |x_3|, \ldots, |x_N|, |a - \epsilon|, |a + \epsilon|) \\
+|x_n| \leq \mathcal{M}
+\]
+<hr>
+<p><u><i><b>თეორემა 2.</b></i></u> თუ მიმდევრობა კრებადია, მას გააჩნია ერთადერთი ზღვარი.</p>
+            <p><u><i><b>დამტკიცება 2.</b></i></u>
+<p>ვთქვათ, \(x_n\) არის მიმდევრობა, ხოლო ერთმანეთისგან განსხვავებული ორი რიცხვი \(a\) და \(b\) არის მისი ზღვრები (\(a \neq b\)).</p>
+\[
+|a - b| = |a - x_n + x_n - b| \leq |a - x_n| + |x_n - b| \\
+\forall \epsilon > 0 \, \exists N_1, n > N_1, \, |a - x_n| \lt \frac{\epsilon}{2} \\
+\forall \epsilon > 0 \, \exists N_2, n > N_2, \, |b - x_n| \lt \frac{\epsilon}{2} \\
+N = \max(N_1, N_2), \, n > N, \, |a - b| \lt |a - x_n| + |x_n - b| \lt \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \Rightarrow a=b.
+\]
+<hr>
+<p><u><i><b>განმარტება 5. </b></i></u> \( \alpha_n\)-ს უწოდებენ უსასრულოდ მცირე მიმდევრობას, თუ მისი ზღვარი ნულია.</p>
+    \[
+\forall \epsilon > 0 \, \exists N, n > N, \, |\alpha_n| \lt \epsilon \\ 
+\lim\limits_{{n \to \infty}} \alpha_n = 0
+\] 
+<p>უსასრულოდ მცირე მიმდევრობას ახასიათებს შემდეგი თვისებები:
+    <ol type="i">
+        <li>მუდმივი რიცხვისა და უსასრულოდ მცირეს ნამრავლი უსასრულოდ მცირე მიმდევრობაა;</li>
+        <li>უსასრულოდ მცირე მიმდევრობათა ჯამი, სხვაობა და ნამრავლი უსასრულოდ მცირე მიმდევრობაა;</li>
+        <li>უსასრულოდ მცირე მიმდევრობისა და შემოსაზღვრული მიმდევრობის ნამრავლი უსასრულოდ მცირე მიმდევრობაა.</li>
+     </ol>
+</p>
+
+<hr>
+<ul class="pagination">
+    <li class="disabled">
+        <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+    </li>
+    <li class="active"><a href="analysis1-week1.html">1</a></li>
+    <li><a href="analysis1-week2.html">2</a></li>
+    <li><a href="analysis1-week3.html">3</a></li>
+    <!-- <li><a href="analysis1-week4.html">4</a></li>
+    <li><a href="analysis1-week5.html">5</a></li>
+    <li><a href="analysis1-week6.html">6</a></li>
+    <li><a href="analysis1-week7.html">7</a></li>
+    <li><a href="analysis1-week8.html">8</a></li>
+    <li><a href="analysis1-week9.html">9</a></li>
+    <li><a href="analysis1-week10.html">10</a></li>
+    <li><a href="analysis1-week11.html">11</a></li>
+    <li><a href="analysis1-week12.html">12</a></li>
+    <li><a href="analysis1-week13.html">13</a></li>
+    <li><a href="analysis1-week14.html">14</a></li>
+    <li><a href="analysis1-week15.html">15</a></li>
+    <li><a href="analysis1-week16.html">16</a></li>
+    <li><a href="analysis1-week17.html">17</a></li>
+    <li><a href="analysis1-week18.html">18</a></li>
+    <li><a href="analysis1-week19.html">19</a></li>
+    <li><a href="analysis1-week20.html">20</a></li> -->
+    <li>
+        <a href="analysis1-week2.html" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+    </li>
+</ul>
+<br>
+</main>
+    <div class="footer">
+        <a href="analysis1.html" class="home-link">ანალიზი 1</a> | <a href="index.html" class="home-link">კურსები</a>
+    </div>
+</body>
+</html>

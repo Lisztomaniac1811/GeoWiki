@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კვირა 2 - ანალიზი 1 | ელექტრული ინჟინერია | აწსუ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <style>
+    </style>
+</head>
+<body>
+    <main>
+    <h3>თეორემა საშუალედო ცვლადი ზღვრის შესახებ</h3>
+    <p><u><i><b>თეორემა 3.</b></i></u> ვთქვათ \( \{x_n\} \), \( \{y_n\} \) და \( \{z_n\} \) არიან მიმდევრობები, რომელთათვისაც სრულდება პირობა \( x_n \leq y_n \leq z_n \). თუკი \( \{x_n\} \)-ისა და \( \{z_n\} \)-ის ზღვრები ერთი და იმავე რიცხვია:</p>
+     \[
+    \lim_{{n\to\infty}} x_n = \lim_{{n\to\infty}} z_n = a,
+    \]
+    <p>მაშინ \( \{y_n\} \)-ის ზღვარიც ამ რიცხვის ტოლია:</p>
+    \[
+    \lim_{{n\to\infty}} y_n = a.
+    \]
+<p><u><i><b>დამტკიცება 3.</b></i></u></p>
+    \[
+    \forall \epsilon > 0 \, \exists N_1, n > N_1, \, |x_n - \epsilon| \Rightarrow a - \epsilon \lt x_n \lt a + \epsilon\\
+   
+    \forall \epsilon > 0 \, \exists N_2, n > N_2, \, |z_n - \epsilon| \Rightarrow a - \epsilon \lt z_n \lt a + \epsilon\\
+   
+    N = \max(N_1, N_2) \\
+
+    \forall \epsilon > 0, \exists N, n > N, \,  a - \epsilon \lt x_n \leq y_n \leq z_n \lt a + \epsilon \implies \\
+    \implies a - \epsilon \lt y_n \lt a + \epsilon \implies \\
+    \implies | y_n - a | \lt \epsilon \implies \\
+    \implies  \lim_{{n \to \infty}} y_n = a
+    \]
+    <p><u><i><b>დამტკიცების განმარტება.</b></i></u></p>
+        <p>დავუშვათ \( \epsilon > 0 \). ზღვის განმარტების თანახმად, არსებობს ორი რიცხვი \( N_1 \) and \( N_2 \) ისე, რომ ნებისმიერი \( n > N_1 \) და \( n > N_2 \) რიცხვებისთვის, ვიღებთ</p>
+\[
+| x_n - a | \lt \epsilon \quad \text{და} \quad | z_n - a | \lt \epsilon.
+\]
+
+<p>ახლა დავუშვათ, რომ \( N = \max(N_1, N_2) \). ყოველი \( n > N \) რიცხვისთვის, ვიღებთ</p>
+\[
+a - \epsilon \lt x_n \leq y_n \leq z_n \lt a + \epsilon.
+\]
+
+<p>აქედან გამომდინარეობს, რომ</p>
+\[
+a - \epsilon \lt y_n \lt a + \epsilon \implies
+| y_n - a | \lt \epsilon,
+\]
+
+<p>რაც ნიშნავს, რომ \( \lim_{{n \to \infty}} y_n = a \).</p>
+
+<p>ვინაიდან \( \epsilon \) ნებისმიერი მცირე რიცხვია, ამით მტკიცდება, რომ ნებისმიერი \( \epsilon > 0 \) რიცხვისთვის, არსებობს \( N \) ისე, რომ ნებისმიერი \( n > N \) რიცხვისთვის, \( |y_n - a| \lt \epsilon \). ეს არის ზღვრის განმარტება, ამგვარად,</p>
+\[
+\lim_{{n \to \infty}} y_n = a.
+\]
+
+<hr>
+<h3>ძირითადი თეორია ზღვარზე</h3>
+<p>იმისათვის, რომ \( x_n \) მიმდევრობის ზღვარი იყოს \( a \), აუცილებელია და საკმარისია შესრულდეს ტოლობა \( x_n = a +\alpha_n \), სადაც \( \alpha_n \) არის უსასრულოდ მცირე მიმდევრობა.</p>
+\[
+\forall \epsilon > 0, \exists N, n > N, | x_n - a | \lt \epsilon \implies \\
+\implies | \alpha_n | \lt \epsilon \implies \lim_{{n \to \infty}} \alpha_n = 0.
+\]
+<p>ანალოგიურად,</p>
+\[
+\forall \epsilon > 0, \exists N, n > N, | x_n - a | \lt \epsilon \implies  \\
+\implies \lim_{{n \to \infty}} x_n = a. 
+\]
+<hr>
+<h3>თეორემები მიმდევრობის შესახებ</h3>
+<ol type="i">
+    <li>
+        ორი კრებადი მიმდევრობის ჯამისა და სხვაობის გვარი, შესაბამისად, ზღვართა ჯამისა და ზღვართა სხვაობის ტოლია:
+\[
+\lim_{{n \to \infty}} (x_n \pm y_n) = \lim_{{n \to \infty}} x_n \pm \lim_{{n \to \infty}} y_n = a \pm b.
+\]
+    </li>
+    <li>
+        ორი კრებადი მიმდევრობის ნამრავლის ზღვარი ზღვართა ნამრავლის ტოლია:
+        \[
+\lim_{{n \to \infty}} (x_n y_n) = \lim_{{n \to \infty}} x_n \cdot \lim_{{n \to \infty}} y_n = a b.
+\]
+    </li>
+    <li>
+        ორი კრებადი მიმდევრობის ფარდობის ზღვარი ზღვართა ფარდობის ტოლია:
+        \[
+\lim_{{n \to \infty}} \frac{x_n}{y_n} = \frac{\lim_{{n \to \infty}} x_n}{\lim_{{n \to \infty}} y_n} = \frac{a}{b}, \: b \neq 0.
+\]
+    </li>
+</ol>
+<hr>
+<ul class="pagination">
+    <li>
+        <a href="analysis1-week1.html" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+    </li>
+    <li><a href="analysis1-week1.html">1</a></li>
+    <li  class="active"><a href="analysis1-week2.html">2</a></li>
+    <li><a href="analysis1-week3.html">3</a></li>
+    <!-- <li><a href="analysis1-week4.html">4</a></li>
+    <li><a href="analysis1-week5.html">5</a></li>
+    <li><a href="analysis1-week6.html">6</a></li>
+    <li><a href="analysis1-week7.html">7</a></li>
+    <li><a href="analysis1-week8.html">8</a></li>
+    <li><a href="analysis1-week9.html">9</a></li>
+    <li><a href="analysis1-week10.html">10</a></li>
+    <li><a href="analysis1-week11.html">11</a></li>
+    <li><a href="analysis1-week12.html">12</a></li>
+    <li><a href="analysis1-week13.html">13</a></li>
+    <li><a href="analysis1-week14.html">14</a></li>
+    <li><a href="analysis1-week15.html">15</a></li>
+    <li><a href="analysis1-week16.html">16</a></li>
+    <li><a href="analysis1-week17.html">17</a></li>
+    <li><a href="analysis1-week18.html">18</a></li>
+    <li><a href="analysis1-week19.html">19</a></li>
+    <li><a href="analysis1-week20.html">20</a></li> -->
+    <li>
+        <a href="analysis1-week3.html" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+    </li>
+</ul><br>
+</main>
+    <div class="footer">
+        <a href="analysis1.html" class="home-link">ანალიზი 1</a> | <a href="index.html" class="home-link">კურსები</a>
+    </div>
+</body>
+</html>

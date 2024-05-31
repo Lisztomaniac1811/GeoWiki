@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPA კალკულატორი</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .green-background {
+        background-color: #7FFF00;
+    }
+    .red-background {
+        background-color: #FF6347;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>GPA კალკულატორი</h2>
+    <div class="form-group">
+        <label for="linear-algebra">წრფივი ალგებრა და ანალიზური გეომეტრია:</label>
+        <input type="number" id="linear-algebra" min="0" max="10" step="0.1" required>
+    </div>
+    <div class="form-group">
+        <label for="analysis">მათემატიკური ანალიზი-1:</label>
+        <input type="number" id="analysis" min="0" max="10" step="0.1" required>
+    </div>
+    <div class="form-group">
+        <label for="english">უცხო ენა-1:</label>
+        <input type="number" id="english" min="0" max="10" step="0.1" required>
+    </div>
+    <div class="form-group">
+        <label for="graphical-engineering">საინჟინრო გრაფიკა:</label>
+        <input type="number" id="graphical-engineering" min="0" max="10" step="0.1" required>
+    </div>
+    <div class="form-group">
+        <label for="chemistry">ქიმია ელ:</label>
+        <input type="number" id="chemistry" min="0" max="10" step="0.1" required>
+    </div>
+    <div class="form-group">
+        <label for="informatics">ინფორმაციული ტექნოლოგიები:</label>
+        <input type="number" id="informatics" min="0" max="10" step="0.1" required>
+    </div>
+    <button onclick="calculateGPA()">GPA-ის გამოთვლა</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateGPA() {
+        var linearAlgebra = parseFloat(document.getElementById('linear-algebra').value);
+        var analysis = parseFloat(document.getElementById('analysis').value);
+        var english = parseFloat(document.getElementById('english').value);
+        var graphicalEngineering = parseFloat(document.getElementById('graphical-engineering').value);
+        var chemistry = parseFloat(document.getElementById('chemistry').value);
+        var informatics = parseFloat(document.getElementById('informatics').value);
+
+        var gpa = (linearAlgebra * 5 + analysis * 5 + english * 5 + graphicalEngineering * 6 + chemistry * 5 + informatics * 5) / 31;
+        var resultElement = document.getElementById('result');
+
+        resultElement.textContent = "თქვენი GPA არის: " + gpa.toFixed(2);
+
+        if (gpa > 91) {
+            resultElement.classList.remove('red-background');
+            resultElement.classList.add('green-background');
+        } else {
+            resultElement.classList.remove('green-background');
+            resultElement.classList.add('red-background');
+        }
+    }
+</script>
+
+</body>
+</html>

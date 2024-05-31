@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კვირა 3 - ანალიზი 1 | ელექტრული ინჟინერია | აწსუ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <style>
+    </style>
+</head>
+<body>
+    <main>
+    <h3>თეორემები მიმდევრობის შესახებ (დამტკიცება)</h3>
+    <ol type="1">
+        <li><p>        ორი კრებადი მიმდევრობის ჯამისა და სხვაობის გვარი, შესაბამისად, ზღვართა ჯამისა და ზღვართა სხვაობის ტოლია:
+        </p>
+        <p>\[
+    \lim_{{n \to \infty}} (x_n \pm y_n) = \lim_{{n \to \infty}} x_n \pm \lim_{{n \to \infty}} y_n = a \pm b.
+    \]</p>
+    <p><i><u>დამტკიცება:</u></i></p>
+    <p>
+    \[
+    x_n = a + \alpha_n, \hspace{1cm} y_n = b + \beta_n \Rightarrow \\
+    x_n+y_n=(a+b)+(\alpha_n + \beta_n)
+    \]</p>
+    <p>ვინაიდან ორი უსასრულოდ მცირეს ჯამი უსასრულოდ მცირეა, (\( \alpha_n + \beta_n\)) უსასრულოდ მცირე მიმდევრობაა, რომელსაც პირობითად ვუწოდოთ \(\gamma_n\). რადგან (\(x_n + y_n\))-სა და (\(a+b\))-ს შორის განსხვავება არის უსასრულოდ მცირე მიმდევრობა \(\gamma\), ამიტომ \((x_n + y_n\))-ის ზღვარია (\(a+b\)).</p>
+        </li>
+        <li>
+            ორი კრებადი მიმდევრობის ნამრავლის ზღვარი ზღვართა ნამრავლის ტოლია:
+            \[
+    \lim_{{n \to \infty}} (x_n y_n) = \lim_{{n \to \infty}} x_n \cdot \lim_{{n \to \infty}} y_n = a b.
+    \]
+    <p><i><u>დამტკიცება:</u></i></p>
+    <p>
+    \[
+    x_n = a + \alpha_n, \hspace{1cm} y_n = b + \beta_n \Rightarrow \\
+    x_n \cdot y_n = (a+\alpha_n)(b+\beta_n)=ab+a\beta_n+b\alpha_n+\alpha_n\beta_n
+    \]</p>
+    <p>ვინაიდან უსასრულოდ მცირე და შემოსაზღვრული მიმდევრობების ნამრავლი უსასრულოდ მცირეა, \(a\beta_n\) და \(b\alpha_n\) უსასრულოდ მცირეა. ანალოგიურად, უსასრულოდ მცირე მიმდევრობათა ნამრავლი \(\alpha_n\beta_n\) უსასრულოდ მცირეა. უსასრულოდ მცირე მიმდევრობათა ჯამიც უსასრულოდ მცირეა, ასე რომ \(a\beta_n+b\alpha_n+\alpha_n\beta_n\) უსასრულოდ მცირე მიმდევრობაა, რომელიც კვლავ \(\gamma\)-ით აღვნიშნოთ. რადგან (\(x_ny_n\))-სა და (\(ab\))-ს შორის განსხვავება არის უსასრულოდ მცირე მიმდევრობა \(\gamma\), ამიტომ (\(x_ny_n\))-ის ზღვარია (\(ab\)).</p>
+        </li>
+        <li>
+            ორი კრებადი მიმდევრობის ფარდობის ზღვარი ზღვართა ფარდობის ტოლია:
+            \[
+    \lim_{{n \to \infty}} \frac{x_n}{y_n} = \frac{\lim_{{n \to \infty}} x_n}{\lim_{{n \to \infty}} y_n} = \frac{a}{b}, \: b \neq 0.
+    \]
+    <p><i><u>დამტკიცება:</u></i></p>
+    <p>
+    \[
+    x_n = a + \alpha_n, \hspace{1cm} y_n = b + \beta_n \Rightarrow \\
+    \frac{x_n}{y_n}= \frac{a}{b}+\frac{x_n}{y_n}-\frac{a}{b}=\frac{a}{b}+\frac{a+\alpha_n}{b + \beta_n} -\frac{a}{b}=\frac{a}{b}+\frac{\alpha_nb-\beta_na}{b(b+\beta_n)}
+    \]</p>
+    <p>უსასრულოდ მცირე მიმდევრობათა თვისებებიდან გამომდინარე, \(\frac{\alpha_nb-\beta_na}{b(b+\beta_n)}\) უსასრულოდ მცირე მიმდევრობაა, რომელიც კვლავ \(\gamma\)-ით აღვნიშნოთ. რადგან \(\frac{x_n}{y_n}\)-სა და \(\frac{a}{b}\)-ს შორის განსხვავება არის უსასრულოდ მცირე მიმდევრობა \(\gamma\), ამიტომ \(\frac{x_n}{y_n}\)-ის ზღვარია \(\frac{a}{b}\).</p>
+        </li>
+    </ol>
+    <hr>
+    <h3>ნეპერის რიცხვი</h3>
+    <p>ვაჩვენოთ, რომ მიმდევრობას \(x_n=(1+\frac{1}{n})^{n}\) აქვს ზღვარი. ზღვრის არსებობისთვის უნდა დაკმაყოფილდეს პირობები, რომ (1) ეს მიმდევრობა არის ზრდადი და (2) ზემოდან შემოსაზღვრული.</p>
+    <p>ჯერ გავიხსენოთ კავშირი საშუალო არითმეტიკულსა და საშუალო გეომეტრიულს შორის:</p>
+    <ol type="i">
+        <li>\(\frac{a_1+a_2}{2} \geq \sqrt{a_1a_2}\)</li>
+        <li>\(\frac{a_1+a_2+\dots+a_n}{n} \geq \sqrt[n]{a_1a_2\dots a_n}\)</li>
+        </ol>
+    <ol>
+        <li>
+            <p>მიმდევრობის ზრდადობის საჩვენებლად განვიხილოთ \(n+1\) რიცხვი:</p>
+        <p>{\(1, (1+\frac{1}{n}), (1+\frac{1}{n}),  \dots , (1+\frac{1}{n})\)}, სადაც \( (1+\frac{1}{n}) \) მეორდება \(n\)-ჯერ. საშუალო არითმეტიკულისა და საშუალო გეომეტრიულის კავშირის თანახმად,</p>
+        <p>\[
+        \frac{1+n(1+\frac{1}{n})}{n+1} \geq \sqrt[n+1]{1\cdot(1+\frac{1}{n})^{n}} \Rightarrow \\
+        \frac{1+n+1}{n+1} \geq \sqrt[n+1]{(1+\frac{1}{n})^n} \Rightarrow \\
+        (1+ \frac{1}{n+1})^{n+1} \geq (1+\frac{1}{n})^n \Rightarrow \\
+        x_{n+1} \geq x_{n}
+        \]</p>
+        <p>შესაბამისად, მიმდევრობა ზრდადია.</p>
+    </li>
+        <li><p>მიმდევრობის ზემოდან შემოსაზღვრულობის საჩვენებლად განვიხილოთ {\(\frac{1}{2}, \frac{1}{2}, (1+\frac{1}{n}), (1+\frac{1}{n}),  \dots , (1+\frac{1}{n})\)}, სადაც \( (1+\frac{1}{n}) \) მეორდება \(n\)-ჯერ.</p>
+            <p>
+                \[
+                \frac{\frac{1}{2}+\frac{1}{2}+n(1+\frac{1}{n})}{n+2} \geq \sqrt[n+2]{\frac{1}{2}\cdot\frac{1}{2}\cdot(1+\frac{1}{n})^{n}} \Rightarrow \\
+        \frac{\frac{1}{2}+\frac{1}{2}+n+1}{n+2} \geq \sqrt[n+2]{{\frac{1}{4}(1+\frac{1}{n})^n}} \Rightarrow \\
+        1^{n+2} \geq \sqrt[n+2]{{\frac{1}{4}(1+\frac{1}{n})^n}}^{n+2} \Rightarrow \\
+        1 \geq \frac{1}{4}(1+\frac{1}{n})^n \Rightarrow \\
+        \frac{1}{4}(1+\frac{1}{n})^n \leq 4
+                \]</p>
+                <p>ამრიგად, მიმდევრობა შემოსაზღვრულია 4-ით. მართლაც, ნეპერის რიცხვი აკმაყოფილებს ამ პირობას, \(e \approx 2.71828\).</p>
+            <hr>
+            <h3>ზოგიერთი შესანიშნავი ზღვარი</h3>
+            <ol>
+                <li>\[ \lim_{{n\to\infty}} \left(1+\frac{1}{x}\right)^x = e, \quad \lim_{{n \to 0}} (1+x)^{\frac{1}{x}} = e \]
+                    <p><u><b><i>დამტკიცება.</i></b></u></p>
+                    <p>
+                        \[
+                        n \leq x \lt n+1, \\
+                        \frac{1}{n+1} \lt 1 + \frac{1}{x} \leq \frac{1}{n} + 1, \\
+                        \left(1 + \frac{1}{n+1}\right)^n \lt \left(1 + \frac{1}{x}\right)^x \leq \left(1 + \frac{1}{n}\right)^{n+1}. \\
+                        \lim_{{n \to \infty}} \left(1 + \frac{1}{n+1}\right)^n = \lim_{{n \to \infty}} \frac{\left(1 + \frac{1}{n+1}\right)^{n+1}}{1 + \frac{1}{n+1}} = \frac{e}{1} = e, \\
+                        \lim_{{n \to \infty}} \left(1 + \frac{1}{n}\right)^{n+1} = \lim_{{n \to \infty}} \left[\left(1 + \frac{1}{n}\right)^{n} \left(1 + \frac{1}{n}\right)\right] = e \cdot 1 = e.\\
+                        \implies \lim_{{x \to \infty}} \left( 1+\frac{1}{x} \right)^x=e.
+                        \]
+                    </p>
+                </li>
+                <li>\[ \lim_{{x \to 0}} \frac{\sin(x)}{x} = 1 \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{\arcsin(x)}{x} = 1 \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{\text{tg}(x)}{x} = 1 \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{\text{arctg}(x)}{x} = 1 \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{\ln(1+x)}{x} = 1 \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{a^x - 1}{x} = \ln(a) \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{e^x - 1}{x} = 1 \]</li>
+                <li>\[ \lim_{{x \to 0}} \frac{\sqrt[k]{1+x} - 1}{x} = \frac{1}{k} \]</li>
+            </ol>
+        </li>
+    </ol>
+<hr>
+<h3>ძირითადი თეორია ტოლფას უსასრულოდ მცირეებზე</h3>
+<p>პირველ რიგში, განვიხილოთ თვისებები:</p>
+<ol type="i">
+<li><p>\(\alpha_n\)-ს უწოდებენ უფრო მაღალი რიგის უსასრულოდ მცირეს, ვიდრე \(\beta\)-ს, თუ \( \lim_{{x \to \infty}} \frac{\alpha_n}{\beta_n} = 0 \).</p></li>
+<li><p>\(\alpha_n\)-სა და \(\beta\)-ს უწოდებენ ერთი და იმავე რიგის უსასრულოდ მცირეს, თუ \( \lim_{{x \to \infty}} \frac{\alpha_n}{\beta_n} = \lambda \neq 0\).</p></li>
+<li><p>\(\alpha_n\) და \(\beta\) არიან ტოლფასი უსასრულოდ მცირეები, თუ \( \lim_{{x \to \infty}} \frac{\alpha_n}{\beta_n} = 1 \). ტოლფასობა აღინიშნება: \( \alpha_n \sim \beta_n \)</p> </li>
+</ol>
+<p><u><i><b>თეორემა.</b></i></u> თუ ნამრავლში ან ფარდობაში უსასრულოდ მცირეს შევცვლით მისი ტოლფასი უსასრულოდ მცირით, ამით ზღვრის შედეგი არ შეიცვლება.</p>
+<p><u><i><b>დამტკიცება.</b></i></u> ვთქვათ, \(\alpha_n \sim \alpha_n^{\prime}\) და \(\beta_n \sim \beta_n^{\prime}\). მაშინ:</p>
+<p>\[
+    \lim_{{n \to \infty}} \frac{\alpha_n}{\beta_n} = \lim_{{n \to \infty}} \left[\frac{\alpha_n}{\beta_n} \cdot \frac{\alpha_n}{\alpha_n^{\prime}} \cdot \frac{\beta_n^{\prime}}{\beta_n}\right] = \lim_{{n \to \infty}} \frac{\alpha_n^{\prime}}{\beta_n^{\prime}}
+    \]
+</p>
+<hr>
+<h3>ზოგიერთი ტოლფასოვანი ცვლადები</h3>
+<p>როცა ზღვრებში \(x \to 0\), სამართლიანია შემდეგი პირობები:</p>
+<ol>
+    <li>\(\sin{x} \sim x\)</li>
+    <li>\(\arcsin{x} \sim x\)</li>
+    <li>\(\text{tg}x \sim x\)</li>
+    <li>\(\text{arctg}x \sim x\)</li>
+    <li>\(\ln{(1+x)} \sim x\)</li>
+    <li>\(e^{x}-1 \sim x\)</li>
+    <li>\(a^x-1 \sim x\ln{a}\)</li>
+    <li>\(\sqrt[k]{1+x}-1 \sim x\frac{1}{k}\)</li>
+</ol>
+<hr>
+<ul class="pagination">
+    <li>
+        <a href="analysis1-week2.html" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+    </li>
+    <li><a href="analysis1-week1.html">1</a></li>
+    <li><a href="analysis1-week2.html">2</a></li>
+    <li class="active"><a href="analysis1-week3.html">3</a></li>
+    <!-- <li><a href="analysis1-week4.html">4</a></li>
+    <li><a href="analysis1-week5.html">5</a></li>
+    <li><a href="analysis1-week6.html">6</a></li>
+    <li><a href="analysis1-week7.html">7</a></li>
+    <li><a href="analysis1-week8.html">8</a></li>
+    <li><a href="analysis1-week9.html">9</a></li>
+    <li><a href="analysis1-week10.html">10</a></li>
+    <li><a href="analysis1-week11.html">11</a></li>
+    <li><a href="analysis1-week12.html">12</a></li>
+    <li><a href="analysis1-week13.html">13</a></li>
+    <li><a href="analysis1-week14.html">14</a></li>
+    <li><a href="analysis1-week15.html">15</a></li>
+    <li><a href="analysis1-week16.html">16</a></li>
+    <li><a href="analysis1-week17.html">17</a></li>
+    <li><a href="analysis1-week18.html">18</a></li>
+    <li><a href="analysis1-week19.html">19</a></li>
+    <li><a href="analysis1-week20.html">20</a></li> -->
+    <li class="disabled">
+        <a href="analysis1-week4.html" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+    </li>
+</ul><br>
+</main>
+    <div class="footer">
+        <a href="analysis1.html" class="home-link">ანალიზი 1</a> | <a href="index.html" class="home-link">კურსები</a>
+    </div>
+</body>
+</html>

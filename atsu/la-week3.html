@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კვირა 3 - წრფივი ალგებრა | ელექტრული ინჟინერია | აწსუ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <style>
+    </style>
+</head>
+<body>
+    <main>
+        <h2>&#xA7; 5. წრფივ განტოლებათა სისტემები</h2>
+  <p>განვიხილოთ წრფივ განტოლებათა სისტემა:</p>
+  <p>
+    \[
+    \begin{align*}
+    a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n &= b_1 \\
+    a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n &= b_2 \\
+    & \vdots \\
+    a_{m1}x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n &= b_m \\
+    \end{align*}
+    \]
+  </p>
+  <p>ამ განტოლებათა სისტემას უწოდებენ <u>წრფივ განტოლებათა სისტემას</u>, რომელიც შეიცავს \(m\) განტოლებას \(n\) უცნობით.</p>
+  <p>თუ თავისუფალი წევრები ნულის ტოლია (\( b_1 = b_2 = \dots = b_n = 0\)), მაშინ განტოლებათა სისტემას უწოდებენ <u>ერთგვაროვანს</u> და მას ყოველთვის აქვს ამონახსნი.</p>
+    <hr>
+<p>\[
+    A = \begin{pmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \ldots & a_{mn}
+            \end{pmatrix} \hspace{1em} X = \begin{pmatrix}
+            x_{1} \\
+            x_{2} \\
+            \vdots \\
+            x_{n}
+            \end{pmatrix} \hspace{1em} B = \begin{pmatrix}
+            b_{1} \\
+            b_{2} \\
+            \vdots \\
+            b_{m}
+            \end{pmatrix} \\  AX=B
+    \] 
+</p>
+<hr>
+<h3>წრფივ განტოლებათა ამოხსნის მატრიცული წესი</h3>
+<p>სიმარტივისთვის განვიხილოთ 3-უცნობიანი სისტემა:</p>
+<p>
+    \[
+    \begin{align*}
+    a_{11}x_1 + a_{12}x_2 + a_{13}x_3 &= b_1 \\
+    a_{21}x_1 + a_{22}x_2 + a_{23}x_3 &= b_2 \\
+    a_{31}x_1 + a_{32}x_2 + a_{33}x_3 &= b_3 \\
+    \end{align*}
+    \]
+</p>
+<p>ამოვწეროთ \( A, X \text{ და } B\):</p>
+<p>\[
+    A = \begin{pmatrix}
+    a_{11} & a_{12} & a_{13} \\
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33}
+    \end{pmatrix}
+    \quad
+    X = \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3
+    \end{pmatrix}
+    \quad
+    B = \begin{pmatrix}
+    b_1 \\
+    b_2 \\
+    b_3
+    \end{pmatrix}
+    \]
+</p>
+<p>დავუშვათ, რომ \( A \) მატრიცა არაგადაგვარებულია (\( A \neq 0\)), ამიტომ არსებობს \( A^{-1} \). მაშინ:</p> 
+<p>\[
+AX=B \Rightarrow X=A^{-1}B \\
+X = \frac{1}{|A|} \begin{pmatrix}
+A_{11} & A_{21} & A_{31} \\
+A_{12} & A_{22} & A_{32} \\
+A_{13} & A_{23} & A_{33}
+\end{pmatrix} \begin{pmatrix}
+b_1 \\
+b_2 \\
+b_3
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{A_{11}b_{1} + A_{21}b_{2} + A_{31}b_{3}}{|A|} \\
+\frac{A_{12}b_{1} + A_{22}b_{2} + A_{32}b_{3}}{|A|} \\
+\frac{A_{13}b_{1} + A_{23}b_{2} + A_{33}b_{3}}{|A|} \\
+\end{pmatrix} \Rightarrow \\
+x_1 = \frac{A_{11}b_{1} + A_{21}b_{2} + A_{31}b_{3}}{|A|}, x_2 = \frac{A_{12}b_{1} + A_{22}b_{2} + A_{32}b_{3}}{|A|}, x_3 = \frac{A_{13}b_{1} + A_{23}b_{2} + A_{33}b_{3}}{|A|}
+\]
+</p>
+<hr>
+<h3>წრფივ განტოლებათა ამოხსნის კრამერის წესი</h3>
+<p>კრამერის წესის თანახმად, \( x_{k} = \frac{\Delta_k}{\Delta}\), სადაც \( \Delta = |A| \), ხოლო \( \Delta_{k} = A_{1k}b_1 + A_{2k}b_2 + \dots + A_{mk}b_m\).</p>
+<hr>
+<p>სამუცნობიან წრფივ განტოლებათა სისტემაში \(x_1 = \frac{\Delta_1}{\Delta}, x_2 = \frac{\Delta_2}{\Delta}, x_3 = \frac{\Delta_3}{\Delta} \). </p>
+<p>რომ ვიპოვოთ \(\Delta_1\), ამისათვის მთავარი მატრიცის შესაბამის დეტერმინანტში პირველი სვეტი შევცვალოთ თავისუფალი წევრებით <span style="white-space: nowrap;">(\(b_m\)</span>) და დავშალოთ ამ სვეტის მიხედვით. ანალოგიურად ვპოულობთ \(\Delta_2\)-სა და \(\Delta_3\)-ს.
+<hr>
+<h3>თვისებები კრამერის წესიდან</h3>
+<ol type="i">
+    <li><p>თუ სისტემის მთავარი დეტერმინანტი არ უდრის ნულს (\(|A|, \Delta \neq 0\)), მაშინ ამ განტოლებას აქვს ერთადერთი ამონახსნი და მიიღება კრამერის ფორმულით: \(x_1 = \frac{\Delta_1}{\Delta}, x_2 = \frac{\Delta_2}{\Delta}, x_3 = \frac{\Delta_3}{\Delta} \).</p></li>
+    <li><p>თუ სისტემის მთავარი დეტერმინანტი უდრის ნულს (\(|A|, \Delta = 0\)) და თუნდაც ერთ-ერთი \(\Delta_k\) განსხვავდება ნულისგან (\(\Delta_1\), ან \(\Delta_2\), ან \(\Delta_3 \neq 0\)), მაშინ სისტემას ამონახსნი არ გააჩნია.</p>     
+    </li>
+    <li><p>თუ \(\Delta = \Delta_1 = \Delta_2 = \Delta_3 = 0\), მაშინ სისტემას ან გააჩნია უსასრულო რაოდენობის ამონახსნი, ან ამონახსნი არ აქვს.</p></li>
+</ol>
+<hr>
+<ul class="pagination">
+  <li >
+      <a href="la-week2.html" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+      </a>
+  </li>
+  <li><a href="la-week1.html">1</a></li>
+  <li><a href="la-week2.html">2</a></li>
+  <li class="active"><a href="la-week3.html">3</a></li>
+  <!-- <li><a href="la-week4.html">4</a></li>
+  <li><a href="la-week5.html">5</a></li>
+  <li><a href="la-week6.html">6</a></li>
+  <li><a href="la-week7.html">7</a></li>
+  <li><a href="la-week8.html">8</a></li>
+  <li><a href="la-week9.html">9</a></li>
+  <li><a href="la-week10.html">10</a></li>
+  <li><a href="la-week11.html">11</a></li>
+  <li><a href="la-week12.html">12</a></li>
+  <li><a href="la-week13.html">13</a></li>
+  <li><a href="la-week14.html">14</a></li>
+  <li><a href="la-week15.html">15</a></li>
+  <li><a href="la-week16.html">16</a></li>
+  <li><a href="la-week17.html">17</a></li>
+  <li><a href="la-week18.html">18</a></li>
+  <li><a href="la-week19.html">19</a></li>
+  <li><a href="la-week20.html">20</a></li> -->
+  <li class="disabled">
+      <a href="la-week4.html" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+      </a>
+  </li>
+</ul><br>
+</main>
+    <div class="footer">
+        <a href="linear_algebra.html" class="home-link">წრფივი ალგებრა</a> | <a href="index.html" class="home-link">კურსები</a>
+    </div>
+</body>
+</html>

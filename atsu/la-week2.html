@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>კვირა 2 - წრფივი ალგებრა | ელექტრული ინჟინერია | აწსუ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    <style>
+    </style>
+</head>
+<body>
+    <main>
+        <h2>&#xA7; 3. დეტერმინანტის თვისებები</h2>
+        <p>★ თუ მატრიცაში ან დეტერმინანტში სტრიქონებს შევცვლით შესაბამისი სვეტებით, მაშინ მიიღება მოცემულის ტრანსფორმირებული დეტერმინანტი ან მატრიცა.</p> 
+        <p>\[
+            A = \begin{pmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \ldots & a_{mn}
+            \end{pmatrix} \\
+             A^{\prime} = \begin{pmatrix}
+            a_{11} & a_{21} & \ldots & a_{m1} \\
+            a_{12} & a_{22} & \ldots & a_{m2} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{1n} & a_{2n} & \ldots & a_{mn}
+            \end{pmatrix}
+            \]</p>
+            <p>ტრანსფორმირებულ მატრიცას/დეტერმინანტს აქვს შემდეგი თვისებები:</p>
+            <ol type="1">
+                <li>
+                    ტრანსფორმირებული დეტერმინანტები ერთმანეთის ტოლია:
+                    <p>\[
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} & a_{22}
+                        \end{vmatrix} = a_{11} a_{22} - a_{12} a_{21}
+                        \]</p>
+                        <p>\[
+                            \begin{vmatrix}
+                            a_{11} & a_{21} \\
+                            a_{12} & a_{22}
+                            \end{vmatrix} = a_{11} a_{22} - a_{21} a_{12}
+                            \]</p>
+                </li>
+                <li>
+                    <p>თუ დეტერმინანტის რომელიმე სტრიქონი (სვეტი) შედგება მხოლოდ ნულებისაგან, ასეთი დეტერმინანტი არის ნულის ტოლი:</p>
+                    <p>\[
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        0 & 0
+                        \end{vmatrix} = a_{11} \cdot 0 - a_{12} \cdot 0 = 0 - 0 = 0
+                        \]</p>
+                        <p>\[
+                            \begin{vmatrix}
+                            a_{11} & 0 \\
+                            a_{21} & 0
+                            \end{vmatrix} = a_{11} \cdot 0 - 0 \cdot a_{21} = 0 - 0 = 0
+                            \]</p>
+                </li>
+                <li>
+                    <p>თუ დეტერმინანტის რომელიმე სტრიქონი (სვეტი) შეიცავს ერთსა და იმავე მუდმივ მამრავლს, მაშინ ეს თანამამრავლი შეგვიძლია გადავიტანოთ დეტერმინანტის ნიშნის წინ:</p>
+                    <p>\[
+                        \begin{vmatrix}
+                        \lambda a_{11} & \lambda a_{12} \\
+                        a_{21} & a_{22}
+                        \end{vmatrix} = \lambda
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} & a_{22}
+                        \end{vmatrix}
+                        \]</p>
+                        <p>\[
+                            \begin{vmatrix}
+                            \lambda a_{11} & a_{12} \\
+                            \lambda a_{21} & a_{22}
+                            \end{vmatrix} = \lambda 
+                            \begin{vmatrix}
+                            a_{11} & a_{12} \\
+                            a_{21} & a_{22}
+                            \end{vmatrix}
+                            \]</p>
+
+                </li>
+                <li><p>თუ დეტერმინანტში რომელიმე ორი სტრიქონი (სვეტი) ერთმანეთს ემთხვევა, მაშინ ასეთი დეტერმინანტი არის ნულის ტოლი:</p>
+                    <p>\[
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{11} & a_{12} 
+                        \end{vmatrix} = a_{11} \cdot a_{12} - a_{12} \cdot a_{11} = 0
+                        \]</p>
+                </li>
+                <li>
+                    <p>თუ დეტერმინანტში რომელიმე ორი სტრიქონი ერთმანეთის პროპორციულია, ასეთი დეტერმინანტი არის ნული:</p>
+                    <p>\[
+                    \begin{vmatrix}
+                    a_{11} & \lambda a_{11} \\
+                    a_{21} & \lambda a_{21} 
+                    \end{vmatrix} = \lambda \begin{vmatrix}
+                    a_{11} & a_{11} \\
+                    a_{21} & a_{21} 
+                    \end{vmatrix} = \lambda (a_{11} \cdot a_{12} - a_{11} \cdot a_{12}) = \lambda \cdot 0 = 0
+                    \]</p>
+                    <p>\[
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        \lambda a_{11} & \lambda a_{12} 
+                        \end{vmatrix} = \lambda \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{11} & a_{12} 
+                        \end{vmatrix} = \lambda (a_{11} \cdot a_{12} - a_{12} \cdot a_{11}) = \lambda \cdot 0 = 0
+                        \]</p></li>
+                        <li><p>
+                            თუ დეტერმინანტის რომელიმე სტრიქონის (სვეტის) ელემენტები შედგება ორი შესაკრებისაგან, მაშინ ეს დეტერმინანტი წარმოადგენს ორი დეტერმინანტის ჯამს, სადაც პირველ დეტერმინანტში არის პირველი შესაკრები, მეორე დეტერმინანტში — მეორე შესაკრები, ხოლო დანარჩენი ელემენტები უცვლელად გადადის:
+                        </p>
+                        <p>
+                            \[
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} + a^{\prime}_{21} & a_{22} + a^{\prime}_{22}
+                        \end{vmatrix} = 
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} & a_{22} 
+                        \end{vmatrix} + 
+                        \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a^{\prime}_{21} & a^{\prime}_{22}
+                        \end{vmatrix} 
+                        \]
+                        </p>
+                    </li>
+                        <li>
+                            <p>თუ დეტერმინანტის რომელიმე სტრიქონის (სვეტის) ელემენტებს გადავამრავლებთ რაიმე მუდმივ რიცხვზე და მას მივუმატებთ სხვა სტრიქონის (სვეტის) შესაბამის ელემენტებს, ამით დეტერმინანტი არ შეიცვლება:</p>
+                    \[
+                    \begin{vmatrix}
+                    a_{11} & a_{21} \\
+                    a_{12} & a_{22}
+                    \end{vmatrix} =
+                    \begin{vmatrix}
+                    a_{11} + \lambda \cdot a_{21} & a_{21} + \lambda \cdot a_{22} \\
+                    a_{12} & a_{22}
+                    \end{vmatrix} = 
+                    \begin{vmatrix}
+                    a_{11} & a_{21} \\
+                    a_{12} & a_{22}
+                    \end{vmatrix} + \begin{vmatrix}
+                    \lambda a_{21} & \lambda a_{22} \\
+                    a_{21} & a_{21} 
+                    \end{vmatrix} = \begin{vmatrix}
+                    a_{11} & a_{21} \\
+                    a_{12} & a_{22}
+                    \end{vmatrix} + 0 = \begin{vmatrix}
+                    a_{11} & a_{21} \\
+                    a_{12} & a_{22}
+                    \end{vmatrix}
+                    \]
+                </li>
+                <li>
+                    <p>თუ დეტერმინანტის რომელიმე სტრიქონის ელემენტებს გავამრავლებთ მათ შესაბამის ალგებრულ დამატებებზე და მიღებულ შედეგებს შევკრებთ, მივიღებთ დეტერმინანტის მნიშვნელობას, ხოლო თუ დეტერმინანტის რომელიმე სტრიქონის ელემენტებს გავამრავლებთ სხვა სტრიქონის შესაბამის ალგებრულ დამატებებზე, მივიღებთ ნულს:</p>
+                    <p>
+                        \[
+                        \begin{vmatrix}\
+                        a_{11} & a_{12} & a_{13} \\
+                        a_{21} & a_{22} & a_{23} \\
+                        a_{31} & a_{32} & a_{33} 
+                        \end{vmatrix} = a_{11}A_{11} + a_{12}A_{12} + a_{13}A_{13}
+                        \] 
+                    </p>
+                </li>
+            </ol>
+<hr>
+<h2>&#xA7; 4. მინორი, ალგებრული დამატება, მაკავშირებელი და შებრუნებული მატრიცები</h2>
+<p>განვიხილოთ კვადრატული მატრიცა  \( A=  \begin{vmatrix}\
+    a_{11} & a_{12} & a_{13} \\
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33} 
+    \end{vmatrix}\). მოცემული მატრიცის \( a_{ij} \) ელემენტის შესაბამისი მინორია \( M_{ij} \) დეტერმინანტი, რომელიც მიიღება \( A \) მატრიციდან, თუკი მასში ამოვშლით \( i \)-ურ სტრიქონსა და  \( j \)-ურ სვეტს.</p>
+    <p>\[
+    M_{11} = \begin{vmatrix}
+    a_{22} & a_{23} \\
+    a_{32} & a_{33}
+    \end{vmatrix} \\
+    M_{12} = \begin{vmatrix}
+    a_{21} & a_{23} \\
+    a_{31} & a_{33}
+    \end{vmatrix} \\
+    M_{23} = \begin{vmatrix}
+    a_{11} & a_{12} \\
+    a_{31} & a_{32}
+    \end{vmatrix}
+    \]</p>
+    <hr>
+    <p>\( a_{ij} \) ელემენტის ალგებრული დამატება არის \( A_{ij} = (-1)^{i+j}M_{ij} \). ალგებრულ დამატებასა და მინორს შორის ერთადერთი განსხვავება ნიშანია.</p>
+    <p>
+        \[
+    A_{11} = (-1)^{1+1}M_{11} = (-1)^{2}M_{11} = M_{11} \\
+    A_{12} = (-1)^{1+2}M_{12} = (-1)^{3}M_{12} = -M_{12} \\
+    A_{23} = (-1)^{2+3}M_{23} = (-1)^{5}M_{11} = -M_{23} \\
+    \]
+    </p>
+<hr>
+<p>შებრუნებული მატრიცა ეწოდება ისეთ მატრიცას, რომლის საწყის მატრიცასთან გამრავლების შედეგად მივიღებთ ერთეულოვან მატრიცას.</p>
+<p>
+    \[
+    A \cdot A^{-1} = A^{-1} \cdot A = E
+    \]
+</p>
+<p>დავადგინოთ შებრუნებული მატრიცის მოძებნის წესი. თუ მატრიცის დეტერმინანტი ნულის ტოლია (\( |A| = 0 \)), ასეთ მატრიცას უწოდებენ „გადაგვარებულს“ და მას შებრუნებული არ გააჩნია. თუ მატრიცის დეტერმინანტი განსხვავდება ნულისგან (\( |A| \neq 0 \)), შებრუნებულის მოსაძებნად ვიქცევით შემდეგნაირად:
+    <ol type="I">
+        <li><p>
+            ვპოულობთ მაკავშირებელ მატრიცას, რისთვისაც მოცემულ მატრიცაში თითოეულ ელემენტს ვანაცვლებთ მისი ალგებრული დამატებით და ვახდენთ მიღებული მატრიცის ტრანსფორმირებას;</p>
+        <p>
+            \[
+    A^* = \begin{pmatrix}
+    A_{11} & A_{12} & A_{13} \\
+    A_{21} & A_{22} & A_{23} \\
+    A_{31} & A_{32} & A_{33}
+    \end{pmatrix}^{\prime} = \begin{pmatrix}
+    A_{11} & A_{21} & A_{31} \\
+    A_{12} & A_{22} & A_{32} \\
+    A_{13} & A_{23} & A_{33}
+    \end{pmatrix}
+    \]
+        </p>
+        </li>
+        <li><p>ვპოულობთ შებრუნებულ მატრიცას, რისთვისაც მაკავშირებელ მატრიცას ვყოფთ საწყისი მატრიცის დეტერმინანტზე:</p>
+        <p>
+            \[
+            A^{-1} = \frac{A^*}{|A|}
+            \]
+        </p>
+        </li>
+    </ol>
+</ol>
+<hr>
+<ul class="pagination">
+  <li >
+      <a href="la-week1.html" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+      </a>
+  </li>
+  <li><a href="la-week1.html">1</a></li>
+  <li  class="active"><a href="la-week2.html">2</a></li>
+  <li><a href="la-week3.html">3</a></li>
+  <!-- <li><a href="la-week4.html">4</a></li>
+  <li><a href="la-week5.html">5</a></li>
+  <li><a href="la-week6.html">6</a></li>
+  <li><a href="la-week7.html">7</a></li>
+  <li><a href="la-week8.html">8</a></li>
+  <li><a href="la-week9.html">9</a></li>
+  <li><a href="la-week10.html">10</a></li>
+  <li><a href="la-week11.html">11</a></li>
+  <li><a href="la-week12.html">12</a></li>
+  <li><a href="la-week13.html">13</a></li>
+  <li><a href="la-week14.html">14</a></li>
+  <li><a href="la-week15.html">15</a></li>
+  <li><a href="la-week16.html">16</a></li>
+  <li><a href="la-week17.html">17</a></li>
+  <li><a href="la-week18.html">18</a></li>
+  <li><a href="la-week19.html">19</a></li>
+  <li><a href="la-week20.html">20</a></li> -->
+  <li>
+      <a href="la-week3.html" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+      </a>
+  </li>
+</ul><br>
+</main>
+    <div class="footer">
+        <a href="linear_algebra.html" class="home-link">წრფივი ალგებრა</a> | <a href="index.html" class="home-link">კურსები</a>
+    </div>
+</body>
+</html>
