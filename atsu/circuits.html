@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <meta property="og:image" content="https://i0.wp.com/www.collegeparentcentral.com/wp-content/uploads/2019/10/exam-e1570663689592.jpg"/>
+    <title>წრედები | ელექტრული ინჟინერია | აწსუ</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #353535;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        background-image: url('bg.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .option {
+        display: inline-block;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .option:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .analysis {
+        background-color: #FF5733;
+    }
+
+    .linear-algebra {
+        background-color: #3498db;
+    }
+
+    .sketching {
+        background-color: #2ecc71;
+    }
+
+    .chemistry {
+        background-color: #9b59b6; /* Use purple for Chemistry */
+    }
+
+    .mechanics {
+        background-color: #bca600;
+    }
+
+    .icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    /* Media query for screens smaller than 768px (typical phone screens) */
+    @media (max-width: 768px) {
+        .option {
+            display: block; /* Stack the cards vertically */
+            margin: 20px auto; /* Center the cards horizontally */
+            max-width: 300px; /* Set a maximum width for the cards */
+        }
+    }
+
+    .off {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .footer {
+    position: fixed; /* Fixes the footer at the bottom */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    background-color: hsl(272, 28%, 27%); /* Distinct background color */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 15px 0; /* Padding for the footer */
+    font-size: 18px; /* Font size */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
+}
+
+.footer a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Underline on hover for better interaction */
+}
+    </style>
+</head>
+<body>    
+    <a href="circuitsfin.pdf" target="_blank" class="option mechanics">
+        <img class="icon" src="acwrtest.svg" alt="Analysis Icon">
+        <p style="font-size:20px;">საკითხები</p>
+    </a>
+
+<a href="circuitstheoretical.pdf" target="_blank" class="option linear-algebra">
+        <img class="icon" src="document1.svg" alt="">
+        <p style="font-size:20px;">თეორიული</p>
+    </a>
+    
+    <a href="circuit_theory.pdf" target="_blank" class="option sketching">
+        <img class="icon" src="book2.svg" alt="">
+        <p style="font-size:20px;">კონსპექტები</p>
+    </a>
+
+    <footer class="footer"><a href="index.html">← უკან დაბრუნება</a></footer>
+</body>
+</html>
