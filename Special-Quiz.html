@@ -37,37 +37,112 @@
         <link rel="stylesheet" href="styles/css.css">
         <!--Link tags end here-->
         <style>
-.quiz-container {
-            width: 300px;
+/* Quiz Container */
+#quiz {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 30px 40px;
+            max-width: 500px;
+            width: 100%;
             text-align: center;
-            padding: 20px;
-            background-color: #113e57;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 1;
-            transition: opacity 0.5s;
+            position: relative;
         }
 
-        .hidden {
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* Result Section */
+        #result {
             display: none;
+            background: #e74c3c;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+            text-align: center;
         }
 
-        .fade-in {
-            animation: fadeIn 0.5s;
+        /* Progress Dots */
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
         }
 
-        .slide-in {
-            animation: slideIn 0.5s;
+        .dot.active {
+            background-color: #3498db;
+        }
+
+        .dot.answered {
+            background-color: #2ecc71;
+        }
+
+        /* Slide-in Animation */
+        .question {
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
         }
 
         @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0%); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            #quiz {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 12px 24px;
+            }
         }
         </style>
         </head>
@@ -77,115 +152,218 @@
         <script src="js-header-nav.js"></script>
         <div class="wiki-page-title-header">    
           <h1>ქვიზი - რომელი პერსონაჟი ხარ?</h1>    <hr class="page-separator">    </div>
-          <div class="quiz-container" id="quizContainer">
-            <h2>Question 1</h2>
-            <div>
-                <p>Select an answer:</p>
-                <label><input type="radio" name="answer" value="0"> Answer 1</label>
-                <label><input type="radio" name="answer" value="1"> Answer 2</label>
-                <label><input type="radio" name="answer" value="2"> Answer 3</label>
+          <div id="quiz">
+            <!-- Question 1 -->
+            <div id="quiz">
+              <!-- Questions -->
+              <div class="question" data-id="1">
+                  <h3>What's your ideal weekend?</h3>
+                  <button data-character="Norma">Cooking for family</button>
+                  <button data-character="Norman">Staying indoors</button>
+                  <button data-character="Dylan">Outdoor adventure</button>
+                  <button data-character="Emma">Reading a book</button>
+                  <button data-character="Romero">Hiking in the woods</button>
+              </div>
+      
+              <div class="question" data-id="2">
+                  <h3>What’s your biggest strength?</h3>
+                  <button data-character="Norma">Compassion</button>
+                  <button data-character="Norman">Creativity</button>
+                  <button data-character="Dylan">Resilience</button>
+                  <button data-character="Emma">Optimism</button>
+                  <button data-character="Romero">Loyalty</button>
+              </div>
+            
+            <!-- Question 3 -->
+            <div class="question" data-id="3">
+              <h3>How do you handle stress?</h3>
+              <button data-character="Norma">Talk to someone</button>
+              <button data-character="Norman">Keep it to myself</button>
+              <button data-character="Dylan">Work through it</button>
+              <button data-character="Emma">Look for the silver lining</button>
+              <button data-character="Romero">Take action</button>
             </div>
-            <button onclick="nextQuestion()">Next</button>
-        </div>
-    
-        <script>
-            const questions = [
-                { question: 'What is the capital of France?', answers: [0, 1, 2] },
-                { question: 'What is the largest mammal?', answers: [0, 1, 2] },
-                { question: 'Who wrote "Romeo and Juliet"?', answers: [0, 1, 2] },
-                // Add more questions as needed
-            ];
-    
-            let currentQuestionIndex = 0;
-    
-            function nextQuestion() {
-                const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-                if (!selectedAnswer) {
-                    alert('Please select an answer.');
-                    return;
-                }
-    
-                const score = parseInt(selectedAnswer.value);
-                saveScore(score);
-    
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    transitionToNextQuestion();
-                } else {
-                    showResult();
-                }
-            }
-    
-            function saveScore(score) {
-                let totalScore = parseInt(localStorage.getItem('totalScore')) || 0;
-                totalScore += score;
-                localStorage.setItem('totalScore', totalScore.toString());
-            }
-    
-            function transitionToNextQuestion() {
-                const quizContainer = document.getElementById('quizContainer');
-                quizContainer.classList.remove('fade-in');
-                quizContainer.classList.add('slide-in');
-    
-                setTimeout(() => {
-                    quizContainer.classList.remove('slide-in');
-                    quizContainer.classList.add('fade-in');
-                    displayQuestion();
-                }, 500);
-            }
-    
-            function displayQuestion() {
-                const currentQuestion = questions[currentQuestionIndex];
-                const quizContainer = document.getElementById('quizContainer');
-    
-                quizContainer.innerHTML = `
-                    <h2>${currentQuestion.question}</h2>
-                    <div>
-                        <p>Select an answer:</p>
-                        <label><input type="radio" name="answer" value="${currentQuestion.answers[0]}"> Answer 1</label>
-                        <label><input type="radio" name="answer" value="${currentQuestion.answers[1]}"> Answer 2</label>
-                        <label><input type="radio" name="answer" value="${currentQuestion.answers[2]}"> Answer 3</label>
-                    </div>
-                    <button onclick="nextQuestion()">Next</button>
-                `;
-            }
-    
-            function showResult() {
-                const totalScore = parseInt(localStorage.getItem('totalScore')) || 0;
-                let result = '';
-    
-                if (totalScore == 1) {
-                    result = 'You are Alex Romero!';
-                } else if (totalScore == 2) {
-                    // Add more result conditions as needed
-                    result = 'You are Norman Bates.';
-                } else if (totalScore == 3) {
-                  result = 'You are Norma Bates.';
-                } else if (totalScore == 4) {
-                  result = 'You are Emma Decody.';
-                } else if (totalScore == 5) {
-                  result = 'You are Dyla Massett.';
-                } else if (totalScore == 6) {
-                  result = 'You are Gunner.';
-                } else {
-                  result = "You are someone else.";
-                }
-                const quizContainer = document.getElementById('quizContainer');
-                quizContainer.innerHTML = `
-                    <h2>Quiz Completed</h2>
-                    <p>Your result: ${result}</p>
-                `;
-                
-                // Reset the scores in local storage
-                localStorage.setItem('totalScore', '0');
-    
-                // Reset the quiz
-                currentQuestionIndex = 0;
-            }
-    
-            // Initial display
-            displayQuestion();
-        </script>
+            
+            <!-- Question 4 -->
+            <div class="question" data-id="4">
+              <h3>What’s your dream job?</h3>
+              <button data-character="Norma">Entrepreneur</button>
+              <button data-character="Norman">Artist</button>
+              <button data-character="Dylan">Explorer</button>
+              <button data-character="Emma">Philanthropist</button>
+              <button data-character="Romero">Police officer</button>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="question" data-id="5">
+              <h3>How do you approach conflict?</h3>
+              <button data-character="Norma">Try to resolve it</button>
+              <button data-character="Norman">Avoid it</button>
+              <button data-character="Dylan">Face it head-on</button>
+              <button data-character="Emma">Diffuse with humor</button>
+              <button data-character="Romero">Stay calm and strategic</button>
+            </div>
+            
+            <!-- Question 6 -->
+            <div class="question" data-id="6">
+              <h3>What motivates you the most?</h3>
+              <button data-character="Norma">Family</button>
+              <button data-character="Norman">Inner peace</button>
+              <button data-character="Dylan">Freedom</button>
+              <button data-character="Emma">Happiness</button>
+              <button data-character="Romero">Justice</button>
+            </div>
+            
+            <!-- Question 7 -->
+            <div class="question" data-id="7">
+              <h3>Which of these scares you the most?</h3>
+              <button data-character="Norma">Being alone</button>
+              <button data-character="Norman">Losing control</button>
+              <button data-character="Dylan">Being trapped</button>
+              <button data-character="Emma">Disappointing others</button>
+              <button data-character="Romero">Failure</button>
+            </div>
+            
+            <!-- Question 8 -->
+            <div class="question" data-id="8">
+              <h3>What’s your communication style?</h3>
+              <button data-character="Norma">Expressive and open</button>
+              <button data-character="Norman">Quiet and reserved</button>
+              <button data-character="Dylan">Straightforward</button>
+              <button data-character="Emma">Friendly and approachable</button>
+              <button data-character="Romero">Assertive and direct</button>
+            </div>
+            
+            <!-- Question 9 -->
+            <div class="question" data-id="9">
+              <h3>What’s your favorite time of day?</h3>
+              <button data-character="Norma">Morning</button>
+              <button data-character="Norman">Night</button>
+              <button data-character="Dylan">Midday</button>
+              <button data-character="Emma">Afternoon</button>
+              <button data-character="Romero">Evening</button>
+            </div>
+            
+            <!-- Question 10 -->
+            <div class="question" data-id="10">
+              <h3>How do you describe your personality?</h3>
+              <button data-character="Norma">Passionate</button>
+              <button data-character="Norman">Thoughtful</button>
+              <button data-character="Dylan">Adventurous</button>
+              <button data-character="Emma">Optimistic</button>
+              <button data-character="Romero">Confident</button>
+            </div>
+          </div>
+                    
+          <button id="prev" style="display: none;">Previous Question</button>
+          <button id="next">Next Question</button>
+      </div>
+  
+      <!-- Progress Dots -->
+      <div class="progress-dots" id="dots">
+          <div class="dot" data-question="1"></div>
+          <div class="dot" data-question="2"></div>
+          <!-- Add more dots as needed -->
+      </div>
+  
+      <!-- Result Section -->
+      <div id="result">
+          <!-- Result will be displayed here -->
+      </div>
+  
+      <script>
+          // Store scores for each character
+          const scores = { Norman: 0, Norma: 0, Dylan: 0, Emma: 0, Romero: 0 };
+  
+          // Handle button clicks to record answers
+          document.querySelectorAll("#quiz button").forEach((button) => {
+              button.addEventListener("click", () => {
+                  const character = button.getAttribute("data-character");
+                  scores[character]++;
+                  const questionDiv = button.closest('.question');
+                  questionDiv.style.display = "none"; // Hide answered question
+                  const dot = document.querySelector(`.dot[data-question='${questionDiv.dataset.id}']`);
+                  dot.classList.add('answered');
+              });
+          });
+  
+          // Track which question is being displayed
+          let currentQuestion = 1;
+          const questions = document.querySelectorAll('.question');
+          const dots = document.querySelectorAll('.dot');
+          const nextButton = document.getElementById('next');
+          const prevButton = document.getElementById('prev');
+          const resultDiv = document.getElementById('result');
+  
+          function showQuestion(index) {
+              questions.forEach((q, i) => {
+                  if (i === index) {
+                      q.style.display = "block";
+                  } else {
+                      q.style.display = "none";
+                  }
+              });
+  
+              // Update dots
+              dots.forEach(dot => {
+                  if (dot.dataset.question == index + 1) {
+                      dot.classList.add('active');
+                  } else {
+                      dot.classList.remove('active');
+                  }
+              });
+          }
+  
+          // Initial display
+          showQuestion(currentQuestion);
+  
+          // Next and Previous button logic
+          nextButton.addEventListener('click', () => {
+              if (currentQuestion < questions.length - 1) {
+                  currentQuestion++;
+                  showQuestion(currentQuestion);
+              } else {
+                  // Display result when last question is answered
+                  let highestScore = 0;
+                  let result = [];
+  
+                  // Determine the character(s) with the highest score
+                  for (const [character, score] of Object.entries(scores)) {
+                      if (score > highestScore) {
+                          highestScore = score;
+                          result = [character];
+                      } else if (score === highestScore) {
+                          result.push(character);
+                      }
+                  }
+  
+                  if (result.length > 1) {
+                      resultDiv.textContent = `It's a tie! You are like ${result.join(" and ")}.`;
+                  } else {
+                      resultDiv.textContent = `You are most like ${result[0]}!`;
+                  }
+                  resultDiv.style.display = "block";
+                  nextButton.style.display = "none";
+                  prevButton.style.display = "none";
+              }
+          });
+  
+          prevButton.addEventListener('click', () => {
+              if (currentQuestion > 0) {
+                  currentQuestion--;
+                  showQuestion(currentQuestion);
+              }
+          });
+  
+          // Dot click functionality
+          dots.forEach(dot => {
+              dot.addEventListener('click', () => {
+                  const questionId = dot.getAttribute('data-question') - 1;
+                  showQuestion(questionId);
+                  currentQuestion = questionId;
+              });
+          });
+      </script>
 
           
     <div id="GalleryModal" style="display: none;">
