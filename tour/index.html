@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bates Motel Season 2 Tour - Full Screen</title>
+    <style>
+        /* This section forces the browser to hide scrollbars and fill the screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden; /* Prevents scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #ruffle-container {
+            width: 100vw;  /* 100% of the browser width */
+            height: 100vh; /* 100% of the browser height */
+        }
+
+        /* Ensure the Ruffle player object itself fills the container */
+        ruffle-player {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    
+    <!-- Loading Ruffle from official CDN -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+</head>
+<body>
+
+    <div id="ruffle-container"></div>
+
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("ruffle-container");
+            
+            container.appendChild(player);
+
+            player.load({
+                url: "BatesMotelSeason2Preloader.swf",
+                allowScriptAccess: true, 
+                backgroundColor: "#000000",
+                
+                // This setting handles how the SWF fills the screen
+                // "showAll" maintains the aspect ratio (recommended)
+                // "exactFit" stretches it to fill every corner (may look distorted)
+                scale: "showAll", 
+                
+                letterbox: "on"
+            });
+        });
+    </script>
+</body>
+</html>

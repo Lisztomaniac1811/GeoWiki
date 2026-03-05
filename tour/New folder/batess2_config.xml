@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  Images and loaded assets are stored under ASSETS -->
+<!--  Test is all in TEXTS grouped by page -->
+<!--  APP_ID, REDIRECT URLS and any app control that can be expressed with a string are under TEXTS -->
+
+<DATA>
+	<ASSETS> <!-- dynamic bitmap assets -->
+		<DYNAMIC_BITMAPS>
+			<!--  Any dynamic bitmaps, or bitmaps the international team will need to update should be listed here -->			
+			<IMAGE name="landing_bg"		path="assets/bitmaps/landing_bg.jpg" />
+			<IMAGE name="landing_no"		path="assets/bitmaps/landing_no.png" />
+			<IMAGE name="logo_glow"			path="assets/bitmaps/logo_main_new.png" />
+			<IMAGE name="logo_light"		path="assets/bitmaps/logo_main_new.png" />
+			<IMAGE name="logo_divider"		path="assets/bitmaps/logo_divider.png" />
+			<IMAGE name="logo_main"			path="assets/bitmaps/logo_main_new.png" />
+			<IMAGE name="btn_enter_over"	path="assets/bitmaps/btn_enter_over.png" />
+			<IMAGE name="btn_enter_up"		path="assets/bitmaps/btn_enter_up.png" />
+			<IMAGE name="btn_sound_bg"		path="assets/bitmaps/btn_sound_bg.png" />
+			<IMAGE name="btn_sound_on"		path="assets/bitmaps/btn_sound_on.png" />
+			<IMAGE name="btn_sound_off"		path="assets/bitmaps/btn_sound_off.png" />
+			<IMAGE name="btn_help"			path="assets/bitmaps/btn_help.png" />
+			
+			<!-- SHELL VIEW -->
+			<IMAGE name="btn_ae"			path="assets/bitmaps/btn_ae.png" />
+			
+			<IMAGE name="nav_bg_first"		path="assets/bitmaps/nav_bg_first.png" />
+			<IMAGE name="nav_bg"			path="assets/bitmaps/nav_bg.png" />
+			<IMAGE name="nav_bg_last"		path="assets/bitmaps/nav_bg_last.png" />
+			<IMAGE name="nav_circle"		path="assets/bitmaps/nav_circle.png" />
+			<IMAGE name="nav_lock"			path="assets/bitmaps/nav_lock.png" />
+			<IMAGE name="btn_about_alpha"	path="assets/bitmaps/btn_about_alpha.png" />
+			
+			<IMAGE name="map_arrow"			path="assets/bitmaps/map/arrow.png" />
+			<IMAGE name="map_glass"			path="assets/bitmaps/map/glass.png" />
+			<IMAGE name="map_bg"			path="assets/bitmaps/map/grounds_bg.png" />
+			<IMAGE name="map_light"			path="assets/bitmaps/map/grounds_light.png" />
+			<IMAGE name="map_you"			path="assets/bitmaps/map/you.png" />
+			<IMAGE name="map_stranger"		path="assets/bitmaps/map/stranger.png" />
+			
+			<IMAGE name="convo_divider"		path="assets/bitmaps/convo/divider.png" />
+			<IMAGE name="convo_twicon"		path="assets/bitmaps/convo/twitter_icon.png" />
+			<IMAGE name="convo_default"		path="assets/bitmaps/convo/default_avatar.png" />
+			
+			<!-- OUTSIDE VIEW -->
+			<IMAGE name="door_basement"			path="assets/bitmaps/rooms/door_basement.jpg" />
+			<IMAGE name="door_house"			path="assets/bitmaps/rooms/door_house.jpg" />
+			<IMAGE name="door_office"			path="assets/bitmaps/rooms/door_office.jpg" />
+			<IMAGE name="door_left"				path="assets/bitmaps/rooms/door_left.jpg" />
+			<IMAGE name="door_right"			path="assets/bitmaps/rooms/door_right.jpg" />
+<!--			<IMAGE name="icon_lock"				path="assets/bitmaps/icon_lock.png" />-->
+<!--			<IMAGE name="door_locked_top"		path="assets/bitmaps/door_locked_top.png" />-->
+<!--			<IMAGE name="door_locked_glow"		path="assets/bitmaps/door_locked_glow.png" />-->
+<!--			<IMAGE name="door_locked_stroke"	path="assets/bitmaps/door_locked_stroke.png" />-->
+<!--			<IMAGE name="btn_fb_like"			path="assets/bitmaps/btn_fb_like.png" />-->
+<!--			<IMAGE name="btn_fb_count"			path="assets/bitmaps/btn_fb_count.png" />-->
+			<IMAGE name="btn_ok"				path="assets/bitmaps/btn_ok.png" />
+			<IMAGE name="fog"					path="assets/bitmaps/fog.png" />
+			
+			<IMAGE name="num_1"				path="assets/bitmaps/rooms/num1.png" />
+			<IMAGE name="num_2"				path="assets/bitmaps/rooms/num2.png" />
+			<IMAGE name="num_3"				path="assets/bitmaps/rooms/num3.png" />
+			<IMAGE name="num_4"				path="assets/bitmaps/rooms/num4.png" />
+			<IMAGE name="num_5"				path="assets/bitmaps/rooms/num5.png" />
+			<IMAGE name="num_6"				path="assets/bitmaps/rooms/num6.png" />
+			<IMAGE name="num_7"				path="assets/bitmaps/rooms/num7.png" />
+			<IMAGE name="num_8"				path="assets/bitmaps/rooms/num8.png" />
+			<IMAGE name="num_9"				path="assets/bitmaps/rooms/num9.png" />
+			<IMAGE name="num_10"			path="assets/bitmaps/rooms/num10.png" />
+			<IMAGE name="num_11"			path="assets/bitmaps/rooms/num11.png" />
+			<IMAGE name="num_12"			path="assets/bitmaps/rooms/num12.png" />
+		
+			<!-- ROOM VIEW -->
+			<IMAGE name="exitRoomButtonOut"		path="assets/bitmaps/rooms/exit_out.png" />
+			<IMAGE name="exitRoomButtonOver"	path="assets/bitmaps/rooms/exit_over.png" />
+            <IMAGE name="phoneTarget"	path="assets/bitmaps/rooms/phoneTarget.png" />
+            <IMAGE name="exitRoomButtonOver"	path="assets/bitmaps/rooms/exit_over.png" />
+			<IMAGE name="vignette"	path="assets/bitmaps/rooms/vignette.jpg" />
+			<IMAGE name="phone_icon"	path="assets/bitmaps/rooms/phone_icon.png" />
+			<IMAGE name="mouse_icon"	path="assets/bitmaps/rooms/mouse_icon.png" />
+					
+			<!-- ITEMS VIEW -->
+			<IMAGE name="itemCloseButtonOut"	path="assets/bitmaps/item_view/close_out.png" />
+			<IMAGE name="itemCloseButtonOver"	path="assets/bitmaps/item_view/close_over.png" />
+			<IMAGE name="itemFBButtonOut"		path="assets/bitmaps/item_view/fb_out.png" />
+			<IMAGE name="itemFBButtonOver"		path="assets/bitmaps/item_view/fb_over.png" />
+			<IMAGE name="itemTwitterButtonOut"	path="assets/bitmaps/item_view/twitter_out.png" />
+			<IMAGE name="itemTwitterButtonOver"	path="assets/bitmaps/item_view/twitter_over.png" />
+			<IMAGE name="itemDivider"			path="assets/bitmaps/item_view/divider.png" />
+			<IMAGE name="ipad"					path="assets/bitmaps/item_view/ipad_bg.png" />
+			
+		</DYNAMIC_BITMAPS>
+	</ASSETS>
+	<TEXTS> <!-- TEXTS IS USED FOR URLS AS WELL AS TRACKING AND APP CODES-->
+		<!--  Any text used in app should exist here, "key" is how the app will reference the text, "value" is the text to display -->
+		<!--  This is used for URL, codes or app ids as well -->
+		<!--  If text needs to be displayed as HTMl or includes symbols that will not work as attribute, just create as a child node -->
+		<!-- example
+		<TEXT key="sweepstakesActive" value="true" />
+		<TEXT key="twitterShareURL" value="http://twitter.com/share"/>
+		<TEXT key="htmlOrComplexText"/>
+			<![CDATA[Text that holds html <a href="http://www.link.html" target="_blank"><font color="#aaaaaa">Terms and Conditions</font></a>.]]>
+		</TEXT>
+		 -->
+		 <!-- common text -->
+        <TEXT key="landingWelcome"><![CDATA[Welcome to the]]></TEXT>
+        <TEXT key="landingIntro"><![CDATA[Welcome to the Bates Motel!<br/>We've renovated. Feel free to have a look around.]]></TEXT>
+        <TEXT key="enterSite"><![CDATA[ENTER THE BATES MOTEL]]></TEXT>
+        <TEXT key="nextButton" value="NEXT STEP" />
+        <TEXT key="initalRoom" value="3" />
+        <TEXT key="urlAE" value="http://www.aetv.com/" />
+        <TEXT key="btnSkip" value="SKIP" />
+        <TEXT key="aboutButton" value="About the show" />
+        <TEXT key="ipad_header" value="OTHER PLACES TO VISIT"/>
+        <TEXT key="gateDescription"><![CDATA[There is a note on the door.]]></TEXT>
+        <TEXT key="gateLike"><![CDATA[Examine Note]]></TEXT>
+        <TEXT key="phoneMouseText1"><![CDATA[DON'T LET THE DARKNESS STOP YOU, BUT YOU'LL NEED A FLASHLIGHT.]]></TEXT>
+        <TEXT key="phoneMouseText2"><![CDATA[You can continue to use your mouse or connect with your smartphone.]]></TEXT>
+        <TEXT key="phoneMouseSubsequent"><![CDATA[LET'S BRING SOME IGHT IN HERE AND SEE WHAT THERE IS To FIND...]]></TEXT>
+        <TEXT key="phone"><![CDATA[Phone]]></TEXT>
+        <TEXT key="mouse"><![CDATA[Mouse]]></TEXT>
+        <TEXT key="codeText"><![CDATA[ON YOUR PHONE'S BROWSER, GO TO bit.ly/bateslight AND ENTER THIS CODE]]></TEXT>
+        <TEXT key="codeTextDev"><![CDATA[ON YOUR PHONE'S BROWSER, GO TO bit.ly/bates-light AND ENTER THIS CODE]]></TEXT>
+        <TEXT key="calibrateText"><![CDATA[SUCCESS! WE'VE DETECTED YOUR PHONE <br> CALIBRATE YOUR FLASHLIGHT BY POINTING AT THE DOT AND TURINING IT ON.]]></TEXT>
+        <TEXT key="btnJoin"><![CDATA[Join The Conversation]]></TEXT>
+        <TEXT key="tuneIn"><![CDATA[NEW SEASON MARCH 2015]]></TEXT>
+        <TEXT key="visitShowPage"><![CDATA[VISIT AETV.COM]]></TEXT>
+        <TEXT key="visitShowPagePostFeb18"><![CDATA[CATCH UP!<br/>SEASON 1 ON AETV.COM FOR FREE!<br/>WATCH HERE]]></TEXT>
+        <TEXT key="visitShowPageHighlight"><![CDATA[FREE]]></TEXT>
+        <TEXT key="visitShowPagePostFeb18Link"><![CDATA[http://www.aetv.com/bates-motel/video/first-you-dream-then-you-die]]></TEXT>
+		 
+		 
+		<!-- conversation engine -->
+		<TEXT key="followBtnText"><![CDATA[<b>Follow</b> @insidebates]]></TEXT>
+		<TEXT key="tweetBtnText"><![CDATA[Tweet @insidebates]]></TEXT>
+		<TEXT key="convoTitle"><![CDATA[Tweets]]></TEXT>
+		<TEXT key="newTweetsBtn"><![CDATA[New tweets available]]></TEXT>
+		
+		
+		<!-- share text -->
+		<TEXT key="pintrestURL"><![CDATA[http://pinterest.com/pin/create/button/]]></TEXT>
+		<TEXT key="twitterURL"><![CDATA[http://twitter.com/share]]></TEXT>
+		<TEXT key="urlAbout"><![CDATA[http://www.aetv.com/bates-motel]]></TEXT>
+		<TEXT key="urlAE"><![CDATA[http://www.aetv.com/]]></TEXT>
+		<TEXT key="siteFB_share"><![CDATA[I went inside the #BatesMotel.]]></TEXT>
+		<TEXT key="siteTW_tweet"><![CDATA[I went inside the #BatesMotel.]]></TEXT>
+		<TEXT key="siteHash"><![CDATA[InsideBatesMotel]]></TEXT>
+		<TEXT key="sitePIN"><![CDATA[Site share text]]></TEXT>
+		<TEXT key="siteShareTitle"><![CDATA[Check-in to the Bates Motel 12 Rooms Site]]></TEXT>
+		<TEXT key="siteShareURL"><![CDATA[http://www.batesmotel.com/]]></TEXT>
+		<TEXT key="twitterShareSuffix"><![CDATA[@InsideBates]]></TEXT>
+		<TEXT key="siteShareImage"><![CDATA[/share.png]]></TEXT>
+		<TEXT key="taxedermy"><![CDATA[A stitch in time, saves nine.]]></TEXT>
+		<TEXT key="taxedermy_share"><![CDATA[A stitch in time, saves nine.]]></TEXT>
+		<TEXT key="taxedermy_tweet"><![CDATA[I went #InsideBatesMotel. A stitch in time, saves nine.]]></TEXT>
+		<TEXT key="hair-dye"><![CDATA[Not quite the color for you.]]></TEXT>
+		<TEXT key="hair-dye_share"><![CDATA[Not quite the color for you.]]></TEXT>
+		<TEXT key="hair-dye_tweet"><![CDATA[I went #InsideBatesMotel. Not quite the color for you.]]></TEXT>
+		<TEXT key="table"><![CDATA[Not much singing in the dead of night..]]></TEXT>
+		<TEXT key="table_share"><![CDATA[A boy and his toys?]]></TEXT>
+		<TEXT key="table_tweet"><![CDATA[I went inside the #BatesMotel.  A boy and his toys?]]></TEXT>
+		<TEXT key="sleeping-bag"><![CDATA[You've made your bed.]]></TEXT>
+		<TEXT key="sleeping-bag_share"><![CDATA[You've made your bed, now lie down!]]></TEXT>
+		<TEXT key="sleeping-bag_tweet"><![CDATA[I went #InsideBatesMotel. You've made your bed, now lie down!]]></TEXT>
+		<TEXT key="ipad"><![CDATA[]]></TEXT>
+		<TEXT key="ipad_share"><![CDATA[Do you remember your last stay?]]></TEXT>
+		<TEXT key="ipad_tweet"><![CDATA[I went #InsideBatesMotel. Do you remember your last stay?]]></TEXT>
+		<TEXT key="theater-flyer"><![CDATA[Everything is coming up roses.]]></TEXT>
+		<TEXT key="theater-flyer_share"><![CDATA[Everything is coming up roses.]]></TEXT>
+		<TEXT key="theater-flyer_tweet"><![CDATA[I went #InsideBatesMotel and everything is coming up roses.]]></TEXT>
+		<TEXT key="radio"><![CDATA[Hard not to love a classic.]]></TEXT>
+		<TEXT key="radio_share"><![CDATA[]]></TEXT>
+		<TEXT key="radio_tweet"><![CDATA[]]></TEXT>
+		<TEXT key="necklace"><![CDATA[Now whose are these?]]></TEXT>
+		<TEXT key="necklace_share"><![CDATA[What a lovely necklace.]]></TEXT>
+		<TEXT key="necklace_tweet"><![CDATA[I went #InsideBatesMotel. What a lovely necklace.]]></TEXT>
+		<TEXT key="photo"><![CDATA[Not exactly well kept.]]></TEXT>
+		<TEXT key="photo_share"><![CDATA[Not exactly well kept.]]></TEXT>
+		<TEXT key="photo_tweet"><![CDATA[I went #InsideBatesMotel and it's not exactly well kept.]]></TEXT>
+		<TEXT key="shovel"><![CDATA[Well, those aren't your standard cleaning supplies...]]></TEXT>
+		<TEXT key="shovel_share"><![CDATA[Well, those aren't your standard cleaning supplies...]]></TEXT>
+		<TEXT key="shovel_tweet"><![CDATA[I went #InsideBatesMotel. Well, those aren't your standard cleaning supplies..]]></TEXT>
+		<TEXT key="tv2"><![CDATA[See what's on...]]></TEXT>
+		<TEXT key="tv2_share"><![CDATA[Family drama.]]></TEXT>
+		<TEXT key="tv2_tweet"><![CDATA[I went inside the #BatesMotel. Family drama.]]></TEXT>
+		<TEXT key="rts_letters"><![CDATA[Alas lost love.]]></TEXT>
+		<TEXT key="rts_letters_share"><![CDATA[Alas lost love.]]></TEXT>
+		<TEXT key="rts_letters_tweet"><![CDATA[I went #InsideBatesMotel. Alas lost love.]]></TEXT>
+		<TEXT key="bus_ticket"><![CDATA[In a hurry?]]></TEXT>
+		<TEXT key="bus_ticket_share"><![CDATA[In a hurry?]]></TEXT>
+		<TEXT key="bus_ticket_tweet"><![CDATA[I went #InsideBatesMotel. In a hurry?]]></TEXT>
+		<TEXT key="handsaw"><![CDATA[Saw something? Say something.]]></TEXT>
+		<TEXT key="handsaw_share"><![CDATA[Saw something? Say something.]]></TEXT>
+		<TEXT key="handsaw_tweet"><![CDATA[I went #InsideBatesMotel. Saw something? Say something.]]></TEXT>
+		<TEXT key="booze"><![CDATA[What 'spirits' live here?]]></TEXT>
+		<TEXT key="booze_share"><![CDATA[What 'spirits' live here?]]></TEXT>
+		<TEXT key="booze_tweet"><![CDATA[I went #InsideBatesMotel. What 'spirits' live here?]]></TEXT>
+		<TEXT key="tv4"><![CDATA[See what's on...]]></TEXT>
+		<TEXT key="tv4_share"><![CDATA[It's heart pounding.]]></TEXT>
+		<TEXT key="tv4_tweet"><![CDATA[I went #InsideBatesMotel. It's heart pounding.]]></TEXT>
+		<TEXT key="gun"><![CDATA[Smokin' hot.]]></TEXT>
+		<TEXT key="gun_share"><![CDATA[Smokin' hot.]]></TEXT>
+		<TEXT key="gun_tweet"><![CDATA[I went #InsideBatesMotel. Smokin' hot.]]></TEXT>
+		<TEXT key="drinks"><![CDATA[It's still cold]]></TEXT>
+		<TEXT key="drinks_share"><![CDATA[It's still cold.]]></TEXT>
+		<TEXT key="drinks_tweet"><![CDATA[I went #InsideBatesMotel. It's still cold.]]></TEXT>
+		<TEXT key="tv6"><![CDATA[See what's on...]]></TEXT>
+		<TEXT key="tv6_share"><![CDATA[So steamy in here. Was the shower left on, or...]]></TEXT>
+		<TEXT key="tv6_tweet"><![CDATA[I went #InsideBatesMotel. So steamy in here.]]></TEXT>
+		<TEXT key="letters"><![CDATA[To B. or not to B.? Well, not anymore.]]></TEXT>
+		<TEXT key="letters_share"><![CDATA["B." Who's B?]]></TEXT>
+		<TEXT key="letters_tweet"><![CDATA[I went #InsideBatesMotel. "B." Who's B?]]></TEXT>
+		<TEXT key="elixer"><![CDATA[Herbal necessities.]]></TEXT>
+		<TEXT key="elixer_share"><![CDATA[Herbal necessities.]]></TEXT>
+		<TEXT key="elixer_tweet"><![CDATA[I went #InsideBatesMotel. Herbal necessities.]]></TEXT>
+		<TEXT key="jacket"><![CDATA[Looks like it's seen a thing or two...]]></TEXT>
+		<TEXT key="jacket_share"><![CDATA[Looks like it's seen a thing or two...]]></TEXT>
+		<TEXT key="jacket_tweet"><![CDATA[I went #InsideBatesMotel. Looks like it's seen a thing or two...]]></TEXT>
+		<TEXT key="business-card"><![CDATA[Old dog, new tricks.]]></TEXT>
+		<TEXT key="business-card_share"><![CDATA[Old dog new tricks.]]></TEXT>
+		<TEXT key="business-card_tweet"><![CDATA[I went #InsideBatesMotel. Old dog, new tricks.]]></TEXT>
+		<TEXT key="ei-report"><![CDATA[Pistol river pocket gopher – say that three times, fast.]]></TEXT>
+		<TEXT key="ei-report_share"><![CDATA[Pistol river pocket gopher – say that three times, fast.]]></TEXT>
+		<TEXT key="ei-report_tweet"><![CDATA[I went #InsideBatesMotel. Pistol river pocket gopher – say that three times, fast.]]></TEXT>
+		<TEXT key="tv8"><![CDATA[See what's on...]]></TEXT>
+		<TEXT key="tv8_share"><![CDATA[There's nothing like fresh sheets.]]></TEXT>
+		<TEXT key="tv8_tweet"><![CDATA[I went #InsideBatesMotel. There's nothing like fresh sheets.]]></TEXT>
+		<TEXT key="cupcake"><![CDATA[One of the things is just like the other.]]></TEXT>
+		<TEXT key="cupcake_share"><![CDATA[One of the things is just like the other.]]></TEXT>
+		<TEXT key="cupcake_tweet"><![CDATA[I went #InsideBatesMotel. One of the things is just like the other.]]></TEXT>
+		<TEXT key="bong"><![CDATA[Watch it there. We look with our eyes.]]></TEXT>
+		<TEXT key="bong_share"><![CDATA[Better trash the stash.]]></TEXT>
+		<TEXT key="bong_tweet"><![CDATA[I went #InsideBatesMotel.  Better trash the stash.]]></TEXT>
+		<TEXT key="handcuffs"><![CDATA[So many uses have these...]]></TEXT>
+		<TEXT key="handcuffs_share"><![CDATA[Some like it hot.]]></TEXT>
+		<TEXT key="handcuffs_tweet"><![CDATA[I went #InsideBatesMotel.  Some like it hot.]]></TEXT>
+		<TEXT key="matches"><![CDATA[Well, how practical.]]></TEXT>
+		<TEXT key="matches_share"><![CDATA[Well, how practical.]]></TEXT>
+		<TEXT key="matches_tweet"><![CDATA[I went #InsideBatesMotel. Well how practical.]]></TEXT>
+		<TEXT key="money-envelope"><![CDATA[He who pays the piper calls the tune.]]></TEXT>
+		<TEXT key="money-envelope_share"><![CDATA[He who pays the piper calls the tune.]]></TEXT>
+		<TEXT key="money-envelope_tweet"><![CDATA[I went #InsideBatesMotel. He who pays the piper calls the tune.]]></TEXT>
+		<TEXT key="vacation-flyer"><![CDATA[Going somewhere warm?]]></TEXT>
+		<TEXT key="vacation-flyer_share"><![CDATA[Going somewhere warm?]]></TEXT>
+		<TEXT key="vacation-flyer_tweet"><![CDATA[I went #InsideBatesMotel. Going somewhere warm?]]></TEXT>
+		<TEXT key="tv11"><![CDATA[See what's on…]]></TEXT>
+		<TEXT key="tv11_share"><![CDATA[Make sure to knock.]]></TEXT>
+		<TEXT key="tv11_tweet"><![CDATA[I went #InsideBatesMotel. Make sure to knock.]]></TEXT>
+		<TEXT key="video12"><![CDATA[]]></TEXT>
+		<TEXT key="video12_share"><![CDATA[Now taking reservations for March 3rd.]]></TEXT>
+		<TEXT key="video12_tweet"><![CDATA[I went #InsideBatesMotel. Now taking reservations for March 3rd.]]></TEXT>
+		
+		<!-- ROOM FLAVOR TEXT -->
+		<TEXT key="HOME_flavor"><![CDATA[Let's see if we can't find why...]]></TEXT>
+		<TEXT key="OFFICE_flavor"><![CDATA[Everything seems to be in order... but why let that stop you?]]></TEXT>
+		<TEXT key="1_flavor"><![CDATA[Poke around. No one's stopping you...]]></TEXT>
+		<TEXT key="2_flavor"><![CDATA[Is that the scent of men's cologne?]]></TEXT>
+		<TEXT key="3_flavor"><![CDATA[So cold in here. There must be a draft.]]></TEXT>
+		<TEXT key="4_flavor"><![CDATA[Another room, another story...but whose?]]></TEXT>
+		<TEXT key="5_flavor"><![CDATA[Seems someone wasn't alone...]]></TEXT>
+		<TEXT key="6_flavor"><![CDATA[Probably should have knocked...]]></TEXT>
+		<TEXT key="7_flavor"><![CDATA[Now... who could have been here?]]></TEXT>
+		<TEXT key="8_flavor"><![CDATA[Seems everything was just cleaned in here.]]></TEXT>
+		<TEXT key="9_flavor"><![CDATA[Well, that's quite the smell...]]></TEXT>
+		<TEXT key="10_flavor"><![CDATA[Something about this room seems familiar...]]></TEXT>
+		<TEXT key="11_flavor"><![CDATA[Someone left in a hurry...]]></TEXT>
+		<TEXT key="12_flavor"><![CDATA[For the true voyeur...]]></TEXT>
+		<TEXT key="panableDirections"><![CDATA[Use your mouse to explore Norman's workspace.]]></TEXT>
+		<TEXT key="ipad_title"><![CDATA[Bates Motel Season 1 Recap]]></TEXT>
+		<TEXT key="houseDoorText"><![CDATA[The boy who lives here could surely use a friend like you.<br/>Let him know you're a fan of his if you're going to come inside.    ]]></TEXT>
+		<TEXT key="basementDoorText"><![CDATA[Perhaps a boy's best friend is his basement.]]></TEXT>
+		
+		<!-- help text -->
+		<TEXT key="helpIntro"><![CDATA[There's a lot to see in an old motel. <br/> Let the map below guide your way.]]></TEXT>
+		<TEXT key="helpRoom"><![CDATA[Old motels like these house lots of secrets.<br/>Dig around to discover what you can...]]></TEXT>
+		<TEXT key="helpEnter"><![CDATA[Enter]]></TEXT>
+		<TEXT key="helpNext"><![CDATA[Keep Moving]]></TEXT>
+		<TEXT key="helpPrevious"><![CDATA[Go Back]]></TEXT>
+		<TEXT key="helpExit"><![CDATA[Exit]]></TEXT>
+		<TEXT key="helpMap"><![CDATA[Use the map below to explore the Bates Motel.]]></TEXT>
+		<TEXT key="helpSocial"><![CDATA[Join the chatter<br/> about our humble motel.]]></TEXT>
+		<TEXT key="helpHelp"><![CDATA[Hide/display instructions]]></TEXT>
+		<TEXT key="helpConversation"><![CDATA[Join the conversation.]]></TEXT>
+		<TEXT key="helpAbout"><![CDATA[Learn more about Bates Motel Season 2.]]></TEXT>
+		<TEXT key="helpNavigation"><![CDATA[Click a number<br/>to go to that room.]]></TEXT>
+		<TEXT key="helpSound"><![CDATA[Did you hear that? Click here for sound.]]></TEXT>
+		<TEXT key="helpHomeNav"><![CDATA[Mother is calling. Go to the main house.]]></TEXT>
+		<TEXT key="helpOfficeNav"><![CDATA[Go to the office.]]></TEXT>
+		<TEXT key="helpRoomsNav"><![CDATA[Click a number to go to that room.]]></TEXT>
+		<TEXT key="helpAE"><![CDATA[Click here for more original content from A&E]]></TEXT>
+			
+		 <!-- APP CONFIG -->
+		 <TEXT key="itemViewBlackAlpha" value=".7" />
+		 <TEXT key="roomFlickerTime" value="40" /> <!--  in frames -->
+		 <TEXT key="roomFlickerDimTime" value="60" />
+		 <TEXT key="roomFlickerBlackTime" value="80" />
+		 <TEXT key="phoneMovementDamper" value=".1" />
+		 <TEXT key="hoverNoteIncremenet" value=".05" />
+		 <TEXT key="externalSound" value="assets/sounds/bm_external.mp3" />
+		 <TEXT key="externalSoundVolume" value="1" />
+		 <TEXT key="tackingcode" value="UA-33323210-8"/>
+	</TEXTS>
+	<SOCIAL_NAV>
+		<SOCIAL id="fb" up="assets/bitmaps/btn_fb_up.png" over="assets/bitmaps/btn_fb_over.png" url="https://www.facebook.com/BatesMotelAETV" />
+		<SOCIAL id="tw" up="assets/bitmaps/btn_tw_up.png" over="assets/bitmaps/btn_tw_over.png" url="https://twitter.com/insidebates" />
+		<SOCIAL id="in" up="assets/bitmaps/btn_in_up.png" over="assets/bitmaps/btn_in_over.png" url="http://instagram.com/InsideBates" />
+		<SOCIAL id="pi" up="assets/bitmaps/btn_pi_up.png" over="assets/bitmaps/btn_pi_over.png" url="http://www.pinterest.com/NormaBatesMotel" />
+		<SOCIAL id="tblr" up="assets/bitmaps/btn_tblr_up.png" over="assets/bitmaps/btn_tblr_over.png" url="http://batesmotel.tumblr.com/" />
+	</SOCIAL_NAV>
+	<EXTERNALSOUND>
+		<SOUND id="extamb"  assetPath="assets/sounds/exterior.mp3" direction="0" volume=".3"></SOUND>
+	</EXTERNALSOUND>
+	<EXTERNALROOMSOUND>
+		<SOUND id="flirt" roomID="7" assetPath="assets/sounds/chat.mp3" direction="0" volume="1"></SOUND>
+		<SOUND id="sex"  roomID="8" assetPath="assets/sounds/sex.mp3" direction="0" volume="1"></SOUND>
+	</EXTERNALROOMSOUND>
+	<ROOMS>
+		<ROOM id="0" text="HOME" status="open" doorImage="0" doorEnter="assets/videos/roomEnterBasement.flv" startXRotation="0" startYRotation="70" exitX="2180" exitY="160">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/basement_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/basement_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="taxedermy" type="video" assetPath="assets/bitmaps/items/taxedermy.png" height="36" width="72" xPos="1361" yPos="440">
+					<LARGEVIEWASSET path="assets/videos/show/basement.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="hair-dye" type="photo" assetPath="assets/bitmaps/items/hair-dye.png"  height="36" width="36" xPos="948" yPos="440">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/hair-dye.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="table" type="panable" assetPath="assets/bitmaps/items/crow.png"  height="20" width="40" xPos="850" yPos="405">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/table.jpg"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="sleeping-bag" type="photo" assetPath="assets/bitmaps/items/sleeping-bag.png" height="156" width="156" xPos="1000" yPos="840" useArc="true">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/sleeping-bag.png"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="norman" triggerOnExit="true" assetPath="assets/sounds/basement.mp3" direction="0" volume=".2"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="1" text="HOME" status="open" doorImage="1" doorEnter="assets/videos/roomEnterLeft.flv" startXRotation="0" startYRotation="70" exitX="2180" exitY="160">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/basement_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/basement_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="taxedermy" type="photo" assetPath="assets/bitmaps/items/taxedermy.png" height="36" width="72" xPos="1361" yPos="440">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/taxidermy.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="hair-dye" type="photo" assetPath="assets/bitmaps/items/hair-dye.png"  height="36" width="36" xPos="948" yPos="440">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/hair-dye.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="table" type="panable" assetPath="assets/bitmaps/items/empty.png"  height="32" width="64" xPos="896" yPos="368">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/table.jpg"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="sleeping-bag" type="photo" assetPath="assets/bitmaps/items/sleeping-bag.png" height="156" width="156" xPos="1000" yPos="840" useArc="true">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/sleeping-bag.png"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="norman" triggerOnExit="true" assetPath="assets/sounds/basement.mp3" direction="0" volume=".2"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="2" text="OFFICE" status="open"  doorImage="2" doorEnter="assets/videos/roomEnterOffice.flv" yRotationMin="-32" yRotationMax="78" xRotationMin="-10"  xRotationMax="18" cameraHeight="15"  exitX="1944" exitY="358" >
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/office_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/office_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="ipad" type="ipad" assetPath="assets/bitmaps/items/ipad.png"  height="32" width="64" xPos="815" yPos="618">
+					<LARGEVIEWASSET path="assets/videos/show/office.mp4" text="OTHER PLACES TO VISIT"></LARGEVIEWASSET>
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/ipad_emma.png" text="Emma's blog" link="http://www.aetv.com/bates-motel/emmas-blog/"></LARGEVIEWASSET>
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/ipad_norman.png" text="Norman's blog" link="http://iamnormanbates.com/"></LARGEVIEWASSET>
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/ipad_bates.png" text="Bates Motel" link="http://www.batesmoteloregon.com/"></LARGEVIEWASSET>
+					<!-- <LARGEVIEWASSET path="assets/bitmaps/item_view/ipad_fpo.png" text="FPO" link="https://www.facebook.com/BatesMotelAETV"></LARGEVIEWASSET>
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/ipad_fpo.png" text="FPO" link="https://twitter.com/insidebates"></LARGEVIEWASSET> -->
+				</OBJECT>
+				<OBJECT id="ipad_shadow" type="shadow" isActive="false" assetPath="assets/bitmaps/items/ipad_shadow.png"  height="32" width="64" xPos="815" yPos="618"><![CDATA[PATH]]></OBJECT>
+				<OBJECT id="theater-flyer" type="photo" assetPath="assets/bitmaps/items/theater-flyer.png"  height="64" width="32" xPos="1150" yPos="707">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/theater-flyer.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="theater-flyer_shadow" type="shadow" isActive="false" assetPath="assets/bitmaps/items/theater-flyer_shadow.png" largeViewPath="" height="64" width="32" xPos="1150" yPos="707"><![CDATA[PATH]]></OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" ></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="3" text="1" status="open"  doorImage="3" doorEnter="assets/videos/roomEnterLeft.flv" startYRotation="70" exitX="534" exitY="228" >
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="radio" type="audio" special="radio" assetPath="assets/bitmaps/items/radio.png"  height="16" width="32" xPos="2036" yPos="600" overColor="0xa33e04" overAlpha="1">
+					<LARGEVIEWASSET path="assets/sounds/radio.mp3"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="necklace" type="video" assetPath="assets/bitmaps/items/necklace.png" height="20" width="40" xPos="1386" yPos="612" overColor="0xffffff" overAlpha="1" >
+					<LARGEVIEWASSET path="assets/videos/show/room_1.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="4" text="2" status="open"  doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv" exitX="1967" exitY="269" xRotationMin="-8" xRotationMax="20" cameraHeight="15">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_dark_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_dark_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<FLASHLIGHT>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_flash_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_flash_right.jpg]]></TEXTURE>
+			</FLASHLIGHT>
+			<OBJECTS>
+				<OBJECT id="photo" type="photo" assetPath="assets/bitmaps/items/photo.png" height="16" width="32" xPos="485" yPos="718" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/photo_large_1.png"></LARGEVIEWASSET>
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/photo_large_2.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="shovel" type="photo" assetPath="assets/bitmaps/items/shovel.png"  height="256" width="64" xPos="1390" yPos="605" useArc="true" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/shovel.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="shovel_shadow" type="shadow" isActive="false" assetPath="assets/bitmaps/items/shovel_shadow.png" largeViewPath="" height="256" width="64" xPos="1390" yPos="605" useArc="true" />
+				<OBJECT id="dirt" type="bedcover" isActive="false" assetPath="assets/bitmaps/items/dirt.png" largeViewPath="" height="256" width="64" xPos="1520" yPos="830" useArc="true" />
+				<OBJECT id="tv2" type="video" special="tv" assetPath="assets/bitmaps/items/tv_2_6_8_11.png" largeViewPath="" height="74" width="58" xPos="1644" yPos="548">
+					<LARGEVIEWASSET path="assets/videos/show/room_2.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="5" text="3" status="open"  doorImage="3" doorEnter="assets/videos/roomEnterLeft.flv" startYRotation="70"   exitX="534" exitY="228" >
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="rts_letters" type="photo" assetPath="assets/bitmaps/items/rts-letters.png" height="32" width="32" xPos="2279" yPos="592">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/rts-letters.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="bus_ticket" type="photo" assetPath="assets/bitmaps/items/bus-ticket.png" height="32" width="32" xPos="3489" yPos="752" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/bus-ticket.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="bed" type="video" assetPath="assets/bitmaps/items/bed_room3.png" height="128" width="256" xPos="1860.8" yPos="875" >
+					<LARGEVIEWASSET path="assets/videos/temp_video.flv"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="6" text="4" status="open"  doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv" startYRotation="70" exitX="3005" exitY="222">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_4_bright_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_4_bright_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="handsaw" type="photo" assetPath="assets/bitmaps/items/handsaw.png" height="64" width="128" xPos="1250" yPos="855" defineRadius=".95">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/handsaw.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="booze" type="photo" assetPath="assets/bitmaps/items/booze.png" height="64" width="16" xPos="2160" yPos="608" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/booze.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="tv4" type="video" assetPath="assets/bitmaps/items/tv_4.png"  height="74" width="58" xPos="2680" yPos="503" >
+					<LARGEVIEWASSET path="assets/videos/show/room_4.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="flirt" assetPath="assets/sounds/chat.mp3" direction="71" volume="1"></SOUND>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="7" text="5" status="open"  doorImage="3" doorEnter="assets/videos/roomEnterLeft.flv" startYRotation="200" exitX="2078" exitY="239" xRotationMin="-8" xRotationMax="20" cameraHeight="15">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_5_9_dark_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_5_9_dark_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<FLASHLIGHT>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_5_9_flash_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_5_9_flash_right.jpg]]></TEXTURE>
+			</FLASHLIGHT>
+			<OBJECTS>
+				<OBJECT id="gun" type="photo" assetPath="assets/bitmaps/items/gun.png" height="32" width="32" xPos="3071" yPos="703" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/gun.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="drinks" type="photo" assetPath="assets/bitmaps/items/drinks.png" height="32" width="32" xPos="3576" yPos="610" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/drinks.png"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="sex" assetPath="assets/sounds/sex.mp3" direction="20" volume="1"></SOUND>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="8" text="6" status="open"  doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv" exitX="1967" exitY="269" xRotationMin="-8" xRotationMax="20"  cameraHeight="15">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_6_dark_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_6_dark_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<FLASHLIGHT>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_6_flash_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_6_flash_right.jpg]]></TEXTURE>
+			</FLASHLIGHT>
+			<OBJECTS>
+				<OBJECT id="tv6" type="video" assetPath="assets/bitmaps/items/tv_2_6_8_11.png" height="74" width="58" xPos="1644" yPos="548" >
+					<LARGEVIEWASSET path="assets/videos/show/room_6.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="letters" type="photo" assetPath="assets/bitmaps/items/letters.png" height="32" width="64" xPos="2390" yPos="734" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/letters.png"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="flirt" assetPath="assets/sounds/chat.mp3" direction="158" volume="1"></SOUND>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="9" text="7" status="open"  doorImage="3" doorEnter="assets/videos/roomEnterLeft.flv"  startYRotation="70" exitX="534" exitY="228">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_right.jpg]]></TEXTURE>
+			</TEXTURES> 
+			<OBJECTS>
+				<OBJECT id="elixer" type="photo" assetPath="assets/bitmaps/items/elixer.png" height="32" width="16" xPos="1294" yPos="576" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/elixer.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="jacket" type="photo" assetPath="assets/bitmaps/items/jacket.png"  height="64" width="128" xPos="3100" yPos="636" useArc="true">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/jacket.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="jacket_shadow" isActive="false" type="shadow" assetPath="assets/bitmaps/items/jacket_shadow.png" largeViewPath="" height="64" width="128" xPos="3100" yPos="636" useArc="true" />
+				<OBJECT id="bed" type="bedcover" assetPath="assets/bitmaps/items/bed_room7.png"  height="128" width="256" xPos="1860.8" yPos="875" ></OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="sex" assetPath="assets/sounds/sex.mp3" direction="60" volume="1"></SOUND>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="10" text="8" status="open" doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv" exitX="1967" exitY="269" xRotationMin="-8" xRotationMax="20"  cameraHeight="15">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_dark_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_dark_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<FLASHLIGHT>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_flash_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_flash_right.jpg]]></TEXTURE>
+			</FLASHLIGHT>
+			<OBJECTS>
+				<OBJECT id="business-card" type="photo" assetPath="assets/bitmaps/items/business-card.png"  height="16" width="16" xPos="2417" yPos="724">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/business-card.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="ei-report" type="photo" assetPath="assets/bitmaps/items/ei-report.png"  height="32" width="64" xPos="140" yPos="699">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/ei-report.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="tv8" type="video" assetPath="assets/bitmaps/items/tv_2_6_8_11.png"  height="74" width="58" xPos="1644" yPos="548">
+					<LARGEVIEWASSET path="assets/videos/show/room_8.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="11" text="9" status="open" doorImage="3" doorEnter="assets/videos/roomEnterLeft.flv" startYRotation="200" exitX="2078" exitY="239" xRotationMin="-8" xRotationMax="20"  cameraHeight="15">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_5_9_dark_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_5_9_dark_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<FLASHLIGHT>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_5_9_flash_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_5_9_flash_right.jpg]]></TEXTURE>
+			</FLASHLIGHT>
+			<OBJECTS>
+				<OBJECT id="cupcake" type="photo" assetPath="assets/bitmaps/items/cupcake.png" height="32" width="32" xPos="2942" yPos="622">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/cupcake.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="bong" type="video" assetPath="assets/bitmaps/items/bong.png"  height="108" width="54" xPos="1043" yPos="558" useArc="true">
+					<LARGEVIEWASSET path="assets/videos/show/room_9.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="12" text="10" status="open" doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv" startYRotation="70" exitX="534" exitY="228" >
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="handcuffs" type="video" assetPath="assets/bitmaps/items/handcuffs.png" height="32" width="16" xPos="631" yPos="492">
+					<LARGEVIEWASSET path="assets/videos/show/room_10.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="matches" type="photo" assetPath="assets/bitmaps/items/matches.png" height="24" width="24" xPos="3574" yPos="796">
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/matches.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="bed" type="bedcover" assetPath="assets/bitmaps/items/bed_room10.png" height="128" width="256" xPos="1860.8" yPos="875" ></OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="13" text="11" status="open" doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv"  exitX="1967" exitY="269" cameraHeight="15">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_dark_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_dark_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<FLASHLIGHT>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_flash_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_2_6_8_11_flash_right.jpg]]></TEXTURE>
+			</FLASHLIGHT>
+			<OBJECTS>
+				<OBJECT id="money-envelope" type="photo" assetPath="assets/bitmaps/items/money-envelope.png" height="32" width="32" xPos="1112" yPos="698" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/money-envelope.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="vacation-flyer" type="photo" assetPath="assets/bitmaps/items/vacation-flyer.png" largeViewPath="" height="64" width="64" xPos="2377" yPos="751" >
+					<LARGEVIEWASSET path="assets/bitmaps/item_view/vacation-flyer2.png"></LARGEVIEWASSET>
+				</OBJECT>
+				<OBJECT id="tv11" type="video" assetPath="assets/bitmaps/items/tv_2_6_8_11.png" height="74" width="58" xPos="1644" yPos="548">
+					<LARGEVIEWASSET path="assets/videos/show/room_11.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+		<ROOM id="14" text="12" status="open" doorImage="4" doorEnter="assets/videos/roomEnterLeft.flv" startXRotation="0" startYRotation="70"  popAsset="video12" exitX="534" exitY="228">
+			<TEXTURES>
+				<TEXTURE rotationX="0" rotationY="0"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_left.jpg]]></TEXTURE>
+				<TEXTURE rotationX="0" rotationY="180"><![CDATA[assets/bitmaps/rooms/room_1_3_7_10_12_bright_right.jpg]]></TEXTURE>
+			</TEXTURES>
+			<OBJECTS>
+				<OBJECT id="video12" type="video" assetPath="assets/bitmaps/items/empty.png" height="74" width="58" xPos="1644" yPos="548">
+					<LARGEVIEWASSET path="assets/videos/show/room_12.mp4"></LARGEVIEWASSET>
+				</OBJECT>
+			</OBJECTS>
+			<SOUNDS>
+				<SOUND id="traffic" assetPath="assets/sounds/interior.mp3" direction="0" volume=".1"></SOUND>
+			</SOUNDS>
+		</ROOM>
+	</ROOMS>
+</DATA>
