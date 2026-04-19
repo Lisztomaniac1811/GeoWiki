@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta property="og:image" content="https://i0.wp.com/www.collegeparentcentral.com/wp-content/uploads/2019/10/exam-e1570663689592.jpg"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico">
+<title>პროექტის მენეჯმენტი | აწსუ</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #353535;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* section wrapper */
+.section {
+    padding: 60px 20px;
+}
+
+/* title */
+.section h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #fff;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+/* card layout */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* floating card style */
+.option {
+    width: 200px;
+    padding: 22px;
+    border-radius: 14px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+.option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 12px 18px rgba(0,0,0,0.35);
+}
+
+/* icons */
+.icon {
+    width: 110px;
+    height: 110px;
+    display: block;
+    margin: 0 auto 12px auto;
+}
+
+/* back button */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.2s;
+    backdrop-filter: blur(6px);
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    .option {
+        width: 260px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- back button -->
+<div class="back-btn" onclick="history.back()">← უკან</div>
+
+<div class="section">
+    <h2>პროექტის მენეჯმენტი</h2>
+
+    <div class="cards-container">
+
+        <!-- Book 1 -->
+        <a href="mgmt.pdf" class="option" style="background:#4a90e2;">
+            <img class="icon" src="book1.svg" alt="Book 1">
+            <p>წიგნი 1 (ჯაფარიძე)</p>
+        </a>
+
+        <!-- Book 2 -->
+        <a href="mgmt2.pdf" class="option" style="background:#9b59b6;">
+            <img class="icon" src="book2.svg" alt="Book 2">
+            <p>წიგნი 2 (სულაბერიძე)</p>
+        </a>
+
+  <!-- Book 3 -->
+        <a href="mgmt3.pdf" class="option" style="background:#94ff9f;">
+            <img class="icon" src="book3.png" alt="Book 3">
+            <p>წიგნი 3 (ამყოლაძე)</p>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
