@@ -74,6 +74,20 @@ const ROOM_EXIT_TUNING = {
     targetPitch: -4,
     pushRatio: 0.52,
   },
+  6: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  7: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
 };
 
 const HOVER_NOTE_FADE_MS = 900;
@@ -212,6 +226,7 @@ function resizeStages() {
   if (roomScreenState) {
     applyRoomLayout(roomScreenState.stage);
     roomScreenState.three?.renderer.setSize(STAGE_WIDTH, STAGE_HEIGHT, false);
+    applyModalLayout(roomScreenState.modal);
   }
 }
 
@@ -349,7 +364,6 @@ function renderLanding() {
   logoWrap.append(logoMain, logoGlow, logoLight);
   overlay.append(logoWrap);
 
-  overlay.append(createEl("div", "landing-welcome", text("landingWelcome")));
   overlay.append(createEl("div", "landing-intro", htmlText("landingIntro")));
 
   const enterButton = buildEnterButton();
@@ -467,6 +481,7 @@ function renderOutside() {
   const stage = createEl("div", "outside-stage");
   const fade = createEl("div", "outside-fade");
   const bg = createEl("div", "outside-bg");
+  bg.style.visibility = "visible";
   const doorsWrap = createEl("div", "");
   const numbersWrap = createEl("div", "outside-door-numbers");
   const hallwayVideoA = document.createElement("video");
@@ -644,6 +659,8 @@ async function moveOutsideToRoom(targetRoomId) {
     targetStep: stepForRoom(targetRoomId),
     directionRight: isRight,
     runId: (view.travel?.runId ?? 0) + 1,
+    playbackStarted: createDeferred(),
+    startedNotified: false,
   };
   view.travel = travel;
   resetHallwayVideos(view);
@@ -691,6 +708,9 @@ function setOutsideRoom(roomId, keepZoomed = false) {
 
   view.enterVideo.src = room.doorEnterPath;
   view.enterVideo.classList.toggle("is-right-door", room.doorImageId === 4);
+  view.enterVideo.classList.remove("is-entering-room");
+  view.bg.classList.remove("is-entering-room");
+  view.bg.style.visibility = "visible";
 
   if (!keepZoomed) {
     view.bg.classList.remove("is-settled");
@@ -756,13 +776,31 @@ async function enterCurrentRoom() {
   updateOutsideControls(true);
   toggleOutsideNotes(null);
   beginOutsideMapEnterMode(view);
-  beginRoomEntryMapAnimation(view, room.id);
   stopOutsideAudio();
   const roomVisualsPromise = preloadRoomVisuals(room);
 
+  view.bg.classList.remove("is-settled");
+  void view.bg.offsetWidth;
+  view.bg.classList.add("is-entering-room");
   view.enterVideo.classList.add("is-visible");
-  view.bg.style.opacity = "0";
-  const videoStarted = playVideoOnce(view.enterVideo, room.doorEnterPath, true).catch(() => delay(4000));
+  view.enterVideo.classList.add("is-entering-room");
+  window.setTimeout(() => {
+    if (outsideScreenState === view) {
+      view.bg.style.visibility = "hidden";
+    }
+  }, 1200);
+  const videoStarted = playVideoOnce(
+    view.enterVideo,
+    room.doorEnterPath,
+    true,
+    () => false,
+    false,
+    () => {
+      if (outsideScreenState === view) {
+        beginRoomEntryMapAnimation(view, room.id);
+      }
+    }
+  ).catch(() => delay(4000));
 
   await Promise.race([videoStarted, delay(3500)]);
   await roomVisualsPromise;
@@ -794,7 +832,7 @@ function endOutsideMapEnterMode(view) {
 }
 
 function renderRoom(room) {
-  if (room?.id === 0 || room?.id === 2 || room?.id === 3 || room?.id === 4 || room?.id === 5) {
+  if (room?.id === 0 || room?.id === 2 || room?.id === 3 || room?.id === 4 || room?.id === 5 || room?.id === 6 || room?.id === 7) {
     renderInteractiveRoom(room);
     return;
   }
@@ -837,7 +875,7 @@ function renderInteractiveRoom(room) {
   canvas.className = "room-panorama-canvas";
   canvas.width = STAGE_WIDTH;
   canvas.height = STAGE_HEIGHT;
-  const flashCanvas = room.id === 4 ? document.createElement("canvas") : null;
+  const flashCanvas = room.id === 4 || room.id === 7 ? document.createElement("canvas") : null;
   if (flashCanvas) {
     flashCanvas.className = "room-flashlight-canvas";
     flashCanvas.width = STAGE_WIDTH;
@@ -925,7 +963,10 @@ function renderInteractiveRoom(room) {
         }
         showRoomNote("");
       });
-      element.addEventListener("click", () => openRoomItem(item));
+      element.addEventListener("click", (event) => {
+        event.stopPropagation();
+        openRoomItem(item);
+      });
     }
 
     hotspots.append(element);
@@ -939,7 +980,7 @@ function renderInteractiveRoom(room) {
       height: item.inRoomAssetHeight,
       fixedScale: room.id === 2 ? (item.id.includes("flyer") ? 2.55 : item.id.includes("ipad") ? 1.95 : null) : null,
       isOfficeActiveOverlay: room.id === 2 && item.isActive,
-      useProjectedBox: room.id === 0 || room.id === 3 || room.id === 4 || room.id === 5,
+      useProjectedBox: room.id === 0 || room.id === 3 || room.id === 4 || room.id === 5 || room.id === 6 || room.id === 7,
     });
   });
 
@@ -998,8 +1039,8 @@ function renderInteractiveRoom(room) {
     targetCameraDistance: 1,
     currentExitPush: 0,
     three: threeRoom,
-    pitchMin: room.id === 0 ? -18 : room.id === 2 ? -22.5 : room.id === 3 ? -28 : room.id === 4 ? -16 : room.id === 5 ? -20 : room.xRotationMin,
-    pitchMax: room.id === 0 ? 12 : room.id === 2 ? 12 : room.id === 3 ? 8 : room.id === 4 ? 10 : room.id === 5 ? 10 : room.xRotationMax,
+    pitchMin: room.id === 0 ? -28 : room.id === 2 ? -22.5 : room.id === 3 ? -28 : room.id === 4 ? -22 : room.id === 5 ? -28 : room.id === 6 ? -28 : room.id === 7 ? -28 : room.xRotationMin,
+    pitchMax: room.id === 0 ? 8 : room.id === 2 ? 12 : room.id === 3 ? 8 : room.id === 4 ? 16 : room.id === 5 ? 8 : room.id === 6 ? 8 : room.id === 7 ? 8 : room.xRotationMax,
     mapEnterTimers: [],
     isExiting: false,
     exitState: null,
@@ -1009,7 +1050,7 @@ function renderInteractiveRoom(room) {
     exitSoundLastPlayedAt: 0,
     exitVisible: false,
     pendingTargetRoomId: null,
-    roomLighting: room.id === 4 ? {
+    roomLighting: room.id === 4 || room.id === 7 ? {
       introActive: true,
       introCount: 0,
       lightChange: 1,
@@ -1055,12 +1096,55 @@ function renderInteractiveRoom(room) {
   updateRoomLightingState(roomScreenState);
   updateRoomPanorama(roomScreenState);
   playRoomAmbient(room);
+  prewarmRoomItemHover(roomScreenState);
   screen.classList.add("is-visible");
+  prewarmRoomHoverExperience(roomScreenState);
   window.setTimeout(() => {
     if (roomScreenState?.root === screen) {
       showRoomFlavor(room);
     }
   }, 900);
+}
+
+function prewarmRoomHoverExperience(view) {
+  if (!view?.note || !view?.viewport) {
+    return;
+  }
+  const firstCopy = view.room.items
+    .filter((item) => item.isActive)
+    .map((item) => text(item.id))
+    .find(Boolean);
+  if (!firstCopy) {
+    return;
+  }
+  const warmNote = createEl("div", "room-note is-visible");
+  warmNote.style.visibility = "hidden";
+  warmNote.style.left = "-9999px";
+  warmNote.style.top = "-9999px";
+  warmNote.style.transform = "none";
+  warmNote.innerHTML = firstCopy.replace(/<br\s*\/?>/gi, "<br>");
+  view.viewport.append(warmNote);
+  void warmNote.offsetWidth;
+  requestAnimationFrame(() => warmNote.remove());
+}
+
+function prewarmRoomItemHover(view) {
+  const firstActive = view?.projectedItems?.find((entry) => entry.item?.isActive && entry.element);
+  if (!firstActive) {
+    return;
+  }
+  const { item, element } = firstActive;
+
+  if (usesBakedRoomVisual(view.room.id)) {
+    setBakedRoomHoveredItem(item.id);
+    updateRoomPanorama(view);
+    setBakedRoomHoveredItem(null);
+    updateRoomPanorama(view);
+  }
+
+  element.classList.add("is-hovering");
+  void element.offsetWidth;
+  element.classList.remove("is-hovering");
 }
 
 function bindRoomPointer(view) {
@@ -1093,15 +1177,13 @@ function bindRoomPointer(view) {
     const touch = event.touches[0];
     const deltaX = touch.clientX - view.dragStartX;
     const deltaY = touch.clientY - view.dragStartY;
-    const yawSpan = view.room.yRotationMax - view.room.yRotationMin;
     const pitchSpan = view.pitchMax - view.pitchMin;
-    view.currentYRotation = clampNumber(
-      view.dragStartYaw - deltaX * (yawSpan / 420),
-      view.room.yRotationMin,
-      view.room.yRotationMax
-    );
+    const nextYaw = view.dragStartYaw - deltaX * 0.32;
+    view.currentYRotation = view.room.id === 2
+      ? clampNumber(nextYaw, view.room.yRotationMin, view.room.yRotationMax)
+      : wrapDegrees(nextYaw);
     view.currentXRotation = clampNumber(
-      view.dragStartPitch - deltaY * (pitchSpan / 360),
+      view.dragStartPitch + deltaY * (pitchSpan / 360),
       view.pitchMin,
       view.pitchMax
     );
@@ -1134,6 +1216,7 @@ function bindRoomPointer(view) {
       return;
     }
     if (view.isExiting) {
+      updateRoomLightingState(view);
       updateRoomExit(view);
     } else if (!view.modal) {
       if (!state.isMobileUi) {
@@ -1142,11 +1225,10 @@ function bindRoomPointer(view) {
           view.pitchMin,
           view.pitchMax
         );
-        view.currentYRotation = clampNumber(
-          view.currentYRotation + 0.5 * view.pointerX / 800,
-          view.room.yRotationMin,
-          view.room.yRotationMax
-        );
+        const nextYaw = view.currentYRotation + 0.5 * view.pointerX / 800;
+        view.currentYRotation = view.room.id === 2
+          ? clampNumber(nextYaw, view.room.yRotationMin, view.room.yRotationMax)
+          : wrapDegrees(nextYaw);
       }
       updateRoomLightingState(view);
       updateRoomPanorama(view);
@@ -1208,7 +1290,7 @@ function updateRoomPanorama(view) {
 }
 
 function updateRoomLightingState(view) {
-  if (view.room.id !== 4 || !view.roomLighting) {
+  if ((view.room.id !== 4 && view.room.id !== 7) || !view.roomLighting) {
     return;
   }
   const lighting = view.roomLighting;
@@ -1252,20 +1334,17 @@ function getPointerLightFlatPosition(view) {
 function updateRoomExit(view) {
   const exitState = view.exitState ?? buildRoomExitState(view);
   view.exitState = exitState;
-  let distance = exitState.targetYaw - view.currentYRotation;
-  if (distance > 180) {
-    distance -= 360;
-  }
-  if (distance < -180) {
-    distance += 360;
-  }
-  view.currentYRotation += distance * 0.04;
+  const distance = shortestAngularDelta(exitState.targetYaw, view.currentYRotation);
+  view.currentYRotation = wrapDegrees(view.currentYRotation + distance * 0.04);
   view.targetCameraDistance += (exitState.targetDistance - view.targetCameraDistance) * 0.02;
   view.currentXRotation += (exitState.targetPitch - view.currentXRotation) * 0.01;
   view.currentExitPush += ((exitState.pushRatio ?? 0) - view.currentExitPush) * 0.02;
   view.exitVisible = true;
   if (view.three?.exitMesh) {
     view.three.exitMesh.visible = true;
+  }
+  if (view.three?.flashExitMesh) {
+    view.three.flashExitMesh.visible = true;
   }
   if (view.audio) {
     const nextVolume = Math.max(0, view.audio.volume - 0.01);
@@ -1285,7 +1364,7 @@ function buildRoomExitState(view) {
   } else {
     const targetFlatX = exitTuning.targetFlatX ?? view.room.exitX;
     targetYaw = ((targetFlatX / 4096) * 360 - 90) + (exitTuning.yawOffsetDeg ?? 0);
-    if ((view.room.id === 0 || view.room.id === 3 || view.room.id === 4 || view.room.id === 5) && view.three?.exitMesh) {
+    if ((view.room.id === 0 || view.room.id === 3 || view.room.id === 4 || view.room.id === 5 || view.room.id === 6 || view.room.id === 7) && view.three?.exitMesh) {
       targetPosition = view.three.exitMesh.position.clone();
     }
   }
@@ -1353,7 +1432,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
 
   const walls = buildWalls(scene, renderer, {
     useFlashTextures: false,
-    includeItems: room.id !== 4,
+    includeItems: room.id !== 4 && room.id !== 7,
     disableDynamicLighting: true,
   });
 
@@ -1361,7 +1440,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
   let flashScene = null;
   let flashCamera = null;
   let flashWalls = null;
-  if (room.id === 4 && flashCanvas) {
+  if ((room.id === 4 || room.id === 7) && flashCanvas) {
     flashRenderer = new THREE.WebGLRenderer({
       canvas: flashCanvas,
       antialias: true,
@@ -1382,7 +1461,8 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
   }
 
   let exitMesh = null;
-  if (room.id === 0 || room.id === 2 || room.id === 3 || room.id === 4 || room.id === 5) {
+  let flashExitMesh = null;
+  if (room.id === 0 || room.id === 2 || room.id === 3 || room.id === 4 || room.id === 5 || room.id === 6 || room.id === 7) {
     const exitTexture = createTextureFromImage(getCachedImage("assets/bitmaps/rooms/exit_out.png"), "assets/bitmaps/rooms/exit_out.png");
     exitTexture.colorSpace = THREE.SRGBColorSpace;
     exitTexture.minFilter = THREE.LinearFilter;
@@ -1404,9 +1484,21 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
     exitMesh.rotation.y = degToRad(exitYRotation + 180);
     exitMesh.visible = false;
     scene.add(exitMesh);
+    if (flashScene && (room.id === 4 || room.id === 7)) {
+      const flashExitMaterial = new THREE.MeshBasicMaterial({
+        map: exitTexture,
+        transparent: true,
+        side: THREE.DoubleSide,
+      });
+      flashExitMesh = new THREE.Mesh(exitGeometry.clone(), flashExitMaterial);
+      flashExitMesh.position.copy(exitMesh.position);
+      flashExitMesh.rotation.copy(exitMesh.rotation);
+      flashExitMesh.visible = false;
+      flashScene.add(flashExitMesh);
+    }
   }
 
-  return { renderer, scene, camera, walls, exitMesh, flashRenderer, flashScene, flashCamera, flashWalls };
+  return { renderer, scene, camera, walls, exitMesh, flashExitMesh, flashRenderer, flashScene, flashCamera, flashWalls };
 }
 
 function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) {
@@ -1430,7 +1522,7 @@ function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) 
   const includeItems = options.includeItems ?? true;
   const disableDynamicLighting = options.disableDynamicLighting ?? false;
   const usesMirroredBakedPlacement = usesBakedRoomVisual(room.id);
-  const usesDynamicFlashlightLighting = !disableDynamicLighting && room.id === 4 && Boolean(textureInfo.flashPath);
+  const usesDynamicFlashlightLighting = !disableDynamicLighting && (room.id === 4 || room.id === 7) && Boolean(textureInfo.flashPath);
   const segmentItems = (includeItems ? room.items : [])
     .filter((item) => !shouldSuppressRoomItem(room.id, item.id))
     .filter((item) => item.inRoomAssetPath)
@@ -1633,6 +1725,14 @@ function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) 
     activeIds.forEach((itemId) => {
       getStateTexture(itemId);
     });
+    // Dark rooms use a live flashlight composite texture instead of cached
+    // per-state textures. Pre-render the hovered variants once up front so the
+    // first real hover doesn't incur a visible canvas/shadow-blur hitch.
+    if (usesDynamicFlashlightLighting) {
+      activeIds.forEach((itemId) => {
+        renderStateCanvas(itemId);
+      });
+    }
     applyCurrentState();
   }
 
@@ -1746,6 +1846,8 @@ function disposeThreeRoom(view) {
   view.three.exitMesh?.geometry?.dispose?.();
   view.three.exitMesh?.material?.map?.dispose?.();
   view.three.exitMesh?.material?.dispose?.();
+  view.three.flashExitMesh?.geometry?.dispose?.();
+  view.three.flashExitMesh?.material?.dispose?.();
   view.three.flashRenderer?.dispose?.();
   view.three.renderer?.dispose?.();
   view.three = null;
@@ -1778,6 +1880,20 @@ function updateProjectedHotspots(view) {
     const sampledHeight = Math.max(8, Math.abs(bottomPoint.y - topPoint.y));
     let boxWidth = isOfficeActiveOverlay || useProjectedBox ? sampledWidth : width * displayScale;
     let boxHeight = isOfficeActiveOverlay || useProjectedBox ? sampledHeight : height * displayScale;
+    if ((view.room.id === 4 || view.room.id === 7) && item.isActive) {
+      // Dark-room hotspots should hug the real lit object more tightly.
+      // Using the full projected plane creates transient phantom clickable
+      // patches in empty space as the flashlight passes nearby.
+      boxWidth = clampNumber(width * displayScale * 1.08, 18, Math.min(sampledWidth, 220));
+      boxHeight = clampNumber(height * displayScale * 1.08, 18, Math.min(sampledHeight, 320));
+    }
+    if (view.room.id === 6 && item.isActive) {
+      // Room 4 is a standard bright baked room, so the interactive area should
+      // track the visible object footprint rather than the larger projected plane.
+      // This avoids leftover "ghost" hover zones in nearby empty space.
+      boxWidth = clampNumber(width * displayScale * 1.06, 16, Math.min(sampledWidth, 180));
+      boxHeight = clampNumber(height * displayScale * 1.06, 16, Math.min(sampledHeight, 220));
+    }
     if (view.room.id === 5 && item.isActive) {
       boxWidth = Math.max(boxWidth, sampledWidth * 2.2, 44);
       boxHeight = Math.max(boxHeight, sampledHeight * 2.2, 44);
@@ -1802,7 +1918,7 @@ function updateProjectedHotspots(view) {
       const glowColor = numberToRgba(item.overColor || 7911637, item.overAlpha || 0.8);
       element.style.setProperty("--room-hover-color", glowColor);
     }
-    if (view.room.id === 4 && item.isActive && !view.roomLighting?.introActive) {
+    if ((view.room.id === 4 || view.room.id === 7) && item.isActive && !view.roomLighting?.introActive) {
       const pointerX = view.roomLighting?.pointerScreenX ?? (STAGE_WIDTH * 0.5 + view.pointerX);
       const pointerY = view.roomLighting?.pointerScreenY ?? (STAGE_HEIGHT * 0.5 + view.pointerY);
       const hotspotRadius = FLASHLIGHT_REVEAL_OUTER_RADIUS + Math.max(boxWidth, boxHeight) * 0.22;
@@ -1887,6 +2003,9 @@ function updateProjectedHotspots(view) {
     if (view.three?.exitMesh) {
       view.three.exitMesh.visible = shouldShowExit;
     }
+    if (view.three?.flashExitMesh) {
+      view.three.flashExitMesh.visible = shouldShowExit;
+    }
     view.exitButton.style.display = "block";
     view.exitButton.style.left = `${exitCenter.x}px`;
     view.exitButton.style.top = `${hitTop + hitHeight * 0.5}px`;
@@ -1929,6 +2048,9 @@ function updateProjectedHotspots(view) {
     if (view.three?.exitMesh) {
       view.three.exitMesh.visible = false;
     }
+    if (view.three?.flashExitMesh) {
+      view.three.flashExitMesh.visible = false;
+    }
     view.exitSoundPlayed = false;
   }
 }
@@ -1957,11 +2079,14 @@ function mirrorFlatXWithinWall(flatX) {
 }
 
 function usesBakedRoomVisual(roomId) {
-  return roomId === 0 || roomId === 2 || roomId === 3 || roomId === 4 || roomId === 5;
+  return roomId === 0 || roomId === 2 || roomId === 3 || roomId === 4 || roomId === 5 || roomId === 6 || roomId === 7;
 }
 
 function getExitVisualFlatX(roomId, flatX) {
   if (roomId === 0) {
+    return mirrorFlatXInCurrentWall(flatX);
+  }
+  if (roomId === 6 || roomId === 7) {
     return mirrorFlatXInCurrentWall(flatX);
   }
   return usesBakedRoomVisual(roomId) ? mirrorFlatXWithinWall(flatX) : flatX;
@@ -1978,7 +2103,7 @@ function getInteractiveFlatX(roomId, flatX) {
   // Room 3 bakes item art mirrored *within the current wall half*, so the
   // hotspot must mirror within that same half rather than flipping to the
   // opposite spherical side of the room.
-  if (roomId === 5) {
+  if (roomId === 5 || roomId === 6 || roomId === 7) {
     return mirrorFlatXInCurrentWall(flatX);
   }
   return mirrorFlatXWithinWall(flatX);
@@ -2272,25 +2397,35 @@ function buildPhotoModal(item) {
   const close = buildModalCloseButton("room-modal-close");
 
   const itemView = createEl("div", "room-photo-item-view");
-  const image = document.createElement("img");
-  image.className = "room-modal-photo";
-  image.src = item.largeViewAssetPaths[0] ?? item.inRoomAssetPath;
-  image.draggable = false;
-  itemView.append(image);
+  const imagePaths = item.largeViewAssetPaths?.length ? item.largeViewAssetPaths : [item.inRoomAssetPath];
+  const imageWrappers = imagePaths.slice(0, 2).map((src) => {
+    const wrapper = createEl("div", "room-photo-face");
+    const img = document.createElement("img");
+    img.className = "room-modal-photo";
+    img.src = src ?? "";
+    img.draggable = false;
+    wrapper.append(img);
+    itemView.append(wrapper);
+    return { wrapper, img };
+  });
 
   const divider = makeOutsideImage("assets/bitmaps/item_view/divider.png", "room-photo-divider");
-  const textBox = createHoverNote(text(item.id), "sm");
+  const textBox = createHoverNote(text(item.id));
   const otherElements = createEl("div", "room-photo-other");
   const fbButton = buildPhotoSocialButton("assets/bitmaps/item_view/fb_out.png", "assets/bitmaps/item_view/fb_over.png", "Share on Facebook");
   const twButton = buildPhotoSocialButton("assets/bitmaps/item_view/twitter_out.png", "assets/bitmaps/item_view/twitter_over.png", "Share on Twitter");
   otherElements.append(divider, fbButton, twButton);
 
   panel.append(close, itemView, otherElements, textBox);
-  root.append(dim, panel);
+  const modalStage = createEl("div", "room-modal-stage");
+  modalStage.append(panel);
+  applyModalLayout({ stage: modalStage });
+  root.append(dim, modalStage);
 
   const applyLayout = () => {
-    const naturalWidth = image.naturalWidth || 1;
-    const naturalHeight = image.naturalHeight || 1;
+    const primaryImage = imageWrappers[0]?.img;
+    const naturalWidth = primaryImage?.naturalWidth || 1;
+    const naturalHeight = primaryImage?.naturalHeight || 1;
     const textBoxY = 447;
     const targetItemHeight = textBoxY - 40;
     const targetRatio = Math.min(targetItemHeight / naturalHeight, 1.5);
@@ -2298,24 +2433,46 @@ function buildPhotoModal(item) {
     const scaledHeight = naturalHeight * targetRatio;
     itemView.style.width = `${scaledWidth}px`;
     itemView.style.height = `${scaledHeight}px`;
-    image.style.width = `${scaledWidth}px`;
-    image.style.height = `${scaledHeight}px`;
+    imageWrappers.forEach(({ img }) => {
+      img.style.width = `${scaledWidth}px`;
+      img.style.height = `${scaledHeight}px`;
+    });
+    itemView.style.left = `${(STAGE_WIDTH - scaledWidth) * 0.5}px`;
     itemView.style.top = `${(textBoxY - scaledHeight) * 0.5}px`;
     close.style.right = "auto";
     close.style.left = `${750 + scaledWidth * 0.5 + 10}px`;
     close.style.top = `${Math.max(10, (textBoxY - scaledHeight) * 0.5)}px`;
   };
 
-  if (image.complete) {
+  const primaryImage = imageWrappers[0]?.img;
+  if (primaryImage?.complete) {
     applyLayout();
   } else {
-    image.addEventListener("load", applyLayout, { once: true });
+    primaryImage?.addEventListener("load", applyLayout, { once: true });
+  }
+
+  if (imageWrappers.length === 1) {
+    imageWrappers[0].wrapper.classList.add("is-visible");
+  }
+
+  if (imageWrappers.length > 1) {
+    itemView.classList.add("is-flippable");
+    const [front, back] = imageWrappers;
+    front.wrapper.classList.add("is-visible");
+    back.wrapper.classList.remove("is-visible");
+    back.img.style.transform = "scaleX(-1)";
+    let showingFront = true;
+    itemView.addEventListener("click", () => {
+      showingFront = !showingFront;
+      front.wrapper.classList.toggle("is-visible", showingFront);
+      back.wrapper.classList.toggle("is-visible", !showingFront);
+    });
   }
 
   const closeModal = () => closeRoomModal();
   dim.addEventListener("click", closeModal);
   close.addEventListener("click", closeModal);
-  return { root, close: closeModal };
+  return { root, stage: modalStage, close: closeModal };
 }
 
 function buildVideoModal(item) {
@@ -2344,7 +2501,10 @@ function buildVideoModal(item) {
   otherElements.append(divider, fbButton, twButton);
 
   panel.append(close, itemView, otherElements);
-  root.append(dim, panel);
+  const modalStage = createEl("div", "room-modal-stage");
+  modalStage.append(panel);
+  applyRoomLayout(modalStage);
+  root.append(dim, modalStage);
   close.style.right = "auto";
   close.style.left = "1107px";
   close.style.top = "77px";
@@ -2355,7 +2515,7 @@ function buildVideoModal(item) {
   };
   dim.addEventListener("click", closeModal);
   close.addEventListener("click", closeModal);
-  return { root, close: closeModal };
+  return { root, stage: modalStage, close: closeModal };
 }
 
 function buildIpadModal(item) {
@@ -2407,7 +2567,10 @@ function buildIpadModal(item) {
 
   shell.append(shellBg, videoFrame, header, links, titleBar);
   panel.append(close, shell);
-  root.append(dim, panel);
+  const modalStage = createEl("div", "room-modal-stage");
+  modalStage.append(panel);
+  applyRoomLayout(modalStage);
+  root.append(dim, modalStage);
 
   const closeModal = () => {
     video.pause();
@@ -2415,7 +2578,7 @@ function buildIpadModal(item) {
   };
   dim.addEventListener("click", closeModal);
   close.addEventListener("click", closeModal);
-  return { root, close: closeModal };
+  return { root, stage: modalStage, close: closeModal };
 }
 
 function buildPanableModal(item) {
@@ -2445,7 +2608,10 @@ function buildPanableModal(item) {
   note.classList.add("room-panable-note");
 
   panel.append(close, itemView, otherElements, note);
-  root.append(dim, panel);
+  const modalStage = createEl("div", "room-modal-stage");
+  modalStage.append(panel);
+  applyModalLayout({ stage: modalStage });
+  root.append(dim, modalStage);
   close.style.right = "auto";
   close.style.left = "1107px";
   close.style.top = "77px";
@@ -2491,6 +2657,15 @@ function buildPanableModal(item) {
     pointerStageY = ((event.clientY - bounds.top) / bounds.height) * STAGE_HEIGHT;
   };
 
+  const onTouchMove = (event) => {
+    const touch = event.touches[0];
+    if (!touch) {
+      return;
+    }
+    event.preventDefault();
+    onPointerMove(touch);
+  };
+
   if (image.complete) {
     fitImage();
   } else {
@@ -2500,6 +2675,9 @@ function buildPanableModal(item) {
   imageMask.addEventListener("mousemove", onPointerMove);
   root.addEventListener("mousemove", onPointerMove);
   window.addEventListener("mousemove", onPointerMove);
+  imageMask.addEventListener("touchstart", onTouchMove, { passive: false });
+  imageMask.addEventListener("touchmove", onTouchMove, { passive: false });
+  root.addEventListener("touchmove", onTouchMove, { passive: false });
 
   requestAnimationFrame(() => {
     note.classList.add("is-visible");
@@ -2517,11 +2695,14 @@ function buildPanableModal(item) {
     imageMask.removeEventListener("mousemove", onPointerMove);
     root.removeEventListener("mousemove", onPointerMove);
     window.removeEventListener("mousemove", onPointerMove);
+    imageMask.removeEventListener("touchstart", onTouchMove);
+    imageMask.removeEventListener("touchmove", onTouchMove);
+    root.removeEventListener("touchmove", onTouchMove);
     closeRoomModal();
   };
   dim.addEventListener("click", closeModal);
   close.addEventListener("click", closeModal);
-  return { root, close: closeModal };
+  return { root, stage: modalStage, close: closeModal };
 }
 
 function closeRoomModal() {
@@ -2645,6 +2826,12 @@ function beginRoomExit(targetRoomId = null) {
   if (view.modal) {
     closeRoomModal();
   }
+  // In the SWF, the minimap expands back to the regular outside map as soon as
+  // the room-exit move begins, not after the outside scene is fully restored.
+  view.miniMap.shell.classList.remove("is-exit");
+  view.miniMap.viewport.classList.remove("is-exit");
+  view.miniMap.glass.classList.remove("is-exit");
+  syncRegularArrowStateForMap(view.miniMap);
   animateRoomExitMap(view);
   if (view.exitFadeTimer) {
     window.clearTimeout(view.exitFadeTimer);
@@ -2733,7 +2920,12 @@ async function animateHallwayTravel(view, targetRoomId, isRight, travel) {
     standbyVideo.classList.remove("is-visible");
 
     await preloadNext;
-    await playVideoOnce(activeVideo, src, false, () => travel.skipped, true);
+    await playVideoOnce(activeVideo, src, false, () => travel.skipped, true, () => {
+      if (!travel.startedNotified) {
+        travel.startedNotified = true;
+        travel.playbackStarted.resolve();
+      }
+    });
 
     if (travel.skipped) {
       break;
@@ -2750,6 +2942,9 @@ async function animateHallwayTravel(view, targetRoomId, isRight, travel) {
 }
 
 async function animateMapTravel(view, endStep, isRight, travel) {
+  if (travel?.playbackStarted?.promise) {
+    await Promise.race([travel.playbackStarted.promise, delay(2500)]);
+  }
   while (state.currentStep !== endStep && !travel.skipped) {
     const nextStep = endStep > state.currentStep ? state.currentStep + 1 : state.currentStep - 1;
     const duration = (isRight ? NAV_MAP_PATH[nextStep - 1].tR : NAV_MAP_PATH[nextStep].tL) * 1000;
@@ -3155,6 +3350,39 @@ function createHoverNote(copy, size = "md") {
   return root;
 }
 
+function applyModalLayout(modal) {
+  if (modal?.stage) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const isMobile = state.isMobileUi;
+    const widthScale = width / STAGE_WIDTH;
+    const heightScale = height / STAGE_HEIGHT;
+    const baseScale = Math.min(widthScale, heightScale);
+    const scale = isMobile ? Math.min(baseScale, 0.9) : baseScale;
+    const safeTop = isMobile ? 14 + getSafeInsetTop() : 0;
+    const safeBottom = isMobile ? 14 + getSafeInsetBottom() : 0;
+    const centeredX = (width - STAGE_WIDTH * scale) / 2;
+    const centeredY = (height - STAGE_HEIGHT * scale) / 2;
+    const desktopOffsetY = 36;
+    const mobileOffsetY = 10;
+    let translateY = centeredY + (isMobile ? mobileOffsetY : desktopOffsetY);
+    const minTop = safeTop;
+    const maxTop = height - STAGE_HEIGHT * scale - safeBottom;
+    if (isMobile) {
+      translateY = clampNumber(translateY, minTop, Math.max(minTop, maxTop));
+    }
+    modal.stage.style.transform = `translate(${centeredX}px, ${translateY}px) scale(${scale})`;
+  }
+}
+
+function getSafeInsetTop() {
+  return state.isMobileUi ? 18 : 0;
+}
+
+function getSafeInsetBottom() {
+  return state.isMobileUi ? 18 : 0;
+}
+
 function buildModalCloseButton(className) {
   const button = createEl("button", className);
   button.type = "button";
@@ -3270,6 +3498,23 @@ function setMapArrowStateForMap(map, left, right, up, down, skip) {
   map.skip.classList.toggle("is-visible", skip);
 }
 
+function syncRegularArrowStateForMap(map) {
+  if (!map) {
+    return;
+  }
+  if (state.currentStep < 4) {
+    if (state.currentStep < 1) {
+      setMapArrowStateForMap(map, false, false, true, true, false);
+    } else {
+      setMapArrowStateForMap(map, false, true, true, false, false);
+    }
+  } else if (state.currentStep > 19) {
+    setMapArrowStateForMap(map, true, false, true, false, false);
+  } else {
+    setMapArrowStateForMap(map, true, true, true, false, false);
+  }
+}
+
 function resetHallwayVideos(view) {
   if (!view?.hallwayVideos) {
     return;
@@ -3317,8 +3562,9 @@ function prepareVideo(video, src) {
   });
 }
 
-function playVideoOnce(video, src, allowReject = false, shouldAbort = () => false, alreadyPrepared = false) {
+function playVideoOnce(video, src, allowReject = false, shouldAbort = () => false, alreadyPrepared = false, onStarted = null) {
   return new Promise((resolve, reject) => {
+    let started = false;
     const abortWatcher = window.setInterval(() => {
       if (shouldAbort()) {
         cleanup();
@@ -3330,6 +3576,7 @@ function playVideoOnce(video, src, allowReject = false, shouldAbort = () => fals
       window.clearInterval(abortWatcher);
       video.removeEventListener("ended", onEnded);
       video.removeEventListener("error", onError);
+      video.removeEventListener("playing", onPlaying);
     };
 
     const onEnded = () => {
@@ -3346,6 +3593,14 @@ function playVideoOnce(video, src, allowReject = false, shouldAbort = () => fals
       }
     };
 
+    const onPlaying = () => {
+      if (started) {
+        return;
+      }
+      started = true;
+      onStarted?.();
+    };
+
     if (shouldAbort()) {
       resolve();
       return;
@@ -3359,6 +3614,7 @@ function playVideoOnce(video, src, allowReject = false, shouldAbort = () => fals
     }
     video.addEventListener("ended", onEnded, { once: true });
     video.addEventListener("error", onError, { once: true });
+    video.addEventListener("playing", onPlaying, { once: true });
     const playPromise = video.play();
     if (playPromise && typeof playPromise.catch === "function") {
       playPromise.catch(onError);
@@ -3813,8 +4069,33 @@ function delay(ms) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
+function createDeferred() {
+  let resolve;
+  let reject;
+  const promise = new Promise((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+  return { promise, resolve, reject };
+}
+
 function clampNumber(value, min, max) {
   return Math.max(min, Math.min(max, value));
+}
+
+function wrapDegrees(value) {
+  return positiveMod(value + 180, 360) - 180;
+}
+
+function shortestAngularDelta(target, current) {
+  let delta = wrapDegrees(target) - wrapDegrees(current);
+  if (delta > 180) {
+    delta -= 360;
+  }
+  if (delta < -180) {
+    delta += 360;
+  }
+  return delta;
 }
 
 function lerp(start, end, ratio) {

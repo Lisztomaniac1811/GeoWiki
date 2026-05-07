@@ -177,12 +177,12 @@ video {
 .preloader-counter {
   position: absolute;
   width: 400px;
-  color: #fefbbe;
+  color: #fefefe;
   font-family: "beon-medium", Arial, sans-serif;
   font-size: 24px;
   letter-spacing: 1px;
   text-align: center;
-  text-shadow: 0 0 12px rgba(255, 253, 183, 0.24);
+  text-shadow: none;
 }
 
 .landing-screen {
@@ -617,6 +617,17 @@ video {
   transform: scale(1);
 }
 
+.outside-bg.is-entering-room {
+  left: -370px;
+  top: -170px;
+  transform: scale(1.5);
+  transition:
+    transform 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+    left 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+    top 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
+    opacity 1.25s ease;
+}
+
 .outside-door,
 .outside-number {
   position: absolute;
@@ -663,6 +674,10 @@ video {
 .outside-enter-video.is-visible,
 .outside-hallway-video.is-visible {
   opacity: 1;
+}
+
+.outside-enter-video.is-entering-room {
+  transition: opacity 1s linear 0.2s;
 }
 
 .outside-enter-video.is-right-door {
@@ -870,13 +885,15 @@ video {
   transform-origin: center;
   opacity: 0;
   pointer-events: none;
+  will-change: opacity, filter;
   transition:
     opacity 120ms ease,
     filter 120ms ease;
 }
 
 .room-item.is-hit-only:hover .room-item-hover-image,
-.room-item.is-hit-only:focus-visible .room-item-hover-image {
+.room-item.is-hit-only:focus-visible .room-item-hover-image,
+.room-item.is-hit-only.is-hovering .room-item-hover-image {
   opacity: 1;
   filter:
     drop-shadow(0 0 10px var(--room-hover-color, rgba(120, 181, 149, 0.8)))
@@ -889,10 +906,13 @@ video {
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+  will-change: filter;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
 }
 
 .room-item:not(.is-passive):hover .room-item-image,
-.room-item:not(.is-passive):focus-visible .room-item-image {
+.room-item:not(.is-passive):focus-visible .room-item-image,
+.room-item:not(.is-passive).is-hovering .room-item-image {
   filter:
     drop-shadow(0 0 10px rgba(130, 215, 225, 0.75))
     drop-shadow(0 0 18px rgba(130, 215, 225, 0.6));
@@ -924,6 +944,7 @@ video {
     0 0 0 1px rgba(89, 193, 201, 0.08) inset,
     0 0 14px rgba(32, 186, 216, 0.18);
   opacity: 0;
+  will-change: opacity;
   transition: opacity 900ms ease;
   pointer-events: none;
   z-index: 2;
@@ -982,6 +1003,15 @@ video {
 
 .room-modal.is-visible {
   opacity: 1;
+}
+
+.room-modal-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1500px;
+  height: 800px;
+  transform-origin: top left;
 }
 
 .room-modal-dim {
@@ -1062,18 +1092,27 @@ video {
 
 .room-modal-photo {
   display: block;
-  border: 1px solid rgba(89, 193, 201, 0.24);
-  box-shadow:
-    0 0 30px rgba(85, 178, 185, 0.18),
-    inset 0 0 0 1px rgba(89, 193, 201, 0.08);
 }
 
 .room-photo-item-view {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   opacity: 0;
   transition: opacity 2s ease 0.3s;
+  z-index: 1;
+}
+
+.room-photo-item-view.is-flippable {
+  cursor: pointer;
+}
+
+.room-photo-face {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+.room-photo-face.is-visible {
+  display: block;
 }
 
 .room-video-item-view {
@@ -1149,6 +1188,8 @@ video {
   inset: 0;
   opacity: 0;
   transition: opacity 5s ease 1.2s;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .room-photo-divider {
@@ -1208,6 +1249,7 @@ video {
   left: 50%;
   top: 447px;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 .room-modal.is-visible .room-photo-item-view,
@@ -2163,6 +2205,78 @@ video {
   bottom: 66px;
 }
 
+#app.is-mobile-ui .room-modal-dim {
+  background: rgba(0, 0, 0, 0.86);
+}
+
+#app.is-mobile-ui .room-modal-panel.photo > .hover-note,
+#app.is-mobile-ui .room-panable-note {
+  max-width: min(520px, calc(100vw - 56px));
+}
+
+#app.is-mobile-ui .room-modal-close.ipad {
+  top: -4px;
+  right: 34px;
+}
+
+#app.is-mobile-ui .room-photo-social {
+  top: 520px;
+}
+
+#app.is-mobile-ui .room-ipad-shell {
+  width: 664px;
+  height: 503px;
+}
+
+#app.is-mobile-ui .room-ipad-bg {
+  width: 664px;
+  height: 503px;
+}
+
+#app.is-mobile-ui .room-ipad-video-frame {
+  left: 106px;
+  top: 84px;
+  width: 450px;
+  height: 255px;
+}
+
+#app.is-mobile-ui .room-ipad-header {
+  left: 106px;
+  top: 342px;
+  width: 450px;
+}
+
+#app.is-mobile-ui .room-ipad-links {
+  left: 106px;
+  top: 374px;
+}
+
+#app.is-mobile-ui .room-video-item-view,
+#app.is-mobile-ui .room-panable-item-view {
+  left: 450px;
+  top: 124px;
+  width: 600px;
+  height: 346px;
+}
+
+#app.is-mobile-ui .room-video-container,
+#app.is-mobile-ui .room-panable-mask {
+  left: 9px;
+  top: 9px;
+  width: 582px;
+  height: 328px;
+}
+
+#app.is-mobile-ui .room-modal-video {
+  width: 582px;
+  height: 328px;
+}
+
+#app.is-mobile-ui .room-modal-close-image {
+  width: 44px;
+  height: 44px;
+}
+
 @media (max-width: 640px) {
   #app.is-mobile-ui .preloader-counter {
     font-size: 20px;
@@ -2189,5 +2303,59 @@ video {
   #app.is-mobile-ui .outside-map-help.right {
     left: calc(50% + 62px);
     width: 92px;
+  }
+
+  #app.is-mobile-ui .room-modal-panel.photo > .hover-note,
+  #app.is-mobile-ui .room-panable-note {
+    max-width: min(420px, calc(100vw - 44px));
+  }
+
+  #app.is-mobile-ui .room-ipad-shell {
+    width: 578px;
+    height: 438px;
+  }
+
+  #app.is-mobile-ui .room-ipad-bg {
+    width: 578px;
+    height: 438px;
+  }
+
+  #app.is-mobile-ui .room-ipad-video-frame {
+    left: 92px;
+    top: 74px;
+    width: 392px;
+    height: 222px;
+  }
+
+  #app.is-mobile-ui .room-ipad-header {
+    left: 92px;
+    top: 302px;
+    width: 392px;
+  }
+
+  #app.is-mobile-ui .room-ipad-links {
+    left: 92px;
+    top: 332px;
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+
+  #app.is-mobile-ui .room-video-item-view,
+  #app.is-mobile-ui .room-panable-item-view {
+    left: 486px;
+    top: 146px;
+    width: 528px;
+    height: 304px;
+  }
+
+  #app.is-mobile-ui .room-video-container,
+  #app.is-mobile-ui .room-panable-mask {
+    width: 510px;
+    height: 286px;
+  }
+
+  #app.is-mobile-ui .room-modal-video {
+    width: 510px;
+    height: 286px;
   }
 }
