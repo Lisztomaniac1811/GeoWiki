@@ -1793,7 +1793,7 @@ video {
   position: absolute;
   right: 42px;
   top: 21px;
-  width: 80px;
+  width: 124px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -1854,6 +1854,38 @@ video {
 }
 
 .outside-sidebar-icon.is-muted .outside-sidebar-sound-off {
+  opacity: 1;
+}
+
+.outside-sidebar-fullscreen-glyph {
+  position: absolute;
+  inset: 0;
+}
+
+.outside-sidebar-fullscreen-glyph::before,
+.outside-sidebar-fullscreen-glyph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.outside-sidebar-fullscreen-glyph::before {
+  background:
+    linear-gradient(#59c0e9, #59c0e9) left 2px top 2px / 7px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) left 2px top 2px / 2px 7px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 2px top 2px / 7px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 2px top 2px / 2px 7px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) left 2px bottom 2px / 7px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) left 2px bottom 2px / 2px 7px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 2px bottom 2px / 7px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 2px bottom 2px / 2px 7px no-repeat;
+  filter: drop-shadow(0 0 12px rgba(85, 178, 185, 0.55));
+  opacity: 0.9;
+}
+
+.outside-sidebar-fullscreen:hover .outside-sidebar-fullscreen-glyph::before,
+.outside-sidebar-fullscreen.is-active .outside-sidebar-fullscreen-glyph::before {
+  filter: drop-shadow(0 0 18px rgba(85, 178, 185, 0.95));
   opacity: 1;
 }
 

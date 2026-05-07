@@ -145,6 +145,8 @@ init().catch((error) => {
 async function init() {
   resizeStages();
   window.addEventListener("resize", resizeStages);
+  document.addEventListener("fullscreenchange", handleFullscreenChange);
+  document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
   });
@@ -241,6 +243,7 @@ function updateViewportMode(width = window.innerWidth, height = window.innerHeig
   app.classList.toggle("is-mobile-ui", isMobileUi);
   app.classList.toggle("is-portrait-mobile", isPortraitMobile);
   app.classList.toggle("is-touch-ui", hasCoarsePointer);
+  app.classList.toggle("is-fullscreen", isFullscreenActive());
 
   if (orientationOverlay) {
     orientationOverlay.hidden = !isPortraitMobile;
@@ -568,6 +571,7 @@ function renderOutside() {
   });
   sidebar.helpButton.addEventListener("click", () => toggleOutsideHelp());
   sidebar.soundButton.addEventListener("click", () => toggleOutsideSound());
+  sidebar.fullscreenButton?.addEventListener("click", () => toggleFullscreen());
   helpOverlay.okButton.addEventListener("click", () => toggleOutsideHelp(false));
   helpOverlay.dimButton.addEventListener("click", () => toggleOutsideHelp(false));
   miniMap.leftButton.addEventListener("click", () => requestRoomMove(state.currentRoomId - 1));
@@ -597,6 +601,7 @@ function renderOutside() {
   applyHelpState();
   setOutsideSidebarOpen(state.isMobileUi ? false : true);
   syncMutedUi();
+  syncFullscreenUi();
 
   requestAnimationFrame(() => {
     bg.classList.add("is-settled");
@@ -1084,6 +1089,7 @@ function renderInteractiveRoom(room) {
     button.parentElement?.classList.toggle("is-active", active);
     button.parentElement?.classList.toggle("is-in-room", active);
   });
+  sidebar.fullscreenButton?.addEventListener("click", () => toggleFullscreen());
   applyMapPosition({ miniMap }, state.currentStep, 0);
   miniMap.shell.classList.add("is-exit");
   miniMap.viewport.classList.add("is-exit");
@@ -1091,6 +1097,7 @@ function renderInteractiveRoom(room) {
   setMapArrowStateForMap(miniMap, false, false, false, true, false);
   miniMap.downButton.addEventListener("click", () => beginRoomExit());
   syncMutedUi();
+  syncFullscreenUi();
   applyRoomEntryMapFinal(roomScreenState);
   bindRoomPointer(roomScreenState);
   updateRoomLightingState(roomScreenState);
@@ -3029,7 +3036,16 @@ function buildOutsideSidebar() {
   const soundOn = makeOutsideImage("assets/bitmaps/btn_sound_on.png", "outside-sidebar-sound-on");
   const soundOff = makeOutsideImage("assets/bitmaps/btn_sound_off.png", "outside-sidebar-sound-off");
   soundButton.append(soundBg, soundOn, soundOff);
+  const fullscreenButton = supportsFullscreen() ? createEl("button", "outside-sidebar-icon outside-sidebar-fullscreen") : null;
+  if (fullscreenButton) {
+    fullscreenButton.type = "button";
+    fullscreenButton.setAttribute("aria-label", "Toggle fullscreen");
+    fullscreenButton.append(createEl("span", "outside-sidebar-fullscreen-glyph"));
+  }
   top.append(helpButton, soundButton);
+  if (fullscreenButton) {
+    top.append(fullscreenButton);
+  }
 
   const roomList = createEl("div", "outside-sidebar-room-list");
   const roomButtons = [];
@@ -3052,7 +3068,7 @@ function buildOutsideSidebar() {
   });
 
   root.append(toggleButton, top, roomList);
-  return { root, roomList, roomButtons, helpButton, soundButton, toggleButton };
+  return { root, roomList, roomButtons, helpButton, soundButton, fullscreenButton, toggleButton };
 }
 
 function buildOutsideHelpOverlay() {
@@ -3234,6 +3250,61 @@ function setGlobalMuted(shouldMute) {
 function syncMutedUi() {
   outsideScreenState?.sidebar?.soundButton.classList.toggle("is-muted", state.isMuted);
   roomScreenState?.sidebar?.soundButton.classList.toggle("is-muted", state.isMuted);
+}
+
+function supportsFullscreen() {
+  const target = document.documentElement;
+  return Boolean(
+    target.requestFullscreen ||
+    target.webkitRequestFullscreen ||
+    document.exitFullscreen ||
+    document.webkitExitFullscreen
+  );
+}
+
+function isFullscreenActive() {
+  return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+}
+
+function handleFullscreenChange() {
+  app.classList.toggle("is-fullscreen", isFullscreenActive());
+  syncFullscreenUi();
+  resizeStages();
+}
+
+async function toggleFullscreen() {
+  if (!supportsFullscreen()) {
+    return;
+  }
+  try {
+    if (isFullscreenActive()) {
+      if (document.exitFullscreen) {
+        await document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+      return;
+    }
+
+    const target = document.documentElement;
+    if (target.requestFullscreen) {
+      try {
+        await target.requestFullscreen({ navigationUI: "hide" });
+      } catch {
+        await target.requestFullscreen();
+      }
+    } else if (target.webkitRequestFullscreen) {
+      target.webkitRequestFullscreen();
+    }
+  } catch (error) {
+    console.warn("Fullscreen toggle failed", error);
+  }
+}
+
+function syncFullscreenUi() {
+  const active = isFullscreenActive();
+  outsideScreenState?.sidebar?.fullscreenButton?.classList.toggle("is-active", active);
+  roomScreenState?.sidebar?.fullscreenButton?.classList.toggle("is-active", active);
 }
 
 function clearRoomMiniMapEnter(view) {
