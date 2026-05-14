@@ -598,34 +598,22 @@ video {
 
 .outside-bg {
   position: absolute;
-  left: 214px;
-  top: 158px;
+  left: 0;
+  top: 0;
   width: 0;
   height: 0;
   transform-origin: top left;
-  transform: scale(0.7048);
-  transition:
-    transform 1s ease,
-    left 1s ease,
-    top 1s ease,
-    opacity 1.25s ease;
+  transform: translate(214px, 158px) scale(0.7048);
+  transition: transform 1s ease;
 }
 
 .outside-bg.is-settled {
-  left: 0;
-  top: 0;
-  transform: scale(1);
+  transform: translate(0, 0) scale(1);
 }
 
 .outside-bg.is-entering-room {
-  left: -370px;
-  top: -170px;
-  transform: scale(1.5);
-  transition:
-    transform 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
-    left 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
-    top 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53),
-    opacity 1.25s ease;
+  transform: translate(-370px, -170px) scale(1.5);
+  transition: transform 1s cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
 .outside-door,
@@ -678,6 +666,11 @@ video {
 
 .outside-enter-video.is-entering-room {
   transition: opacity 1s linear 0.2s;
+}
+
+.outside-enter-video.is-room-enter-fadeout {
+  opacity: 0;
+  transition: opacity 1s linear;
 }
 
 .outside-enter-video.is-right-door {
@@ -740,8 +733,17 @@ video {
   transition: opacity 0.6s ease;
 }
 
+.room-screen.is-entry-handoff {
+  transition: opacity 360ms linear;
+}
+
+.room-screen.is-entry-prepared {
+  visibility: hidden;
+}
+
 .room-screen.is-visible {
   opacity: 1;
+  visibility: visible;
 }
 
 .room-stage {
@@ -1118,7 +1120,7 @@ video {
 .room-video-item-view {
   position: absolute;
   left: 402px;
-  top: 91px;
+  top: 112px;
   width: 695px;
   height: 400px;
   background: rgba(0, 0, 0, 0.8);
@@ -1173,7 +1175,7 @@ video {
 .room-panable-note {
   position: absolute;
   left: 50%;
-  top: 447px;
+  top: 486px;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 2500ms ease;
@@ -1247,7 +1249,7 @@ video {
 .room-modal-panel.photo > .hover-note {
   position: absolute;
   left: 50%;
-  top: 447px;
+  top: 486px;
   transform: translate(-50%, -50%);
   z-index: 3;
 }
@@ -1483,6 +1485,11 @@ video {
   width: 0;
   height: 0;
   z-index: 3;
+}
+
+.outside-map-root.is-hidden-during-entry {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .outside-map-shell {
@@ -1793,12 +1800,55 @@ video {
   position: absolute;
   right: 42px;
   top: 21px;
-  width: 124px;
+  width: auto;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   gap: 18px;
   pointer-events: auto;
+}
+
+.outside-social-strip {
+  position: absolute;
+  left: 22px;
+  top: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.outside-social-button {
+  position: relative;
+  width: 59px;
+  height: 59px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.outside-social-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 59px;
+  height: 59px;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.outside-social-image.over {
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.outside-social-button:hover .outside-social-image.over,
+.outside-social-button:focus-visible .outside-social-image.over {
+  opacity: 1;
 }
 
 .outside-sidebar-icon {
@@ -1920,6 +1970,105 @@ video {
   cursor: pointer;
 }
 
+.fullscreen-prompt {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.fullscreen-prompt.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fullscreen-prompt-dim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.58);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.fullscreen-prompt-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 430px;
+  padding: 28px 32px 24px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(89, 192, 233, 0.45);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.86);
+  box-shadow:
+    0 0 28px rgba(32, 185, 248, 0.22),
+    inset 0 0 0 1px rgba(89, 192, 233, 0.08);
+  text-align: center;
+}
+
+.fullscreen-prompt-title {
+  color: #fff;
+  font: 20px/1.15 "beon-medium", Arial, sans-serif;
+  letter-spacing: 1px;
+  text-shadow:
+    0 0 5px rgba(32, 185, 248, 0.75),
+    0 0 5px rgba(32, 185, 248, 0.75);
+}
+
+.fullscreen-prompt-copy {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font: 14px/1.45 "helNeuLt-light", Arial, sans-serif;
+  letter-spacing: 0.8px;
+}
+
+.fullscreen-prompt-button,
+.fullscreen-prompt-dismiss {
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.fullscreen-prompt-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 198px;
+  margin-top: 22px;
+  padding: 12px 22px 11px;
+  border-radius: 8px;
+  background: rgba(10, 28, 34, 0.92);
+  color: #fff;
+  font: 15px/1 "beon-medium", Arial, sans-serif;
+  letter-spacing: 1px;
+  box-shadow:
+    inset 0 0 0 1px rgba(89, 192, 233, 0.75),
+    0 0 18px rgba(32, 185, 248, 0.25);
+  text-shadow: 0 0 6px rgba(32, 185, 248, 0.65);
+}
+
+.fullscreen-prompt-button:hover,
+.fullscreen-prompt-button:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px rgba(89, 192, 233, 1),
+    0 0 24px rgba(32, 185, 248, 0.45);
+}
+
+.fullscreen-prompt-dismiss {
+  display: block;
+  margin: 14px auto 0;
+  padding: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font: 12px/1 "helNeuLt-medium", Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
 .outside-help-card,
 .outside-help-tip,
 .outside-map-help {
@@ -2038,11 +2187,11 @@ video {
 }
 
 #app.is-mobile-ui .outside-map-root {
-  bottom: 104px;
+  bottom: 86px;
 }
 
 #app.is-mobile-ui .outside-map-shell {
-  transform: scale(0.9);
+  transform: scale(0.52);
   transform-origin: center bottom;
 }
 
@@ -2051,7 +2200,7 @@ video {
 #app.is-mobile-ui .outside-sidebar-icon,
 #app.is-mobile-ui .outside-door-hit,
 #app.is-mobile-ui .outside-room-nav button,
-#app.is-mobile-ui .outside-help-ok {
+#app.is-mobile-ui .outside-social-button {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -2066,14 +2215,53 @@ video {
   gap: 16px;
 }
 
+#app.is-mobile-ui .outside-social-strip {
+  left: 12px;
+  top: max(12px, env(safe-area-inset-top, 0px) + 4px);
+  gap: 4px;
+}
+
+#app.is-mobile-ui .outside-social-button,
+#app.is-mobile-ui .outside-social-image {
+  width: 38px;
+  height: 38px;
+}
+
 #app.is-mobile-ui .outside-sidebar-icon {
   width: 34px;
   height: 34px;
 }
 
-#app.is-mobile-ui .outside-sidebar-help {
-  width: 26px;
-  height: 26px;
+#app.is-mobile-ui .fullscreen-prompt-card {
+  width: min(88vw, 420px);
+  padding: 24px 22px 20px;
+}
+
+#app.is-mobile-ui .fullscreen-prompt-title {
+  font-size: 17px;
+}
+
+#app.is-mobile-ui .fullscreen-prompt-copy {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#app.is-mobile-ui .fullscreen-prompt-button {
+  min-width: 172px;
+  padding: 11px 18px 10px;
+  font-size: 14px;
+}
+
+#app.is-mobile-ui .outside-sidebar-fullscreen-glyph::before {
+  background:
+    linear-gradient(#59c0e9, #59c0e9) left 3px top 3px / 9px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) left 3px top 3px / 2px 9px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 3px top 3px / 9px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 3px top 3px / 2px 9px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) left 3px bottom 3px / 9px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) left 3px bottom 3px / 2px 9px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 3px bottom 3px / 9px 2px no-repeat,
+    linear-gradient(#59c0e9, #59c0e9) right 3px bottom 3px / 2px 9px no-repeat;
 }
 
 #app.is-mobile-ui .outside-sidebar-sound-bg,
@@ -2112,9 +2300,9 @@ video {
 #app.is-mobile-ui .outside-sidebar-room-list {
   right: 12px;
   top: calc(max(18px, env(safe-area-inset-top, 0px) + 10px) + 92px);
-  width: 168px;
+  width: 146px;
   max-height: min(560px, calc(100vh - 240px));
-  padding: 12px 0;
+  padding: 8px 0;
   overflow-y: auto;
   border: 1px solid rgba(89, 193, 201, 0.22);
   border-radius: 10px;
@@ -2141,7 +2329,7 @@ video {
   top: auto !important;
   right: auto;
   width: 100%;
-  height: 44px;
+  height: 34px;
   transform: none;
 }
 
@@ -2150,40 +2338,49 @@ video {
 }
 
 #app.is-mobile-ui .outside-room-nav-bg {
-  width: 123px;
-  height: 40px;
+  width: 104px;
+  height: 32px;
   right: 0;
   left: auto;
 }
 
 #app.is-mobile-ui .outside-room-nav-label {
-  top: 13px;
+  left: 8px;
+  top: 10px;
+  width: 64px;
+  font-size: 10px;
 }
 
 #app.is-mobile-ui .outside-room-nav-circle {
-  top: 16px;
+  left: 78px;
+  top: 12px;
+  width: 9px;
+  height: 10px;
 }
 
 #app.is-mobile-ui .outside-room-nav-active {
-  top: 21px;
+  left: 104px;
+  top: 16px;
+  width: 20px;
 }
 
 #app.is-mobile-ui .outside-map-arrow button {
-  width: 44px;
-  height: 44px;
+  width: 30px;
+  height: 30px;
 }
 
 #app.is-mobile-ui .outside-map-arrow img {
-  width: 36px;
-  height: 20px;
-  margin: 12px 4px;
+  width: 24px;
+  height: 14px;
+  margin: 8px 3px;
 }
 
 #app.is-mobile-ui .outside-map-skip button {
-  width: 116px;
-  height: 52px;
-  left: -58px;
-  top: -18px;
+  width: 76px;
+  height: 34px;
+  left: -38px;
+  top: -10px;
+  font-size: 12px;
 }
 
 #app.is-mobile-ui .outside-help-card {
@@ -2286,7 +2483,7 @@ video {
 #app.is-mobile-ui .room-video-item-view,
 #app.is-mobile-ui .room-panable-item-view {
   left: 450px;
-  top: 124px;
+  top: 144px;
   width: 600px;
   height: 346px;
 }
@@ -2315,11 +2512,11 @@ video {
   }
 
   #app.is-mobile-ui .outside-map-root {
-    bottom: 82px;
+    bottom: 68px;
   }
 
   #app.is-mobile-ui .outside-map-shell {
-    transform: scale(0.78);
+    transform: scale(0.44);
   }
 
   #app.is-mobile-ui .outside-help-tip.nav {
@@ -2375,7 +2572,7 @@ video {
   #app.is-mobile-ui .room-video-item-view,
   #app.is-mobile-ui .room-panable-item-view {
     left: 486px;
-    top: 146px;
+    top: 160px;
     width: 528px;
     height: 304px;
   }

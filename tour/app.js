@@ -88,6 +88,55 @@ const ROOM_EXIT_TUNING = {
     targetPitch: -4,
     pushRatio: 0.52,
   },
+  8: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  9: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  10: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  11: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  12: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  13: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
+  14: {
+    targetFlatX: null,
+    yawOffsetDeg: 0,
+    targetDistance: 1,
+    targetPitch: -4,
+    pushRatio: 0.52,
+  },
 };
 
 const HOVER_NOTE_FADE_MS = 900;
@@ -95,6 +144,7 @@ const ROOM_FLAVOR_LOCK_MS = 4200;
 const FLASHLIGHT_REVEAL_INNER_RADIUS = 74;
 const FLASHLIGHT_REVEAL_MID_RADIUS = 118;
 const FLASHLIGHT_REVEAL_OUTER_RADIUS = 162;
+const ROOM_ENTRY_BLEND_LEAD_MS = 1000;
 
 const app = document.getElementById("app");
 const backgroundStage = document.getElementById("background-stage");
@@ -123,6 +173,12 @@ const state = {
   criticalMediaManifest: [],
   deferredMediaManifest: [],
   imageCache: new Map(),
+  socialNav: [],
+  tourStarted: false,
+  pendingFullscreenPrompt: false,
+  instantRoomHandoff: false,
+  entryBlendRoom: false,
+  deferRoomFocusOnEntry: false,
 };
 
 let preloaderScreen;
@@ -136,6 +192,7 @@ let landingFogState = null;
 let outsideScreenState = null;
 let roomScreenState = null;
 let roomEntryMapState = null;
+let fullscreenPromptState = null;
 
 init().catch((error) => {
   console.error(error);
@@ -389,6 +446,8 @@ function renderLanding() {
   overlay.append(bigEnterHit);
 
   const playIntro = () => {
+    state.tourStarted = true;
+    void ensureFullscreenForTour();
     stopLandingLoops();
     overlay.classList.add("exit");
     bg.classList.add("exit");
@@ -508,10 +567,9 @@ function renderOutside() {
   const basementNote = createEl("div", "outside-note", htmlText("basementDoorText"));
   const sidebar = buildOutsideSidebar();
   const miniMap = buildOutsideMiniMap();
-  const helpOverlay = buildOutsideHelpOverlay();
 
   stage.append(bg, doorHit, hallwayVideoA, hallwayVideoB, enterVideo, fade);
-  outside.append(stage, miniMap.root, sidebar.root, houseNote, basementNote, helpOverlay.root);
+  outside.append(stage, miniMap.root, sidebar.social, sidebar.root, houseNote, basementNote);
   screenRoot.append(outside);
 
   const doorEntries = [
@@ -545,7 +603,6 @@ function renderOutside() {
     doorHit,
     sidebar,
     miniMap,
-    helpOverlay,
     houseNote,
     basementNote,
     doorEntries,
@@ -569,11 +626,8 @@ function renderOutside() {
   sidebar.toggleButton?.addEventListener("click", () => {
     setOutsideSidebarOpen(!state.isSidebarOpen);
   });
-  sidebar.helpButton.addEventListener("click", () => toggleOutsideHelp());
   sidebar.soundButton.addEventListener("click", () => toggleOutsideSound());
   sidebar.fullscreenButton?.addEventListener("click", () => toggleFullscreen());
-  helpOverlay.okButton.addEventListener("click", () => toggleOutsideHelp(false));
-  helpOverlay.dimButton.addEventListener("click", () => toggleOutsideHelp(false));
   miniMap.leftButton.addEventListener("click", () => requestRoomMove(state.currentRoomId - 1));
   miniMap.rightButton.addEventListener("click", () => requestRoomMove(state.currentRoomId + 1));
   miniMap.upButton.addEventListener("click", () => {
@@ -629,7 +683,8 @@ function applyRoomLayout(stage) {
 
   const width = window.innerWidth;
   const height = window.innerHeight;
-  const scale = Math.max(width / STAGE_WIDTH, height / STAGE_HEIGHT);
+  const targetVisibleStageHeight = 740;
+  const scale = Math.max(width / STAGE_WIDTH, height / targetVisibleStageHeight);
   stage.style.transform = `translate(${(width - STAGE_WIDTH * scale) / 2}px, ${(height - STAGE_HEIGHT * scale) / 2}px) scale(${scale})`;
 }
 
@@ -665,7 +720,10 @@ async function moveOutsideToRoom(targetRoomId) {
     directionRight: isRight,
     runId: (view.travel?.runId ?? 0) + 1,
     playbackStarted: createDeferred(),
+    hallwayFinished: createDeferred(),
+    hallwayFinishedResolved: false,
     startedNotified: false,
+    segmentStarts: [],
   };
   view.travel = travel;
   resetHallwayVideos(view);
@@ -713,9 +771,12 @@ function setOutsideRoom(roomId, keepZoomed = false) {
 
   view.enterVideo.src = room.doorEnterPath;
   view.enterVideo.classList.toggle("is-right-door", room.doorImageId === 4);
+  view.enterVideo.classList.remove("is-visible");
   view.enterVideo.classList.remove("is-entering-room");
+  view.enterVideo.classList.remove("is-room-enter-fadeout");
   view.bg.classList.remove("is-entering-room");
   view.bg.style.visibility = "visible";
+  view.root.classList.remove("is-room-enter-fadeout");
 
   if (!keepZoomed) {
     view.bg.classList.remove("is-settled");
@@ -783,18 +844,16 @@ async function enterCurrentRoom() {
   beginOutsideMapEnterMode(view);
   stopOutsideAudio();
   const roomVisualsPromise = preloadRoomVisuals(room);
+  const entryPlaybackStarted = createDeferred();
 
-  view.bg.classList.remove("is-settled");
-  void view.bg.offsetWidth;
   view.bg.classList.add("is-entering-room");
-  view.enterVideo.classList.add("is-visible");
   view.enterVideo.classList.add("is-entering-room");
-  window.setTimeout(() => {
+  requestAnimationFrame(() => {
     if (outsideScreenState === view) {
-      view.bg.style.visibility = "hidden";
+      view.enterVideo.classList.add("is-visible");
     }
-  }, 1200);
-  const videoStarted = playVideoOnce(
+  });
+  const videoPlayback = playVideoOnce(
     view.enterVideo,
     room.doorEnterPath,
     true,
@@ -802,17 +861,56 @@ async function enterCurrentRoom() {
     false,
     () => {
       if (outsideScreenState === view) {
+        entryPlaybackStarted.resolve();
         beginRoomEntryMapAnimation(view, room.id);
+        window.setTimeout(() => {
+          if (outsideScreenState === view) {
+            view.bg.style.visibility = "hidden";
+          }
+        }, 1000);
       }
     }
-  ).catch(() => delay(4000));
+  ).catch(() => {});
+  const blendNearEndPromise = waitForVideoNearEnd(view.enterVideo, ROOM_ENTRY_BLEND_LEAD_MS);
 
-  await Promise.race([videoStarted, delay(3500)]);
   await roomVisualsPromise;
-
-  view.root.remove();
-  outsideScreenState = null;
+  if (outsideScreenState !== view) {
+    return;
+  }
+  await Promise.race([entryPlaybackStarted.promise, delay(1200)]);
+  if (outsideScreenState !== view) {
+    return;
+  }
+  state.instantRoomHandoff = true;
+  state.entryBlendRoom = true;
+  state.deferRoomFocusOnEntry = true;
   renderRoom(room);
+  const pendingRoomView = roomScreenState;
+  primeRoomEntryVisuals(pendingRoomView);
+  await Promise.race([blendNearEndPromise, delay(3200)]);
+  if (outsideScreenState !== view || roomScreenState !== pendingRoomView) {
+    return;
+  }
+  pendingRoomView.root.classList.remove("is-entry-prepared");
+  pendingRoomView.root.classList.add("is-visible");
+  view.enterVideo.classList.add("is-room-enter-fadeout");
+  window.setTimeout(() => {
+    if (outsideScreenState !== view || roomScreenState !== pendingRoomView) {
+      return;
+    }
+    outsideScreenState = null;
+    view.root.remove();
+    backgroundStage.replaceChildren();
+    overlayStage.replaceChildren();
+    Array.from(screenRoot.children).forEach((child) => {
+      if (child !== pendingRoomView.root) {
+        child.remove();
+      }
+    });
+    pendingRoomView.miniMap?.root?.classList.remove("is-hidden-during-entry");
+    completeInitialRoomFocus(pendingRoomView);
+  }, 1020);
+  void videoPlayback;
 }
 
 function beginOutsideMapEnterMode(view) {
@@ -837,7 +935,7 @@ function endOutsideMapEnterMode(view) {
 }
 
 function renderRoom(room) {
-  if (room?.id === 0 || room?.id === 2 || room?.id === 3 || room?.id === 4 || room?.id === 5 || room?.id === 6 || room?.id === 7) {
+  if (room?.id === 0 || room?.id === 2 || room?.id === 3 || room?.id === 4 || room?.id === 5 || room?.id === 6 || room?.id === 7 || room?.id === 8 || room?.id === 9 || room?.id === 10 || room?.id === 11 || room?.id === 12 || room?.id === 13 || room?.id === 14) {
     renderInteractiveRoom(room);
     return;
   }
@@ -868,9 +966,19 @@ function renderRoomPlaceholder(room) {
 }
 
 function renderInteractiveRoom(room) {
-  backgroundStage.replaceChildren();
-  overlayStage.replaceChildren();
-  screenRoot.replaceChildren();
+  const instantRoomHandoff = state.instantRoomHandoff;
+  state.instantRoomHandoff = false;
+  const entryBlendRoom = state.entryBlendRoom;
+  state.entryBlendRoom = false;
+  const deferRoomFocusOnEntry = state.deferRoomFocusOnEntry;
+  state.deferRoomFocusOnEntry = false;
+  const preserveOutsideDuringEntry = instantRoomHandoff && entryBlendRoom;
+
+  if (!preserveOutsideDuringEntry) {
+    backgroundStage.replaceChildren();
+    overlayStage.replaceChildren();
+    screenRoot.replaceChildren();
+  }
   stopRoomAudio();
 
   const screen = createEl("div", `base-screen room-screen ${room.id === 2 ? "office-room-screen" : "standard-room-screen"}`);
@@ -880,7 +988,7 @@ function renderInteractiveRoom(room) {
   canvas.className = "room-panorama-canvas";
   canvas.width = STAGE_WIDTH;
   canvas.height = STAGE_HEIGHT;
-  const flashCanvas = room.id === 4 || room.id === 7 ? document.createElement("canvas") : null;
+  const flashCanvas = room.id === 4 || room.id === 7 || room.id === 8 || room.id === 10 || room.id === 11 || room.id === 13 ? document.createElement("canvas") : null;
   if (flashCanvas) {
     flashCanvas.className = "room-flashlight-canvas";
     flashCanvas.width = STAGE_WIDTH;
@@ -975,7 +1083,9 @@ function renderInteractiveRoom(room) {
     }
 
     hotspots.append(element);
-    const interactiveFlatX = getInteractiveFlatX(room.id, item.inRoomFlatX);
+    const interactiveFlatX = room.id === 12 && item.id === "matches"
+      ? mirrorFlatXInCurrentWall(item.inRoomFlatX)
+      : getInteractiveFlatX(room.id, item.inRoomFlatX);
     projectedItems.push({
       item,
       element,
@@ -985,7 +1095,8 @@ function renderInteractiveRoom(room) {
       height: item.inRoomAssetHeight,
       fixedScale: room.id === 2 ? (item.id.includes("flyer") ? 2.55 : item.id.includes("ipad") ? 1.95 : null) : null,
       isOfficeActiveOverlay: room.id === 2 && item.isActive,
-      useProjectedBox: room.id === 0 || room.id === 3 || room.id === 4 || room.id === 5 || room.id === 6 || room.id === 7,
+      useProjectedBox: room.id === 0 || room.id === 3 || room.id === 4 || room.id === 5 || room.id === 6 || room.id === 7 || room.id === 8 || room.id === 9 || room.id === 10 || room.id === 11 || room.id === 12 || room.id === 13 || room.id === 14,
+      extraHitScale: room.id === 12 && item.id === "matches" ? 1.9 : 1,
     });
   });
 
@@ -993,8 +1104,13 @@ function renderInteractiveRoom(room) {
 
   overlay.append(note, fade);
   hotspots.append(exitButton);
+  screen.append(sidebar.social);
   screen.append(sidebar.root);
   screen.append(miniMap.root);
+  if (deferRoomFocusOnEntry) {
+    miniMap.root.classList.add("is-hidden-during-entry");
+    screen.classList.add("is-entry-prepared");
+  }
   if (flashCanvas) {
     viewport.append(canvas, flashCanvas, hotspots, overlay);
   } else {
@@ -1002,6 +1118,11 @@ function renderInteractiveRoom(room) {
   }
   stage.append(viewport);
   screen.append(stage);
+  if (instantRoomHandoff && entryBlendRoom && !deferRoomFocusOnEntry) {
+    screen.classList.add("is-entry-handoff");
+  } else if (instantRoomHandoff && !deferRoomFocusOnEntry) {
+    screen.classList.add("is-visible");
+  }
   screenRoot.append(screen);
 
   roomScreenState = {
@@ -1029,6 +1150,7 @@ function renderInteractiveRoom(room) {
     dragStartPitch: 0,
     rafId: 0,
     audio: null,
+    audios: [],
     itemAudio: null,
     playingItemId: null,
     modal: null,
@@ -1044,8 +1166,8 @@ function renderInteractiveRoom(room) {
     targetCameraDistance: 1,
     currentExitPush: 0,
     three: threeRoom,
-    pitchMin: room.id === 0 ? -28 : room.id === 2 ? -22.5 : room.id === 3 ? -28 : room.id === 4 ? -22 : room.id === 5 ? -28 : room.id === 6 ? -28 : room.id === 7 ? -28 : room.xRotationMin,
-    pitchMax: room.id === 0 ? 8 : room.id === 2 ? 12 : room.id === 3 ? 8 : room.id === 4 ? 16 : room.id === 5 ? 8 : room.id === 6 ? 8 : room.id === 7 ? 8 : room.xRotationMax,
+    pitchMin: room.id === 0 ? -27 : room.id === 2 ? -21 : room.id === 3 ? -27 : room.id === 4 ? -21 : room.id === 5 ? -27 : room.id === 6 ? -27 : room.id === 7 ? -21 : room.id === 8 ? -21 : room.id === 9 ? -27 : room.id === 10 ? -21 : room.id === 11 ? -21 : room.id === 12 ? -27 : room.id === 13 ? -21 : room.id === 14 ? -27 : room.xRotationMin,
+    pitchMax: room.id === 0 ? 8 : room.id === 2 ? 12 : room.id === 3 ? 8 : room.id === 4 ? 16 : room.id === 5 ? 8 : room.id === 6 ? 8 : room.id === 7 ? 16 : room.id === 8 ? 16 : room.id === 9 ? 8 : room.id === 10 ? 16 : room.id === 11 ? 16 : room.id === 12 ? 8 : room.id === 13 ? 16 : room.id === 14 ? 8 : room.xRotationMax,
     mapEnterTimers: [],
     isExiting: false,
     exitState: null,
@@ -1055,7 +1177,7 @@ function renderInteractiveRoom(room) {
     exitSoundLastPlayedAt: 0,
     exitVisible: false,
     pendingTargetRoomId: null,
-    roomLighting: room.id === 4 || room.id === 7 ? {
+    roomLighting: room.id === 4 || room.id === 7 || room.id === 8 || room.id === 10 || room.id === 11 || room.id === 13 ? {
       introActive: true,
       introCount: 0,
       lightChange: 1,
@@ -1063,6 +1185,7 @@ function renderInteractiveRoom(room) {
       pointerScreenX: STAGE_WIDTH * 0.5,
       pointerScreenY: STAGE_HEIGHT * 0.5,
     } : null,
+    runtimeStarted: false,
   };
 
   applyRoomLayout(stage);
@@ -1076,7 +1199,6 @@ function renderInteractiveRoom(room) {
     });
   });
   sidebar.soundButton.addEventListener("click", () => toggleRoomSound());
-  sidebar.helpButton.addEventListener("click", () => {});
   sidebar.toggleButton?.addEventListener("click", () => {
     sidebar.root.classList.toggle("is-open");
     sidebar.toggleButton.classList.toggle("is-active");
@@ -1099,18 +1221,99 @@ function renderInteractiveRoom(room) {
   syncMutedUi();
   syncFullscreenUi();
   applyRoomEntryMapFinal(roomScreenState);
-  bindRoomPointer(roomScreenState);
-  updateRoomLightingState(roomScreenState);
-  updateRoomPanorama(roomScreenState);
-  playRoomAmbient(room);
-  prewarmRoomItemHover(roomScreenState);
-  screen.classList.add("is-visible");
-  prewarmRoomHoverExperience(roomScreenState);
-  window.setTimeout(() => {
-    if (roomScreenState?.root === screen) {
-      showRoomFlavor(room);
+  if (instantRoomHandoff && entryBlendRoom && !deferRoomFocusOnEntry) {
+    requestAnimationFrame(() => {
+      if (roomScreenState?.root === screen) {
+        screen.classList.add("is-visible");
+        window.setTimeout(() => {
+          if (roomScreenState?.root !== screen) {
+            return;
+          }
+          backgroundStage.replaceChildren();
+          overlayStage.replaceChildren();
+          Array.from(screenRoot.children).forEach((child) => {
+            if (child !== screen) {
+              child.remove();
+            }
+          });
+        }, 280);
+      }
+    });
+  } else if (!instantRoomHandoff) {
+    screen.classList.add("is-visible");
+  }
+  if (deferRoomFocusOnEntry) {
+    roomScreenState.pendingEntryFocus = true;
+  } else {
+    startRoomRuntime(roomScreenState);
+    completeInitialRoomFocus(roomScreenState);
+  }
+}
+
+function primeRoomEntryVisuals(view) {
+  if (!view || view.entryVisualPrimed) {
+    return;
+  }
+  view.entryVisualPrimed = true;
+  updateRoomPanorama(view);
+}
+
+function startRoomRuntime(view) {
+  if (!view || view.runtimeStarted) {
+    return;
+  }
+  view.runtimeStarted = true;
+  bindRoomPointer(view);
+  updateRoomLightingState(view);
+  updateRoomPanorama(view);
+  playRoomAmbient(view.room);
+}
+
+function completeInitialRoomFocus(view) {
+  if (!view || (!view.pendingEntryFocus && view.initialFocusDone)) {
+    return;
+  }
+  startRoomRuntime(view);
+  view.pendingEntryFocus = false;
+  view.initialFocusDone = true;
+  scheduleRoomWarmups(view);
+  const room = view.room;
+  if (room.popAsset) {
+    window.setTimeout(() => {
+      if (roomScreenState !== view || view.modal) {
+        return;
+      }
+      const popItem = room.items.find((item) => item.id === room.popAsset);
+      if (popItem) {
+        openRoomItem(popItem);
+      }
+    }, 280);
+  } else {
+    window.setTimeout(() => {
+      if (roomScreenState === view) {
+        showRoomFlavor(room);
+      }
+    }, 900);
+  }
+}
+
+function scheduleRoomWarmups(view) {
+  if (!view || view.hoverWarmupScheduled) {
+    return;
+  }
+  view.hoverWarmupScheduled = true;
+  const runWarmup = () => {
+    if (roomScreenState !== view) {
+      return;
     }
-  }, 900);
+    prewarmRoomHoverExperience(view);
+    prewarmRoomItemHover(view);
+  };
+  if (typeof window.requestIdleCallback === "function") {
+    view.hoverWarmupTimer = window.requestIdleCallback(runWarmup, { timeout: 1200 });
+  } else {
+    view.hoverWarmupTimer = window.setTimeout(runWarmup, 700);
+  }
 }
 
 function prewarmRoomHoverExperience(view) {
@@ -1136,32 +1339,44 @@ function prewarmRoomHoverExperience(view) {
 }
 
 function prewarmRoomItemHover(view) {
-  const firstActive = view?.projectedItems?.find((entry) => entry.item?.isActive && entry.element);
-  if (!firstActive) {
+  const activeEntries = view?.projectedItems?.filter((entry) => entry.item?.isActive && entry.element) ?? [];
+  if (!activeEntries.length) {
     return;
   }
-  const { item, element } = firstActive;
-
   if (usesBakedRoomVisual(view.room.id)) {
-    setBakedRoomHoveredItem(item.id);
-    updateRoomPanorama(view);
+    activeEntries.forEach(({ item }) => {
+      setBakedRoomHoveredItem(item.id);
+      updateRoomPanorama(view);
+    });
     setBakedRoomHoveredItem(null);
     updateRoomPanorama(view);
   }
 
-  element.classList.add("is-hovering");
-  void element.offsetWidth;
-  element.classList.remove("is-hovering");
+  activeEntries.forEach(({ element }) => {
+    element.classList.add("is-hovering");
+    void element.offsetWidth;
+    element.classList.remove("is-hovering");
+  });
 }
 
 function bindRoomPointer(view) {
+  const clientToStagePoint = (clientX, clientY) => {
+    const bounds = view.viewport.getBoundingClientRect();
+    const stageX = ((clientX - bounds.left) / bounds.width) * STAGE_WIDTH;
+    const stageY = ((clientY - bounds.top) / bounds.height) * STAGE_HEIGHT;
+    return {
+      x: stageX,
+      y: stageY,
+    };
+  };
+
   const onMouseMove = (event) => {
     if (state.isMobileUi || view.modal) {
       return;
     }
-    const bounds = view.viewport.getBoundingClientRect();
-    view.pointerX = event.clientX - (bounds.left + bounds.width * 0.5);
-    view.pointerY = event.clientY - (bounds.top + bounds.height * 0.5);
+    const point = clientToStagePoint(event.clientX, event.clientY);
+    view.pointerX = point.x - STAGE_WIDTH * 0.5;
+    view.pointerY = point.y - STAGE_HEIGHT * 0.5;
   };
 
   const onTouchStart = (event) => {
@@ -1169,9 +1384,12 @@ function bindRoomPointer(view) {
       return;
     }
     const touch = event.touches[0];
+    const point = clientToStagePoint(touch.clientX, touch.clientY);
+    view.pointerX = point.x - STAGE_WIDTH * 0.5;
+    view.pointerY = point.y - STAGE_HEIGHT * 0.5;
     view.isDragging = true;
-    view.dragStartX = touch.clientX;
-    view.dragStartY = touch.clientY;
+    view.dragStartX = point.x;
+    view.dragStartY = point.y;
     view.dragStartYaw = view.currentYRotation;
     view.dragStartPitch = view.currentXRotation;
   };
@@ -1182,15 +1400,20 @@ function bindRoomPointer(view) {
     }
     event.preventDefault();
     const touch = event.touches[0];
-    const deltaX = touch.clientX - view.dragStartX;
-    const deltaY = touch.clientY - view.dragStartY;
+    const point = clientToStagePoint(touch.clientX, touch.clientY);
+    view.pointerX = point.x - STAGE_WIDTH * 0.5;
+    view.pointerY = point.y - STAGE_HEIGHT * 0.5;
+    const deltaX = point.x - view.dragStartX;
+    const deltaY = point.y - view.dragStartY;
     const pitchSpan = view.pitchMax - view.pitchMin;
-    const nextYaw = view.dragStartYaw - deltaX * 0.32;
+    const touchYawSensitivity = 0.18;
+    const touchPitchSensitivity = 0.5;
+    const nextYaw = view.dragStartYaw - deltaX * touchYawSensitivity;
     view.currentYRotation = view.room.id === 2
       ? clampNumber(nextYaw, view.room.yRotationMin, view.room.yRotationMax)
       : wrapDegrees(nextYaw);
     view.currentXRotation = clampNumber(
-      view.dragStartPitch + deltaY * (pitchSpan / 360),
+      view.dragStartPitch + deltaY * (pitchSpan / 360) * touchPitchSensitivity,
       view.pitchMin,
       view.pitchMax
     );
@@ -1297,7 +1520,7 @@ function updateRoomPanorama(view) {
 }
 
 function updateRoomLightingState(view) {
-  if ((view.room.id !== 4 && view.room.id !== 7) || !view.roomLighting) {
+  if ((view.room.id !== 4 && view.room.id !== 7 && view.room.id !== 8 && view.room.id !== 10 && view.room.id !== 11 && view.room.id !== 13) || !view.roomLighting) {
     return;
   }
   const lighting = view.roomLighting;
@@ -1371,7 +1594,7 @@ function buildRoomExitState(view) {
   } else {
     const targetFlatX = exitTuning.targetFlatX ?? view.room.exitX;
     targetYaw = ((targetFlatX / 4096) * 360 - 90) + (exitTuning.yawOffsetDeg ?? 0);
-    if ((view.room.id === 0 || view.room.id === 3 || view.room.id === 4 || view.room.id === 5 || view.room.id === 6 || view.room.id === 7) && view.three?.exitMesh) {
+    if ((view.room.id === 0 || view.room.id === 3 || view.room.id === 4 || view.room.id === 5 || view.room.id === 6 || view.room.id === 7 || view.room.id === 8 || view.room.id === 9 || view.room.id === 10 || view.room.id === 11 || view.room.id === 12 || view.room.id === 13 || view.room.id === 14) && view.three?.exitMesh) {
       targetPosition = view.three.exitMesh.position.clone();
     }
   }
@@ -1407,12 +1630,14 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
     useFlashTextures = false,
     includeItems = true,
     disableDynamicLighting = false,
+    transparentBase = false,
+    hoveredOnly = false,
   } = {}) => wallTextureSources.map((sourceInfo, wallIndex) => {
     const textureInfo = useFlashTextures && sourceInfo.flashPath
       ? { ...sourceInfo, path: sourceInfo.flashPath }
       : sourceInfo;
     const composite = usesBakedRoomVisual(room.id)
-      ? createCompositeWallTexture(room, textureInfo, wallIndex, { includeItems, disableDynamicLighting })
+      ? createCompositeWallTexture(room, textureInfo, wallIndex, { includeItems, disableDynamicLighting, transparentBase, hoveredOnly })
       : null;
     const texture = composite
       ? composite.texture
@@ -1425,6 +1650,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
     const material = new THREE.MeshBasicMaterial({
       map: texture,
       side: THREE.BackSide,
+      transparent: transparentBase || hoveredOnly,
     });
     if (composite) {
       composite.attachRenderer(targetRenderer);
@@ -1439,7 +1665,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
 
   const walls = buildWalls(scene, renderer, {
     useFlashTextures: false,
-    includeItems: room.id !== 4 && room.id !== 7,
+    includeItems: room.id !== 4 && room.id !== 7 && room.id !== 8 && room.id !== 10 && room.id !== 11 && room.id !== 13,
     disableDynamicLighting: true,
   });
 
@@ -1447,7 +1673,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
   let flashScene = null;
   let flashCamera = null;
   let flashWalls = null;
-  if ((room.id === 4 || room.id === 7) && flashCanvas) {
+  if ((room.id === 4 || room.id === 7 || room.id === 8 || room.id === 10 || room.id === 11 || room.id === 13) && flashCanvas) {
     flashRenderer = new THREE.WebGLRenderer({
       canvas: flashCanvas,
       antialias: true,
@@ -1469,7 +1695,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
 
   let exitMesh = null;
   let flashExitMesh = null;
-  if (room.id === 0 || room.id === 2 || room.id === 3 || room.id === 4 || room.id === 5 || room.id === 6 || room.id === 7) {
+  if (room.id === 0 || room.id === 2 || room.id === 3 || room.id === 4 || room.id === 5 || room.id === 6 || room.id === 7 || room.id === 8 || room.id === 9 || room.id === 10 || room.id === 11 || room.id === 12 || room.id === 13 || room.id === 14) {
     const exitTexture = createTextureFromImage(getCachedImage("assets/bitmaps/rooms/exit_out.png"), "assets/bitmaps/rooms/exit_out.png");
     exitTexture.colorSpace = THREE.SRGBColorSpace;
     exitTexture.minFilter = THREE.LinearFilter;
@@ -1491,7 +1717,7 @@ function buildThreeRoom(room, canvas, flashCanvas = null) {
     exitMesh.rotation.y = degToRad(exitYRotation + 180);
     exitMesh.visible = false;
     scene.add(exitMesh);
-    if (flashScene && (room.id === 4 || room.id === 7)) {
+    if (flashScene && (room.id === 4 || room.id === 7 || room.id === 8 || room.id === 10 || room.id === 11 || room.id === 13)) {
       const flashExitMaterial = new THREE.MeshBasicMaterial({
         map: exitTexture,
         transparent: true,
@@ -1528,8 +1754,10 @@ function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) 
   const flashImage = new Image();
   const includeItems = options.includeItems ?? true;
   const disableDynamicLighting = options.disableDynamicLighting ?? false;
+  const transparentBase = options.transparentBase ?? false;
+  const hoveredOnly = options.hoveredOnly ?? false;
   const usesMirroredBakedPlacement = usesBakedRoomVisual(room.id);
-  const usesDynamicFlashlightLighting = !disableDynamicLighting && (room.id === 4 || room.id === 7) && Boolean(textureInfo.flashPath);
+  const usesDynamicFlashlightLighting = !disableDynamicLighting && (room.id === 4 || room.id === 7 || room.id === 8 || room.id === 10 || room.id === 11 || room.id === 13) && Boolean(textureInfo.flashPath);
   const segmentItems = (includeItems ? room.items : [])
     .filter((item) => !shouldSuppressRoomItem(room.id, item.id))
     .filter((item) => item.inRoomAssetPath)
@@ -1590,7 +1818,7 @@ function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) 
   }
 
   function renderStateCanvas(targetHoveredItemId = null) {
-    if (!baseImage.complete) {
+    if (!transparentBase && !baseImage.complete) {
       return null;
     }
     const stateCanvas = document.createElement("canvas");
@@ -1598,7 +1826,9 @@ function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) 
     stateCanvas.height = canvas.height;
     const stateCtx = stateCanvas.getContext("2d");
     stateCtx.clearRect(0, 0, canvas.width, canvas.height);
-    stateCtx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    if (!transparentBase) {
+      stateCtx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    }
     const pxPerWorldX = canvas.width / (Math.PI * 150);
     const pxPerWorldY = canvas.height / 300;
     const lighting = roomScreenState?.room?.id === room.id ? roomScreenState.roomLighting : null;
@@ -1624,35 +1854,52 @@ function createCompositeWallTexture(room, textureInfo, wallIndex, options = {}) 
       const drawX = mirroredLocalX - drawWidth * 0.5;
       const drawY = item.inRoomFlatY - drawHeight * 0.5;
       const hovered = usesMirroredBakedPlacement && item.isActive && item.id === targetHoveredItemId;
-      const shouldRenderItem = !usesDynamicFlashlightLighting || introLight > 0;
+      const keepOrientation = shouldKeepBakedItemOrientation(room.id, item.id);
+      if (hoveredOnly && !hovered) {
+        return;
+      }
+      const shouldRenderItem = hoveredOnly || !usesDynamicFlashlightLighting || introLight > 0 || hovered;
       if (!shouldRenderItem) {
         return;
       }
       if (usesMirroredBakedPlacement) {
-        const drawMirroredImage = (targetX) => {
+        const drawBakedImage = (targetX) => {
           stateCtx.save();
           stateCtx.globalAlpha = 1;
-          stateCtx.translate(targetX + drawWidth * 0.5, 0);
-          stateCtx.scale(-1, 1);
-          if (hovered) {
-            const glow = numberToRgba(item.overColor || 7911637, item.overAlpha || 0.8);
-            stateCtx.shadowColor = glow;
-            stateCtx.shadowBlur = 18;
+          if (keepOrientation) {
+            if (hovered) {
+              const glow = numberToRgba(item.overColor || 7911637, item.overAlpha || 0.8);
+              stateCtx.shadowColor = glow;
+              stateCtx.shadowBlur = 18;
+              stateCtx.drawImage(image, targetX, drawY, drawWidth, drawHeight);
+              stateCtx.shadowBlur = 10;
+              stateCtx.drawImage(image, targetX, drawY, drawWidth, drawHeight);
+              stateCtx.shadowBlur = 0;
+            }
+            stateCtx.drawImage(image, targetX, drawY, drawWidth, drawHeight);
+          } else {
+            stateCtx.translate(targetX + drawWidth * 0.5, 0);
+            stateCtx.scale(-1, 1);
+            if (hovered) {
+              const glow = numberToRgba(item.overColor || 7911637, item.overAlpha || 0.8);
+              stateCtx.shadowColor = glow;
+              stateCtx.shadowBlur = 18;
+              stateCtx.drawImage(image, -drawWidth * 0.5, drawY, drawWidth, drawHeight);
+              stateCtx.shadowBlur = 10;
+              stateCtx.drawImage(image, -drawWidth * 0.5, drawY, drawWidth, drawHeight);
+              stateCtx.shadowBlur = 0;
+            }
             stateCtx.drawImage(image, -drawWidth * 0.5, drawY, drawWidth, drawHeight);
-            stateCtx.shadowBlur = 10;
-            stateCtx.drawImage(image, -drawWidth * 0.5, drawY, drawWidth, drawHeight);
-            stateCtx.shadowBlur = 0;
           }
-          stateCtx.drawImage(image, -drawWidth * 0.5, drawY, drawWidth, drawHeight);
           stateCtx.restore();
         };
 
-        drawMirroredImage(drawX);
+        drawBakedImage(drawX);
         if (room.id !== 3) {
           if (drawX < 0) {
-            drawMirroredImage(drawX + canvas.width);
+            drawBakedImage(drawX + canvas.width);
           } else if (drawX + drawWidth > canvas.width) {
-            drawMirroredImage(drawX - canvas.width);
+            drawBakedImage(drawX - canvas.width);
           }
         }
       } else {
@@ -1838,6 +2085,16 @@ function disposeThreeRoom(view) {
   if (!view?.three) {
     return;
   }
+  if (view.hoverWarmupTimer) {
+    if (typeof window.cancelIdleCallback === "function" && view.hoverWarmupScheduled) {
+      try {
+        window.cancelIdleCallback(view.hoverWarmupTimer);
+      } catch {}
+    } else {
+      window.clearTimeout(view.hoverWarmupTimer);
+    }
+    view.hoverWarmupTimer = null;
+  }
   view.three.walls?.forEach((mesh) => {
     const wallMesh = mesh.mesh ?? mesh;
     wallMesh.geometry?.dispose?.();
@@ -1861,7 +2118,7 @@ function disposeThreeRoom(view) {
 }
 
 function updateProjectedHotspots(view) {
-  view.projectedItems.forEach(({ element, center, tangent, width, height, item, fixedScale, isOfficeActiveOverlay, useProjectedBox }) => {
+  view.projectedItems.forEach(({ element, center, tangent, width, height, item, fixedScale, isOfficeActiveOverlay, useProjectedBox, extraHitScale = 1 }) => {
     const halfWidth = width * 0.5;
     const halfHeight = height * 0.5;
     const centerPoint = projectCartesianPoint(view, center.x, center.y, center.z);
@@ -1887,7 +2144,7 @@ function updateProjectedHotspots(view) {
     const sampledHeight = Math.max(8, Math.abs(bottomPoint.y - topPoint.y));
     let boxWidth = isOfficeActiveOverlay || useProjectedBox ? sampledWidth : width * displayScale;
     let boxHeight = isOfficeActiveOverlay || useProjectedBox ? sampledHeight : height * displayScale;
-    if ((view.room.id === 4 || view.room.id === 7) && item.isActive) {
+    if ((view.room.id === 4 || view.room.id === 7 || view.room.id === 8 || view.room.id === 10 || view.room.id === 11 || view.room.id === 13) && item.isActive) {
       // Dark-room hotspots should hug the real lit object more tightly.
       // Using the full projected plane creates transient phantom clickable
       // patches in empty space as the flashlight passes nearby.
@@ -1905,6 +2162,10 @@ function updateProjectedHotspots(view) {
       boxWidth = Math.max(boxWidth, sampledWidth * 2.2, 44);
       boxHeight = Math.max(boxHeight, sampledHeight * 2.2, 44);
     }
+    if (extraHitScale !== 1) {
+      boxWidth *= extraHitScale;
+      boxHeight *= extraHitScale;
+    }
     element.style.display = "block";
     element.style.left = `${centerPoint.x - boxWidth * 0.5}px`;
     element.style.top = `${centerPoint.y - boxHeight * 0.5}px`;
@@ -1917,15 +2178,15 @@ function updateProjectedHotspots(view) {
       element.style.height = `${height}px`;
       element.style.transform = `translate(-50%, -50%) scale(${displayScale})`;
     }
+    const glowColor = numberToRgba(item.overColor || 7911637, item.overAlpha || 0.8);
+    element.style.setProperty("--room-hover-color", glowColor);
     if (isOfficeActiveOverlay) {
       const hoverImage = element.querySelector(".room-item-hover-image");
       if (hoverImage) {
         hoverImage.style.transform = "none";
       }
-      const glowColor = numberToRgba(item.overColor || 7911637, item.overAlpha || 0.8);
-      element.style.setProperty("--room-hover-color", glowColor);
     }
-    if ((view.room.id === 4 || view.room.id === 7) && item.isActive && !view.roomLighting?.introActive) {
+    if ((view.room.id === 4 || view.room.id === 7 || view.room.id === 8 || view.room.id === 10 || view.room.id === 11 || view.room.id === 13) && item.isActive && !view.roomLighting?.introActive) {
       const pointerX = view.roomLighting?.pointerScreenX ?? (STAGE_WIDTH * 0.5 + view.pointerX);
       const pointerY = view.roomLighting?.pointerScreenY ?? (STAGE_HEIGHT * 0.5 + view.pointerY);
       const hotspotRadius = FLASHLIGHT_REVEAL_OUTER_RADIUS + Math.max(boxWidth, boxHeight) * 0.22;
@@ -1977,8 +2238,13 @@ function updateProjectedHotspots(view) {
     const signWidth = Math.max(88, Math.abs(exitPlaneRight.x - exitPlaneLeft.x) * 2.4);
     const signHeight = Math.max(88, Math.abs(exitPlaneBottom.y - exitPlaneTop.y) * 2.4);
     const hitWidth = Math.max(110, Math.abs(exitRight.x - exitLeft.x) + 135);
-    const hitTop = 0;
-    const hitHeight = STAGE_HEIGHT;
+    const useFullHeightExitBand = view.room.id === 0 || view.room.id === 2;
+    const hitTop = useFullHeightExitBand
+      ? 0
+      : Math.max(0, exitCenter.y - signHeight * 1.6);
+    const hitHeight = useFullHeightExitBand
+      ? STAGE_HEIGHT
+      : Math.min(STAGE_HEIGHT - hitTop, signHeight * 3.8);
     const hitLeft = exitCenter.x - hitWidth * 0.5;
     const pointerScreenX = STAGE_WIDTH * 0.5 + view.pointerX;
     const pointerScreenY = STAGE_HEIGHT * 0.5 + view.pointerY;
@@ -1990,6 +2256,17 @@ function updateProjectedHotspots(view) {
       pointerScreenX <= hitLeft + hitWidth &&
       pointerScreenY >= hitTop &&
       pointerScreenY <= hitTop + hitHeight;
+    if (view.room.id === 4) {
+      const pointerFlat = getPointerLightFlatPosition(view);
+      if (pointerFlat) {
+        const flatThreshold = Math.max(210, (view.room.exitWidth || 270) * 0.95);
+        const mirroredPointerFlatX = mirrorFlatXWithinWall(pointerFlat.flatX);
+        const flatMatch = getWrappedFlatDistance(mirroredPointerFlatX, exitFlatX) <= flatThreshold;
+        pointerInsideExit = pointerInsideExit && flatMatch;
+      } else {
+        pointerInsideExit = false;
+      }
+    }
     if (view.room.id === 0) {
       const pointerFlat = getPointerLightFlatPosition(view);
       if (pointerFlat) {
@@ -2086,21 +2363,29 @@ function mirrorFlatXWithinWall(flatX) {
 }
 
 function usesBakedRoomVisual(roomId) {
-  return roomId === 0 || roomId === 2 || roomId === 3 || roomId === 4 || roomId === 5 || roomId === 6 || roomId === 7;
+  return roomId === 0 || roomId === 2 || roomId === 3 || roomId === 4 || roomId === 5 || roomId === 6 || roomId === 7 || roomId === 8 || roomId === 9 || roomId === 10 || roomId === 11 || roomId === 12 || roomId === 13 || roomId === 14;
+}
+
+function usesDarkFlashlightRoom(roomId) {
+  return roomId === 4 || roomId === 7 || roomId === 8 || roomId === 10 || roomId === 11 || roomId === 13;
+}
+
+function shouldKeepBakedItemOrientation(roomId, itemId) {
+  return roomId === 4 && (itemId === "shovel" || itemId === "shovel_shadow");
 }
 
 function getExitVisualFlatX(roomId, flatX) {
   if (roomId === 0) {
     return mirrorFlatXInCurrentWall(flatX);
   }
-  if (roomId === 6 || roomId === 7) {
+  if (roomId === 6 || roomId === 7 || roomId === 8 || roomId === 9 || roomId === 10 || roomId === 11 || roomId === 13) {
     return mirrorFlatXInCurrentWall(flatX);
   }
   return usesBakedRoomVisual(roomId) ? mirrorFlatXWithinWall(flatX) : flatX;
 }
 
 function shouldSuppressRoomItem(roomId, itemId) {
-  return roomId === 5 && itemId === "bed";
+  return (roomId === 5 && itemId === "bed") || (roomId === 9 && itemId === "bed") || (roomId === 12 && itemId === "bed");
 }
 
 function getInteractiveFlatX(roomId, flatX) {
@@ -2110,7 +2395,7 @@ function getInteractiveFlatX(roomId, flatX) {
   // Room 3 bakes item art mirrored *within the current wall half*, so the
   // hotspot must mirror within that same half rather than flipping to the
   // opposite spherical side of the room.
-  if (roomId === 5 || roomId === 6 || roomId === 7) {
+  if (roomId === 5 || roomId === 6 || roomId === 7 || roomId === 8 || roomId === 9 || roomId === 10 || roomId === 11 || roomId === 13) {
     return mirrorFlatXInCurrentWall(flatX);
   }
   return mirrorFlatXWithinWall(flatX);
@@ -2416,14 +2701,9 @@ function buildPhotoModal(item) {
     return { wrapper, img };
   });
 
-  const divider = makeOutsideImage("assets/bitmaps/item_view/divider.png", "room-photo-divider");
   const textBox = createHoverNote(text(item.id));
-  const otherElements = createEl("div", "room-photo-other");
-  const fbButton = buildPhotoSocialButton("assets/bitmaps/item_view/fb_out.png", "assets/bitmaps/item_view/fb_over.png", "Share on Facebook");
-  const twButton = buildPhotoSocialButton("assets/bitmaps/item_view/twitter_out.png", "assets/bitmaps/item_view/twitter_over.png", "Share on Twitter");
-  otherElements.append(divider, fbButton, twButton);
 
-  panel.append(close, itemView, otherElements, textBox);
+  panel.append(close, itemView, textBox);
   const modalStage = createEl("div", "room-modal-stage");
   modalStage.append(panel);
   applyModalLayout({ stage: modalStage });
@@ -2433,7 +2713,7 @@ function buildPhotoModal(item) {
     const primaryImage = imageWrappers[0]?.img;
     const naturalWidth = primaryImage?.naturalWidth || 1;
     const naturalHeight = primaryImage?.naturalHeight || 1;
-    const textBoxY = 447;
+    const textBoxY = 486;
     const targetItemHeight = textBoxY - 40;
     const targetRatio = Math.min(targetItemHeight / naturalHeight, 1.5);
     const scaledWidth = naturalWidth * targetRatio;
@@ -2501,20 +2781,14 @@ function buildVideoModal(item) {
   videoContainer.append(video);
   itemView.append(videoContainer);
 
-  const divider = makeOutsideImage("assets/bitmaps/item_view/divider.png", "room-photo-divider");
-  const otherElements = createEl("div", "room-photo-other");
-  const fbButton = buildPhotoSocialButton("assets/bitmaps/item_view/fb_out.png", "assets/bitmaps/item_view/fb_over.png", "Share on Facebook");
-  const twButton = buildPhotoSocialButton("assets/bitmaps/item_view/twitter_out.png", "assets/bitmaps/item_view/twitter_over.png", "Share on Twitter");
-  otherElements.append(divider, fbButton, twButton);
-
-  panel.append(close, itemView, otherElements);
+  panel.append(close, itemView);
   const modalStage = createEl("div", "room-modal-stage");
   modalStage.append(panel);
   applyRoomLayout(modalStage);
   root.append(dim, modalStage);
   close.style.right = "auto";
   close.style.left = "1107px";
-  close.style.top = "77px";
+  close.style.top = "112px";
 
   const closeModal = () => {
     video.pause();
@@ -2604,24 +2878,18 @@ function buildPanableModal(item) {
   imageMask.append(image);
   itemView.append(imageMask);
 
-  const divider = makeOutsideImage("assets/bitmaps/item_view/divider.png", "room-photo-divider");
-  const otherElements = createEl("div", "room-photo-other");
-  const fbButton = buildPhotoSocialButton("assets/bitmaps/item_view/fb_out.png", "assets/bitmaps/item_view/fb_over.png", "Share on Facebook");
-  const twButton = buildPhotoSocialButton("assets/bitmaps/item_view/twitter_out.png", "assets/bitmaps/item_view/twitter_over.png", "Share on Twitter");
-  otherElements.append(divider, fbButton, twButton);
-
   const directions = text("panableDirections");
   const note = createHoverNote(directions, "sm");
   note.classList.add("room-panable-note");
 
-  panel.append(close, itemView, otherElements, note);
+  panel.append(close, itemView, note);
   const modalStage = createEl("div", "room-modal-stage");
   modalStage.append(panel);
   applyModalLayout({ stage: modalStage });
   root.append(dim, modalStage);
   close.style.right = "auto";
   close.style.left = "1107px";
-  close.style.top = "77px";
+  close.style.top = "112px";
 
   let rafId = 0;
   let noteTimer = 0;
@@ -2776,17 +3044,21 @@ function showRoomFlavor(room) {
 }
 
 function playRoomAmbient(room) {
-  const ambient = room.sounds.find((sound) => sound.assetPath && !sound.triggerOnExit);
-  if (!ambient || !roomScreenState) {
+  const ambientSounds = room.sounds.filter((sound) => sound.assetPath && !sound.triggerOnExit);
+  if (!ambientSounds.length || !roomScreenState) {
     return;
   }
 
-  const audio = new Audio(ambient.assetPath);
-  audio.loop = true;
-  audio.volume = ambient.volume ?? 1;
-  audio.muted = state.isMuted;
-  roomScreenState.audio = audio;
-  audio.play().catch(() => {});
+  const audios = ambientSounds.map((ambient) => {
+    const audio = new Audio(ambient.assetPath);
+    audio.loop = true;
+    audio.volume = ambient.volume ?? 1;
+    audio.muted = state.isMuted;
+    return audio;
+  });
+  roomScreenState.audios = audios;
+  roomScreenState.audio = audios[0] ?? null;
+  audios.forEach((audio) => audio.play().catch(() => {}));
 }
 
 function toggleRoomSound() {
@@ -2794,18 +3066,29 @@ function toggleRoomSound() {
 }
 
 function pauseRoomAudio() {
-  if (roomScreenState?.audio) {
+  if (roomScreenState?.audios?.length) {
+    roomScreenState.audios.forEach((audio) => audio.pause());
+  } else if (roomScreenState?.audio) {
     roomScreenState.audio.pause();
   }
 }
 
 function resumeRoomAudio() {
-  if (roomScreenState?.audio) {
+  if (roomScreenState?.audios?.length) {
+    roomScreenState.audios.forEach((audio) => audio.play().catch(() => {}));
+  } else if (roomScreenState?.audio) {
     roomScreenState.audio.play().catch(() => {});
   }
 }
 
 function stopRoomAudio() {
+  if (roomScreenState?.audios?.length) {
+    roomScreenState.audios.forEach((audio) => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+    roomScreenState.audios = [];
+  }
   if (roomScreenState?.audio) {
     roomScreenState.audio.pause();
     roomScreenState.audio.currentTime = 0;
@@ -2908,30 +3191,38 @@ async function animateHallwayTravel(view, targetRoomId, isRight, travel) {
     clips.push(`assets/videos/trans/${isRight ? "right" : "left"}_${clipIndex}.mp4`);
     current += isRight ? 1 : -1;
   }
+  travel.segmentStarts = clips.map(() => createDeferred());
 
   const [videoA, videoB] = view.hallwayVideos;
   let activeVideo = videoA;
   let standbyVideo = videoB;
   let currentRoom = state.currentRoomId;
+  let standbyPreload = null;
 
   for (let i = 0; i < clips.length && !travel.skipped; i += 1) {
     const src = clips[i];
-    await prepareVideo(activeVideo, src);
+    if (activeVideo.dataset.preparedSrc !== src || activeVideo.readyState < 2) {
+      if (standbyPreload && activeVideo === standbyVideo) {
+        await standbyPreload;
+      } else {
+        await prepareVideo(activeVideo, src);
+      }
+    }
 
     const nextSrc = clips[i + 1];
-    const preloadNext = nextSrc ? prepareVideo(standbyVideo, nextSrc) : Promise.resolve();
+    standbyPreload = nextSrc ? prepareVideo(standbyVideo, nextSrc) : null;
 
     activeVideo.classList.add("is-visible");
     activeVideo.style.opacity = "1";
     standbyVideo.style.opacity = "0";
     standbyVideo.classList.remove("is-visible");
 
-    await preloadNext;
     await playVideoOnce(activeVideo, src, false, () => travel.skipped, true, () => {
       if (!travel.startedNotified) {
         travel.startedNotified = true;
         travel.playbackStarted.resolve();
       }
+      travel.segmentStarts[i]?.resolve();
     });
 
     if (travel.skipped) {
@@ -2946,18 +3237,46 @@ async function animateHallwayTravel(view, targetRoomId, isRight, travel) {
     activeVideo = standbyVideo;
     standbyVideo = previous;
   }
+  if (!travel.skipped && !travel.hallwayFinishedResolved) {
+    travel.hallwayFinishedResolved = true;
+    travel.hallwayFinished.resolve();
+  }
 }
 
 async function animateMapTravel(view, endStep, isRight, travel) {
   if (travel?.playbackStarted?.promise) {
     await Promise.race([travel.playbackStarted.promise, delay(2500)]);
   }
+  let segmentIndex = 0;
   while (state.currentStep !== endStep && !travel.skipped) {
+    if (segmentIndex > 0 && travel?.segmentStarts?.[segmentIndex]?.promise) {
+      await Promise.race([travel.segmentStarts[segmentIndex].promise, delay(2500)]);
+    }
     const nextStep = endStep > state.currentStep ? state.currentStep + 1 : state.currentStep - 1;
     const duration = (isRight ? NAV_MAP_PATH[nextStep - 1].tR : NAV_MAP_PATH[nextStep].tL) * 1000;
     state.currentStep = nextStep;
     applyMapPosition(view, nextStep, duration);
-    await delay(duration);
+    await waitForMapSegment(duration, travel);
+    segmentIndex += 1;
+  }
+}
+
+async function waitForMapSegment(durationMs, travel) {
+  const segmentStart = performance.now();
+  let maxEnd = segmentStart + durationMs;
+  while (true) {
+    if (travel?.skipped) {
+      return;
+    }
+    const now = performance.now();
+    if (travel?.hallwayFinishedResolved) {
+      maxEnd = Math.min(maxEnd, now + 120);
+    }
+    const remaining = maxEnd - now;
+    if (remaining <= 0) {
+      return;
+    }
+    await delay(Math.min(remaining, 50));
   }
 }
 
@@ -3022,13 +3341,22 @@ function skipOutsideTravel() {
 
 function buildOutsideSidebar() {
   const root = createEl("div", "outside-sidebar");
+  const social = createEl("div", "outside-social-strip");
+  state.socialNav.forEach((entry) => {
+    const button = createEl("button", "outside-social-button");
+    button.type = "button";
+    button.setAttribute("aria-label", entry.id);
+    const up = makeOutsideImage(entry.up, "outside-social-image up");
+    const over = makeOutsideImage(entry.over, "outside-social-image over");
+    button.append(up, over);
+    button.addEventListener("click", () => {
+      window.open(entry.url, "_blank", "noopener");
+    });
+    social.append(button);
+  });
   const toggleButton = createEl("button", "outside-sidebar-toggle", "ROOMS");
   toggleButton.type = "button";
   const top = createEl("div", "outside-sidebar-top");
-  const helpButton = createEl("button", "outside-sidebar-icon");
-  helpButton.type = "button";
-  const helpImg = makeOutsideImage("assets/bitmaps/btn_help.png", "outside-sidebar-help");
-  helpButton.append(helpImg);
 
   const soundButton = createEl("button", "outside-sidebar-icon");
   soundButton.type = "button";
@@ -3036,13 +3364,13 @@ function buildOutsideSidebar() {
   const soundOn = makeOutsideImage("assets/bitmaps/btn_sound_on.png", "outside-sidebar-sound-on");
   const soundOff = makeOutsideImage("assets/bitmaps/btn_sound_off.png", "outside-sidebar-sound-off");
   soundButton.append(soundBg, soundOn, soundOff);
-  const fullscreenButton = supportsFullscreen() ? createEl("button", "outside-sidebar-icon outside-sidebar-fullscreen") : null;
+  const fullscreenButton = supportsImmersiveModePrompt() ? createEl("button", "outside-sidebar-icon outside-sidebar-fullscreen") : null;
   if (fullscreenButton) {
     fullscreenButton.type = "button";
-    fullscreenButton.setAttribute("aria-label", "Toggle fullscreen");
+    fullscreenButton.setAttribute("aria-label", shouldUseIosHomescreenAdvice() ? "Fullscreen advice" : "Toggle fullscreen");
     fullscreenButton.append(createEl("span", "outside-sidebar-fullscreen-glyph"));
   }
-  top.append(helpButton, soundButton);
+  top.append(soundButton);
   if (fullscreenButton) {
     top.append(fullscreenButton);
   }
@@ -3068,7 +3396,7 @@ function buildOutsideSidebar() {
   });
 
   root.append(toggleButton, top, roomList);
-  return { root, roomList, roomButtons, helpButton, soundButton, fullscreenButton, toggleButton };
+  return { root, roomList, roomButtons, soundButton, fullscreenButton, toggleButton, social };
 }
 
 function buildOutsideHelpOverlay() {
@@ -3210,7 +3538,7 @@ function toggleMapSkip(skipOn) {
 function setMapArrowState(left, right, up, down, skip) {
   const view = outsideScreenState;
   const map = view?.miniMap;
-  if (!map || !view?.helpOverlay) {
+  if (!map) {
     return;
   }
   map.leftArrow.classList.toggle("is-visible", left);
@@ -3218,10 +3546,12 @@ function setMapArrowState(left, right, up, down, skip) {
   map.upArrow.classList.toggle("is-visible", up);
   map.downArrow.classList.toggle("is-visible", down);
   map.skip.classList.toggle("is-visible", skip);
-  view.helpOverlay.previousTip.classList.toggle("is-visible", state.isHelpActive && left);
-  view.helpOverlay.nextTip.classList.toggle("is-visible", state.isHelpActive && right);
-  view.helpOverlay.enterTip.classList.toggle("is-visible", state.isHelpActive && up);
-  view.helpOverlay.exitTip.classList.toggle("is-visible", state.isHelpActive && down);
+  if (view.helpOverlay) {
+    view.helpOverlay.previousTip.classList.toggle("is-visible", state.isHelpActive && left);
+    view.helpOverlay.nextTip.classList.toggle("is-visible", state.isHelpActive && right);
+    view.helpOverlay.enterTip.classList.toggle("is-visible", state.isHelpActive && up);
+    view.helpOverlay.exitTip.classList.toggle("is-visible", state.isHelpActive && down);
+  }
 }
 
 function stepForRoom(roomId) {
@@ -3238,7 +3568,11 @@ function setGlobalMuted(shouldMute) {
   if (outsideScreenState?.audio) {
     outsideScreenState.audio.muted = shouldMute;
   }
-  if (roomScreenState?.audio) {
+  if (roomScreenState?.audios?.length) {
+    roomScreenState.audios.forEach((audio) => {
+      audio.muted = shouldMute;
+    });
+  } else if (roomScreenState?.audio) {
     roomScreenState.audio.muted = shouldMute;
   }
   app.querySelectorAll("video").forEach((video) => {
@@ -3267,13 +3601,22 @@ function isFullscreenActive() {
 }
 
 function handleFullscreenChange() {
-  app.classList.toggle("is-fullscreen", isFullscreenActive());
+  const active = isFullscreenActive();
+  app.classList.toggle("is-fullscreen", active);
   syncFullscreenUi();
   resizeStages();
+  if (!active && state.tourStarted && (outsideScreenState || roomScreenState)) {
+    showFullscreenPrompt();
+  } else if (active) {
+    hideFullscreenPrompt();
+  }
 }
 
 async function toggleFullscreen() {
   if (!supportsFullscreen()) {
+    if (shouldUseIosHomescreenAdvice() && !isStandaloneLike()) {
+      showFullscreenPrompt();
+    }
     return;
   }
   try {
@@ -3298,6 +3641,103 @@ async function toggleFullscreen() {
     }
   } catch (error) {
     console.warn("Fullscreen toggle failed", error);
+  }
+}
+
+async function ensureFullscreenForTour() {
+  if (shouldUseIosHomescreenAdvice() && !isStandaloneLike()) {
+    state.pendingFullscreenPrompt = true;
+    window.setTimeout(() => {
+      if (state.pendingFullscreenPrompt && state.tourStarted && (outsideScreenState || roomScreenState)) {
+        showFullscreenPrompt();
+      }
+    }, 1600);
+    return;
+  }
+  if (!supportsFullscreen() || isFullscreenActive()) {
+    return;
+  }
+  await toggleFullscreen();
+}
+
+function showFullscreenPrompt() {
+  if (fullscreenPromptState?.root?.isConnected) {
+    updateFullscreenPromptCopy(fullscreenPromptState);
+    fullscreenPromptState.root.classList.add("is-visible");
+    return;
+  }
+  const root = createEl("div", "fullscreen-prompt");
+  const dim = createEl("button", "fullscreen-prompt-dim");
+  dim.type = "button";
+  dim.setAttribute("aria-label", "Dismiss fullscreen prompt");
+  const card = createEl("div", "fullscreen-prompt-card");
+  const title = createEl("div", "fullscreen-prompt-title", "FOR THE BEST EXPERIENCE");
+  const copy = createEl("div", "fullscreen-prompt-copy");
+  const action = createEl("button", "fullscreen-prompt-button");
+  action.type = "button";
+  const dismiss = createEl("button", "fullscreen-prompt-dismiss", "NOT NOW");
+  dismiss.type = "button";
+  card.append(title, copy, action, dismiss);
+  root.append(dim, card);
+  screenRoot.append(root);
+  fullscreenPromptState = { root, dim, card, copy, action, dismiss };
+  updateFullscreenPromptCopy(fullscreenPromptState);
+  const hide = () => hideFullscreenPrompt();
+  dim.addEventListener("click", hide);
+  dismiss.addEventListener("click", hide);
+  action.addEventListener("click", async () => {
+    if (shouldUseIosHomescreenAdvice()) {
+      hideFullscreenPrompt();
+      return;
+    }
+    await ensureFullscreenForTour();
+    if (isFullscreenActive()) {
+      hideFullscreenPrompt();
+    }
+  });
+  requestAnimationFrame(() => root.classList.add("is-visible"));
+}
+
+function hideFullscreenPrompt() {
+  const prompt = fullscreenPromptState;
+  if (!prompt?.root) {
+    return;
+  }
+  prompt.root.classList.remove("is-visible");
+  window.setTimeout(() => {
+    if (fullscreenPromptState?.root === prompt.root) {
+      prompt.root.remove();
+      fullscreenPromptState = null;
+    }
+  }, 220);
+}
+
+function shouldUseIosHomescreenAdvice() {
+  const ua = navigator.userAgent || "";
+  const platform = navigator.platform || "";
+  const touchPoints = navigator.maxTouchPoints || 0;
+  const isiPadLike = /Mac/.test(platform) && touchPoints > 1;
+  return /iPhone|iPad|iPod/.test(ua) || isiPadLike;
+}
+
+function isStandaloneLike() {
+  return Boolean(window.matchMedia?.("(display-mode: standalone)").matches || navigator.standalone);
+}
+
+function supportsImmersiveModePrompt() {
+  return supportsFullscreen() || (shouldUseIosHomescreenAdvice() && !isStandaloneLike());
+}
+
+function updateFullscreenPromptCopy(prompt) {
+  if (!prompt?.copy && !prompt?.action) {
+    return;
+  }
+  if (shouldUseIosHomescreenAdvice()) {
+    prompt.copy.textContent = "On iPhone or iPad, add this site to your Home Screen and use landscape mode for the best experience.";
+    prompt.action.textContent = "GOT IT";
+  } else {
+    prompt.copy.textContent = "Enter fullscreen mode.";
+    prompt.action.textContent = "GO FULLSCREEN";
   }
 }
 
@@ -3426,6 +3866,7 @@ function applyModalLayout(modal) {
     const width = window.innerWidth;
     const height = window.innerHeight;
     const isMobile = state.isMobileUi;
+    const isImmersive = isFullscreenActive() || isStandaloneLike();
     const widthScale = width / STAGE_WIDTH;
     const heightScale = height / STAGE_HEIGHT;
     const baseScale = Math.min(widthScale, heightScale);
@@ -3434,8 +3875,8 @@ function applyModalLayout(modal) {
     const safeBottom = isMobile ? 14 + getSafeInsetBottom() : 0;
     const centeredX = (width - STAGE_WIDTH * scale) / 2;
     const centeredY = (height - STAGE_HEIGHT * scale) / 2;
-    const desktopOffsetY = 36;
-    const mobileOffsetY = 10;
+    const desktopOffsetY = 86;
+    const mobileOffsetY = isImmersive ? 62 : 92;
     let translateY = centeredY + (isMobile ? mobileOffsetY : desktopOffsetY);
     const minTop = safeTop;
     const maxTop = height - STAGE_HEIGHT * scale - safeBottom;
@@ -3515,16 +3956,6 @@ function preloadRoomVisuals(room) {
   return Promise.all(sources.map((src) => loadImage(src).catch(() => null))).then(() => {});
 }
 
-function buildPhotoSocialButton(outSrc, overSrc, label) {
-  const button = createEl("button", "room-photo-social");
-  button.type = "button";
-  button.setAttribute("aria-label", label);
-  const outImage = makeOutsideImage(outSrc, "room-photo-social-out");
-  const overImage = makeOutsideImage(overSrc, "room-photo-social-over");
-  button.append(outImage, overImage);
-  return button;
-}
-
 function toggleOutsideHelp(force) {
   const next = typeof force === "boolean" ? force : !state.isHelpActive;
   state.isHelpActive = next;
@@ -3540,8 +3971,7 @@ function applyHelpState() {
     return;
   }
   view.root.classList.toggle("is-help-active", state.isHelpActive);
-  view.sidebar.helpButton.classList.toggle("is-active", state.isHelpActive);
-  view.helpOverlay.root.classList.toggle("is-visible", state.isHelpActive);
+  view.helpOverlay?.root?.classList.toggle("is-visible", state.isHelpActive);
   toggleMapSkip(Boolean(view.travel));
 }
 
@@ -3690,6 +4120,42 @@ function playVideoOnce(video, src, allowReject = false, shouldAbort = () => fals
     if (playPromise && typeof playPromise.catch === "function") {
       playPromise.catch(onError);
     }
+  });
+}
+
+function waitForVideoNearEnd(video, leadMs = 500) {
+  return new Promise((resolve) => {
+    let done = false;
+    const finish = () => {
+      if (done) {
+        return;
+      }
+      done = true;
+      cleanup();
+      resolve();
+    };
+    const cleanup = () => {
+      video.removeEventListener("timeupdate", onProgress);
+      video.removeEventListener("ended", finish);
+      video.removeEventListener("error", finish);
+      video.removeEventListener("loadedmetadata", onProgress);
+    };
+    const onProgress = () => {
+      const duration = Number.isFinite(video.duration) ? video.duration : 0;
+      if (!duration || Number.isNaN(duration)) {
+        return;
+      }
+      const remainingMs = Math.max(0, (duration - video.currentTime) * 1000);
+      if (remainingMs <= leadMs) {
+        finish();
+      }
+    };
+
+    video.addEventListener("timeupdate", onProgress);
+    video.addEventListener("loadedmetadata", onProgress);
+    video.addEventListener("ended", finish, { once: true });
+    video.addEventListener("error", finish, { once: true });
+    onProgress();
   });
 }
 
@@ -3960,6 +4426,13 @@ function parseConfig(xmlText) {
   if (externalSound?.getAttribute("assetPath")) {
     state.outsideAmbientPath = externalSound.getAttribute("assetPath");
   }
+
+  state.socialNav = Array.from(xml.querySelectorAll("SOCIAL_NAV > SOCIAL")).map((socialNode) => ({
+    id: socialNode.getAttribute("id") ?? "",
+    url: socialNode.getAttribute("url") ?? "#",
+    up: socialNode.getAttribute("up") ?? "",
+    over: socialNode.getAttribute("over") ?? "",
+  })).filter((entry) => entry.up && entry.over && entry.url);
 
   state.rooms = Array.from(xml.querySelectorAll("ROOMS > ROOM")).map((roomNode) => {
     const id = Number.parseInt(roomNode.getAttribute("id") ?? "0", 10);
