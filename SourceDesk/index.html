@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Source Desk — Video Essay Research</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5zM8 3v6h8V3M8 21v-7h8v7"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 13v7H4V6h7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-paperclip" viewBox="0 0 24 24"><path d="m20 12-7.6 7.6a6 6 0 0 1-8.5-8.5l8.1-8.1a4 4 0 1 1 5.7 5.7L9.5 16.9a2 2 0 0 1-2.8-2.8l7.6-7.6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M10 7l-5 5 5 5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m3 17 5-5 4 4 2-2 7 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <div class="brand-name">SOURCE DESK</div>
+          <div class="brand-kicker">video essay research</div>
+        </div>
+      </div>
+
+      <label class="project-title-wrap">
+        <span class="sr-only">Project title</span>
+        <input id="projectTitle" class="project-title" value="Untitled research case" maxlength="100" aria-label="Project title">
+        <span id="saveState" class="save-state"><span class="save-dot"></span> Saved locally</span>
+      </label>
+
+      <div class="top-actions">
+        <button id="readerButton" class="button button-reader" type="button" title="Open the current case in Reading Room">
+          <svg><use href="#i-play"></use></svg><span>Reading room</span>
+        </button>
+        <button id="storyLabButton" class="button button-reader" type="button" title="Open the current case in Story Lab">
+          <svg><use href="#i-filter"></use></svg><span>Story lab</span>
+        </button>
+        <button id="quickAddButton" class="button button-ink" type="button">
+          <svg><use href="#i-plus"></use></svg><span>Add sources</span><kbd>N</kbd>
+        </button>
+        <button id="saveButton" class="button button-accent" type="button">
+          <svg><use href="#i-save"></use></svg><span>Save case</span>
+        </button>
+        <details id="moreMenu" class="more-menu">
+          <summary class="icon-button" aria-label="More project actions"><svg><use href="#i-more"></use></svg></summary>
+          <div class="menu-panel">
+            <button type="button" data-action="import"><svg><use href="#i-upload"></use></svg>Import case file</button>
+            <button type="button" data-action="save-js"><span class="menu-symbol">JS</span>Export lightweight case.js</button>
+            <button type="button" data-action="markdown"><span class="menu-symbol">MD</span>Export timeline notes</button>
+            <button type="button" data-action="load-bundled" id="loadBundledButton"><span class="menu-symbol">↻</span>Load bundled case.js</button>
+            <div class="menu-rule"></div>
+            <button type="button" data-action="project"><span class="menu-symbol">✎</span>Project brief</button>
+            <button type="button" data-action="new"><span class="menu-symbol">＋</span>New blank case</button>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="inbox-panel panel" aria-labelledby="inboxHeading">
+        <div class="panel-heading inbox-heading">
+          <div>
+            <div class="eyebrow">01 · COLLECT</div>
+            <h1 id="inboxHeading">The link mess <span id="inboxCount" class="count-badge">0</span></h1>
+          </div>
+          <button id="pasteButton" class="button button-ghost" type="button"><svg><use href="#i-link"></use></svg>Paste pile</button>
+        </div>
+
+        <p class="panel-intro">Drop everything here. The cards can be messy until you’re ready to date and file them.</p>
+
+        <div class="inbox-tools">
+          <label class="search-field">
+            <svg><use href="#i-search"></use></svg>
+            <input id="inboxSearch" type="search" placeholder="Find in the mess…" aria-label="Search inbox">
+          </label>
+          <select id="inboxTypeFilter" class="small-select" aria-label="Filter inbox by source type">
+            <option value="all">All types</option>
+            <option value="article">Article</option>
+            <option value="article-video">Article + video</option>
+            <option value="video">Video</option>
+            <option value="document">Document / PDF</option>
+            <option value="image">Image / archive</option>
+            <option value="social">Social post</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div id="inboxDrop" class="inbox-drop" tabindex="0">
+          <div id="inboxCards" class="inbox-cards"></div>
+          <div id="inboxEmpty" class="empty-state inbox-empty">
+            <div class="empty-orbit"><span>URL</span><i></i><i></i></div>
+            <h2>Your mess is suspiciously tidy.</h2>
+            <p>Paste one link or three hundred. Duplicate and tracking-heavy URLs get cleaned up for you.</p>
+            <button class="button button-ink" type="button" data-open-add><svg><use href="#i-plus"></use></svg>Add your first sources</button>
+          </div>
+        </div>
+        <div class="drop-hint"><span>Tip</span> You can also drag a <strong>.txt</strong> file full of URLs anywhere into this panel.</div>
+      </section>
+
+      <section class="desk-panel panel" aria-labelledby="deskHeading">
+        <div class="panel-heading desk-heading">
+          <div>
+            <div class="eyebrow">02 · INSPECT</div>
+            <h2 id="deskHeading">Triage desk</h2>
+          </div>
+          <div id="deskPosition" class="desk-position" hidden></div>
+        </div>
+
+        <div id="deskEmpty" class="empty-state desk-empty">
+          <div class="desk-illustration" aria-hidden="true">
+            <span class="paper paper-a"></span><span class="paper paper-b"></span><span class="magnifier"></span>
+          </div>
+          <h2>Pick a source to inspect.</h2>
+          <p>Preview it, capture what matters, attach your downloaded evidence, then send it into the chronology.</p>
+          <div class="workflow-strip"><span>OPEN</span><i></i><span>NOTE</span><i></i><span>DATE</span><i></i><span>FILE</span></div>
+        </div>
+
+        <form id="sourceEditor" class="source-editor" hidden>
+          <div class="source-editor-head">
+            <div id="sourceMonogram" class="source-monogram">S</div>
+            <div class="source-identity">
+              <div class="source-url-line"><span id="sourceDomain">source</span><span id="sourceStatusPill" class="status-pill">INBOX</span></div>
+              <input id="sourceTitle" class="source-title-input" type="text" placeholder="Give this source a useful title" maxlength="240">
+              <div class="url-actions">
+                <a id="sourceOpenLink" class="text-action" target="_blank" rel="noopener noreferrer"><svg><use href="#i-external"></use></svg>Open original</a>
+                <button id="copyUrlButton" class="text-action" type="button"><svg><use href="#i-copy"></use></svg>Copy URL</button>
+                <button id="copyCitationButton" class="text-action" type="button"><svg><use href="#i-copy"></use></svg>Copy citation</button>
+                <button id="smartFillButton" class="text-action smart-fill-action" type="button" title="Find a headline and publication date. Optional deep lookup sends this public URL to r.jina.ai only when you click."><svg><use href="#i-search"></use></svg><span>Find title &amp; date</span></button>
+                <span id="metadataFeedback" class="metadata-feedback"></span>
+              </div>
+            </div>
+            <button id="deleteSourceButton" class="icon-button danger-button" type="button" aria-label="Delete source"><svg><use href="#i-trash"></use></svg></button>
+          </div>
+
+          <div class="preview-shell">
+            <div class="preview-toolbar">
+              <div class="browser-dots"><i></i><i></i><i></i></div>
+              <span id="previewAddress">Select a source</span>
+              <div class="preview-actions">
+                <button id="reloadPreview" type="button" title="Reload preview" hidden>↻</button>
+                <button id="closePreviewButton" type="button" title="Close and unload preview" aria-label="Close preview" hidden><svg><use href="#i-close"></use></svg></button>
+                <a id="previewExternal" target="_blank" rel="noopener noreferrer" title="Open in new tab"><svg><use href="#i-external"></use></svg></a>
+              </div>
+            </div>
+            <div class="preview-stage">
+              <iframe id="previewFrame" title="Source preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div id="previewPlaceholder" class="preview-placeholder">
+                <div class="preview-placeholder-mark"><svg><use href="#i-link"></use></svg></div>
+                <h3>Optional source preview</h3>
+                <p>Only try the frame when it is useful. Many publishers block embeds; Open original always works.</p>
+                <button id="loadPreviewButton" class="button button-ink" type="button">Show optional preview</button>
+              </div>
+              <div class="preview-footnote">If the frame stays blank, the site blocks iframes — use <strong>Open original</strong>.</div>
+            </div>
+          </div>
+
+          <div class="editor-grid">
+            <div class="field-group span-2">
+              <label for="sourceType">Source type</label>
+              <div class="segmented source-type-segments" id="sourceTypeSegments">
+                <label><input type="radio" name="sourceType" value="article"><span>Article</span></label>
+                <label><input type="radio" name="sourceType" value="article-video"><span>Article + video</span></label>
+                <label><input type="radio" name="sourceType" value="video"><span>Video only</span></label>
+                <label><input type="radio" name="sourceType" value="document"><span>PDF / doc</span></label>
+                <label><input type="radio" name="sourceType" value="image"><span>Image</span></label>
+                <label><input type="radio" name="sourceType" value="social"><span>Social</span></label>
+                <label><input type="radio" name="sourceType" value="other"><span>Other</span></label>
+              </div>
+            </div>
+
+            <div class="field-group date-field-group">
+              <div class="label-row"><label for="sourceDate">Publication / event date</label><button id="setUnknownDate" type="button" class="mini-action">Mark unknown</button></div>
+              <div class="date-control">
+                <svg><use href="#i-calendar"></use></svg>
+                <input id="sourceDate" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" autocomplete="off">
+                <button id="calendarButton" type="button" class="calendar-button" title="Choose from calendar"><span>Pick</span></button>
+                <input id="nativeDatePicker" class="native-date-picker" type="date" tabindex="-1" aria-hidden="true">
+              </div>
+              <div id="dateFeedback" class="field-feedback">Type the date directly, or choose it.</div>
+            </div>
+
+            <div class="field-group">
+              <label for="datePrecision">Date confidence</label>
+              <select id="datePrecision">
+                <option value="exact">Exact day</option>
+                <option value="approximate">Approximate day</option>
+                <option value="month">Month only</option>
+                <option value="year">Year only</option>
+                <option value="unknown">Unknown / to verify</option>
+              </select>
+            </div>
+
+            <div class="field-group span-2">
+              <label for="sourceNotes">Research notes <span class="label-hint">What happened, why it matters, contradictions</span></label>
+              <textarea id="sourceNotes" rows="4" placeholder="Capture the useful part while it’s fresh…"></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="sourceQuote">Pull quote / key moment</label>
+              <textarea id="sourceQuote" rows="3" placeholder="Exact quote, statistic, or video timestamp…"></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="sourceTags">Tags</label>
+              <input id="sourceTags" type="text" placeholder="origin story, lawsuit, counterpoint">
+              <div class="field-feedback">Separate tags with commas.</div>
+            </div>
+
+            <div class="field-group">
+              <label for="sourceCredibility">Source quality</label>
+              <select id="sourceCredibility">
+                <option value="unchecked">Not checked yet</option>
+                <option value="primary">Primary source</option>
+                <option value="reliable">Reliable secondary</option>
+                <option value="context">Context only</option>
+                <option value="questionable">Questionable / verify</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label>Relevance</label>
+              <div id="relevanceRating" class="relevance-rating" role="radiogroup" aria-label="Source relevance">
+                <button type="button" data-rating="1" aria-label="Relevance 1">1</button>
+                <button type="button" data-rating="2" aria-label="Relevance 2">2</button>
+                <button type="button" data-rating="3" aria-label="Relevance 3">3</button>
+                <button type="button" data-rating="4" aria-label="Relevance 4">4</button>
+                <button type="button" data-rating="5" aria-label="Relevance 5">5</button>
+              </div>
+            </div>
+
+            <div class="field-group span-2 attachments-section">
+              <div class="label-row"><label>Local evidence</label><span id="attachmentStorageNote" class="label-hint">Stored in this browser</span></div>
+              <input id="attachmentInput" type="file" multiple hidden accept="image/*,video/*,audio/*,.pdf,.txt,.doc,.docx,.webp,.gif">
+              <button id="attachmentDrop" class="attachment-drop" type="button">
+                <span class="attachment-icon"><svg><use href="#i-paperclip"></use></svg></span>
+                <span><strong>Drop images, video, audio or documents</strong><small>or click to choose files from your device</small></span>
+              </button>
+              <div id="attachmentList" class="attachment-list"></div>
+              <label id="videoConfirmedRow" class="check-row" hidden>
+                <input id="videoConfirmed" type="checkbox"><span class="custom-check"><svg><use href="#i-check"></use></svg></span>
+                <span>I have the source video downloaded locally</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="editor-footer">
+            <button id="returnToInboxButton" class="button button-ghost" type="button" hidden><svg><use href="#i-back"></use></svg>Return to link mess</button>
+            <span class="keyboard-tip"><kbd>⌘/Ctrl</kbd> + <kbd>Enter</kbd> to file</span>
+            <button id="fileSourceButton" class="button button-file" type="submit"><span>File in chronology</span><svg><use href="#i-arrow"></use></svg></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="timeline-panel panel" aria-labelledby="timelineHeading">
+        <div class="timeline-head">
+          <div>
+            <div class="eyebrow">03 · BUILD THE STORY</div>
+            <h2 id="timelineHeading">Chronology <span id="timelineCount" class="count-badge count-dark">0</span></h2>
+            <p>Filed sources sort themselves. Unknown dates wait in their own research lane.</p>
+          </div>
+          <div class="timeline-controls">
+            <label class="search-field search-light"><svg><use href="#i-search"></use></svg><input id="timelineSearch" type="search" placeholder="Search chronology…" aria-label="Search chronology"></label>
+            <select id="timelineTypeFilter" class="small-select select-light" aria-label="Filter chronology by type">
+              <option value="all">All source types</option>
+              <option value="article">Articles</option>
+              <option value="article-video">Article + video</option>
+              <option value="video">Videos</option>
+              <option value="document">Documents</option>
+              <option value="image">Images</option>
+              <option value="social">Social posts</option>
+              <option value="other">Other</option>
+            </select>
+            <button id="sortDirectionButton" class="button button-light" type="button" data-direction="asc">Oldest first <span>↑</span></button>
+          </div>
+        </div>
+        <div id="timelineStats" class="timeline-stats"></div>
+        <div id="timelineList" class="timeline-list"></div>
+        <div id="timelineEmpty" class="empty-state timeline-empty">
+          <div class="timeline-empty-line"><i></i><span>?</span><i></i></div>
+          <h2>Your chronology starts with the first filed source.</h2>
+          <p>Unknown dates are welcome too — they’ll stay visible in a “date to verify” section.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="addDialog" class="app-dialog add-dialog">
+    <form method="dialog" class="dialog-card" id="addSourcesForm">
+      <div class="dialog-head">
+        <div><div class="eyebrow">DROP THE PILE</div><h2>Add sources</h2></div>
+        <button id="closeAddDialog" class="icon-button" type="button" aria-label="Close"><svg><use href="#i-close"></use></svg></button>
+      </div>
+      <p>Paste one URL per line, a paragraph full of links, or even bare domains. We’ll extract and de-duplicate them.</p>
+      <label class="field-group">
+        <span>URLs</span>
+        <textarea id="bulkUrls" rows="10" placeholder="https://example.com/the-story\nhttps://youtube.com/watch?v=…\nwww.archive.org/details/…" autofocus></textarea>
+      </label>
+      <div class="add-options">
+        <label class="field-group"><span>Default type</span><select id="bulkType"><option value="auto">Detect when possible</option><option value="article">Article</option><option value="article-video">Article + video</option><option value="video">Video only</option><option value="document">Document / PDF</option><option value="image">Image / archive</option><option value="social">Social post</option><option value="other">Other</option></select></label>
+        <label class="field-group"><span>Tags for this batch</span><input id="bulkTags" type="text" placeholder="chapter 1, background"></label>
+      </div>
+      <div id="urlParseFeedback" class="parse-feedback">Ready for the mess.</div>
+      <div class="dialog-actions">
+        <button id="cancelAddDialog" class="button button-ghost" type="button">Cancel</button>
+        <button id="addSourcesButton" class="button button-ink" type="submit" value="default"><svg><use href="#i-plus"></use></svg>Add to link mess</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="projectDialog" class="app-dialog project-dialog">
+    <form method="dialog" class="dialog-card" id="projectForm">
+      <div class="dialog-head">
+        <div><div class="eyebrow">THE NORTH STAR</div><h2>Project brief</h2></div>
+        <button id="closeProjectDialog" class="icon-button" type="button" aria-label="Close"><svg><use href="#i-close"></use></svg></button>
+      </div>
+      <div class="field-group"><label for="projectBriefTitle">Working title</label><input id="projectBriefTitle" type="text" maxlength="100"></div>
+      <div class="field-group"><label for="projectQuestion">Central question / thesis</label><textarea id="projectQuestion" rows="3" placeholder="What is this essay trying to prove or understand?"></textarea></div>
+      <div class="field-group"><label for="projectBriefNotes">Open questions & research gaps</label><textarea id="projectBriefNotes" rows="5" placeholder="What still needs proof? Who is missing from the story?"></textarea></div>
+      <div class="dialog-actions"><button id="cancelProjectDialog" class="button button-ghost" type="button">Cancel</button><button class="button button-ink" type="submit" value="default">Save brief</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="confirmDialog" class="app-dialog confirm-dialog">
+    <form method="dialog" class="dialog-card">
+      <div class="confirm-mark">!</div>
+      <h2 id="confirmTitle">Are you sure?</h2>
+      <p id="confirmMessage"></p>
+      <div class="dialog-actions"><button class="button button-ghost" value="cancel">Cancel</button><button id="confirmAccept" class="button button-danger" value="confirm">Confirm</button></div>
+    </form>
+  </dialog>
+
+  <input id="importInput" type="file" accept=".json,.js,.sourcedesk.json,application/json,text/javascript" hidden>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Replace this file with a Source Desk “case.js” export for a bundled, reusable case. -->
+  <script src="./case.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#11231d">
+  <title>Story Lab — Source Desk</title>
+  <link rel="stylesheet" href="./board.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="b-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="b-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="b-save" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5zM8 3v6h8V3M8 21v-7h8v7"/></symbol>
+    <symbol id="b-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></symbol>
+    <symbol id="b-sync" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5M6 9a7 7 0 0 1 12-2l2 4M18 15A7 7 0 0 1 6 17l-2-4"/></symbol>
+    <symbol id="b-dashboard" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="4"/><rect x="14" y="11" width="7" height="10"/><rect x="3" y="14" width="7" height="7"/></symbol>
+    <symbol id="b-timeline" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="11" cy="18" r="2"/></symbol>
+    <symbol id="b-board" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="9" r="2"/><circle cx="16" cy="8" r="2"/><circle cx="13" cy="16" r="2"/><path d="m10 9 4-1M9 11l3 3M15 10l-2 4"/></symbol>
+    <symbol id="b-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 20c0-4 2-7 6-7s6 3 6 7M14 14c4 0 7 2 7 6"/></symbol>
+    <symbol id="b-claim" viewBox="0 0 24 24"><path d="M5 4h14v13H9l-4 4zM8 8h8M8 12h5"/></symbol>
+    <symbol id="b-outline" viewBox="0 0 24 24"><path d="M5 5h14M5 12h14M5 19h14M8 3v4M12 10v4M16 17v4"/></symbol>
+    <symbol id="b-source" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 12h6M9 16h6"/></symbol>
+    <symbol id="b-note" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></symbol>
+    <symbol id="b-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></symbol>
+    <symbol id="b-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 13v7H4V6h7"/></symbol>
+    <symbol id="b-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="b-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="b-back" viewBox="0 0 24 24"><path d="M19 12H5M10 7l-5 5 5 5"/></symbol>
+    <symbol id="b-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="b-warning" viewBox="0 0 24 24"><path d="M12 3 2 21h20zM12 9v5M12 18h.01"/></symbol>
+    <symbol id="b-pin" viewBox="0 0 24 24"><path d="m14 4 6 6-3 1-4 4-1 5-4-4 5-1 4-4zM8 16l-4 4"/></symbol>
+  </svg>
+
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <div class="lab-brand">
+        <span class="lab-mark"><i></i><i></i><i></i></span>
+        <div><strong>STORY LAB</strong><small>SOURCE DESK · NARRATIVE INTELLIGENCE</small></div>
+      </div>
+      <label class="lab-project-title"><span class="sr-only">Story Lab project title</span><input id="labProjectTitle" value="Untitled story investigation" maxlength="120"><span id="saveStatus" class="save-status"><i></i>Saved locally</span></label>
+      <div class="lab-top-actions">
+        <button id="syncSourcesButton" class="lab-button button-soft" type="button"><svg><use href="#b-sync"></use></svg><span>Sync sources</span></button>
+        <button id="checkpointButton" class="lab-button button-light" type="button" title="Create a recovery checkpoint"><span class="checkpoint-dot"></span><span>Checkpoint</span></button>
+        <button id="exportLabButton" class="lab-button button-accent" type="button"><svg><use href="#b-save"></use></svg><span>Export lab</span></button>
+        <details id="labMoreMenu" class="lab-more">
+          <summary aria-label="More actions">•••</summary>
+          <div class="lab-menu">
+            <button type="button" data-lab-action="import"><svg><use href="#b-upload"></use></svg>Import Source Desk or Story Lab file</button>
+            <button type="button" data-lab-action="markdown"><span>MD</span>Export narrative brief</button>
+            <button type="button" data-lab-action="recovery"><span>↺</span>Recovery checkpoints</button>
+            <button type="button" data-lab-action="project"><span>✎</span>Project brief & palette</button>
+            <div></div>
+            <a href="./index.html"><svg><use href="#b-back"></use></svg>Source Desk</a>
+            <a href="./reader.html"><svg><use href="#b-source"></use></svg>Reading Room</a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <aside class="lab-sidebar">
+      <nav id="labNav" class="lab-nav" aria-label="Story Lab views">
+        <button class="active" type="button" data-view="overview"><svg><use href="#b-dashboard"></use></svg><span>Overview</span><b id="navOverviewCount"></b></button>
+        <button type="button" data-view="timeline"><svg><use href="#b-timeline"></use></svg><span>Timeline map</span><b id="navTimelineCount">0</b></button>
+        <button type="button" data-view="board"><svg><use href="#b-board"></use></svg><span>Evidence board</span><b id="navBoardCount">0</b></button>
+        <button type="button" data-view="people"><svg><use href="#b-people"></use></svg><span>People & entities</span><b id="navPeopleCount">0</b></button>
+        <button type="button" data-view="claims"><svg><use href="#b-claim"></use></svg><span>Claims & conflicts</span><b id="navClaimsCount">0</b></button>
+        <button type="button" data-view="outline"><svg><use href="#b-outline"></use></svg><span>Story outline</span><b id="navOutlineCount">0</b></button>
+        <button type="button" data-view="sources"><svg><use href="#b-source"></use></svg><span>Source library</span><b id="navSourcesCount">0</b></button>
+      </nav>
+      <div class="sidebar-notebook">
+        <div><span>QUICK NOTE</span><button id="openNotesButton" type="button">View all →</button></div>
+        <textarea id="quickNote" rows="5" placeholder="A lead, question, stray connection…"></textarea>
+        <button id="saveQuickNote" type="button"><svg><use href="#b-plus"></use></svg>Keep note</button>
+      </div>
+      <div class="sidebar-health">
+        <div><span>LOCAL SAFETY</span><strong id="safetyLabel">Protected</strong></div>
+        <div class="health-bar"><i id="healthBar"></i></div>
+        <p id="storageLabel">Autosave ready · 0 KB</p>
+      </div>
+    </aside>
+
+    <main class="lab-main">
+      <header class="view-header">
+        <div><div id="viewEyebrow" class="lab-eyebrow">CASE COMMAND</div><h1 id="viewTitle">Story overview</h1><p id="viewDescription">The whole investigation at a glance: coverage, unresolved questions, and the next useful move.</p></div>
+        <div class="view-actions">
+          <label class="global-search"><svg><use href="#b-search"></use></svg><input id="globalSearch" type="search" placeholder="Search the whole lab…"><kbd>/</kbd></label>
+          <details id="quickAddMenu" class="quick-add">
+            <summary class="lab-button button-dark"><svg><use href="#b-plus"></use></svg>Add</summary>
+            <div><button type="button" data-new="event">Event <kbd>E</kbd></button><button type="button" data-new="actor">Person / entity <kbd>A</kbd></button><button type="button" data-new="claim">Claim <kbd>C</kbd></button><button type="button" data-new="thread">Timeline thread</button><button type="button" data-new="chapter">Story chapter</button><button type="button" data-new="note">Research note</button><button type="button" data-new="link">Connection</button></div>
+          </details>
+        </div>
+      </header>
+
+      <section id="overviewView" class="lab-view">
+        <div id="overviewHero" class="overview-hero"></div>
+        <div class="overview-grid">
+          <section class="lab-card span-2"><div class="card-head"><div><span>NARRATIVE PULSE</span><h2>Chronology at a glance</h2></div><button type="button" data-go="timeline">Open map →</button></div><div id="overviewTimeline" class="mini-timeline"></div></section>
+          <section class="lab-card"><div class="card-head"><div><span>UNRESOLVED</span><h2>Contradictions</h2></div><button type="button" data-go="claims">Open ledger →</button></div><div id="overviewConflicts" class="overview-list"></div></section>
+          <section class="lab-card"><div class="card-head"><div><span>COVERAGE</span><h2>Research gaps</h2></div></div><div id="overviewGaps" class="overview-list"></div></section>
+          <section class="lab-card"><div class="card-head"><div><span>PEOPLE</span><h2>Central actors</h2></div><button type="button" data-go="people">Directory →</button></div><div id="overviewActors" class="actor-orbits"></div></section>
+          <section class="lab-card"><div class="card-head"><div><span>RECENT WORK</span><h2>Activity trail</h2></div></div><div id="overviewActivity" class="activity-list"></div></section>
+        </div>
+      </section>
+
+      <section id="timelineView" class="lab-view" hidden>
+        <div class="timeline-toolbar">
+          <div class="toolbar-group"><label>Threads <select id="timelineThreadFilter"><option value="all">All threads</option></select></label><label>Branch <select id="timelineBranchFilter"><option value="all">All versions</option></select></label><label>Confidence <select id="timelineConfidenceFilter"><option value="all">Any confidence</option><option value="confirmed">Confirmed</option><option value="probable">Probable</option><option value="reported">Reported</option><option value="disputed">Disputed</option><option value="unknown">Unknown</option></select></label></div>
+          <div class="zoom-control"><span>Zoom</span><input id="timelineZoom" type="range" min="1" max="6" step="1" value="2"><button id="fitTimelineButton" type="button">Fit</button></div>
+        </div>
+        <div class="timeline-help"><span>DRAG EVENTS</span> horizontally to change date · vertically to move between threads · uncertain dates remain visibly striped</div>
+        <div id="timelineViewport" class="timeline-viewport"><div id="timelineCanvas" class="timeline-canvas"></div></div>
+        <section class="unknown-events"><div class="card-head"><div><span>DATE TO VERIFY</span><h2>Undated events & branches</h2></div></div><div id="unknownEvents" class="unknown-event-grid"></div></section>
+      </section>
+
+      <section id="boardView" class="lab-view" hidden>
+        <div class="board-toolbar"><div><button id="arrangeBoardButton" class="lab-button button-light" type="button">Auto-arrange</button><button class="lab-button button-light" type="button" data-new="link"><svg><use href="#b-link"></use></svg>Connect nodes</button></div><div class="board-legend"><span data-kind="actor">Person</span><span data-kind="event">Event</span><span data-kind="claim">Claim</span><span data-kind="note">Note</span></div></div>
+        <div id="evidenceBoard" class="evidence-board"><svg id="boardLines" class="board-lines" aria-hidden="true"></svg><div id="boardNodes" class="board-nodes"></div><div id="boardEmpty" class="board-empty"><svg><use href="#b-board"></use></svg><h2>Your evidence wall starts intentionally small.</h2><p>Pin only pivotal people, events, claims, and notes. Then connect them with “supports,” “contradicts,” “causes,” “alibi,” or your own labels.</p><div><button class="lab-button button-dark" type="button" data-new="actor">Add a person</button><button class="lab-button button-light" type="button" data-new="event">Add an event</button></div></div></div>
+      </section>
+
+      <section id="peopleView" class="lab-view" hidden>
+        <div class="directory-toolbar"><div id="actorTypeFilters" class="chip-filters"><button class="active" type="button" data-actor-filter="all">All</button><button type="button" data-actor-filter="person">People</button><button type="button" data-actor-filter="organization">Organizations</button><button type="button" data-actor-filter="place">Places</button><button type="button" data-actor-filter="other">Other</button></div><button class="lab-button button-dark" type="button" data-new="actor"><svg><use href="#b-plus"></use></svg>Add entity</button></div>
+        <div id="actorGrid" class="actor-grid"></div>
+      </section>
+
+      <section id="claimsView" class="lab-view" hidden>
+        <div id="contradictionDeck" class="contradiction-deck"></div>
+        <div class="claims-toolbar"><div><span>CLAIM LEDGER</span><p>Drag claims between confidence states. Shared conflict topics become branching versions above.</p></div><button class="lab-button button-dark" type="button" data-new="claim"><svg><use href="#b-plus"></use></svg>Add claim</button></div>
+        <div id="claimColumns" class="claim-columns"></div>
+      </section>
+
+      <section id="outlineView" class="lab-view" hidden>
+        <div class="outline-toolbar"><div><span>STORY ARCHITECTURE</span><p>Arrange chapters, attach evidence, and expose unsupported beats before drafting.</p></div><button class="lab-button button-dark" type="button" data-new="chapter"><svg><use href="#b-plus"></use></svg>Add chapter</button></div>
+        <div id="chapterList" class="chapter-list"></div>
+      </section>
+
+      <section id="sourcesView" class="lab-view" hidden>
+        <div class="source-toolbar"><label><svg><use href="#b-search"></use></svg><input id="sourceSearch" type="search" placeholder="Search imported sources…"></label><select id="sourceAssignmentFilter"><option value="all">All sources</option><option value="unassigned">Unassigned sources</option><option value="used">Referenced in story</option><option value="high">High relevance</option></select><button class="lab-button button-light" type="button" data-lab-action="import"><svg><use href="#b-upload"></use></svg>Import case</button></div>
+        <div id="sourceStats" class="source-stats"></div>
+        <div id="sourceLibrary" class="source-library"></div>
+      </section>
+
+      <section id="notesView" class="lab-view" hidden>
+        <div class="notes-toolbar"><div><span>RESEARCH NOTEBOOK</span><p>Loose leads, questions, observations, and reminders before they become formal claims or events.</p></div><button class="lab-button button-dark" type="button" data-new="note"><svg><use href="#b-plus"></use></svg>Add note</button></div><div id="notesGrid" class="notes-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <aside id="entityDrawer" class="entity-drawer" aria-hidden="true">
+    <div class="drawer-scrim" data-close-drawer></div>
+    <section class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header><div><span id="drawerEyebrow">EDIT RECORD</span><h2 id="drawerTitle">Record</h2></div><button id="closeDrawer" type="button" aria-label="Close"><svg><use href="#b-close"></use></svg></button></header>
+      <form id="entityForm"><div id="drawerBody" class="drawer-body"></div><footer><button id="deleteEntityButton" class="danger-action" type="button"><svg><use href="#b-trash"></use></svg>Delete</button><span id="drawerSaveHint">Changes save as you work</span><button class="lab-button button-light" type="button" data-close-drawer>Cancel</button><button class="lab-button button-accent" type="submit"><svg><use href="#b-check"></use></svg>Save record</button></footer></form>
+    </section>
+  </aside>
+
+  <dialog id="projectDialog" class="lab-dialog"><form id="projectForm"><header><div><span>CASE NORTH STAR</span><h2>Project brief & palette</h2></div><button id="closeProjectDialog" type="button" aria-label="Close"><svg><use href="#b-close"></use></svg></button></header><div class="dialog-body"><label><span>Working title</span><input id="briefTitle" maxlength="120"></label><label><span>Central question / thesis</span><textarea id="briefQuestion" rows="4"></textarea></label><label><span>Current theory</span><textarea id="briefTheory" rows="5"></textarea></label><label><span>Open research objective</span><textarea id="briefObjective" rows="4"></textarea></label></div><footer><button id="cancelProjectDialog" class="lab-button button-light" type="button">Cancel</button><button class="lab-button button-accent" type="submit">Save brief</button></footer></form></dialog>
+  <dialog id="recoveryDialog" class="lab-dialog recovery-dialog"><div><header><div><span>CRASH RECOVERY</span><h2>Recovery checkpoints</h2></div><button id="closeRecoveryDialog" type="button" aria-label="Close"><svg><use href="#b-close"></use></svg></button></header><div id="recoveryList" class="recovery-list"></div></div></dialog>
+  <input id="labImportInput" type="file" accept=".json,.js,.storylab.json,.sourcedesk.json,application/json,text/javascript" hidden>
+  <div id="labToast" class="lab-toast-region" aria-live="polite"></div>
+  <script src="./case.js"></script>
+  <script src="./board.js"></script>
+</body>
+</html>
+
+

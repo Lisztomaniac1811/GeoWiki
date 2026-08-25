@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#14221d">
+  <title>Reading Room — Source Desk</title>
+  <link rel="stylesheet" href="./reader.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="r-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="r-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></symbol>
+    <symbol id="r-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 13v7H4V6h7"/></symbol>
+    <symbol id="r-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="r-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="r-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m3 17 5-5 4 4 2-2 7 6"/></symbol>
+    <symbol id="r-pin" viewBox="0 0 24 24"><path d="m14 4 6 6-3 1-4 4-1 5-2-2-2-2 5-1 4-4zM8 16l-4 4"/></symbol>
+    <symbol id="r-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="r-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="r-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+    <symbol id="r-back" viewBox="0 0 24 24"><path d="M19 12H5M10 7l-5 5 5 5"/></symbol>
+    <symbol id="r-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="r-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+    <symbol id="r-notes" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></symbol>
+    <symbol id="r-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5M6.1 9A7 7 0 0 1 18 7l2 4M17.9 15A7 7 0 0 1 6 17l-2-4"/></symbol>
+    <symbol id="r-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4M4 20h16"/></symbol>
+    <symbol id="r-save" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5zM8 3v6h8V3M8 21v-7h8v7"/></symbol>
+    <symbol id="r-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
+  </svg>
+
+  <header class="reader-topbar">
+    <div class="reader-brand">
+      <span class="reader-brand-mark"><i></i><i></i></span>
+      <div><strong>SOURCE DESK</strong><small>READING ROOM · EDITABLE DOSSIER</small></div>
+    </div>
+    <div id="caseStatus" class="case-status"><i></i><span>Waiting for a case</span></div>
+    <div class="reader-actions">
+      <button id="syncButton" class="rr-button rr-button-soft" type="button" title="Refresh from the open sorter"><svg><use href="#r-refresh"></use></svg><span>Sync sorter</span></button>
+      <a id="readerStoryLink" class="rr-button rr-button-soft" href="./board.html?from=reader" target="_blank" rel="opener" title="Open Story Lab with this dossier"><svg><use href="#r-grid"></use></svg><span>Story lab</span></a>
+      <button id="readerSaveButton" class="rr-button rr-button-accent" type="button" title="Download the edited dossier"><svg><use href="#r-save"></use></svg><span>Save dossier</span></button>
+      <button id="importButton" class="rr-button rr-button-light" type="button"><svg><use href="#r-upload"></use></svg><span>Import saved case</span></button>
+      <a class="rr-icon-button" href="./index.html" title="Return to sorter"><svg><use href="#r-back"></use></svg></a>
+    </div>
+  </header>
+
+  <main class="reader-shell">
+    <section id="readerEmpty" class="reader-empty">
+      <div class="empty-stack" aria-hidden="true"><span></span><span></span><i>R</i></div>
+      <div class="reader-eyebrow">THE HUNT IS OVER</div>
+      <h1>Bring your sources into focus.</h1>
+      <p>Open Reading Room from the sorter to transfer the live case and local media, or import a saved <strong>.sourcedesk.json</strong> file here.</p>
+      <div class="empty-actions"><button class="rr-button rr-button-accent" type="button" data-import><svg><use href="#r-upload"></use></svg>Choose a saved case</button><a class="rr-button rr-button-outline" href="./index.html">Open the sorter</a></div>
+      <div id="emptyDrop" class="empty-drop">or drop a saved case file anywhere on this page</div>
+    </section>
+
+    <div id="readerContent" hidden>
+      <section class="case-hero">
+        <div class="hero-copy">
+          <div class="reader-eyebrow">RESEARCH CASE · EDITABLE DOSSIER</div>
+          <h1 id="caseTitle">Untitled research case</h1>
+          <p id="caseQuestion">Chronological source library</p>
+        </div>
+        <div id="caseStats" class="case-stats"></div>
+      </section>
+
+      <nav class="view-tabs" aria-label="Reading Room views">
+        <button class="active" type="button" data-view="timeline"><span>01</span>Chronological reading</button>
+        <button type="button" data-view="media"><span>02</span>Media wall</button>
+        <button type="button" data-view="writing"><span>03</span>Writing desk</button>
+      </nav>
+
+      <section class="reader-toolbar" aria-label="Source filters">
+        <label class="reader-search"><svg><use href="#r-search"></use></svg><input id="readerSearch" type="search" placeholder="Search titles, saved text, notes, quotes, tags…"></label>
+        <select id="readerTypeFilter" aria-label="Filter by type">
+          <option value="all">All source types</option>
+          <option value="article">Articles</option>
+          <option value="article-video">Article + video</option>
+          <option value="video">Videos</option>
+          <option value="document">Documents</option>
+          <option value="image">Images</option>
+          <option value="social">Social posts</option>
+          <option value="other">Other</option>
+        </select>
+        <select id="readerQualityFilter" aria-label="Filter by source quality">
+          <option value="all">All quality levels</option>
+          <option value="primary">Primary sources</option>
+          <option value="reliable">Reliable secondary</option>
+          <option value="context">Context only</option>
+          <option value="questionable">Needs verification</option>
+          <option value="unchecked">Not checked</option>
+        </select>
+        <button id="readerSort" class="rr-button rr-button-outline" type="button" data-direction="asc">Oldest first <b>↑</b></button>
+      </section>
+
+      <section id="timelineView" class="reader-view">
+        <div class="reading-layout">
+          <aside class="source-rail">
+            <div class="rail-head"><div><span>CHRONOLOGY</span><strong id="visibleCount">0 sources</strong></div><div class="rail-key"><i></i> reviewed</div></div>
+            <div id="sourceRail" class="source-rail-list"></div>
+          </aside>
+
+          <article id="readingPane" class="reading-pane">
+            <div id="paneEmpty" class="pane-empty"><span>←</span><h2>Choose a source from the chronology.</h2><p>Everything captured during triage is collected here for focused reading.</p></div>
+            <div id="paneContent" hidden>
+              <header class="pane-header">
+                <div class="pane-kicker"><span id="paneDate">DATE</span><i></i><span id="paneType">SOURCE</span></div>
+                <h2 id="paneTitle">Source title</h2>
+                <div class="pane-origin"><span id="paneDomain">domain</span><span id="paneQuality" class="quality-badge">Not checked</span></div>
+                <div class="pane-actions">
+                  <a id="paneOpen" class="rr-button rr-button-dark" target="_blank" rel="noopener noreferrer"><svg><use href="#r-external"></use></svg>Open original</a>
+                  <a id="paneStory" class="rr-button rr-button-outline" target="_blank" rel="opener"><svg><use href="#r-grid"></use></svg>Use in Story Lab</a>
+                  <button id="paneCopy" class="rr-button rr-button-outline" type="button"><svg><use href="#r-copy"></use></svg>Copy citation</button>
+                  <button id="panePin" class="rr-button rr-button-outline" type="button"><svg><use href="#r-pin"></use></svg><span>Pin for writing</span></button>
+                  <button id="paneReviewed" class="rr-button rr-button-outline" type="button"><svg><use href="#r-check"></use></svg><span>Mark reviewed</span></button>
+                  <button id="paneEdit" class="rr-button rr-button-accent" type="button"><svg><use href="#r-edit"></use></svg><span>Edit dossier entry</span></button>
+                </div>
+              </header>
+
+              <section id="primaryMediaBlock" class="primary-media-block" hidden>
+                <div class="primary-media-head"><div><span>PRIMARY LOCAL EVIDENCE</span><h3 id="primaryMediaTitle">Attached media</h3></div><button id="changePrimaryButton" class="rr-button rr-button-outline" type="button">Change primary</button></div>
+                <div id="primaryMediaStage" class="primary-media-stage"></div>
+              </section>
+
+              <section id="supportedPlayerBlock" class="web-preview supported-player" hidden>
+                <div class="preview-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span id="previewAddress">supported video</span><button id="reloadReaderPreview" type="button" title="Reload player" hidden>↻</button><button id="closeReaderPlayer" type="button" title="Close and unload player" aria-label="Close video player" hidden>×</button></div>
+                <div class="preview-window">
+                  <iframe id="readerFrame" title="Optional supported video player" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  <div id="readerPreviewPlaceholder" class="preview-cover"><span class="preview-glyph"><svg><use href="#r-play"></use></svg></span><h3>Supported video available</h3><p>Show the YouTube or Vimeo player only when you want it. Closing it fully unloads the frame.</p><button id="loadReaderPreview" class="rr-button rr-button-dark" type="button"><svg><use href="#r-play"></use></svg>Show video player</button></div>
+                </div>
+              </section>
+
+              <section class="external-reading-card" aria-label="Open source on original site">
+                <span class="external-reading-glyph"><svg><use href="#r-external"></use></svg></span>
+                <div><span class="record-label">FULL ARTICLE / SOURCE PAGE</span><h3>Read on the original site</h3><p>Publisher pages open in a normal tab, so iframe restrictions cannot block your reading session.</p></div>
+                <a id="readerExternalOpen" class="rr-button rr-button-dark" target="_blank" rel="noopener noreferrer"><svg><use href="#r-external"></use></svg>Open original source</a>
+              </section>
+
+              <div class="research-record">
+                <section id="contentBlock" class="record-block source-content-block"><div class="record-title-row"><div><div class="record-label" id="contentLabel">SAVED SOURCE TEXT</div><h3>Self-contained reading copy</h3></div><button id="editContentButton" class="rr-button rr-button-outline" type="button">Add / edit text</button></div><div id="paneContentText" class="source-content"></div></section>
+                <section id="notesBlock" class="record-block"><div class="record-label">RESEARCH NOTES</div><p id="paneNotes"></p></section>
+                <section id="quoteBlock" class="record-block quote-block"><div class="record-label">PULL QUOTE / KEY MOMENT</div><blockquote id="paneQuote"></blockquote></section>
+                <section class="record-block record-meta"><div><span>Tags</span><div id="paneTags" class="tag-list"></div></div><div><span>Relevance</span><strong id="paneRelevance">Not rated</strong></div><div><span>Source quality</span><strong id="paneQualityText">Not checked</strong></div></section>
+                <section id="evidenceBlock" class="record-block"><div class="record-title-row"><div><div class="record-label">LOCAL EVIDENCE</div><h3>Attached media & files</h3></div><span id="evidenceCount">0 files</span></div><div id="evidenceGrid" class="evidence-grid"></div></section>
+              </div>
+
+              <footer class="pane-navigation"><button id="previousSource" type="button"><svg><use href="#r-back"></use></svg><span><small>PREVIOUS</small><strong>Earlier source</strong></span></button><button id="nextSource" type="button"><span><small>NEXT</small><strong>Later source</strong></span><svg><use href="#r-arrow"></use></svg></button></footer>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="mediaView" class="reader-view" hidden>
+        <div class="section-intro"><div><div class="reader-eyebrow">VISUAL INDEX</div><h2>Media wall</h2></div><p>Every attached image and video, plus playable video URLs, gathered in one scan-friendly wall.</p></div>
+        <div id="mediaWall" class="media-wall"></div>
+      </section>
+
+      <section id="writingView" class="reader-view" hidden>
+        <div class="section-intro"><div><div class="reader-eyebrow">FROM RESEARCH TO SCRIPT</div><h2>Writing desk</h2></div><p>Build the script from pinned evidence, saved article text, research notes, and quotes—without leaving the dossier.</p></div>
+        <div class="writing-layout">
+          <section class="scratchpad-card">
+            <div class="writing-card-head"><div><span>PRIVATE SCRATCHPAD</span><h3>Shape the argument</h3></div><button id="exportWriting" class="rr-button rr-button-outline" type="button">Export .md</button></div>
+            <textarea id="writingNotes" placeholder="Draft the through-line, chapter beats, transitions, counterarguments…"></textarea>
+            <div class="scratchpad-foot"><span>Autosaved in this browser</span><span id="wordCount">0 words</span></div>
+          </section>
+          <section class="packet-card">
+            <div class="writing-card-head"><div><span>SOURCE PACKET</span><h3>Pinned evidence</h3></div><label class="packet-toggle"><input id="showAllPackets" type="checkbox"><span>Show every source</span></label></div>
+            <div id="sourcePackets" class="source-packets"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="sourceEditDialog" class="source-edit-dialog">
+    <form id="sourceEditForm" class="source-edit-card">
+      <header class="source-edit-head"><div><span>EDIT DOSSIER ENTRY</span><h2 id="editDialogTitle">Source details</h2></div><button id="closeSourceEdit" class="modal-close edit-modal-close" type="button" aria-label="Close"><svg><use href="#r-close"></use></svg></button></header>
+      <div class="source-edit-body">
+        <div class="edit-grid">
+          <label class="edit-field edit-span-2"><span>Title</span><input id="editTitle" type="text" maxlength="300"></label>
+          <label class="edit-field"><span>Source type</span><select id="editType"><option value="article">Article</option><option value="article-video">Article + video</option><option value="video">Video</option><option value="document">PDF / document</option><option value="image">Image / archive</option><option value="social">Social post</option><option value="other">Other</option></select></label>
+          <label class="edit-field"><span>Publication / event date</span><input id="editDate" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" autocomplete="off"><small id="editDateFeedback">Leave blank for unknown.</small></label>
+          <label class="edit-field"><span>Date confidence</span><select id="editDatePrecision"><option value="exact">Exact day</option><option value="approximate">Approximate day</option><option value="month">Month only</option><option value="year">Year only</option><option value="unknown">Unknown / verify</option></select></label>
+          <label class="edit-field"><span>Source quality</span><select id="editCredibility"><option value="unchecked">Not checked</option><option value="primary">Primary source</option><option value="reliable">Reliable secondary</option><option value="context">Context only</option><option value="questionable">Needs verification</option></select></label>
+          <div class="edit-field edit-span-2"><span>Relevance</span><div id="editRelevance" class="edit-relevance" role="radiogroup" aria-label="Relevance score"><button type="button" data-edit-rating="1">1</button><button type="button" data-edit-rating="2">2</button><button type="button" data-edit-rating="3">3</button><button type="button" data-edit-rating="4">4</button><button type="button" data-edit-rating="5">5</button></div></div>
+          <label class="edit-field edit-span-2"><span>Tags</span><input id="editTags" type="text" placeholder="background, chapter 2, verify"></label>
+          <label class="edit-field edit-span-2"><span>Research notes</span><textarea id="editNotes" rows="4" placeholder="Why this matters, contradictions, follow-up questions…"></textarea></label>
+          <label class="edit-field edit-span-2"><span>Pull quote / key moment</span><textarea id="editQuote" rows="3" placeholder="Exact quote, statistic, or timestamp…"></textarea></label>
+          <label id="editContentGroup" class="edit-field edit-span-2 edit-content-field"><span id="editContentLabel">Saved article / document text</span><textarea id="editContent" rows="14" placeholder="Paste the useful article passages, document text, transcript excerpts, or your cleaned reading copy here…"></textarea><small>This travels with the case and makes the dossier usable offline. Existing notes are kept separate.</small></label>
+          <label class="edit-field edit-span-2"><span>Primary attached media</span><select id="editPrimaryAttachment"><option value="">Automatic / none</option></select><small>For video sources, the first available local video is preferred over YouTube automatically.</small></label>
+        </div>
+      </div>
+      <footer class="source-edit-footer">
+        <div class="edit-danger-zone"><button id="demoteSourceButton" class="rr-button rr-button-outline" type="button">Return to link mess</button><button id="deleteReaderSourceButton" class="rr-button rr-button-danger" type="button"><svg><use href="#r-trash"></use></svg>Delete</button></div>
+        <div class="edit-save-zone"><span id="editSyncHint">Changes autosave locally and sync to the open sorter.</span><button id="cancelSourceEdit" class="rr-button rr-button-outline" type="button">Cancel</button><button class="rr-button rr-button-accent" type="submit"><svg><use href="#r-save"></use></svg>Save entry</button></div>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog id="mediaDialog" class="media-dialog">
+    <div class="media-modal-card">
+      <button id="closeMediaDialog" class="modal-close" type="button" aria-label="Close"><svg><use href="#r-close"></use></svg></button>
+      <div id="mediaModalBody" class="media-modal-body"></div>
+      <div class="media-modal-caption"><div><span id="mediaModalType">MEDIA</span><h2 id="mediaModalTitle">Attachment</h2><p id="mediaModalSource"></p></div><a id="mediaModalOpenSource" class="rr-button rr-button-light" target="_blank" rel="noopener noreferrer"><svg><use href="#r-external"></use></svg>Open source</a></div>
+    </div>
+  </dialog>
+
+  <input id="readerImportInput" type="file" accept=".json,.js,.sourcedesk.json,application/json,text/javascript" hidden>
+  <div id="readerToast" class="reader-toast-region" aria-live="polite"></div>
+
+  <script src="./case.js"></script>
+  <script src="./reader.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
