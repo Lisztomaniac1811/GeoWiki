@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
 <meta charset="UTF-8">
 <meta property="og:image" content="https://i0.wp.com/www.collegeparentcentral.com/wp-content/uploads/2019/10/exam-e1570663689592.jpg"/>
@@ -10,145 +10,305 @@
 <style>
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #353535;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    background-image: url('bg.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: white;
+    color: #fff;
+    background: #353535 url('bg.jpg') center / cover no-repeat fixed;
 }
 
-a {
-    text-decoration: none;
-    color: white;
+.exam-icons {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .section {
     padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.section + .section {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .section h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    border-bottom: 3px solid #fff;
     display: inline-block;
+    margin: 0;
     padding-bottom: 5px;
+    border-bottom: 3px solid currentColor;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.section-note {
+    margin: 10px 0 24px;
+    color: #eee;
+    font-size: 0.95rem;
 }
 
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 16px;
+    max-width: 68rem;
+    margin: 0 auto;
 }
 
 .option {
-    display: inline-block;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #000;
-    width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid #a9a9a9;
+    border-radius: 12px;
+    background: #e0e0e0;
+    color: #252525;
+    text-align: left;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
-.option:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+.option[aria-disabled="true"] {
+    filter: grayscale(100%);
+    cursor: not-allowed;
+}
+
+.option[href] {
+    background: #fff3dc;
+    border-color: #dc934c;
+    color: #472409;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option[href]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.option[href]:focus-visible {
+    outline: 3px solid #ffc375;
+    outline-offset: 4px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .icon {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
     display: block;
-    margin: 0 auto 10px auto;
+    width: 24px;
+    height: 24px;
+    padding: 9px;
+    border-radius: 10px;
+    background: #cecece;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-@media (max-width: 768px) {
-    .option {
-        display: block;
-        margin: 20px auto;
-        max-width: 300px;
+.option[href] .icon {
+    background: #f8d49a;
+}
+
+.course-code {
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.course-name {
+    font-size: 1.05rem;
+    font-weight: bold;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.course-detail,
+.professor,
+.exam-time,
+.pdf-label {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.course-detail {
+    margin-top: 4px;
+    font-weight: normal;
+}
+
+.professor [lang="en"] {
+    display: block;
+}
+
+.exam-time {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.22);
+    font-variant-numeric: tabular-nums;
+}
+
+.pdf-label {
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .option[href] {
+        transition: none;
     }
-}
 
-.monochrome {
-  filter: grayscale(100%);
-  pointer-events: none;
+    .option[href]:hover {
+        transform: none;
+    }
 }
 </style>
 </head>
 <body>
+<svg class="exam-icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-materials" viewBox="0 0 24 24">
+        <rect x="5" y="5" width="14" height="14" rx="2"/>
+        <rect x="9" y="9" width="6" height="6" rx="1"/>
+        <path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"/>
+    </symbol>
+    <symbol id="icon-electronics" viewBox="0 0 24 24">
+        <path d="M13 2 4 14h7l-1 8 10-12h-7l1-8z"/>
+    </symbol>
+    <symbol id="icon-thermal" viewBox="0 0 24 24">
+        <path d="M12 2c1 5-3 6-3 10-2-1-2-3-2-3-2 2-3 4-3 6a8 8 0 0 0 16 0c0-5-4-8-8-13z"/>
+        <path d="M12 22a3 3 0 0 1-3-3c0-2 2-3 3-5 1 2 3 3 3 5a3 3 0 0 1-3 3z"/>
+    </symbol>
+    <symbol id="icon-renewables" viewBox="0 0 24 24">
+        <path d="M12 2c-2 4-7 8-7 13a7 7 0 0 0 14 0c0-5-5-9-7-13z"/>
+        <path d="M8 16c1.5 0 2.5 2 4 2s2.5-2 4-2"/>
+    </symbol>
+    <symbol id="icon-mechanics" viewBox="0 0 24 24">
+        <path d="M11 3v4m0 10v4M2 12h4m10 0h4M5 6l3 3m6 6 3 3m0-12-3 3m-6 6-3 3"/>
+        <circle cx="11" cy="12" r="6"/>
+        <circle cx="11" cy="12" r="2"/>
+    </symbol>
+    <symbol id="icon-practice" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="14" rx="2"/>
+        <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18m-11 0v2h4v-2"/>
+    </symbol>
+</svg>
 
-<!-- Final Exam Section -->
-<div class="section" id="midterm" style="background-color: rgba(0,0,0,0.5);">
-    <h2>დასკვნითი</h2>
+<section class="section" id="midterm" aria-labelledby="midterm-title">
+    <h2 id="midterm-title">შუალედური</h2>
+    <p class="section-note">2026 წლის ნოემბერი</p>
     <div class="cards-container">
-        <a href="mgmtfinflat.pdf" target="" class="option" style="background-color:#4a90e2;">
-            <img class="icon" src="project.png" alt="პროექტის მენეჯმენტი">
-            <p>პროექტის მენეჯმენტი</p>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-materials"/></svg>
+                <span class="course-code">6182</span>
+            </span>
+            <span class="course-name">ელექტროტექნიკური მასალები-2
+                <span class="course-detail">(ნანოტექნოლოგიური მასალების გამოყენება ელექტრულ და ელექტრონულ ინჟინერიაში)</span>
+            </span>
+            <span class="professor">ორმოცაძე ნარგიზა <span lang="en">Ormocadze Nargiza</span></span>
+            <span class="exam-time"><time datetime="2026-11-14T10:00">14.11.2026 · 10:00</time> · აუდ. 7325</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-electronics"/></svg>
+                <span class="course-code">6184</span>
+            </span>
+            <span class="course-name">ძალური (ენერგეტიკული) ელექტრონიკა</span>
+            <span class="professor">ქათამაძე ირმა <span lang="en">Katamadze Irma</span></span>
+            <span class="exam-time"><time datetime="2026-11-17T11:30">17.11.2026 · 11:30</time> · აუდ. 7325</span>
+        </div>
+        <a class="option" href="FoTherm.pdf">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-thermal"/></svg>
+                <span class="course-code">6185</span>
+            </span>
+            <span class="course-name">თბოენერგეტიკის საფუძვლები</span>
+            <span class="professor">თოფურია რომანოზი <span lang="en">Topuria Romanozi</span></span>
+            <span class="exam-time"><time datetime="2026-11-18T10:00">18.11.2026 · 10:00</time> · აუდ. 7325</span>
+            <span class="pdf-label">საკითხების ნახვა (PDF)</span>
         </a>
-        <a href="ecompatfin-flat.pdf" target="" class="option" style="background-color:#9b59b6;">
-            <img class="icon" src="EMC.png" alt="ელექტრომაგნიტური თანათავსებადობა">
-            <p>ელექტრომაგნიტური თანათავსებადობა</p>
-        </a>
-        <a href="MMMfin.pdf" target="" class="option" style="background-color:#f39c12;">
-            <img class="icon" src="math.png" alt="მათემატიკური მეთოდები და მოდელები">
-            <p>მათემატიკური მეთოდები და მოდელები</p>
-        </a>
-        <a href="edevicesfin.pdf" target="" class="option" style="background-color:#fc71c5;">
-            <img class="icon" src="device.png" alt="ელექტრული მანქანები და აპარატები">
-            <p>ელექტრული მანქანები და აპარატები</p>
-        </a>
-        <a href="ETMfin.pdf" target="" class="option" style="background-color:#e74c3c;">
-            <img class="icon" src="components.png" alt="ელექტროტექნიკური მასალები-1">
-            <p>ელექტროტექნიკური მასალები-1</p>
-        </a>
-        <a href="echemistryfin-f.pdf" target="" class="option" style="background-color:#6efd9b;">
-            <img class="icon" src="chemical.png" alt="ელექტრული ქიმიის საფუძვლები">
-            <p>ელექტრული ქიმიის საფუძვლები</p>
-        </a>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-renewables"/></svg>
+                <span class="course-code">6186</span>
+            </span>
+            <span class="course-name">ჰიდრო და სხვა განახლებადი ენერგიების ენერგეტიკის საფუძვლები</span>
+            <span class="professor">ძაძამია დავითი <span lang="en">Dzadzamia Davit</span></span>
+            <span class="exam-time"><time datetime="2026-11-20T10:00">20.11.2026 · 10:00</time> · აუდ. 7325</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-mechanics"/></svg>
+                <span class="course-code">6187</span>
+            </span>
+            <span class="course-name">ენერგეტიკის მექანიკური ამოცანები</span>
+            <span class="professor">ცხაკაია ქეთევანი <span lang="en">Tskhakaia Ketevan</span></span>
+            <span class="exam-time"><time datetime="2026-11-21T10:00">21.11.2026 · 10:00</time> · აუდ. 7325</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-practice"/></svg>
+                <span class="course-code">6183</span>
+            </span>
+            <span class="course-name">საწარმოო პრაქტიკა</span>
+            <span class="professor">ახალაძე ფრიდონი <span lang="en">Akhaladze Pridon</span></span>
+            <span class="exam-time">განრიგი მითითებული არ არის</span>
+        </div>
     </div>
-</div>
+</section>
 
-<!-- Midterm Section -->
-<div class="section" id="midterm" style="background-color: rgba(0,0,0,0.5);">
-    <h2>შუალედური</h2>
+<section class="section" id="final" aria-labelledby="final-title">
+    <h2 id="final-title">დასკვნითი</h2>
+    <p class="section-note">დასკვნითი გამოცდების განრიგი მითითებული არ არის</p>
     <div class="cards-container">
-        <a href="mgmt.html" target="" class="option" style="background-color:#4a90e2;">
-            <img class="icon" src="project.png" alt="პროექტის მენეჯმენტი">
-            <p>პროექტის მენეჯმენტი</p>
-        </a>
-        <a href="ecompat_merged.pdf" target="" class="option" style="background-color:#9b59b6;">
-            <img class="icon" src="EMC.png" alt="	ელექტრომაგნიტური თანათავსებადობა">
-            <p>ელექტრომაგნიტური თანათავსებადობა</p>
-        </a>
-        <a href="MMM.pdf" target="" class="option" style="background-color:#f39c12;">
-            <img class="icon" src="math.png" alt="მათემატიკური მეთოდები და მოდელები">
-            <p>მათემატიკური მეთოდები და მოდელები</p>
-        </a>
-        <a href="edevices.pdf" target="" class="option" style="background-color:#fc71c5;">
-            <img class="icon" src="device.png" alt="ელექტრული მანქანები და აპარატები">
-            <p>ელექტრული მანქანები და აპარატები</p>
-        </a>
-        <a href="ETM.pdf" target="" class="option" style="background-color:#e74c3c;">
-            <img class="icon" src="components.png" alt="ელექტროტექნიკური მასალები-1">
-            <p>ელექტროტექნიკური მასალები-1</p>
-        </a>
-        <a href="echemistry.pdf" target="" class="option" style="background-color:#6efd9b;">
-            <img class="icon" src="chemical.png" alt="ელექტრული ქიმიის საფუძვლები">
-            <p>ელექტრული ქიმიის საფუძვლები</p>
-        </a>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-materials"/></svg>
+                <span class="course-code">6182</span>
+            </span>
+            <span class="course-name">ელექტროტექნიკური მასალები-2
+                <span class="course-detail">(ნანოტექნოლოგიური მასალების გამოყენება ელექტრულ და ელექტრონულ ინჟინერიაში)</span>
+            </span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-electronics"/></svg>
+                <span class="course-code">6184</span>
+            </span>
+            <span class="course-name">ძალური (ენერგეტიკული) ელექტრონიკა</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-thermal"/></svg>
+                <span class="course-code">6185</span>
+            </span>
+            <span class="course-name">თბოენერგეტიკის საფუძვლები</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-renewables"/></svg>
+                <span class="course-code">6186</span>
+            </span>
+            <span class="course-name">ჰიდრო და სხვა განახლებადი ენერგიების ენერგეტიკის საფუძვლები</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-mechanics"/></svg>
+                <span class="course-code">6187</span>
+            </span>
+            <span class="course-name">ენერგეტიკის მექანიკური ამოცანები</span>
+        </div>
+        <div class="option" role="link" aria-disabled="true">
+            <span class="card-header">
+                <svg class="icon" aria-hidden="true"><use href="#icon-practice"/></svg>
+                <span class="course-code">6183</span>
+            </span>
+            <span class="course-name">საწარმოო პრაქტიკა</span>
+        </div>
     </div>
-</div>
-
+</section>
 </body>
 </html>
